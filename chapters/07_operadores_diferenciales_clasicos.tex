@@ -1,0 +1,428 @@
+% !TeX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Operadores Diferenciales Clásicos}
+
+\section{Operador Gradiante}
+
+
+\subsection{Forma cartesiana y notación covariante}
+
+El operador gradiente es bien conocido en la física-matemática.  
+En coordenadas cartesianas se escribe como
+\begin{equation*}
+    \vec{\nabla} = \hat{\imath}\,\frac{\partial}{\partial x}
+    + \hat{\jmath}\,\frac{\partial}{\partial y}
+    + \hat{k}\,\frac{\partial}{\partial z} \,.
+\end{equation*}
+
+Al actuar sobre una función arbitraria $f(x,y,z)$ se obtiene:
+\begin{equation*}
+    \vec{\nabla} f =
+    \hat{\imath}\,\frac{\partial f}{\partial x}
+    + \hat{\jmath}\,\frac{\partial f}{\partial y}
+    + \hat{k}\,\frac{\partial f}{\partial z} \,.
+\end{equation*}
+
+La idea principal es escribir el operador gradiente en forma 
+\textit{covariante}, esto es, que posea un índice arriba (contravariante) 
+y uno abajo (covariante).  
+
+Entonces escribimos el operador gradiente como:
+\begin{equation*}
+    \vec{\nabla} = \hat{\imath}\,\frac{\partial}{\partial x}
+    + \hat{\jmath}\,\frac{\partial}{\partial y}
+    + \hat{k}\,\frac{\partial}{\partial z} \,,
+\end{equation*}
+lo cual equivale a
+\begin{equation*}
+    \vec{\nabla} = \hat{e}_1 \frac{\partial}{\partial x^1}
+    + \hat{e}_2 \frac{\partial}{\partial x^2}
+    + \hat{e}_3 \frac{\partial}{\partial x^3} \,,
+\end{equation*}
+o bien, en notación compacta,
+\begin{equation*}
+    \vec{\nabla} = \sum_{i=1}^3 \hat{e}_i \,\frac{\partial}{\partial x^i} \,.
+\end{equation*}
+
+Aquí, tanto $\hat{e}_i$ como $\dfrac{\partial}{\partial x^i}$ llevan 
+el índice en posición inferior.
+
+Usando la identidad $\hat{e}_i = \hat{E}^i$, obtenida para coordenadas
+cartesianas, se tiene que
+\begin{equation*}
+    \vec{\nabla} = \sum_{i=1}^3 \hat{E}^i \,\frac{\partial}{\partial x^i} \,.
+\end{equation*}
+
+
+\subsection{Definición general}
+
+\begin{apuntebloque}{Definición}
+Se define el \textbf{Operador Gradiente} en el espacio vectorial 
+$\mathbb{R}^3$ como
+\begin{equation*}
+    \vec{\nabla} = \sum_{i=1}^3 \vec{E}^i \, \frac{\partial}{\partial x^i} \,.
+\end{equation*}
+\end{apuntebloque}
+
+Si usamos la fórmula general para las bases duales $\{\vec{E}^i\}_{i=1}^3$ se obtiene:
+
+\begin{equation*}
+    \vec{E}^i = \sum_{j=1}^3 g^{ij} \, \vec{e}_j \,.
+\end{equation*}
+
+Por lo tanto, el operador gradiente se escribe como:
+\begin{equation*}
+    \vec{\nabla} = \sum_{i=1}^3 \sum_{j=1}^3 g^{ij} \, \vec{e}_j \, \frac{\partial}{\partial x^i} \,.
+\end{equation*}
+
+
+\subsection{Ejemplos}
+
+\begin{apuntebloque}{Ejemplo: Operador Gradiente}
+\textbf{a) Coordenadas Cartesianas:} En coordenadas cartesianas el operador gradiente es bien conocido:
+\begin{equation*}
+    \vec{\nabla} f = \hat{\imath}\,\frac{\partial f}{\partial x}
+                   + \hat{\jmath}\,\frac{\partial f}{\partial y}
+                   + \hat{k}\,\frac{\partial f}{\partial z} \,.
+\end{equation*}
+
+\textbf{b) Coordenadas Esféricas:} En coordenadas esféricas el operador gradiente se escribe como:
+\begin{align*}
+    \vec{\nabla} f &= \sum_{i=1}^3 \vec{E}^i \frac{\partial f}{\partial x^i} \\[4pt]
+    &= \vec{E}^1 \frac{\partial f}{\partial x^1}
+     + \vec{E}^2 \frac{\partial f}{\partial x^2}
+     + \vec{E}^3 \frac{\partial f}{\partial x^3} \\[4pt]
+    &= \vec{e}_r \,\frac{\partial f}{\partial r}
+     + \frac{\vec{e}_\phi}{r^2 \sin^2\theta}\,\frac{\partial f}{\partial \phi}
+     + \frac{\vec{e}_\theta}{r^2}\,\frac{\partial f}{\partial \theta} \,.
+\end{align*}
+
+Usando los vectores unitarios asociados a las bases coordenadas esféricas:
+\begin{equation*}
+    \vec{e}_r = \hat{r}, \qquad
+    \vec{e}_\phi = r \sin\theta \,\hat{\phi}, \qquad
+    \vec{e}_\theta = r\,\hat{\theta},
+\end{equation*}
+se obtiene finalmente:
+\begin{equation*}
+    \vec{\nabla} f = \hat{r}\,\frac{\partial f}{\partial r}
+                   + \frac{\hat{\phi}}{r \sin\theta}\,\frac{\partial f}{\partial \phi}
+                   + \frac{\hat{\theta}}{r}\,\frac{\partial f}{\partial \theta} \,.
+\end{equation*}
+\end{apuntebloque}
+
+\section{Operador Divergencia}
+
+
+\subsection{Derivación en coordenadas generales}
+
+En coordenadas cartesianas:
+
+\begin{align*}
+    \vec{\nabla}\cdot\vec{A} 
+    &= \left( \hat{\imath}\,\frac{\partial}{\partial x} 
+           + \hat{\jmath}\,\frac{\partial}{\partial y} 
+           + \hat{k}\,\frac{\partial}{\partial z}\right)
+       \cdot \left(A_x \hat{\imath} + A_y \hat{\jmath} + A_z \hat{k}\right) \\[6pt]
+    &= \frac{\partial A_x}{\partial x} 
+     + \frac{\partial A_y}{\partial y} 
+     + \frac{\partial A_z}{\partial z}.
+\end{align*}
+
+En un sistema de coordenadas general, con
+
+\begin{equation*}
+    \vec{A} = \sum_{j=1}^3 A^j \vec{e}_j.
+\end{equation*}
+
+\begin{align*}  
+    \vec{\nabla}\cdot\vec{A} 
+    &= \sum_{i=1}^3 \vec{E}^i \frac{\partial}{\partial x^i} 
+       \cdot \left( \sum_{j=1}^3 A^j \vec{e}_j \right) \\[6pt]
+    &= \sum_{i=1}^3 \sum_{j=1}^3 
+       \vec{E}^i \cdot \left( 
+            \frac{\partial A^j}{\partial x^i} \vec{e}_j 
+            + A^j \frac{\partial \vec{e}_j}{\partial x^i}
+       \right) \\[6pt]
+    &= \sum_{i=1}^3 \sum_{j=1}^3 
+       \frac{\partial A^j}{\partial x^i} \, \vec{E}^i \cdot \vec{e}_j
+       + \sum_{i=1}^3 \sum_{j=1}^3 A^j 
+          \vec{E}^i \cdot \left( \sum_{k=1}^3 \Gamma^k{}_{ji} \vec{e}_k \right) \\[6pt]
+    &= \sum_{i=1}^3 \sum_{j=1}^3 
+       \frac{\partial A^j}{\partial x^i} \,\delta^i{}_j
+       + \sum_{i=1}^3 \sum_{j=1}^3 A^j \sum_{k=1}^3 \Gamma^k{}_{ji}\,\delta^i{}_k \\[6pt]
+    &= \sum_{i=1}^3 \sum_{j=1}^3 
+       \frac{\partial A^j}{\partial x^i} \,\delta^i{}_j
+       + \sum_{i=1}^3 \sum_{j=1}^3 A^j \,\Gamma^i{}_{ji}.
+\end{align*}
+
+\begin{align*}
+    \Rightarrow \quad 
+    \vec{\nabla}\cdot\vec{A}
+    &= \sum_{i=1}^3 \frac{\partial A^i}{\partial x^i}
+       + \sum_{j=1}^3 A^j \sum_{i=1}^3 \Gamma^i{}_{ji}.
+\end{align*}
+
+Usando la identidad
+\begin{equation*}
+    \sum_{i=1}^3 \Gamma^i{}_{ji} 
+    = \frac{\partial}{\partial x^j} \ln \sqrt{g}, 
+    \qquad g = \det(g_{ij}),
+\end{equation*}
+se obtiene:
+\begin{align*}
+    \vec{\nabla}\cdot\vec{A} 
+    &= \sum_{i=1}^3 \frac{\partial A^i}{\partial x^i}
+       + \sum_{j=1}^3 A^j \frac{\partial}{\partial x^j}\ln\sqrt{g} \\[6pt]
+    &= \sum_{i=1}^3 \frac{\partial A^i}{\partial x^i}
+       + \sum_{i=1}^3 A^i \frac{\partial}{\partial x^i}\ln\sqrt{g} \\[6pt]
+    &= \sum_{i=1}^3 \frac{\partial A^i}{\partial x^i}
+       + \sum_{i=1}^3 A^i \frac{1}{\sqrt{g}}
+          \frac{\partial \sqrt{g}}{\partial x^i} \\[6pt]
+    &= \frac{1}{\sqrt{g}} \sum_{i=1}^3 
+       \left( \sqrt{g}\,\frac{\partial A^i}{\partial x^i}
+            + A^i \frac{\partial \sqrt{g}}{\partial x^i} \right) \\[6pt]
+    &= \frac{1}{\sqrt{g}} \sum_{i=1}^3 
+       \frac{\partial}{\partial x^i}\!\left(\sqrt{g}\,A^i\right).
+\end{align*}
+
+
+\subsection{Componentes en bases unitarias}
+
+En este punto se vuelve importante usar las bases coordenadas 
+\textbf{unitarias}, puesto que se desea que las componentes $A^i$ 
+tengan la misma dimensionalidad que el vector $\vec{A}$.  
+
+Por ejemplo, en coordenadas esféricas el vector $\vec{A}$ se escribe como:
+\begin{equation*}
+    \vec{A} = A_r \,\vec{e}_r + A_\phi \,\vec{e}_\phi + A_\theta \,\vec{e}_\theta,
+\end{equation*}
+donde los vectores coordenados $\vec{e}_\phi$ y $\vec{e}_\theta$ poseen la 
+dimensionalidad del radio:
+\begin{equation*}
+    [\vec{e}_r] = [\vec{e}_\phi] = [r] = \text{Longitud}.
+\end{equation*}
+
+Por lo tanto, las componentes $A_\phi$ y $A_\theta$ no poseen la misma 
+dimensionalidad que el vector $\vec{A}$.
+
+Sin embargo, los vectores bases unitarios 
+\begin{equation*}
+    \hat{e}_i = \frac{\vec{e}_i}{\|\vec{e}_i\|},
+\end{equation*}
+son adimensionales.  
+
+Entonces escribimos el vector $\vec{A}$ en términos de los vectores bases, tal que
+\begin{equation*}
+    \vec{A} = \sum_{i=1}^3 A^i \,\vec{e}_i 
+            = \sum_{i=1}^3 A^i \,\|\vec{e}_i\| \,\hat{e}_i.
+\end{equation*}
+
+Por lo tanto,
+\begin{equation*}
+    A^i = \frac{\tilde{A}^i}{\|\vec{e}_i\|}, 
+    \qquad \vec{A} = \sum_{i=1}^3 \tilde{A}^i \,\hat{e}_i,
+\end{equation*}
+donde $\tilde{A}^i$ son las componentes asociadas a los vectores unitarios $\hat{e}_i$.
+
+Por lo tanto, la divergencia del vector $\vec{A}$ se escribirá como
+\begin{equation*}
+    \vec{\nabla}\cdot \vec{A} 
+    = \frac{1}{\sqrt{g}} \sum_{i=1}^3 
+      \frac{\partial}{\partial x^i} \left( \sqrt{g}\, \frac{\tilde{A}^i}{\|\vec{e}_i\|} \right),
+\end{equation*}
+donde $A^i$ son las componentes del vector respecto a las bases coordenadas
+y $\|\vec{e}_i\|$ son las normas de los vectores base.
+
+\begin{apuntebloque}{Ejemplo: Operador Divergencia}
+
+\textbf{a) Coordenadas Cartesianas:}  
+El determinante de $\delta_{ij}$ es $1$, luego
+\begin{align*}
+    \vec{\nabla}\cdot \vec{A} 
+    &= \frac{1}{\sqrt{1}} \sum_{i=1}^3 
+       \frac{\partial}{\partial x^i} \left( \sqrt{1}\, A^i \right) \\[6pt]
+    &= \sum_{i=1}^3 \frac{\partial A^i}{\partial x^i} \\[6pt]
+    &= \frac{\partial A_x}{\partial x}
+     + \frac{\partial A_y}{\partial y}
+     + \frac{\partial A_z}{\partial z}.
+\end{align*}
+
+\vspace{0.5cm}
+
+\textbf{b) Coordenadas Esféricas:}  
+El determinante de la métrica asociada a las coordenadas esféricas es
+\begin{equation*}
+    g = r^4 \sin^2 \theta,
+\end{equation*}
+    
+y las normas de sus vectores bases coordenados:
+\[
+    \|\vec{e}_r\| = 1, \qquad 
+    \|\vec{e}_\phi\| = r \sin \theta, \qquad 
+    \|\vec{e}_\theta\| = r,
+\]
+
+entonces:
+\begin{align*}
+    \vec{\nabla}\cdot \vec{A} 
+    &= \frac{1}{\sqrt{r^4 \sin^2 \theta}} 
+       \sum_{i=1}^3 \frac{\partial}{\partial x^i} 
+       \left( \sqrt{r^4 \sin^2 \theta}\; 
+              \frac{\tilde{A}^i}{\|\vec{e}_i\|} \right) \\[6pt]
+    &= \frac{1}{r^2 \sin \theta} 
+       \sum_{i=1}^3 \frac{\partial}{\partial x^i} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^i}{\|\vec{e}_i\|} \right)\\[6pt]
+     &= \frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial x^1} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^1}{\|\vec{e}_1\|} \right)+\frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial x^2} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^2}{\|\vec{e}_2\|} \right)\\[6pt]
+     &\quad + \frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial x^3} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^3}{\|\vec{e}_3\|} \right)\\[8pt]  
+     &= \frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial r} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^r}{\|\vec{e}_r\|} \right)+\frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial \phi} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^{\phi}}{\|\vec{e}_{\phi}\|} \right)\\[6pt]
+     &\quad + \frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial \theta} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^{\theta}}{\|\vec{e}_{\theta}\|} \right)\\[8pt]
+         &= \frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial r} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^r}{1} \right)+\frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial \phi} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^{\phi}}{r \sin\theta} \right)\\[6pt]
+     &\quad + \frac{1}{r^2 \sin \theta} 
+        \frac{\partial}{\partial \theta} 
+       \left( r^2 \sin \theta \; \frac{\tilde{A}^{\theta}}{r} \right)\\[8pt]  
+    &= \frac{1}{r^2 } 
+       \frac{\partial}{\partial r}\left(r^2\,\tilde{A}^r \right) 
+     + \frac{1}{r \sin \theta} 
+       \frac{\partial}{\partial \phi}\left(\,\tilde{A}^\phi \right)+ \frac{1}{r \sin \theta} 
+       \frac{\partial}{\partial \theta}\left(\sin \theta \,\tilde{A}^\theta \right).
+\end{align*}
+
+Por lo tanto:
+\begin{equation*}
+    \vec{\nabla}\cdot \vec{A} 
+    = \frac{1}{r^2}\frac{\partial}{\partial r}\!\left(r^2 \tilde{A}^r\right)
+    + \frac{1}{r \sin \theta}\frac{\partial}{\partial \phi}\!\left(\tilde{A}^\phi\right)
+    + \frac{1}{r \sin \theta}\frac{\partial}{\partial \theta}\!\left(\sin \theta\, \tilde{A}^\theta\right).
+\end{equation*}
+
+\end{apuntebloque}
+
+\section{Operador Laplaciano}
+
+
+\subsection{Definición y forma general}
+
+\begin{apuntebloque}{Definición}
+Se define el \textbf{operador Laplaciano} como
+\begin{equation*}
+    \nabla^2 f = \vec{\nabla}\cdot \vec{\nabla} f,
+\end{equation*}
+donde $f$ es una función arbitraria que depende de las coordenadas.
+\end{apuntebloque}
+
+Para obtener la forma general en coordenadas curvilíneas, definimos
+\begin{align*}
+    \vec{A} = \vec{\nabla} f
+    &= \sum_{i=1}^3 \vec{E}^i \,\frac{\partial f}{\partial x^i} \\[6pt]
+    &= \sum_{i=1}^3 \sum_{j=1}^3 g^{ij}\,\vec{e}_j \,\frac{\partial f}{\partial x^i}.
+\end{align*}
+
+Reordenando los índices:
+\begin{align*}
+    \vec{A} 
+    &= \sum_{j=1}^3 \sum_{i=1}^3 g^{ji}\,\vec{e}_i \,\frac{\partial f}{\partial x^j} \\[6pt]
+    &= \sum_{i=1}^3 \sum_{j=1}^3 g^{ij} \frac{\partial f}{\partial x^j}\,\vec{e}_i \\[6pt]
+    &= \sum_{i=1}^3 A^i \,\vec{e}_i,
+\end{align*}
+donde
+\begin{equation*}
+    A^i = \sum_{j=1}^3 g^{ij}\,\frac{\partial f}{\partial x^j}.
+\end{equation*}
+
+Entonces,
+\begin{align*}
+    \nabla^2 f 
+    &= \vec{\nabla}\cdot \vec{\nabla} f \\[6pt]
+    &= \vec{\nabla}\cdot \vec{A} \\[6pt]
+    &= \frac{1}{\sqrt{g}} \sum_{i=1}^3 \frac{\partial}{\partial x^i} 
+       \left(\sqrt{g}\, A^i\right) \\[6pt]
+    &= \frac{1}{\sqrt{g}} \sum_{i=1}^3 \frac{\partial}{\partial x^i} 
+       \left(\sqrt{g}\, \sum_{j=1}^3 g^{ij}\,\frac{\partial f}{\partial x^j}\right).
+\end{align*}
+
+\[
+    \therefore \quad 
+    \nabla^2 f = \frac{1}{\sqrt{g}} \sum_{i=1}^3 \sum_{j=1}^3 
+    \frac{\partial}{\partial x^i}\!\left(\sqrt{g}\, g^{ij}\,\frac{\partial f}{\partial x^j}\right).
+\]
+
+
+\subsection{Ejemplo en coordenadas esféricas}
+
+\begin{apuntebloque}{Ejemplo: Operador Laplaciano}
+\textbf{a) Coordenadas esféricas:}  
+Tenemos que
+\begin{align*}
+    \nabla^2 f 
+    &= \frac{1}{\sqrt{r^4 \sin^2\theta}} 
+       \sum_{i=1}^3 \sum_{j=1}^3 
+       \frac{\partial}{\partial x^i} 
+       \left( r^4 \sin^2\theta \, g^{ij} \,\frac{\partial f}{\partial x^j} \right) \\[6pt]
+    &= \frac{1}{r^2 \sin\theta} 
+       \sum_{i=1}^3 \sum_{j=1}^3 
+       \frac{\partial}{\partial x^i} 
+       \left( r^2 \sin\theta \, g^{ij} \,\frac{\partial f}{\partial x^j} \right).
+\end{align*}
+
+Evaluando explícitamente:
+\begin{align*}
+    \nabla^2 f 
+    &= \frac{1}{r^2 \sin\theta} 
+       \left[
+          \frac{\partial}{\partial r} \Big( r^2 \sin\theta \, g^{11}\,\frac{\partial f}{\partial r} \Big)
+          + \frac{\partial}{\partial \phi} \Big( r^2 \sin\theta \, g^{22}\,\frac{\partial f}{\partial \phi} \Big) \right. \\[6pt]
+    &\qquad \left. + \frac{\partial}{\partial \theta} \Big( r^2 \sin\theta \, g^{33}\,\frac{\partial f}{\partial \theta} \Big)
+       \right].
+\end{align*}
+
+Recordemos que en coordenadas esféricas:
+\begin{equation*}
+    g^{11} = 1, 
+    \qquad g^{22} = \frac{1}{r^2 \sin^2\theta}, 
+    \qquad g^{33} = \frac{1}{r^2}.
+\end{equation*}
+    
+
+Por lo tanto,
+\begin{align*}
+    \nabla^2 f 
+    &= \frac{1}{r^2 \sin\theta} 
+       \left[
+          \frac{\partial}{\partial r}\!\Big(r^2 \sin\theta \,\frac{\partial f}{\partial r}\Big)
+          + \frac{\partial}{\partial \phi}\!\Bigg(r^2 \sin\theta \,\frac{1}{r^2 \sin^2\theta}\,\frac{\partial f}{\partial \phi}\Bigg) \right. \\[6pt]
+    &\qquad \left. + \frac{\partial}{\partial \theta}\!\Bigg(r^2 \sin\theta \,\frac{1}{r^2}\,\frac{\partial f}{\partial \theta}\Bigg)
+       \right].
+\end{align*}
+
+Simplificando cada término:
+\begin{align*}
+    \nabla^2 f
+    &= \frac{1}{r^2} \frac{\partial}{\partial r}\!\Big(r^2 \frac{\partial f}{\partial r}\Big)
+       + \frac{1}{r^2 \sin^2\theta} \frac{\partial^2 f}{\partial \phi^2}
+       + \frac{1}{r^2 \sin\theta} \frac{\partial}{\partial \theta}\!\Big(\sin\theta \frac{\partial f}{\partial \theta}\Big).
+\end{align*}
+\end{apuntebloque}
+
+\newpage
+
+\end{document}

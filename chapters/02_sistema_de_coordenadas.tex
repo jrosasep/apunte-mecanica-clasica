@@ -1,0 +1,1115 @@
+% !TeX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Sistema de Coordenadas}
+
+\section{Introducción}
+Una vez establecido el punto de referencia y los instrumentos de medidas, se procede a escoger un sistema de coordenados para:  
+\textbf{Expresar las magnitudes físicas y fórmulas físicas de forma simple y elegante.} 
+
+\textbf{Recordar: Los sistemas coordenados son construcciones mentales, ¡No existen!}
+
+Un ejemplo de \textbf{coordenización del espacio} ocurre cuando un estudiante quiere traspasar un dibujo de un libro, 
+revista, diario, etc., a su cuaderno de estudio o presentación para su clase. Lo que el estudiante hace es 
+\textbf{crear una cuadrícula en el dibujo y también en el cuaderno}, cambiando, tal vez, el \textbf{tamaño de la cuadrícula}. 
+Una vez hecha la cuadrícula, \textbf{se trata de repetir los trazos en cada cuadrícula del dibujo en cada cuadrícula del cuaderno}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig1.jpg}
+    \caption{Método de la cuadrícula}
+\end{figure}
+
+Lo que el estudiante hizo fue \textbf{coordenizar con líneas rectas la región donde está el dibujo}, con el 
+fin de orientarse.  
+También pudo usar \textbf{otras líneas para realizar el trabajo}, por ejemplo: \textbf{rectas y círculos}.
+
+\textbf{Las coordenadas son líneas que se trazan en el espacio}, y se pueden escoger muchos tipos de líneas.  
+\textbf{La elección del tipo de coordenadas dependerá de la geometría que posee el movimiento que describa la partícula bajo estudio.}  
+
+\section{Curva en el espacio}
+
+Nuestro espacio posee \textbf{tres dimensiones}, esto es, \textbf{tres direcciones linealmente independientes}, tal que hay tres posibles direcciones para moverse.  
+Por lo tanto, \textbf{cada dirección es descrita por una curva en el espacio}.
+
+\begin{apuntebloque}{Definición de curva en el espacio}
+Una curva en el espacio es un conjunto $C\subset \mathbb{R}^3$ tal que es la imagen de un intervalo $I\subset \mathbb{R}$ bajo la aplicación:
+\begin{equation*}
+\begin{aligned}
+    \vec{x}:& \; I \rightarrow C\,, \\
+    &\lambda \rightarrow \vec{x}(\lambda) \,.
+\end{aligned}
+\end{equation*}
+\end{apuntebloque}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig2.png}
+    \caption{Curva parametrizada por el parámetro $\lambda$.}
+\end{figure}
+
+Lo anterior se resume en la simple expresión:
+\begin{equation*}
+    C = \left\{\vec{x} \in \mathbb{R}^3 \, | \, \vec{x} = \vec{x}(\lambda), \,\lambda \in I \right\} \,,
+\end{equation*}
+donde $\lambda$ es un parámetro que no depende de las coordenadas, es un parámetro libre.
+
+\begin{itemize}
+    \item La curva también se puede escribir como $(\vec{x},I)$.
+    \item Las formas anteriores son llamadas parametrizaciones de $C$.
+\end{itemize}
+
+
+\begin{apuntebloque}{Ejemplo: Ecuación de la recta}
+Consideremos como primer ejemplo la ecuación de la línea recta. Sea $\vec{e}$ un vector constante, paralelo a la recta, y sea $\vec{x}_0$ un punto conocido de la recta. Sea $\vec{x}$ un punto arbitrario de la recta, entonces:
+\begin{equation*}
+        \vec{x} - \vec{x}_0 \parallel \vec{e} \quad \Rightarrow \quad \exists\, \lambda \in \mathbb{R} :\, \vec{x} - \vec{x}_0 = \lambda \vec{e} \,,
+\end{equation*}
+\begin{equation}\label{sist_coor:ecua_recta}
+    \therefore \quad \vec{x}(\lambda) = \vec{x}_0 + \lambda \vec{e} \,.
+\end{equation}
+
+La ecuación de la recta puede reescribirse como:
+\begin{equation*}
+\left.
+\begin{aligned}
+x &= x_0 + \lambda e_1 \\
+y &= y_0 + \lambda e_2 \\
+z &= z_0 + \lambda e_3
+\end{aligned}
+\right\} \quad \Rightarrow \quad \lambda = \frac{x-x_0}{e_1} = \frac{y-y_0}{e_2} = \frac{z-z_0}{e_3} \,.
+\end{equation*}
+\end{apuntebloque}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig3.png}
+    \caption{Ecuación de la recta.}
+\end{figure}
+
+\begin{apuntebloque}{Ejemplo: Ecuación de una hélice}
+Como segundo ejemplo consideremos la ecuación de una hélice
+\begin{equation}\label{sist_coor:ecua_helice}
+\left.
+\begin{aligned}
+x(\lambda) &= r\cos(\omega\lambda) \\
+y(\lambda) &= \epsilon r\sin (\omega \lambda) \\
+z(\lambda) &= \nu_0 \lambda
+\end{aligned}
+\right\} \quad \lambda \in \mathbb{R} \,,
+\end{equation}
+
+donde $r$ es el radio, $\omega$ es la razón angular de giro de la curva ($\omega \lambda$ \textbf{debe ser adimensional}) y $\epsilon = \pm 1$, el signo determina el sentido de giro: Dextrógiro\footnote{Dextrógiro: sentido de giro en el mismo sentido de las agujas del reloj.} $(+1)$ o Levógiro $(-1)$\footnote{Levógiro: sentido contrario a las agujas del reloj.}. La constante $\nu_0$ es el avance en el sentido $z$.
+\end{apuntebloque}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig4.png}
+    \caption{Hélice}
+\end{figure}
+
+\section{Vector tangente}
+
+\begin{apuntebloque}{Definición de vector tangente}
+Sea $C$ una curva suave parametrizada $\vec{x}(\lambda),\, \lambda \in \mathbb{R}$. Se define el vector tangente a la curva $C$ en el punto $\vec{x}(\lambda)$ como
+\begin{equation*}
+    \vec{T}(\lambda) = \frac{d\vec{x}(\lambda)}{d\lambda} \,.  % Cambiado dt por d\lambda
+\end{equation*}
+\end{apuntebloque}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig5.png}
+    \caption{Vector tangente}
+\end{figure}
+
+Por lo tanto, \textbf{toda curva suave $C$} (sin puntos angulosos\footnote{Un punto anguloso es un punto de una curva en el que la dirección cambia abruptamente, es decir, la curva no tiene una derivada bien definida en ese punto.}) \textbf{posee un vector tangente en cada punto}.
+
+\begin{apuntebloque}{Ejemplos}
+\begin{itemize}
+    \item Consideremos la ecuación de la recta \eqref{sist_coor:ecua_recta}, donde $\vec{e}$ es un vector constante. El vector tangente a la recta es:
+        \begin{equation*}
+            \vec{T}(\lambda) = \frac{d\vec{x}(\lambda)}{d\lambda} = \vec{e} \,,
+        \end{equation*}
+        la cual es constante.
+        
+    \item Consideremos la hélice \eqref{sist_coor:ecua_helice}, con el caso especial $\epsilon = +1$. El vector tangente a la hélice es:
+        \begin{equation*}
+            \vec{T}(\lambda) = \frac{d\vec{x}}{d\lambda} = -r \omega \sin(\omega \lambda)\hat{i} + r \omega \cos(\omega \lambda)\hat{j} + \nu_0 \hat{k} \,.
+        \end{equation*}
+        
+        Este vector se puede escribir en términos de las coordenadas cartesianas usando las dos primeras ecuaciones de \eqref{sist_coor:ecua_helice}:
+        \begin{equation*}
+            \vec{T}(\lambda) = -\omega y(\lambda)\hat{i} + \omega x(\lambda)\hat{j} + \nu_0 \hat{k} = (-\omega y(\lambda), \omega x(\lambda), \nu_0)\,.
+        \end{equation*}
+        
+        Por lo tanto, el vector tangente a la hélice es un \textbf{campo vectorial a lo largo de la curva}, es decir, está definido solo sobre los puntos de la trayectoria.
+\end{itemize}
+
+
+
+\end{apuntebloque}
+
+%%%%%%%%%%%%%%%
+\section{Campo vectorial}
+
+\begin{apuntebloque}{Definición de Campo Vectorial}
+Un \textbf{campo vectorial} en $\mathbb{R}^3$ es una función que asigna a cada punto $(x,y,z)$ un vector:
+\begin{align*}
+    \vec{\xi} :&\; \mathbb{R}^3 \to \mathbb{R}^3\,, \\ & (x,y,z) \mapsto \vec{\xi}(x,y,z)\,.
+\end{align*}
+\end{apuntebloque}
+La definición anterior nos dice que un campo vectorial dependerá de las coordenadas:
+\begin{equation*}
+    \vec{\xi} = \vec{\xi}(x, y, z)
+\end{equation*}
+
+Dada una curva suave $C$ podemos conocer el vector tangente a ella. Lo interesante es el proceso inverso: \textbf{Dado un campo vectorial, ¿es posible asociarlo como un vector tangente a alguna curva $C \subset \mathbb{R}^3$?}
+
+Para responder la pregunta asumiremos coordenadas cartesianas.
+
+\begin{apuntebloque}{Proposición}
+Sea $\vec{\xi}(x, y, z)$ un campo vectorial continuo en $\mathbb{R}^3$. Para cualquier punto $P_0$ donde $\vec{\xi}(P_0) \neq \vec{0}$, existe una curva suave $C$ pasando por $P_0$ tal que $\vec{\xi}$ es \textbf{paralelo} al vector tangente en cada punto de $C$.
+\\
+\\
+\textbf{Demostración:}  
+
+Sea $C$ una curva suave con parametrización $\vec{x}(\lambda)$, cuyo vector tangente $\vec{T} = \frac {d \vec{x}}{d\lambda}$ es paralelo a $\vec{\xi}$. Esto exige:  
+\begin{equation} \label{sist_coor:vector_tangente}
+    \frac{d\vec{x}}{d\lambda} = k(\lambda) \vec{\xi}(x, y, z)\,,
+\end{equation}  
+donde $k(\lambda)$ es una función escalar real no nula.  
+\\
+\\
+Equivalentemente, en coordenadas:  
+\begin{equation}\label{sist_coor:vector_tangente_coordenadas}
+\begin{aligned}
+\frac{dx}{d\lambda} &= k(\lambda) \xi_x(x, y, z) \,, \\
+\frac{dy}{d\lambda} &= k(\lambda) \xi_y(x, y, z) \,,\\
+\frac{dz}{d\lambda} &= k(\lambda) \xi_z(x, y, z) \,,
+\end{aligned}    
+\end{equation}  
+
+lo cual corresponde a tres ecuaciones diferenciales de primer orden en $\lambda$.
+\\
+\\
+Sea $F(\lambda, x, y, z) = k(\lambda) \vec{\xi}(x,y,z)$. Como $\vec{\xi}$ es continuo (por hipótesis) y $k(\lambda)$ es continua (al ser escalar no nula), la función $F$ es continua en $(\lambda, x, y, z)$.  
+
+Aplicamos el \textbf{teorema de Peano} al sistema con condición inicial $\vec{x}(0) = P_0$:  
+\begin{equation*}
+\frac{d\vec{x}}{d\lambda} = F(\lambda, \vec{x}), \quad \vec{x}(0) = P_0.
+\end{equation*}
+Por continuidad de $F$, existe una solución local $\vec{x}(\lambda)$ definida en algún intervalo $|\lambda| < \epsilon$.  
+\\
+\\
+Finalmente, como $\frac{d\vec{x}}{d\lambda} \parallel \vec{\xi}$ por construcción, la curva $C$ satisface la proposición.  
+\hfill $\square$
+
+\end{apuntebloque}
+
+\clearpage
+
+\section{Ejemplos}
+
+\subsection*{1. Ecuación de la recta}
+
+Como primer ejemplo, consideremos que el vector $\vec{\xi}$ es constante. Entonces, de \eqref{sist_coor:vector_tangente}, se tiene:
+\begin{equation*}
+\frac{d\vec{x}}{d\lambda} = k(\lambda)\vec{\xi} \,,
+\end{equation*}
+donde $k(\lambda)$ es una función escalar arbitraria de $\lambda$.
+
+De aquí,
+\begin{equation*}
+d\vec{x} = \vec{\xi} \, k(\lambda)\, d\lambda\,.
+\end{equation*}
+
+Integrando ambos lados desde $\lambda = 0$ hasta un valor arbitrario $\lambda$, y considerando la condición inicial $\vec{x}(0) = \vec{x}_0$, se obtiene:
+\begin{equation*}
+\vec{x}(\lambda) = \vec{x}_0 + \vec{\xi} \int_0^\lambda k(\lambda')\, d\lambda'\,.
+\end{equation*}
+
+Definiendo el nuevo parámetro $\mu(\lambda) := \int_0^\lambda k(\lambda')\, d\lambda'$, la solución puede reescribirse como:
+\begin{equation*}
+\vec{x}(\lambda) = \vec{x}_0 + \mu(\lambda) \vec{\xi}\,,
+\end{equation*}
+o bien, considerando la reparametrización, como:
+\begin{equation*}
+\vec{x}(\mu) = \vec{x}_0 + \mu \vec{\xi}\,,
+\end{equation*}
+donde ahora $\vec{x}$ está parametrizada en términos del nuevo parámetro $\mu$, cuya relación con $\lambda$ viene dada por la función $k(\lambda)$.
+
+Esta es precisamente la ecuación de una recta en $\mathbb{R}^n$ que pasa por $\vec{x}_0$ en la dirección de $\vec{\xi}$. La función $k(\lambda)$ queda absorbida en el parámetro $\mu$ a través del cambio de variable $\mu = \int_0^\lambda k(\lambda')\, d\lambda'$.
+
+\subsection*{2. Segundo ejemplo de campo vectorial}
+
+Como segundo ejemplo, consideremos el campo vectorial $\vec{\xi}(x, y) = (x, y, 0) \in \mathbb{R}^3$. De acuerdo con \eqref{sist_coor:vector_tangente_coordenadas}, las curvas $C$ generadas por $\vec{\xi}$ satisfacen el sistema:
+\begin{align*}
+\frac{dx}{d\lambda} &= k(\lambda)\, x \,,\\
+\frac{dy}{d\lambda} &= k(\lambda)\, y \,,\\
+\frac{dz}{d\lambda} &= 0 \,,
+\end{align*}
+
+donde $k(\lambda)$ es, en principio, una función arbitraria de $\lambda$.
+
+Dada la condición inicial $\vec{x}(0) = (x_0, y_0, z_0)$, la solución general es:
+
+\begin{equation*}
+\left\{
+\begin{aligned}
+x(\lambda) &= x_0 \exp\left(\int_0^\lambda k(\lambda')\, d\lambda'\right)\,, \\
+y(\lambda) &= y_0 \exp\left(\int_0^\lambda k(\lambda')\, d\lambda'\right)\,, \\[4pt]
+z(\lambda) &= z_0 \,.
+\end{aligned}
+\right. \quad \lambda \in \mathbb{R} \,.
+\end{equation*}
+
+Definiendo la función auxiliar $\mu(\lambda) := \int_0^\lambda k(\lambda')\, d\lambda'$, la solución anterior se reescribe:
+
+\begin{equation}\label{sist_coor:solución_ejemplo_b}
+\left\{\begin{aligned}
+x(\lambda) &= x_0\, e^{\mu(\lambda)}\,, \\
+y(\lambda) &= y_0\, e^{\mu(\lambda)}\,, \\
+z(\lambda) &= z_0\,.
+\end{aligned}\right.
+\end{equation}
+
+Estas curvas corresponden a semirrectas (rayos) contenidas en el plano $z = z_0$ y que parten desde el eje $z$.
+
+En la expresión \eqref{sist_coor:solución_ejemplo_b}, la función $\mu(\lambda)$ aparece como argumento de la función exponencial. Es importante destacar que, tanto en el caso de la exponencial como en el de funciones trigonométricas, logarítmicas, etc., el argumento debe ser adimensional. Por lo tanto,
+
+\begin{equation*}
+    [\mu(\lambda)] = \left[\int_0^{\lambda}k(\lambda')\, d\lambda'\right] = 1\,.
+\end{equation*}
+
+Por las propiedades dimensionales de la integral, se tiene:
+
+\begin{equation*}
+[k(\lambda')] \cdot [d\lambda'] = 1 \quad \Rightarrow \quad [k] = \left[\frac{1}{\lambda}\right]\,.
+\end{equation*}
+
+Esto generaliza el caso particular en que $k$ es constante, para el cual:
+
+\begin{equation*}
+[k\lambda] = 1 \quad \Rightarrow \quad [k] = \left[\frac{1}{\lambda}\right]\,.
+\end{equation*}
+
+El rango de la función $\mu(\lambda)$ depende de la forma específica de $k(\lambda)$, pero la función $e^{\mu(\lambda)}$ es siempre estrictamente positiva. Por lo tanto, las ecuaciones en \eqref{sist_coor:solución_ejemplo_b} describen semirrectas (rayos) en el plano $z = z_0$ que, en general, \textbf{no incluyen el origen}, salvo que $x_0 = y_0 = 0$.
+
+Si $x_0 > 0$ e $y_0 > 0$, entonces $x$ e $y$ se mantienen positivos para todo $\lambda$, y la curva se encuentra contenida en el primer cuadrante del plano $z = z_0$, sin pasar por el origen.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig6.png}
+    \caption{Rayo en el primer cuadrante}\label{fig:rayo1}
+\end{figure}
+
+La “otra mitad” necesaria para completar una línea recta corresponde al caso $x_0 < 0$ e $y_0 < 0$, es decir, un rayo contenido en el tercer cuadrante del sistema de coordenadas, también sin pasar por el origen.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig7.png}
+    \caption{Rayo en el tercer cuadrante}\label{fig:rayo2}
+\end{figure}
+
+Si bien $x_0$ e $y_0$ son constantes de integración, pueden tomar cualquier valor en $\mathbb{R}$; en consecuencia, se pueden considerar como parámetros independientes que determinan el conjunto de soluciones para cada valor fijo de $\lambda$.
+
+Al permitir que las constantes de integración $x_0$ e $y_0$ recorran todos los valores posibles en $\mathbb{R}$, se obtiene un conjunto infinito de rectas contenidas en el plano $z = z_0$ que intersectan el eje $z$. Esto se puede ver explícitamente calculando:
+
+\begin{equation*}
+\frac{y}{x} = \frac{y_0\, e^{\mu(\lambda)}}{x_0\, e^{\mu(\lambda)}} = \frac{y_0}{x_0} = m \implies y = m x, \quad \text{con } m = \frac{y_0}{x_0} \in \mathbb{R}\,.
+\end{equation*}
+
+Es decir, la solución está contenida en una familia de rectas en el plano $z = z_0$ que pasan por el eje $z$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig8.png}
+    \caption{Conjunto de rectas que intersectan el eje $z$}\label{fig:rectas}
+\end{figure}
+
+Las constantes de integración $x_0$ e $y_0$ pueden reescribirse en forma polar como:
+
+\begin{align*}
+x_0 &= r_0 \cos \varphi_0\,, \\
+y_0 &= r_0 \sin \varphi_0\,,
+\end{align*}
+
+donde $r_0 \geq 0$ es una constante radial y $\varphi_0 \in [0, 2\pi)$ es el ángulo que determina la inclinación de la recta.
+
+De este modo, las ecuaciones \eqref{sist_coor:solución_ejemplo_b} se reescriben como:
+
+\begin{equation} \label{sist_coor:solución_ejemplo_b_polares_1}
+\left\{\begin{aligned}
+x(\lambda) &= r_0 \cos \varphi_0\, e^{\mu(\lambda)}\,, \\
+y(\lambda) &= r_0 \sin \varphi_0\, e^{\mu(\lambda)}\,, \\
+z(\lambda) &= z_0\,.
+\end{aligned}\right.
+\end{equation}
+
+Si definimos la nueva variable $r := r_0\, e^{\mu(\lambda)}$, obtenemos
+
+\begin{equation*}
+r = r_0\, e^{\mu(\lambda)}\,.
+\end{equation*}
+
+y así, las ecuaciones anteriores se expresan como:
+
+\begin{equation} \label{sist_coor:solución_ejemplo_b_polares_2}
+\left\{\begin{aligned}
+x(r) &= r \cos \varphi_0\,, \\
+y(r) &= r \sin \varphi_0\,, \\
+z &= z_0\,.
+\end{aligned}\right.
+\end{equation}
+
+El rango de la variable $r$ es $[0, \infty)$, que incluye el origen cuando $r_0 = 0$.
+
+Como ya se mencionó, las curvas generadas por el campo vectorial $\vec{\xi} = (x, y, 0)$ son rectas contenidas en el plano $z = z_0$ e intersectan el eje $z$. De manera más formal,
+
+\begin{align*}
+\vec{x}(r) &= (x, y, z) \\
+           &= (r \cos \varphi_0,\, r \sin \varphi_0,\, z_0) \\
+           &= (0, 0, z_0) + r (\cos \varphi_0,\, \sin \varphi_0,\, 0) \\
+           &= \vec{x}_0 + r\, \hat{e}\,,
+\end{align*}
+
+donde $\vec{x}_0 = (0, 0, z_0)$ y $\hat{e} = (\cos \varphi_0,\, \sin \varphi_0,\, 0)$.
+
+\begin{equation*}
+\therefore \quad \vec{x}(r) = \vec{x}_0 + r\, \hat{e}, \quad \text{con } r \in [0, \infty)\,.
+\end{equation*}
+
+\subsection*{3. Tercer ejemplo de campo vectorial }
+Como tercer ejemplo, consideremos el campo vectorial $\vec{\xi}(x, y, z) = (-y, x, 0)$. Según la ecuación \eqref{sist_coor:vector_tangente_coordenadas}, la curva generada por este campo satisface el sistema:
+\begin{align*}
+\frac{dx}{d\lambda} & = -k(\lambda) y\,, \\
+\frac{dy}{d\lambda} & = k(\lambda) x\,, \\
+\frac{dz}{d\lambda} & = 0\,,
+\end{align*}
+donde, para simplificar la integración, supondremos $k(\lambda) = k$ constante (el caso general se discutirá posteriormente). Físicamente, esto corresponde a un campo uniforme que produce un movimiento circular uniforme.
+Así, el sistema se reduce a:
+\begin{align*}
+\frac{dx}{d\lambda} & = -k y\,, \\
+  \frac{dy}{d\lambda} & = k x\,, \\
+\frac{dz}{d\lambda} & = 0\,,
+\end{align*}
+cuyo tercer componente implica $z(\lambda) = z_0$ constante.
+
+Las ecuaciones para $x$ e $y$ forman un sistema acoplado de primer orden\footnote{Se dice que dos ecuaciones están acopladas cuando cada variable dependiente aparece en la ecuación diferencial de la otra.}. \textbf{Este sistema puede resolverse al menos de dos maneras diferentes}:
+
+La \textbf{primera estrategia} para resolver este sistema consiste en transformar las ecuaciones diferenciales de primer orden en ecuaciones de segundo orden desacopladas. Para ello, derivamos la primera ecuación respecto de $\lambda$:
+
+\begin{align*}
+\frac{d^2x}{d\lambda^2} &= \frac{d}{d\lambda} \left( \frac{dx}{d\lambda} \right) \\
+&= \frac{d}{d\lambda}(-ky) \\
+&= -k \frac{dy}{d\lambda} \\[2pt]
+&= -k ( kx) \\[2pt]
+&= -k^2 x \,.
+\end{align*}
+Por lo tanto,
+\begin{equation*}
+\frac{d^2x}{d\lambda^2} = -k^2 x\,.
+\end{equation*}
+
+De modo análogo, al derivar la segunda ecuación se obtiene:
+\begin{align*}
+\frac{d^2y}{d\lambda^2} &= \frac{d}{d\lambda} \left( \frac{dy}{d\lambda} \right) \\
+&= \frac{d}{d\lambda} (kx) \\
+&= k \frac{dx}{d\lambda} \\
+&= k (-ky) \\
+&= -k^2 y \,,
+\end{align*}
+es decir,
+\begin{equation*}
+\frac{d^2y}{d\lambda^2} = -k^2 y\,.
+\end{equation*}
+
+En resumen, obtenemos dos ecuaciones diferenciales de segundo orden independientes:
+\begin{equation*}
+\left\{
+\begin{aligned}
+\frac{d^2x}{d\lambda^2} &= -k^2 x\,, \\
+\frac{d^2y}{d\lambda^2} &= -k^2 y\,,
+\end{aligned}
+\right.
+\end{equation*}
+las cuales corresponden a ecuaciones de \textbf{Movimiento Armónico Simple (MAS)} para cada coordenada.
+
+Hemos elevado el orden de las ecuaciones diferenciales, pasando de primer a segundo orden, lo que nos permitió desacoplar el sistema.
+
+Es importante señalar que, si bien las ecuaciones desacopladas de segundo orden son más fáciles de resolver, no debemos olvidar que el sistema original estaba dado por ecuaciones de primer orden. Por tanto, las soluciones obtenidas deben verificarse sustituyéndolas en el sistema original para asegurar su validez.
+
+Las soluciones de las ecuaciones de Movimiento Armónico Simple (M. A. S.) son:
+\begin{equation*}
+\left.
+\begin{aligned}
+  x(\lambda) = A \cos(k\lambda + \alpha)\\
+  y(\lambda) = B \cos(k\lambda + \beta)
+\end{aligned}
+\right\} \quad \lambda \in \mathbb{R} \,,
+\end{equation*}
+donde $A$, $B$, $\alpha$ y $\beta$ son constantes de integración, y $k\lambda$ es adimensional. Como mencionamos, estas soluciones deben satisfacer el sistema original de primer orden.
+
+Para garantizar que las soluciones propuestas satisfacen el sistema original de primer orden, derivemos $x(\lambda)$ e igualemos según la ecuación $\frac{dx}{d\lambda} = -k y$:
+\begin{align*}
+\frac{dx}{d\lambda} &= \frac{d}{d\lambda}\big(A\cos(k\lambda + \alpha)\big) \\[2pt]
+&= -kA\sin(k\lambda + \alpha) \,.
+\end{align*}
+Por otro lado,
+\begin{align*}
+y(\lambda) = B\cos(k\lambda + \beta) \quad
+&\Rightarrow \quad  \frac{dx}{d\lambda} = -k y \\[4pt]
+&\Rightarrow \quad-kA\sin(k\lambda + \alpha) = -kB\cos(k\lambda + \beta) \\[4pt]
+&\Rightarrow \quad A\sin(k\lambda + \alpha) = B\cos(k\lambda + \beta) \,.
+\end{align*}
+Usando la identidad $\sin\theta = \cos(\theta - \frac{\pi}{2})$, se obtiene:
+\begin{align*}
+A\cos\left(k\lambda + \alpha - \frac{\pi}{2}\right) = B\cos(k\lambda + \beta) \,.
+\end{align*}
+Para que esta igualdad se cumpla para todo $\lambda$, debe ser $A = B$ y $\beta = \alpha - \frac{\pi}{2}$ (o en general, $\beta = \alpha - \frac{\pi}{2} + 2n\pi$, pero toda fase puede redefinirse módulo $2\pi$).
+
+Rigurosamente, como el coseno es una función $2\pi$-periódica, la relación entre las fases puede escribirse:
+\begin{align*}
+\cos\left(k\lambda + \alpha - \frac{\pi}{2}\right) = \cos(k\lambda + \beta) \quad \Rightarrow \quad k\lambda + \beta = k\lambda + \alpha - \frac{\pi}{2} + 2n\pi,\quad n \in \mathbb{Z} \,.
+\end{align*}
+Por lo tanto,
+\begin{align*}
+\beta = \alpha - \frac{\pi}{2} + 2n\pi\,.
+\end{align*}
+Como cualquier desplazamiento entero de $2\pi$ en la fase puede absorbese en la definición de $\alpha$, sin pérdida de generalidad podemos tomar $n=0$, es decir, $\beta = \alpha - \frac{\pi}{2}$.
+Así,
+\begin{align*}
+y(\lambda) &= A \cos(k\lambda + \beta) \\[4pt]
+&= A \cos\left(k\lambda + \alpha - \frac{\pi}{2}\right) \\[4pt]
+&= A \sin(k\lambda + \alpha)\,.
+\end{align*}
+En conclusión, la solución general es:
+\begin{equation} \label{sist_coor:solucion_mov_armonico_simple}
+\left\{
+\begin{aligned}
+x(\lambda) &= A \cos(k\lambda + \alpha)\,, \\
+y(\lambda) &= A \sin(k\lambda + \alpha)\,.
+\end{aligned}
+\right.
+\end{equation}
+
+Observe que el producto $k\lambda$ es adimensional y representa un ángulo, por lo que puede tomarse en el intervalo $[0, 2\pi)$.
+La constante $A$ determina el radio de la circunferencia y puede ser cualquier número real (aunque, como se discutirá, puede restringirse a $A \geq 0$ sin pérdida de generalidad). La constante $\alpha$ representa la fase angular inicial y puede tomarse en $[0, 2\pi)$.
+
+Se puede comprobar fácilmente que esta solución satisface la segunda ecuación original:
+\begin{align*}
+\frac{dy}{d\lambda} &= \frac{d}{d\lambda}\left(A \sin(k\lambda + \alpha)\right) \\[4pt]
+&= kA \cos(k\lambda + \alpha) \\[4pt]
+&= k x(\lambda)\,.
+\end{align*}
+
+La constante de integración $A$ representa el radio de la circunferencia descrita por la trayectoria. Para $A > 0$, la solución corresponde a una circunferencia de radio $A$, centrada en el eje $z$ y contenida en el plano $z = z_0$, es decir:
+\begin{align*}
+x^2 + y^2 &= A^2 \,,\\
+z &= z_0 \,.
+\end{align*}
+La curva es recorrida en sentido antihorario conforme aumenta $\lambda$, siendo $\vec{\xi} = (-y, x, 0)$ el vector tangente a la circunferencia en cada punto. El parámetro $\alpha$ determina el ángulo inicial en el que la trayectoria comienza; su valor puede fijarse arbitrariamente eligiendo adecuadamente la orientación de los ejes coordenados.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig9.png}
+    \caption{Circunferencia de radio $A$ (o $r_0$) descrita por la solución general en el plano $z = z_0$, con centro en el eje $z$ y parámetro angular $\alpha$ indicando la posición inicial.}
+    \label{fig:circulo_general}
+\end{figure}
+
+Si $A < 0$, podemos expresar $A = -|A|$, y la solución se convierte en:
+\begin{align*}
+x(\lambda) &= -|A|\cos(k\lambda + \alpha)\,, \\[2pt]
+y(\lambda) &= -|A|\sin(k\lambda + \alpha)\,.
+\end{align*}
+Utilizando las identidades trigonométricas $-\cos\theta = \cos(\theta + \pi)$ y $-\sin\theta = \sin(\theta + \pi)$, esto equivale a:
+\begin{align*}
+x(\lambda) &= |A| \cos(k\lambda + \alpha + \pi)\,, \\[2pt]
+y(\lambda) &= |A| \sin(k\lambda + \alpha + \pi)\,.
+\end{align*}
+Así, la circunferencia tiene radio $|A| > 0$ y se recorre a partir del ángulo inicial $\alpha + \pi$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig10.png}
+    \caption{Interpretación geométrica para $A < 0$: la solución es equivalente a la de $A > 0$ con un corrimiento de fase de $\pi$ en el ángulo inicial, es decir, se recorre la misma circunferencia pero iniciando en el punto opuesto.}
+    \label{fig:circulo_signo}
+\end{figure}
+
+\newpage
+
+Observar que, redefiniendo la fase inicial como $\alpha' = \alpha + \pi$, cualquier solución con $A < 0$ se puede expresar como una solución con $A > 0$. Por tanto, sin pérdida de generalidad, se puede restringir $A$ a valores positivos.
+
+Por conveniencia, es habitual denotar el radio como $r_0 = A \geq 0$, lo que nos permite expresar la solución de forma más clara:
+\begin{align*}
+x(\lambda) &= r_0\cos(k\lambda + \alpha)\,, \\[2pt]
+y(\lambda) &= r_0\sin(k\lambda + \alpha)\,.
+\end{align*}
+
+Al variar el valor de $r_0$ sobre $[0, \infty)$, se obtiene una familia de circunferencias concéntricas en el plano $z = z_0$:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig11.png}
+    \caption{Familia de circunferencias concéntricas para distintos valores de $r_0 \geq 0$, todas contenidas en el plano $z = z_0$ y centradas en el eje $z$.}
+    \label{fig:familia_circunferencias}
+\end{figure}
+
+Así, la colección de soluciones corresponde a un conjunto infinito de circunferencias concéntricas de distintos radios $r_0$, todas centradas en el eje $z$ y contenidas en el plano $z = z_0$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig12.png}
+    \caption{Conjunto de circunferencias concéntricas de diferentes radios $r_0$, todas centradas en el eje $z$ y contenidas en el plano $z = z_0$. Representa la familia de soluciones al variar la constante de integración $r_0$.}
+    \label{fig:conjunto_circunferencias}
+\end{figure}
+
+\clearpage
+
+La \textbf{segunda estrategia} para resolver el sistema de ecuaciones diferenciales de primer orden consiste en combinarlas de manera adecuada para obtener una cantidad conservada.
+
+Multiplicamos la primera ecuación por $x$ y la segunda por $y$, y luego sumamos:
+\begin{align*}
+x \frac{dx}{d\lambda} + y \frac{dy}{d\lambda} &= x (-ky) + y (kx) \\
+&= -kxy + kxy \\[2pt]
+&= 0 \,.
+\end{align*}
+Esto indica que la combinación $x \frac{dx}{d\lambda} + y \frac{dy}{d\lambda}$ se anula a lo largo de la trayectoria.
+
+Notamos que
+\begin{align*}
+\frac{d}{d\lambda}\left(\frac{1}{2}x^2 + \frac{1}{2}y^2\right) &= x \frac{dx}{d\lambda} + y \frac{dy}{d\lambda} \\&= 0\,,
+\end{align*}
+por lo que la cantidad
+\begin{equation*}
+\frac{1}{2}x^2 + \frac{1}{2}y^2 = \text{constante}
+\end{equation*}
+se conserva a lo largo de la trayectoria.
+
+Si denotamos la constante como $\frac{1}{2}r_0^2$, resulta
+\begin{equation*}
+x^2 + y^2 = r_0^2\,,
+\end{equation*}
+lo que muestra que la trayectoria está contenida en una circunferencia de radio $r_0$, centrada en el origen del plano $xy$.
+
+La solución general, compatible con esta restricción y con las ecuaciones diferenciales, es la parametrización:
+\begin{align*}
+x(\lambda) &= r_0 \cos(k\lambda + \alpha)\,, \\
+y(\lambda) &= r_0 \sin(k\lambda + \alpha)\,, \\
+z &= z_0 \,,
+\end{align*}
+donde $r_0 > 0$ y $\alpha$ son constantes de integración, y $z_0$ es el valor fijo de la coordenada $z$.
+
+Como $k\lambda$ es adimensional y representa un ángulo (con unidades de radianes, que es adimensional), es natural definir $\phi = k\lambda$. Así, la parametrización se escribe:
+\begin{equation*}
+\left.
+\begin{aligned}
+x(\phi) &= r_0 \cos(\phi + \alpha) \\
+y(\phi) &= r_0 \sin(\phi + \alpha) \\
+z &= z_0 
+\end{aligned}
+\right\}
+\qquad \phi \in \mathbb{R} \,.
+\end{equation*}
+
+Como las funciones coseno y seno son $2\pi$-periódicas, podemos restringir $\phi$ al intervalo $[0, 2\pi)$ para recorrer una sola vuelta sobre la circunferencia:
+\begin{equation}
+\left.
+\begin{aligned}
+x(\phi) &= r_0 \cos(\phi + \alpha) \\
+y(\phi) &= r_0 \sin(\phi + \alpha) \\
+z &= z_0 
+\end{aligned}
+\right\}
+\qquad \phi \in[0,2\pi) \,.
+\end{equation}
+
+Para $\phi = 0$, la trayectoria parte del punto $(r_0\cos\alpha,\, r_0\sin\alpha,\, z_0)$, que corresponde a la posición inicial sobre la circunferencia determinada por la fase $\alpha$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig13.png}
+    \caption{Punto inicial de la circunferencia $(r_0\cos\alpha,\, r_0\sin\alpha,\, z_0)$, determinado por la fase angular $\alpha$.}
+
+\end{figure}
+
+\newpage
+Si elegimos $\alpha = 0$, la circunferencia se recorre a partir del punto $(r_0, 0, z_0)$, es decir, sobre el eje $x$ positivo.
+
+\begin{equation}\label{sist_coor:polares_12}
+\left.
+\begin{aligned}
+x(\phi) &= r_0 \cos(\phi) \\
+y(\phi) &= r_0 \sin(\phi) \\
+z &= z_0
+\end{aligned}
+\right\}
+\qquad \phi \in[0,2\pi) \,.
+\end{equation}
+
+El parámetro $r_0$ es una constante de integración, pero como no depende de $\phi$, se puede pensar que para cada valor fijo de $r_0$ se obtiene una circunferencia diferente. Es decir,
+\begin{equation*}
+\frac{dr_0}{d\phi} = 0\,,
+\end{equation*}
+por lo que $r_0$ puede considerarse un parámetro libre que etiqueta cada circunferencia posible.
+
+De este modo, al considerar una familia de circunferencias de radio arbitrario $r \geq 0$ en el plano $z = z_0$, obtenemos una descripción completa de todos los puntos en dicho plano mediante las llamadas \textbf{coordenadas polares}:
+\begin{equation*}
+\left\{
+\begin{aligned}
+    x(r, \phi) &= r \cos\phi\,, \\[2pt]
+    y(r, \phi) &= r \sin\phi\,, \\[2pt]
+    z &= z_0\,,
+\end{aligned}
+\right.
+\end{equation*}
+con $r \geq 0$ y $\phi \in [0, 2\pi)$.
+
+Si ahora permitimos que la altura $z$ tome cualquier valor real, es decir, si dejamos variar $z_0$ libremente sobre $\mathbb{R}$, entonces cada punto del espacio tridimensional queda determinado de manera única por el trío $(\rho, \phi, z)$, donde $\rho$ y $\phi$ son las coordenadas polares en el plano $xy$, y $z$ es la coordenada vertical. Esta es precisamente la \textbf{representación en coordenadas cilíndricas}:
+\begin{equation*}
+\left\{
+\begin{aligned}
+    x(\rho, \phi, z) &= \rho \cos\phi\,, \\[2pt]
+    y(\rho, \phi, z) &= \rho \sin\phi\,, \\[2pt]
+    z &= z\,,
+\end{aligned}
+\right.
+\end{equation*}
+donde $\rho \geq 0$, $\phi \in [0, 2\pi)$ y $z \in \mathbb{R}$.\footnote{En la literatura es común utilizar la letra $\rho$ para denotar el radio en coordenadas cilíndricas, diferenciándolo así de $r$ en esféricas.}
+
+En notación vectorial, la posición de un punto se expresa como:
+\begin{equation*}
+\vec{x}(\rho, \phi, z) = \rho \cos\phi\, \hat{\imath} + \rho \sin\phi\, \hat{\jmath} + z\, \hat{k}\,.
+\end{equation*}
+
+De este modo, cada uno de los tres parámetros $(\rho, \phi, z)$ puede interpretarse como el parámetro de una familia de curvas:
+\begin{itemize}
+    \item Para $\phi$ y $z$ constantes, y $\rho$ variable, se describe una semirrecta que parte del eje $z$.
+    \item Para $\rho$ y $z$ constantes, y $\phi$ variable, se describe una circunferencia de radio fijo en el plano $z = \text{const}$.
+    \item Para $\rho$ y $\phi$ constantes, y $z$ variable, se obtiene una recta paralela al eje $z$.
+\end{itemize}
+
+Por tanto, el sistema cilíndrico surge naturalmente como generalización de las familias de soluciones obtenidas: rectas radiales, circunferencias y alturas, cubriendo todo $\mathbb{R}^3$.
+\clearpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig15.png}
+    \caption{Representación geométrica del sistema de coordenadas cilíndricas $(\rho, \phi, z)$. La posición de cualquier punto en el espacio queda determinada de manera única por su distancia al eje $z$ ($\rho$), su ángulo respecto al eje $x$ ($\phi$) y su altura ($z$).}
+\end{figure}
+
+
+\subsection*{Discusión: ¿Por qué $k$ constante?}
+\begin{itemize}
+\item \textbf{Sentido físico:} En sistemas como partículas cargadas en campos magnéticos uniformes ($\vec{B}$ constante), $k = qB/m$ es efectivamente constante.
+\item \textbf{Simplificación didáctica:} La solución $x = A \cos(k\lambda + \alpha)$ ilustra claramente la geometría circular sin integrales complejas.
+\item \textbf{Límite:} Si el campo no es uniforme ($k$ variable), aparecen trayectorias no cerradas (ej: espirales). Ver Figura \ref{fig:espiral}.
+\end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{figures/02_sistema_de_coordenadas/espiral_log.png}
+\caption{Espiral logarítmica generada por $k(\lambda) = 1/\lambda$.}
+\label{fig:espiral}
+\end{figure}
+
+\clearpage
+\section{Descripción y Características de un Sistema de Coordenadas en el Espacio}
+
+Un sistema de coordenadas en el espacio consiste en \textbf{tres familias de curvas mutuamente independientes}, tales que por cada punto del espacio (o de la región donde ocurre el fenómeno físico bajo estudio) pasa una única curva de cada familia. Además, en cada punto, los vectores tangentes a las tres familias son linealmente independientes.
+
+\textbf{`Cada conjunto de curvas asociadas a un parámetro del sistema coordenado describe una dirección independiente en el espacio, o bien un tipo característico de movimiento a lo largo de esa dirección."}
+
+El vector posición de un punto en el espacio puede escribirse como función de tres parámetros independientes:
+\begin{equation*}
+\vec{x} = \vec{x}(\alpha, \beta, \gamma) \,,
+\end{equation*}
+donde
+\begin{align*}
+\alpha &\in I_\alpha \subseteq \mathbb{R} \,,\\
+\beta &\in I_\beta \subseteq \mathbb{R} \,,\\
+\gamma &\in I_\gamma \subseteq \mathbb{R} \,,
+\end{align*}
+y cada parámetro describe una familia de curvas coordenadas.
+
+\textbf{`Es fundamental conocer el rango de valores que puede tomar cada parámetro, ya que esto determina la cobertura (globalidad) del sistema de coordenadas sobre la región de interés."}
+
+Una vez elegido un \textbf{punto de referencia} (por ejemplo, el origen), se fija un sistema de coordenadas asociado a ese punto, de modo que \textbf{por él pasan tres curvas de referencia}, una para cada familia coordenada.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig16.png}
+    \caption{Curvas de referencia pasando por el punto de referencia.}
+\end{figure}
+
+\begin{enumerate}
+    \item Donde $\vec{x}(\alpha, \beta_0, \gamma_0)$ es la curva rotulada por $\alpha$, con $\beta_0$ y $\gamma_0$ fijos y valores de referencia, y es la curva de referencia para el conjunto infinito de curvas rotuladas por $\alpha$. Desde esta curva se generan todas las demás curvas de la familia $\alpha$, las cuales son equivalentes (análogas o “del mismo tipo”) a $\vec{x}(\alpha, \beta_0, \gamma_0)$, y pasan por distintos puntos del espacio al variar los otros parámetros.
+    
+    \item Donde $\vec{x}(\alpha_0, \beta, \gamma_0)$ es la curva rotulada por $\beta$, con $\alpha_0$ y $\gamma_0$ fijos y valores de referencia, y es la curva de referencia para el conjunto infinito de curvas rotuladas por $\beta$. Desde esta curva se generan todas las demás curvas de la familia $\beta$, las cuales son equivalentes a $\vec{x}(\alpha_0, \beta, \gamma_0)$, y pasan por distintos puntos del espacio al variar los otros parámetros.
+    
+    \item Donde $\vec{x}(\alpha_0, \beta_0, \gamma)$ es la curva rotulada por $\gamma$, con $\alpha_0$ y $\beta_0$ fijos y valores de referencia, y es la curva de referencia para el conjunto infinito de curvas rotuladas por $\gamma$. Desde esta curva se generan todas las demás curvas de la familia $\gamma$, las cuales son equivalentes a $\vec{x}(\alpha_0, \beta_0, \gamma)$, y pasan por distintos puntos del espacio al variar los otros parámetros.
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig17.png}
+    \caption{Tres familias de curvas asociadas a un sistema coordenado.}
+\end{figure}
+\newpage
+Consideremos un cuerpo que se mueve en el espacio, describiendo una trayectoria. Sea $P$ un punto sobre la trayectoria, con vector posición $\vec{x}(\alpha_1, \beta_1, \gamma_1)$. Geométricamente, \textbf{el punto $P$ es la intersección de tres curvas coordenadas}: $\vec{x}(\alpha, \beta_1, \gamma_1)$, $\vec{x}(\alpha_1, \beta, \gamma_1)$ y $\vec{x}(\alpha_1, \beta_1, \gamma)$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig18.png}
+    \caption{Intersección de tres curvas coordenadas en un punto $P$.}
+\end{figure}
+
+Un ejemplo fundamental de sistema de coordenadas en el espacio son las \textbf{coordenadas cartesianas}, donde las curvas coordenadas corresponden a líneas rectas paralelas a cada uno de los ejes.
+
+\clearpage
+\section{Coordenadas Cartesianas}
+El vector posición de un punto $P$ con respecto al sistema coordenado $O_{xyz}$ es dado por
+
+\begin{equation*}
+    \vec{x}(x,y,z)=x \hat{\imath} + y \hat{\jmath} + z\hat{k} \,.
+\end{equation*} 
+
+con $(x,y,z) \in \mathbb{R}^3$. En este tipo de coordenadas las curvas son rotuladas por los parámetros
+\begin{align*}
+\alpha &=x \in I_\alpha = \mathbb{R} \,,\\
+\beta &=y \in I_\beta =\mathbb{R} \,,\\
+\gamma &= z \in I_\gamma = \mathbb{R} \,.
+\end{align*}
+
+\begin{itemize}
+    \item $x$ es la componente del vector posición $\vec{x}$ sobre el eje $x$
+    \begin{equation*}
+        x= \hat{\imath} \cdot \vec{x} \,.
+    \end{equation*}
+    \item $y$ es la componente del vector posición $\vec{y}$ sobre el eje $y$
+    \begin{equation*}
+        y= \hat{\jmath} \cdot \vec{y} \,.
+    \end{equation*}
+    \item $z$ es la componente del vector posición $\vec{z}$ sobre el eje $z$
+    \begin{equation*}
+        z= \hat{k} \cdot \vec{z} \,.
+    \end{equation*}    
+\end{itemize}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig19.png}
+     \caption{Sistema de coordenadas cartesianas tridimensional.}
+\end{figure}
+
+El vector posición depende de tres parámetros; $x$, $y$ y $z$, los que son independientes. La variación de los parámetros cubre todo el espacio $\mathbb{R}^3$:
+
+\begin{itemize}
+    \item[\textbf{a)}] Sea $x \in \mathbb{R}$, $y = y_0$ y $z = z_0$, entonces:
+    \begin{equation*}
+        \vec{x}(x, y_0, z_0) = x\hat{\imath} + y_0 \hat{\jmath} + z_0 \hat{k} \,.
+    \end{equation*}
+    Esta ecuación corresponde a una recta paralela al eje $x$. En efecto, si definimos los vectores:
+    \begin{align*}
+        \vec{e} &:= \hat{\imath} \,,\\ 
+        \vec{x}_0 &:= y_0 \hat{\jmath} + z_0 \hat{k} \,,
+    \end{align*}
+    se obtiene que:
+    \begin{equation*}
+        \vec{x}(x, y_0, z_0) = x\vec{e} + \vec{x}_0 \,,
+    \end{equation*}
+    
+    que es la ecuación de una recta paralela al eje $x$ y que pasa por el punto $\vec{x}_0$. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig20.png}
+    \caption{Recta paralela al eje $x$ con $y = y_0$, $z = z_0$.}
+    \label{3.7_ejex}
+\end{figure}
+
+    La \textbf{curva de referencia} correspondiente al eje $x$ corresponde a la línea $\vec{x}(x, 0, 0)$.
+
+ \item[\textbf{b)}] Sea $y \in \mathbb{R}$, $x = x_0$ y $z = z_0$, entonces:
+    \begin{equation*}
+        \vec{x}(x_0, y, z_0) = x_0 \hat{\imath} + y \hat{\jmath} + z_0 \hat{k} \,.
+    \end{equation*}
+
+    Esta ecuación corresponde a una recta paralela al eje $y$. En efecto, si definimos los vectores:
+    \begin{align*}
+        \vec{e} &:= \hat{\jmath}\,, \\
+        \vec{x}_0 &:= x_0 \hat{\imath} + z_0 \hat{k} \,,
+    \end{align*}
+    se obtiene que:
+    \begin{equation*}
+        \vec{x}(x_0, y, z_0) = y\vec{e} + \vec{x}_0 \,,
+    \end{equation*}
+    que es la ecuación de una recta paralela al eje $y$ y que pasa por el punto $\vec{x}_0$.
+
+    La \textbf{curva de referencia} correspondiente al eje $y$ corresponde a la línea $\vec{x}(0, y, 0)$.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig21.png}
+     \caption{Recta paralela al eje $y$ con $x = x_0$, $z = z_0$.}
+\end{figure}
+
+\item[\textbf{c)}] Sea $z \in \mathbb{R}$, $x = x_0$ y $y = y_0$, entonces:
+    \begin{equation*}
+        \vec{x}(x_0, y_0, z) = x_0 \hat{\imath} + y_0 \hat{\jmath} + z \hat{k} \,.
+    \end{equation*}
+    Esta ecuación corresponde a una recta paralela al eje $z$. En efecto, si definimos los vectores:
+    \begin{align*}
+        \vec{e} &:= \hat{k}\,, \\  
+        \vec{x}_0 &:= x_0 \hat{\imath} + y_0 \hat{\jmath} \,,
+    \end{align*}
+    se obtiene que:
+    \begin{equation*}
+        \vec{x}(x_0, y_0, z) = z\vec{e} + \vec{x}_0 \,,
+    \end{equation*}
+    que es la ecuación de una recta paralela al eje $z$ y que pasa por el punto $\vec{x}_0$.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig22.png}
+    \caption{Recta paralela al eje $z$ con $x = x_0$, $y = y_0$.}
+\end{figure}
+
+La \textbf{curva de referencia} correspondiente al eje $z$ corresponde a la línea $\vec{x}(0, 0, z)$.
+
+\end{itemize}
+
+Por lo tanto, \textbf{por cada punto de $\mathbb{R}^3$ pasan tres líneas rectas, que se intersectan perpendiculares entre sí.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig23.png}
+    \caption{Tres líneas rectas perpendiculares que se intersectan en un punto del espacio. Representan las direcciones coordenadas en $\mathbb{R}^3$.}
+\end{figure}
+
+Se puede concluir que el sistema coordenado permite describir direcciones rectas, es decir, $\mathbb{R}^3$ está compuesta por la \textbf{suma directa}\footnote{La \textit{suma directa} de subespacios vectoriales $V_1 \oplus V_2 \oplus V_3$ significa que cada vector del espacio total puede escribirse de forma única como suma de vectores en cada subespacio, y que la intersección entre ellos es trivial, es decir, $V_i \cap V_j = \{0\}$ para $i \ne j$.} de tres direcciones rectas:
+
+\begin{equation*}
+    \mathbb{R}^3 = \text{Recta}_x \oplus \text{Recta}_y \oplus \text{Recta}_z \,.
+\end{equation*}
+
+\clearpage
+Un vector $\vec{A}$ en coordenadas cartesianas se escribe en la base $\{\hat{\imath}, \hat{\jmath}, \hat{k}\}$ (linealmente independiente) como:
+
+\begin{equation*}
+    \vec{A} = A_x \hat{\imath} + A_y \hat{\jmath} + A_z \hat{k} \,.
+\end{equation*}
+
+donde $A_x$, $A_y$ y $A_z$ son las componentes del vector $\vec{A}$ a lo largo de los ejes $x$, $y$ y $z$, respectivamente:
+
+\begin{align*}
+    A_x &= \hat{\imath} \cdot \vec{A} = \|\vec{A}\| \cos \alpha \,,\\
+    A_y &= \hat{\jmath} \cdot \vec{A} = \|\vec{A}\| \cos \beta \,,\\
+    A_z &= \hat{k} \cdot \vec{A} = \|\vec{A}\| \cos \gamma \,,
+\end{align*}
+
+donde $\cos\alpha$, $\cos\beta$ y $\cos\gamma$ son los \textbf{cosenos directores} del vector $\vec{A}$:
+
+\begin{itemize}
+    \item $\alpha$: ángulo que forma $\vec{A}$ con el eje $x$
+    \item $\beta$: ángulo que forma $\vec{A}$ con el eje $y$
+    \item $\gamma$: ángulo que forma $\vec{A}$ con el eje $z$
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig24.png}
+    \caption{Representación de un vector $\vec{A}$ en coordenadas cartesianas, mostrando sus componentes sobre los ejes $x$, $y$ y $z$, así como los ángulos que forma con cada eje.}
+\end{figure}
+
+Por lo tanto, el vector $\vec{A}$ se puede escribir en términos de los cosenos directores:
+\begin{align*}
+\vec{A} &= A_x \hat{\imath} + A_y \hat{\jmath} + A_z \hat{k} \\
+& = \|\vec{A}\| \cos \alpha\, \hat{\imath} + \|\vec{A}\| \cos \beta\, \hat{\jmath} + \|\vec{A}\| \cos \gamma\, \hat{k} \\
+&= \|\vec{A}\| \left( \cos \alpha\, \hat{\imath} + \cos \beta\, \hat{\jmath} + \cos \gamma\, \hat{k} \right) \,. 
+\end{align*}
+
+\begin{apuntebloque}{Proposición}
+Los cosenos directores satisfacen la ecuación
+\begin{equation*}
+    \cos^2 \alpha + \cos^2\beta + \cos^2\gamma = 1 \,.
+\end{equation*}
+ 
+\end{apuntebloque}
+
+
+\clearpage
+\section{Coordenadas Esféricas}
+Las coordenadas esféricas $(r, \phi, \theta)$ se definen como:
+\begin{align*}
+    &x(r, \phi, \theta) := r \cos\phi \sin\theta \,,\\
+    &y(r, \phi, \theta) := r \sin\phi \sin\theta \,,\\
+    &z(r, \phi, \theta) := r \cos\theta \,,\\
+\end{align*}
+donde las curvas son rotuladas por los parámetros:
+\begin{align*}
+    r \geq 0 \quad \Leftrightarrow& \quad r \in I_r = [0, \infty)\,, \\
+    0 \leq \phi < 2\pi \quad \Leftrightarrow& \quad \phi \in I_\phi = [0, 2\pi) \,,\\
+    0 \leq \theta \leq \pi \quad \Leftrightarrow& \quad \theta \in I_\theta = [0, \pi]\,.
+\end{align*}
+
+La posición del punto $P \in \mathbb{R}^3$ en coordenadas esféricas es:
+\begin{equation*}
+    \vec{x}(r, \phi, \theta)  = r \cos\phi \sin\theta\, \hat{\imath} 
+    + r \sin\phi \sin\theta\, \hat{\jmath} 
+    + r \cos\theta\, \hat{k} \,,
+\end{equation*}
+donde:
+\begin{itemize}
+    \item $r$ es la \textbf{coordenada radial} y entra linealmente en $\vec{x}(r, \phi, \theta)$.
+    \item $\phi$ es la \textbf{coordenada azimutal} (o ángulo azimutal) y no entra linealmente en $\vec{x}(r, \phi, \theta)$.
+    \item $\theta$ es la \textbf{coordenada colatitud} (o ángulo colatitud) y no entra linealmente en $\vec{x}(r, \phi, \theta)$.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig25.png}
+    \caption{Coordenadas Esféricas.}
+\end{figure}
+
+Es claro que $r$ es la magnitud de $\vec{x}(r, \phi, \theta)$. En efecto:
+\begin{align*}
+    \|\vec{x}\| 
+    &= \sqrt{x^2 + y^2 + z^2} \\
+    &= \sqrt{(r\cos\phi\sin\theta)^2 + (r\sin\phi\sin\theta)^2 + (r\cos\theta)^2} \\
+    &= \sqrt{r^2\left[(\cos\phi\sin\theta)^2 + (\sin\phi\sin\theta)^2 + (\cos\theta)^2\right] }\\
+    & = |r| \sqrt{(\cos^2\phi + \sin^2\phi)\sin^2\theta + \cos^2\theta} \\
+    & = r\sqrt{\sin^2\theta + \cos^2\theta} \\
+    &=r\,,
+\end{align*}
+Entonces, el vector $\vec{x}/r$ es un \textbf{vector unitario}, por lo que definimos el vector unitario:
+\begin{equation*}
+    \hat{r}(\phi, \theta) := \cos\phi\sin\theta\, \hat{\imath} 
+    + \sin\phi\sin\theta\, \hat{\jmath} 
+    + \cos\theta\, \hat{k} \,.
+\end{equation*}
+tal que:
+\begin{equation*}
+    \vec{x}(r, \phi, \theta) := r\, \hat{r}(\phi, \theta) \,.
+\end{equation*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig26.png}
+        \caption{Representación del punto $P$ en coordenadas esféricas $(r, \phi, \theta)$, junto con los ángulos $\phi$ y $\theta$ sobre la esfera de radio $r$.}
+\end{figure}
+
+Hay tres parámetros independientes $r$, $\phi$ y $\theta$, por lo tanto hay tres líneas coordenadas:
+
+\begin{itemize}
+    \item \textbf{Líneas coordenadas $r$:} 
+    
+    Fijando $\phi=\phi_0$ y $\theta=\theta_0$ y dejando $r\ge 0$ libre,
+    \begin{equation*}
+        \vec{x}(r, \phi_0, \theta_0) = r\, \hat{r}(\phi_0, \theta_0) \,.
+    \end{equation*}
+    
+    Son \textit{semirrectas} (rayos) que parten del origen en la dirección fija $\hat{r}(\phi_0,\theta_0)$.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig27.png}
+        \caption{Rectas radiales que pasan por el origen para $\vec{x}(r, \phi_0, \theta_0)$.}
+    \end{figure}
+
+    \item \textbf{Líneas coordenadas $\phi$:} 
+    
+   Fijando $r=r_0$ y $\theta=\theta_0$ y dejando $\phi\in[0,2\pi)$ libre, se tiene la parametrización
+    \begin{equation*}
+        \vec{x}(\phi)=r_0\sin\theta_0\cos\phi\,\hat{\imath}+r_0\sin\theta_0\sin\phi\,\hat{\jmath}+ r_0\cos\theta_0\,\hat{k}.
+    \end{equation*}
+    Por tanto,
+    \begin{equation*}
+    \left\{
+        \begin{aligned}
+            x^2 + y^2 &= r_0^2 \sin^2 \theta_0\,, \\
+            z &= r_0 \cos \theta_0 \,.
+        \end{aligned}
+    \right.
+    \end{equation*}
+    
+    Son circunferencias concéntricas de radio $R=r_0 \sin \theta_0$, centradas en $\vec{x} = 0\hat{\imath}+0\hat{\jmath}+r_0 \cos \theta_0\, \hat{k}$ y contenidas en el plano $z = r_0 \cos \theta_0$.  
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig28.png}
+        \caption{Circunferencias horizontales a altura fija $z = r_0 \cos \theta_0$.}
+    \end{figure}
+
+    \item \textbf{Líneas coordenadas $\theta$:} 
+
+    Fijando $r=r_0$ y $\phi=\phi_0$ y dejando $\theta\in[0,\pi]$ libre, la curva es
+    \begin{equation*}
+        \vec{x}(\theta)=r_0\cos\phi_0\sin\theta\;\hat{\imath}+ r_0\sin\phi_0\sin\theta\;\hat{\jmath}+ r_0\cos\theta\;\hat{k}\;.
+    \end{equation*}
+    Satisface
+    \begin{equation*}
+    \left\{
+        \begin{aligned}
+            x^2 + y^2 + z^2 &= r_0^2 \,, \\
+            y &= \tan \phi_0 \, x\,, \quad z \in \mathbb{R} \,.
+        \end{aligned}
+    \right.
+    \end{equation*}
+
+    esto es, la intersección de la esfera de radio $r_0$ con el \textbf{plano meridiano} que contiene al eje $z$ y forma ángulo azimutal $\phi_0$ con el semieje $x$.
+    La intersección es un \textbf{círculo máximo} (radio $r_0$) centrado en el origen dentro de ese plano.
+    Como $\theta\in[0,\pi]$, la parametrización recorre solo una \textbf{semicircunferencia} (un meridiano); la mitad complementaria se obtiene con $\phi_0\mapsto \phi_0+\pi$.
+    En los extremos $\theta=0$ y $\theta=\pi$ la curva pasa por los polos $(0,0,\pm r_0)$.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig29.png}
+        \caption{Circunferencias verticales contenidas en planos $y = \tan \phi_0\, x$.}
+    \end{figure}
+\end{itemize}
+
+
+\clearpage
+\textbf{Resumiendo}, las líneas coordenadas en coordenadas esféricas son:
+
+\begin{enumerate}
+    \item $\vec{x}(r, \phi_0, \theta_0)$: Semirrectas que parten del origen en la dirección fija $\hat{r}(\phi_0,\theta_0)$.
+    \item $\vec{x}(r_0, \phi, \theta_0)$: Circunferencias de radio $r_0 \sin \theta_0$, contenidas en el plano $z = r_0 \cos \theta_0$ y \textbf{centradas en} $(0,0,r_0 \cos \theta_0)$.
+    \item $\vec{x}(r_0, \phi_0, \theta)$: Circunferencias de radio $r_0$ \textbf{centradas en el origen}, contenidas en el \textbf{plano} $\sin\phi_0\,x - \cos\phi_0\,y = 0$, que intersectan al eje $z$ en los puntos $\pm r_0 \,\hat{k}$.
+\end{enumerate}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig30.png}
+    \caption{Resumen gráfico de las tres familias de líneas coordenadas en coordenadas esféricas: radiales, azimutales y colatitudinales.}
+\end{figure}
+
+En particular, los ejes $x$, $y$ y $z$ corresponden a las líneas coordenadas:
+\begin{align*}
+\text{Eje } x &: \quad\vec{x}\left(r,\, 0,\, \frac{\pi}{2}\right)\, \cup \,\vec{x}\left(r,\, \pi,\, \frac{\pi}{2}\right)\,, \\[4pt]
+\text{Eje } y &: \quad \vec{x}\left(r,\, \frac{\pi}{2},\, \frac{\pi}{2}\right)\, \cup \,\vec{x}\left(r,\, \frac{3\pi}{2},\, \frac{\pi}{2}\right)\,, \\[4pt]
+\text{Eje } z &: \quad \vec{x}(r,\, \phi,\, 0)\, \cup \,\vec{x}(r,\, \phi,\, \pi)\,.
+\end{align*}
+
+Para el eje $z$, el parámetro $\phi$ no tiene un valor particular, sino que toma todos los valores de $\phi$:
+\begin{equation*}
+\left\{
+\begin{aligned}
+\vec{x}(r, \phi, 0) &= r \, \hat{k}\;, \\
+\vec{x}(r, \phi, \pi) &= -r \, \hat{k}\,. 
+\end{aligned}
+\right. 
+\end{equation*}
+
+
+La razón es que el ángulo $\phi$ se define como una rotación alrededor del eje $z$, y cuando $x = y = 0$ se trata de un punto sobre el eje $z$, en el cual no se puede definir un ángulo.
+
+Para terminar, volvemos a mencionar que la línea coordenada $\vec{x}(r_0, \phi_0, \theta)$ solo corresponde a la mitad de la circunferencia de radio $r_0$, pues empieza en $\vec{x}(r_0, \phi_0, 0) = r_0 \, \hat{k}$ y termina en $\vec{x}(r_0, \phi_0, \pi) = -r_0 \, \hat{k}$; no da la vuelta completa.
+
+Para obtener la otra mitad de la circunferencia, el parámetro $\phi_0$ debe tomar valores en $[\pi, 2\pi)$, es decir, se debe hacer $\phi_0 \to \phi_0 + \pi$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\end{document}

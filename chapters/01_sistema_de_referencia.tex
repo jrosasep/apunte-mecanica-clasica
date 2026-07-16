@@ -1,0 +1,227 @@
+% !TeX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Sistema de Referencia}
+
+\section{Elementos de un sistema de referencia}
+
+Un Sistema de Referencia consiste de:
+
+\begin{itemize}
+    \item \textbf{Observador:} Es aquel/aquella que realiza las medidas de las magnitudes físicas de un suceso, con el objeto de obtener información sobre el estado físico del sistema.
+    
+    \item  \textbf{Punto de Referencia:} Es un punto o lugar desde donde medir.
+
+    \item \textbf{Instrumentos de Medidas:} Son físicamente reales y corresponden a un conjunto de instrumentos de medidas diseñadas para la determinación de las cantidades físicas.
+
+    \item \textbf{Sistema de Coordenadas:} Son construcciones puramente matemáticas para la presentación de las relaciones matemáticas, y generalmente se representan como tres líneas rectas que se intersectan perpendicularmente.
+\end{itemize}
+
+Esta definición es lo que se llama sistema de referencia.
+
+Es muy común pensar que el observador está unido al punto de referencia, lo que en general no es correcta.
+
+\begin{apuntebloque}{Ejemplo}
+Al estudiar el movimiento de Tierra alrededor del Sol, los observadores son los humanos, los que están en la tierra, y el punto de referencia se coloca en el Sol.
+\end{apuntebloque}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/01_sistema_de_referencia/ejemplo.png}
+    \caption{
+        Representación esquemática del sistema de referencia empleado al estudiar el movimiento de la Tierra alrededor del Sol. El punto de referencia se fija en el centro del Sol (marcado en la figura), mientras que el observador se encuentra en la superficie de la Tierra. Obsérvese que el observador y el punto de referencia no necesariamente coinciden, como ocurre en este ejemplo.
+    }
+\end{figure}
+
+\section{Arbitrariedad del punto de referencia y covarianza de la física}
+
+La elección del punto de referencia es arbitraria, puesto que el movimiento se realiza con respecto a toda la materia del Universo, y cualquier elección del punto de referencia (incluyendo los que se mueven) debiera ser razonablemente elegible, entonces:
+
+\begin{center}
+\textbf{“La física debiera ser la misma con respecto a cualquier punto de referencia”}
+\end{center}
+
+
+Ejemplo:
+\begin{itemize}
+    \item Si un observador ve que una mosca choca contra una ventana, todos los observadores del universo debieran ver lo mismo.
+    \item Usamos el Sol como punto de referencia para estudiar el movimiento de la tierra, pero podemos usar otro cuerpo del sistema solar o la estrella más próxima al Sol, Alfa Centauri (también conocido como Rigel Kentaurus) y la física no debiera cambiar.
+\end{itemize}
+
+El sistema coordenado no es real, si no que son puramente imaginarios, o sea que podemos elegir otro sistema de coordenadas y la física no debiera cambiar, por lo tanto el fenómeno físico no debiera depender del sistema de coordenado.
+
+\begin{apuntebloque}{Definición}
+Las medidas de las cantidades físicas debieran ser independientes de la elección del sistema coordenada.
+\end{apuntebloque}
+
+El que las magnitudes físicas no dependan de la elección del sistema de coordenada y del punto de referencia da origen al principio:
+\begin{itemize}
+    \item \textbf{Covarianza de la Física:} Las leyes de la física deben ser las mismas en todos los sistemas de referencia.
+\end{itemize}
+
+\section{Dependencia de las leyes de Newton del tipo de observador}
+
+Las leyes de la mecánica clásica no debieran depender del sistema coordenado, \textbf{pero si depende del observador; si es inercial o no inercial}, puesto que en un sistema no inercial aparecen los llamados \textbf{Efectos Inerciales}, los que el observador no inercial los interpreta como fuerzas. Por lo tanto, la mecánica de Newton no es covariante, pues depende del tipo de observador.
+
+En efecto, consideramos un cuerpo de masa $m$, que se mueve en el espacio y que rotularemos con la letra $P$ (partícula puntual), y sean dos observadores $O$ y $O'$, tal que cada uno estudiara la evolución del cuerpo $P$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/01_sistema_de_referencia/sis_ref1.png}
+    \caption{Un cuerpo $P$ es observado por dos observadores.}
+\end{figure}
+
+donde
+\begin{itemize}
+    \item $\vec{x}_{P/O}$, vector posición del cuerpo $P$ con respecto al observador $O$.
+    \item $\vec{x}_{P/O'}$, vector posición del cuerpo $P$ con respecto al observador $O'$.
+    \item $\vec{x}_{O'/O}$, vector posición del observador $O'$ con respecto al observador $O$.
+\end{itemize} 
+
+\section{Transformación entre observadores: traslación}
+
+Los dos observadores están conectados a través de la expresión
+
+\begin{equation}\label{sist_ref;equa:cambio_de_observador}
+    \vec{x}_{P/O}=\vec{x}_{P/O'}+\vec{x}_{O'/O} \,.
+\end{equation}
+
+Esto corresponde a un cambio de observador, el cual es una \textbf{transformación de coordenadas (traslación)}. Se puede mostrar que estas transformaciones forman un grupo, con la suma vectorial como la operación binaria interna.
+
+\section{Segunda ley de Newton en distintos sistemas de referencia}
+
+Ahora, el observador $O$ será un observador inercial y $O'$ se moverá con respecto a $O$, entonces la segunda ley de Newton para el cuerpo de masa $m$ medido por $O$ es de la forma
+
+\begin{equation*}
+    \frac{d^2\vec{x}_{P/O}}{dt^2}=\vec{F}|_{O} \,,
+\end{equation*}
+
+donde $\frac{d^2\vec{x}_{P/O}}{dt^2}$ es la aceleración del cuerpo $P$ medido con respecto a $O$ y $\vec{F}|_{O}$ es la fuerza medida con respecto al observador $O$.
+
+Como $O$ es un observador inercial, las fuerzas medidas por él son fuerzas no inerciales, o sea, son fuerzas ejercidas entre cuerpos, por lo tanto, corresponden a \textbf{interacciones}. Estas fuerzas, de acuerdo a Newton, son reales y absolutas, y no dependen del observador, luego
+
+\begin{equation*}
+    \vec{F}|_{O}=\vec{F} \,,
+\end{equation*}
+
+entonces se obtiene:
+\begin{equation}\label{sist_ref;equa:fuerza_real}
+    m\frac{d^2\vec{x}_{P/O}}{dt^2}=\vec{F} \,.
+\end{equation}
+
+Reemplazando el cambio de observador (\ref{sist_ref;equa:cambio_de_observador}) en (\ref{sist_ref;equa:fuerza_real}):
+
+\begin{align*}
+    m\frac{d^2}{dt^2}\left(\vec{x}_{P/O'}+\vec{x}_{O'/O} \right) &= \vec{F} \\[4pt]
+       \Rightarrow \quad m\frac{d^2\vec{x}_{P/O'}}{dt^2}+m\frac{d^2\vec{x}_{O'/O}}{dt^2} &= \vec{F}\,.
+\end{align*}
+Despejando el termino de la aceleración del cuerpo $P$ respecto el observador no inercial $O'$, se obtiene:
+
+\begin{equation}\label{sist_ref;equa:cambio_de_observador_2da_ley_newton}
+    m\frac{d^2\vec{x}_{P/O'}}{dt^2} = \vec{F} - m\frac{d^2\vec{x}_{O'/O}}{dt^2} \,.
+\end{equation}
+
+\section{Fuerzas ficticias e interpretación de Newton}
+
+La ecuación (\ref{sist_ref;equa:cambio_de_observador_2da_ley_newton}) es la segunda ley de Newton medida por el observador $O'$, tal que en este sistema de referencia la fuerza neta es
+
+\begin{equation}\label{sist_ref;eq:fuerza_neta_o'}
+    \vec{F}\left|_{O'}\right. = \vec{F}\left|_{O}\right. - m\frac{d^2\vec{x}_{O'/O}}{dt^2} = \vec{F} - m\frac{d^2\vec{x}_{O'/O}}{dt^2} \,.
+\end{equation}
+
+La expresión (\ref{sist_ref;eq:fuerza_neta_o'}) muestra que el observador $O'$ mide una fuerza adicional $-m\frac{d^2\vec{x}_{O'/O}}{dt^2}$, que no actúa sobre el cuerpo $P$, sino sobre él. Claramente hay un \textbf{desequilibrio en el número de fuerza que cada observador mide.}
+
+Newton llamó a este tipo de fuerza como \textbf{Fuerzas Ficticias}, puesto que si nos cambiamos al observador $O$, esta fuerza desaparece, no se observa.
+
+Que Newton llamara \textbf{fuerzas ficticias} a estas fuerzas molestó a muchos físicos de la época y posteriores, porque después de todo son \textbf{fuerzas reales}. Basta con viajar en un vehículo a mucha velocidad y frenar bruscamente, el conductor sentirá cómo su cuerpo se proyecta hacia adelante.
+
+Los físicos posteriores cambiaron el nombre a \textbf{Fuerzas Universales}, puesto que son \textbf{proporcionales a la masa y con un cambio de coordenadas (traslación) se anulan}.
+
+Sin embargo, el nombre más usado, por los físicos posteriores a Newton, es el de \textbf{Fuerzas Inerciales}. Esto es debido a que Newton atribuye estas fuerzas al efecto de la \textbf{inercia}, que trata de llevar el cuerpo a un movimiento en línea recta y con velocidad constante.
+
+\section{Espacio absoluto y crítica al marco de Newton}
+
+Con el fin de darle \textbf{causalidad} a estas \textbf{fuerzas ficticias}, Newton introduce el llamado \textbf{Espacio Absoluto}, el que actúa sobre los cuerpos que no se mueven en línea recta y con velocidad constante.
+
+En sus \textit{Principia}, Newton definiría el \textbf{espacio absoluto} como:
+
+\begin{apuntebloque}{Cita de Newton sobre el espacio absoluto}
+\textit{`[El espacio absoluto es] absoluto, en su propia naturaleza, sin consideración hacia ninguna cosa externa, [...] siempre similar e inmóvil.''}
+\end{apuntebloque}
+
+\noindent En la definición del \textbf{espacio absoluto} no queda claro dónde está ubicado en el espacio, sino que debería estar \textbf{en todas partes}. Además, \textbf{él actúa sobre la materia} y la \textbf{materia no puede actuar sobre él}, violando la \textbf{tercera ley de Newton}.
+
+\section{Condición de igualdad de fuerzas y boost de Galileo}
+
+Si exigimos que \textbf{ambos observadores midan la misma fuerza neta}, entonces:
+
+\begin{equation*}
+    \frac{d^2 \vec{x}_{O'/O}}{dt^2} = 0 \,.
+\end{equation*}
+
+Resolviendo esta \textbf{ecuación diferencial ordinaria de segundo orden}, encontramos la solución:
+
+\begin{equation}\label{sist_ref;equa:solucion_edo_2do_orden}
+    \vec{x}_{O'/O} = \vec{x}_0 + \vec{V}t \,,
+\end{equation}
+
+donde $\vec{x}_0$ es una \textbf{posición inicial constante}, y $\vec{V}$ es la \textbf{velocidad constante entre los dos observadores}, es decir:
+\begin{equation*}
+    \frac{d \vec{x}_{O'/O}}{dt} = \vec{V}\,.
+\end{equation*}
+
+Reemplazando la ecuación (\ref{sist_ref;equa:solucion_edo_2do_orden}) en la ecuación (\ref{sist_ref;equa:cambio_de_observador}), se obtiene:
+\begin{equation}\label{sist_ref;equa:cambio_de_obsevardores_incerciales}
+    \vec{x}_{P/O} = \vec{x}_{P/O'} + \vec{x}_0 + \vec{V}t \,.
+\end{equation}
+
+La constante $\vec{x}_0$ se puede elegir igual a cero, simplemente haciendo que $\vec{x}_{P/O}$ y $\vec{x}_{P/O'}$ coincidan para $t = 0$, entonces:
+
+\begin{equation}\label{sist_ref;equa:cambio_de_observador_inerciales_x_0=0}
+    \vec{x}_{P/O} = \vec{x}_{P/O'} + \vec{V}t\,.
+\end{equation}
+
+La transformación (\ref{sist_ref;equa:cambio_de_observador_inerciales_x_0=0}) recibe el nombre de \textbf{Boost de Galileo}, y deja la \textbf{segunda ley de Newton invariante}.
+
+\section{Composición de velocidades y observadores inerciales}
+
+Los observadores $O$ y $O'$ tienen \textbf{velocidades constantes uno con respecto al otro}. En efecto, derivando la expresión (\ref{sist_ref;equa:cambio_de_observador_inerciales_x_0=0}) con respecto al tiempo:
+
+
+\begin{align*}
+    \frac{d}{dt} \left(\vec{x}_{P/O}\right)&= \frac{d}{dt} \left(\vec{x}_{P/O'} + \vec{V}t \right) \\[4pt]
+    \Rightarrow \quad \frac{d\vec{x}_{P/O}}{dt} &= \frac{d\vec{x}_{P/O'}}{dt} + \vec{V}\frac{d t}{dt} \\[4pt]
+    &= \frac{d\vec{x}_{P/O'}}{dt} + \vec{V}\,,
+\end{align*}    
+se obtiene:
+\begin{equation}\label{sist_ref;equa:derivada_cambio_de_observador_inerciales_x_0=0}
+\vec{v}_{P/O} = \vec{v}_{P/O'} + \vec{V} \,,
+\end{equation}
+
+donde:
+\begin{itemize}
+    \item $\vec{v}_{P/O}$ es la \textbf{velocidad del cuerpo $P$ con respecto a $O$}.
+    \item $\vec{v}_{P/O'}$ es la \textbf{velocidad del cuerpo $P$ con respecto a $O'$}.
+    \item $\vec{V}$ es la \textbf{velocidad de $O'$ con respecto a $O$}.
+\end{itemize}
+
+La ecuación (\ref{sist_ref;equa:derivada_cambio_de_observador_inerciales_x_0=0}) expresa la composición de velocidad de dos observadores inerciales. \textbf{Esta transformación es válida entre observadores inerciales}. 
+
+Si despejamos de la expresión (\ref{sist_ref;equa:derivada_cambio_de_observador_inerciales_x_0=0}) la velocidad $\vec{v}_{P/O'}$, se tiene:
+\begin{equation}
+    \vec{v}_{P/O'} = \vec{v}_{P/O} - \vec{V} \,.
+\end{equation}
+
+Esto se interpreta como: el observador $O$ se mueve con respecto a $O'$ con velocidad $-\vec{V}$. Dado que $\vec{x}_{O'/O} = \vec{V}t$, la posición de $O$ respecto a $O'$ es:
+\begin{equation*}
+    \vec{x}_{O/O'} = -\vec{x}_{O'/O} = -\vec{V}t \,.
+\end{equation*}
+
+La ecuación (\ref{sist_ref;equa:derivada_cambio_de_observador_inerciales_x_0=0}) corresponde entonces a la \textbf{composición de velocidades relativas}.
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

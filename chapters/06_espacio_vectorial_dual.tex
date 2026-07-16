@@ -1,0 +1,621 @@
+% !TeX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Espacio Vectorial Dual}
+
+
+\section{Funcionales lineales y espacio dual}
+
+Sea $\mathbb{V}(n,\mathbb{K})$ un espacio vectorial de dimensión $n$ sobre el campo $\mathbb{K}$. 
+Sea $\{e_i\}_{i=1}^n$ una base de $\mathbb{V}(n,\mathbb{K})$, entonces si 
+$A \in \mathbb{V}(n,\mathbb{K})$, en la base elegida se escribe como:
+\begin{equation} \label{eq:vector_descomposicion}
+    A = \sum_{i=1}^n A^i e_i,
+\end{equation}
+donde $A^i \in \mathbb{K}$ es la componente de $A$ en la dirección descrita por $e_i$.
+
+Sea la \textbf{función lineal}
+\begin{equation*}
+    f : \mathbb{V} \longrightarrow \mathbb{K}
+\end{equation*}
+
+tal que
+\begin{equation} \label{eq:linealidad}
+    f(\alpha A_1 + \beta A_2) = \alpha f(A_1) + \beta f(A_2),
+\end{equation}
+$\forall \, \alpha, \beta \in \mathbb{K}, \;\; A_1, A_2 \in \mathbb{V}(n,\mathbb{K}).$
+
+La función lineal nos dice que toma un vector $A \in \mathbb{V}(n,\mathbb{K})$ 
+y lo lleva a un número en $\mathbb{K}$, esto es:
+\begin{equation*}
+    f(A) \in \mathbb{K}.
+\end{equation*}
+
+Usando \eqref{eq:vector_descomposicion} y la linealidad 
+\eqref{eq:linealidad}, se encuentra:
+\begin{align*}
+    f(A) &= f\!\left(\sum_{i=1}^n A^i e_i \right) \\[6pt]
+         &= f(A^1 e_1 + A^2 e_2 + \dots + A^n e_n) \\[6pt]
+         &= A^1 f(e_1) + A^2 f(e_2) + \dots + A^n f(e_n) \\[6pt]
+         &= \sum_{i=1}^n A^i f(e_i).
+\end{align*}
+\begin{equation*}
+    \therefore \quad f(A) = \sum_{i=1}^n A^i f(e_i).
+\end{equation*}
+Por lo tanto, si conocemos los valores $f(e_i) \in \mathbb{K}$ 
+para $i \in \{ 1,2,\dots,n\}$, sabremos el resultado de la operación de 
+$f$ sobre cualquier vector $A \in \mathbb{V}(n,\mathbb{K})$.
+
+El conjunto de las funciones lineales forma un \textbf{espacio vectorial}, 
+puesto que una combinación lineal de dos funciones lineales es también una función lineal:
+\begin{equation*}
+    \big(\beta_1 f_1 + \beta_2 f_2\big)(A) 
+    = \beta_1 f_1(A) + \beta_2 f_2(A).
+\end{equation*}
+
+Este espacio vectorial es llamado el \textbf{espacio vectorial dual} a $\mathbb{V}(n,\mathbb{K})$, 
+y se denota por $\mathbb{V}^*(n,\mathbb{K})$ o simplemente $\mathbb{V}^*$.
+
+Si la dimensión de $V$ es finita, entonces la dimensión de su dual es la misma:
+\begin{equation*}
+    \dim(\mathbb{V}) = \dim(\mathbb{V}^*).
+\end{equation*}
+    
+
+\section{Base dual}
+
+Puesto que $\mathbb{V}^*$ es un espacio vectorial, introducimos una base para $\mathbb{V}^*$ de la forma
+\begin{equation}\label{eq:base_dual}
+    \{E^1, E^2, \dots, E^n\} = \{E^i\}_{i=1}^n, 
+    \qquad E^i \in \mathbb{V}^*.
+\end{equation}
+
+Como $E^i$ \textbf{es una función lineal}, queda completamente especificada si conocemos 
+su acción sobre los elementos de la base $\{e_j\}$ de $\mathbb{V}$, es decir $E^i(e_j)$ para todo $i,j$.  
+
+Elegimos la \textbf{base dual} de manera que satisfaga la condición:
+\begin{equation}\label{eq:def_base_dual}
+    E^i(e_j) = \delta^i{}_j.
+\end{equation}
+
+Cualquier función lineal $f$, llamado \textbf{vector dual}, 
+se escribe en términos de la base dual \eqref{eq:base_dual} como
+\begin{equation}\label{eq:vector_dual}
+    f = \sum_{i=1}^n f_i E^i.
+\end{equation}
+
+
+\subsection{Acción del dual y producto interior}
+
+La acción de $f$ sobre $A \in \mathbb{V}$ 
+puede interpretarse como un \textbf{producto interno} 
+entre las componentes $A^i$ y $f_i$. En efecto:
+
+\begin{align*}
+    f(A) &= f\!\left(\sum_{i=1}^n A^i e_i \right) \\[6pt]
+    &= \sum_{i=1}^n A^i f(e_i) \\[6pt]
+    &= \sum_{i=1}^n A^i \left( \sum_{j=1}^n f_j E^j(e_i) \right) \\[6pt]
+    &= \sum_{i=1}^n \sum_{j=1}^n A^i f_j \, \delta^j{}_i \\[6pt]
+    &= \sum_{i=1}^n A^i f_i. 
+\end{align*}
+\begin{equation}\label{eq:accion_de_f_sobre_A}
+    f(A)= \sum_{i=1}^n A^i f_i. 
+\end{equation}
+Como se dijo, la expresión \eqref{eq:accion_de_f_sobre_A} corresponde a un 
+\textbf{producto interior}, por lo que podemos escribir
+\begin{align}
+    \langle \; , \; \rangle &:\mathbb{V}^* \times \mathbb{V} \;\longrightarrow\; \mathbb{K}, \notag \\[6pt]
+    &(f, A) \;\mapsto\;  f(A) = \sum_{i=1}^n A^i f_i. \label{eq:producto_interior}
+\end{align}
+
+y se denota como un producto interior:
+\begin{equation*}
+    \langle f, A\rangle := f(A).
+\end{equation*}
+
+
+\section{Índices covariantes y contravariantes}
+
+En la expresión \eqref{eq:producto_interior} aparecen dos tipos de índices:  
+uno arriba, llamado \textbf{contravariante}, y otro abajo, llamado \textbf{covariante}.  
+
+La razón fundamental de esta notación ---un índice arriba y otro abajo--- 
+es que la suma debe ser \textbf{invariante bajo transformaciones de coordenadas}.  
+Es decir, la expresión \eqref{eq:producto_interior} debe ser la misma en todos los sistemas de coordenadas.
+
+Para nuestro caso particular, el espacio vectorial es 
+$\mathbb{V}(n,\mathbb{R}) = \mathbb{R}^3$. 
+Los vectores base son la base coordenada $\{\vec{e}_i\}_{i=1}^3$ y, 
+claramente, la acción de $f$ sobre $\vec{A} \in \mathbb{R}^3$ 
+se interpreta, de acuerdo con \eqref{eq:producto_interior}, 
+como el producto entre una \textbf{matriz fila $1 \times 3$} 
+y una \textbf{matriz columna $3 \times 1$}.  
+
+En efecto, las cantidades $A^i$ se pueden escribir como un vector columna:
+\begin{equation*}
+        A^i \;\longrightarrow\;
+    \begin{pmatrix}
+        A^1 \\
+        A^2 \\
+        A^3
+    \end{pmatrix},
+\end{equation*}
+
+y las cantidades $f_i$ como un vector fila:
+\begin{equation*}
+    f_i \;\longrightarrow\;
+    \begin{pmatrix}
+        f_1 & f_2 & f_3
+    \end{pmatrix}.    
+\end{equation*}
+
+Tal que
+\begin{equation*}
+    f(\vec{A}) =
+    \begin{pmatrix}
+        f_1 & f_2 & f_3
+    \end{pmatrix}
+    \begin{pmatrix}
+        A^1 \\
+        A^2 \\
+        A^3
+    \end{pmatrix}
+    = \sum_{i=1}^3 A^i f_i.
+\end{equation*}
+
+Por lo tanto, conceptualmente, las cantidades con 
+índices arriba y con índices abajo no son lo mismo, 
+es decir:
+\begin{equation*}
+    T^i \;\neq\; T_i.
+\end{equation*}
+
+Así, se concluye que
+\begin{equation*}
+    \delta_{ij} \;\neq\; \delta^{ij} \;\neq\; \delta^j{}_i,
+\end{equation*}
+
+aunque los tres tengan el mismo valor en el sistema de coordenadas cartesianas.  
+Sin embargo, cada uno representa un objeto distinto:
+
+\begin{itemize}
+    \item $\delta_{ij}$: es la \textbf{métrica euclideana} asociada a las coordenadas cartesianas  
+    y no es invariante bajo transformaciones de coordenadas.
+
+    \item $\delta^{ij}$: es la \textbf{métrica inversa} de la métrica euclideana  
+    y tampoco es invariante bajo transformaciones de coordenadas.
+
+    \item $\delta^j{}_i$: es la \textbf{identidad}, y sí es invariante bajo transformaciones de coordenadas.
+\end{itemize}
+
+
+\section{Base dual en $\mathbb{R}^3$}
+
+Para $\mathbb{R}^3$, la base dual $\{E^i\}_{i=1}^3$ para \eqref{eq:producto_interior} satisface
+\begin{equation}\label{eq:base_dual_R3}
+    \delta^j{}_i = E^j(e_i) = \vec{E}^j \cdot \vec{e}_i.
+\end{equation}
+
+\begin{apuntebloque}{Definición}
+Los \textbf{vectores base duales} para $\mathbb{R}^3$ se escriben de la forma
+\begin{equation}\label{eq:suma_base_dual_R3}
+    \vec{E}^i = \sum_{j=1}^3 g^{ij}\, \vec{e}_j,
+\end{equation}
+que satisface la condición \eqref{eq:base_dual_R3}. En efecto:
+\begin{align*}
+    \vec{E}^i \cdot \vec{e}_j 
+        &= \sum_{k=1}^3 g^{ik}\, \vec{e}_k \cdot \vec{e}_j \\[6pt]
+        &= \sum_{k=1}^3 g^{ik} g_{kj} \\[6pt]
+        &= \delta^i{}_j.
+\end{align*}
+\end{apuntebloque}
+
+Por lo tanto, sea $f \in \mathbb{V}^*(3,\mathbb{R})$ un vector dual de la forma
+\begin{equation*}
+    \vec{f} = \sum_{i=1}^3 f_i \, \vec{E}^i,
+\end{equation*}
+tal que, para $\vec{A} \in \mathbb{R}^3$, se tiene:
+\begin{align*}
+    f(A) 
+        &= \vec{f} \cdot \vec{A} \\[6pt]
+        &= \left( \sum_{i=1}^3 f_i \vec{E}^i \right) 
+           \cdot \left( \sum_{j=1}^3 A^j \vec{e}_j \right) \\[6pt]
+        &= \sum_{i=1}^3 \sum_{j=1}^3 f_i A^j 
+           \big( \vec{E}^i \cdot \vec{e}_j \big) \\[6pt]
+        &= \sum_{i=1}^3 \sum_{j=1}^3 f_i A^j \, \delta^i{}_j \\[6pt]
+        &= \sum_{i=1}^3 f_i A^i.
+\end{align*}
+
+\begin{equation*}
+    \therefore \quad f(A) = \sum_{i=1}^3 f_i A^i.
+\end{equation*}
+
+
+
+\subsection{Ejemplos de bases duales}
+
+\begin{apuntebloque}{Ejemplos}
+\textbf{a) Coordenadas Cartesianas:} Las bases coordenadas asociadas a las coordenadas cartesianas están dadas por 
+$\hat{\imath}, \hat{\jmath}, \hat{k}$ y la métrica inversa es $\delta^{ij}$.  
+Entonces, los vectores duales son:
+\begin{align*}
+    \vec{E}^1 &= \sum_{j=1}^3 \delta^{1j}\, \hat{e}_j 
+    = \delta^{11}\hat{e}_1 + \delta^{12}\hat{e}_2 + \delta^{13}\hat{e}_3 
+    = \hat{e}_1 = \hat{\imath}, \\[6pt]
+    \vec{E}^2 &= \sum_{j=1}^3 \delta^{2j}\, \hat{e}_j 
+    = \delta^{21}\hat{e}_1 + \delta^{22}\hat{e}_2 + \delta^{23}\hat{e}_3 
+    = \hat{e}_2 = \hat{\jmath}, \\[6pt]
+    \vec{E}^3 &= \sum_{j=1}^3 \delta^{3j}\, \hat{e}_j 
+    = \delta^{31}\hat{e}_1 + \delta^{32}\hat{e}_2 + \delta^{33}\hat{e}_3 
+    = \hat{e}_3 = \hat{k}.
+\end{align*}
+
+\textbf{Resumiendo:}
+\begin{equation*}
+\left.
+\begin{aligned}
+    \vec{E}^1 &= \hat{\imath}, \\
+    \vec{E}^2 &= \hat{\jmath}, \\
+    \vec{E}^3 &= \hat{k}
+\end{aligned}
+\;\right\}
+\quad \Rightarrow \quad \vec{E}^i = \hat{e}_i
+\end{equation*}
+
+En conclusión: 
+\begin{equation*}
+    \vec{E}^i = \hat{e}_i.
+\end{equation*}
+
+\textbf{b) Coordenadas Esféricas:} Usando los vectores base de las coordenadas esféricas y la métrica inversa, tenemos:
+\begin{align*}
+    \vec{E}^r &= \sum_{j=1}^3 g^{1j}\, \vec{e}_j 
+              = g^{11}\vec{e}_1 + g^{12}\vec{e}_2 + g^{13}\vec{e}_3 
+              = \vec{e}_r, \\[6pt]
+    \vec{E}^\phi &= \sum_{j=1}^3 g^{2j}\, \vec{e}_j 
+              = g^{21}\vec{e}_1 + g^{22}\vec{e}_2 + g^{23}\vec{e}_3 
+              = \frac{1}{r^2 \sin^2\theta}\,\vec{e}_\phi, \\[6pt]
+    \vec{E}^\theta &= \sum_{j=1}^3 g^{3j}\, \vec{e}_j 
+              = g^{31}\vec{e}_1 + g^{32}\vec{e}_2 + g^{33}\vec{e}_3 
+              = \frac{1}{r^2}\,\vec{e}_\theta.
+\end{align*}
+
+\textbf{Resumiendo:}
+
+\begin{equation*}
+\left.
+\begin{aligned}
+    \vec{E}^r     &= \vec{e}_r = \hat{r}, \\[6pt]
+    \vec{E}^\phi  &= \frac{\vec{e}_\phi}{r^2 \sin^2\theta} = \frac{\hat{\phi}}{r \sin\theta}, \\[6pt]
+    \vec{E}^\theta &= \frac{\vec{e}_\theta}{r^2} = \frac{\hat{\theta}}{r}.
+\end{aligned}
+\;\right\}
+\end{equation*}
+
+\end{apuntebloque}
+
+
+\section{Derivadas de la base dual}
+
+\begin{apuntebloque}{Proposición}
+Las \textbf{bases duales} $\{\vec{E}^i\}_{i=1}^3$ satisfacen
+\begin{equation*}
+    \frac{\partial \vec{E}^i}{\partial x^j}
+    \;=\;
+    - \sum_{k=1}^3 \Gamma^i{}_{kj}\, \vec{E}^k .
+\end{equation*}
+
+\textbf{Demostración.} 
+
+Partiendo de
+\begin{equation*}
+    \vec{E}^i \cdot \vec{e}_l = \delta^i{}_l,
+\end{equation*}
+derivando con respecto a $\dfrac{\partial}{\partial x^j}$:
+\begin{align*}
+    \frac{\partial}{\partial x^j}\big(\vec{E}^i \cdot \vec{e}_l\big) 
+    &= \frac{\partial}{\partial x^j}\delta^i{}_l \\
+    \Rightarrow\quad\frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       + \vec{E}^i \cdot \frac{\partial \vec{e}_l}{\partial x^j}
+    &= 0 \\
+    \frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       + \vec{E}^i \cdot \sum_{n=1}^3\Gamma^n{}_{lj}\;\vec{e}_n
+    &=  \\
+    \frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       +  \sum_{n=1}^3\Gamma^n{}_{lj}\;\vec{E}^i \cdot\vec{e}_n
+    &= \\
+    \frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       +  \sum_{n=1}^3\Gamma^n{}_{lj}\;\delta^i_n
+    &= \\
+    \frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       +  \Gamma^i{}_{lj}
+    &= \\
+    \frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       +  \sum_{k=1}^3\Gamma^i{}_{kj}\, \delta^k_l
+    &= \\
+    \frac{\partial \vec{E}^i}{\partial x^j} \cdot \vec{e}_l 
+       +  \sum_{k=1}^3\Gamma^i{}_{kj}\;\vec{E}^k \cdot\vec{e}_l
+    &= \\
+    \left( \frac{\partial \vec{E}^i}{\partial x^j} 
+       +  \sum_{k=1}^3\Gamma^i{}_{kj}\;\vec{E}^k \right) \cdot\vec{e}_l
+    &= \\
+\end{align*}
+
+Como los $\{\vec{e}_i\}_{i=1}^3$ son linealmente independientes, se obtiene:
+\begin{equation*}
+    \frac{\partial \vec{E}^i}{\partial x^j} 
+       +  \sum_{k=1}^3\Gamma^i{}_{kj}\;\vec{E}^k=0\,.
+\end{equation*}
+Por lo tanto:
+\begin{equation*}
+\frac{\partial \vec{E}^i}{\partial x^j}
+    = - \sum_{k=1}^3 \Gamma^i{}_{kj} \, \vec{E}^k \,.
+\end{equation*}
+
+\hfill $\square$
+\end{apuntebloque}
+
+
+\subsection{Ejemplos de descenso de índices}
+
+\begin{apuntebloque}{Ejemplo}
+
+\textbf{a) Coordenadas Cartesianas:}  
+En coordenadas cartesianas se tiene que $\vec{E}^i = \hat{e}_i$ y $\Gamma^k{}_{ij} = 0$, entonces
+\begin{equation*}
+    \frac{\partial \vec{E}^i}{\partial x^j}
+    = - \sum_{k=1}^3 \Gamma^i{}_{kj} \, \vec{E}^k
+    = 0.
+\end{equation*}
+
+\textbf{b) Coordenadas Esféricas:}  
+Podemos obtener $\dfrac{\partial \vec{E}^i}{\partial x^j}$ de dos formas:  
+la primera es derivar los $\vec{E}^i$ con respecto de las coordenadas $(r,\phi,\theta)$, la segunda es usar la proposición anterior.
+
+\medskip
+\textit{Caso $i=j=1$:}
+\begin{align*}
+    \frac{\partial \vec{E}^1}{\partial x^1} 
+        &= \frac{\partial \vec{E}^r}{\partial r}
+        = \frac{\partial \hat{r}}{\partial r} = 0, \\[6pt]
+    \frac{\partial \vec{E}^1}{\partial x^1} 
+        &= -\sum_{k=1}^3 \Gamma^1{}_{k1}\,\vec{E}^k
+        = -\Gamma^1{}_{11}\vec{E}^1 - \Gamma^1{}_{21}\vec{E}^2 - \Gamma^1{}_{31}\vec{E}^3 = 0.
+\end{align*}
+
+\textit{Caso $i=1,\,j=2$:}
+\begin{align*}
+    \frac{\partial \vec{E}^1}{\partial x^2}
+        &= \frac{\partial \vec{E}^r}{\partial \phi}
+        = \frac{\partial \hat{r}}{\partial \phi}
+        = \frac{1}{r}\,\vec{e}_\phi
+        = \frac{r \sin^2 \theta}{r^2 \sin^2 \theta}\,\vec{e}_\phi
+        = \frac{1}{r}\,\vec{E}^\phi, \\[6pt]
+    \frac{\partial \vec{E}^1}{\partial x^2}
+        &= -\sum_{k=1}^3 \Gamma^1{}_{k2}\,\vec{E}^k
+        = -\Gamma^1{}_{12}\vec{E}^1 - \Gamma^1{}_{22}\vec{E}^2 - \Gamma^1{}_{32}\vec{E}^3 \\[6pt]
+        &= -\big(0\cdot\vec{E}^1 + (-r^2\sin^2\theta)\vec{E}^2 + 0\cdot\vec{E}^3\big) \\[6pt]
+        &= r\sin^2\theta\,\vec{E}^\phi.
+\end{align*}
+
+Se puede seguir calculando los $\dfrac{\partial \vec{E}^i}{\partial x^j}$ por ambos métodos.
+El primero se mostró para verificar la proposición, pero usando directamente la fórmula se obtiene:
+\begin{align*}
+    \frac{\partial \vec{E}^r}{\partial r} &= 0, &
+    \frac{\partial \vec{E}^\phi}{\partial r} &= -\frac{1}{r}\,\vec{E}^\phi, &
+    \frac{\partial \vec{E}^\theta}{\partial r} &= -\frac{1}{r}\,\vec{E}^\theta, \\[6pt]
+    \frac{\partial \vec{E}^r}{\partial \phi} &= r\sin^2\theta\,\vec{E}^\phi, &
+    \frac{\partial \vec{E}^\phi}{\partial \phi} &= -\frac{1}{r}\,\vec{E}^r - \cot\theta\,\vec{E}^\theta, &
+    \frac{\partial \vec{E}^\theta}{\partial \phi} &= \sin\theta\cos\theta\,\vec{E}^\phi, \\[6pt]
+    \frac{\partial \vec{E}^r}{\partial \theta} &= r\,\vec{E}^\theta, &
+    \frac{\partial \vec{E}^\phi}{\partial \theta} &= -\cot\theta\,\vec{E}^\phi, &
+    \frac{\partial \vec{E}^\theta}{\partial \theta} &= -\frac{1}{r}\,\vec{E}^r.
+\end{align*}
+
+\end{apuntebloque}
+
+
+\section{Métrica y descenso de índices}
+
+El producto escalar entre los vectores $\vec{A}$ y $\vec{B}$, como se estudió, 
+está dado por
+\begin{equation*}
+    \vec{A}\cdot \vec{B} = \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i B^j.
+\end{equation*}
+
+Esta expresión se puede reescribir como:
+\begin{align*}
+    \vec{A}\cdot \vec{B} 
+    &= \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i B^j \\[6pt]
+    &= \sum_{j=1}^3 g_{1j} A^1 B^j 
+      + \sum_{j=1}^3 g_{2j} A^2 B^j 
+      + \sum_{j=1}^3 g_{3j} A^3 B^j \\[6pt]
+    &= A^1 \sum_{j=1}^3 g_{1j} B^j 
+      + A^2 \sum_{j=1}^3 g_{2j} B^j
+      + A^3 \sum_{j=1}^3 g_{3j} B^j.
+\end{align*}
+
+\noindent
+Por lo tanto:
+\begin{equation*}
+    \vec{A}\cdot \vec{B} = 
+    \begin{pmatrix}
+        \sum_{j=1}^3 g_{1j} B^j &
+        \sum_{j=1}^3 g_{2j} B^j &
+        \sum_{j=1}^3 g_{3j} B^j
+    \end{pmatrix}
+    \begin{pmatrix}
+        A^1 \\[4pt] A^2 \\[4pt] A^3
+    \end{pmatrix},
+\end{equation*}
+la cual es un producto matricial entre una matriz de $1\times 3$ y una de $3\times 1$, 
+análoga a la expresión
+\begin{equation*}
+    f(A) = \sum_{i=1}^3 f_i A^i =
+    \begin{pmatrix}
+        f_1 & f_2 & f_3
+    \end{pmatrix}
+    \begin{pmatrix}
+        A^1 \\[4pt] A^2 \\[4pt] A^3
+    \end{pmatrix}.
+\end{equation*}
+
+De acuerdo a lo anterior, la matriz $A^i$ se interpreta como un vector columna de orden $3\times 1$, entonces la expresión
+\begin{equation*}
+    \sum_{j=1}^3 g_{ij} B^j
+\end{equation*}
+debe ser un vector fila de orden $1\times 3$, al igual que la cantidad $f_i$.
+
+\medskip
+Es decir:
+\begin{equation*}
+    \sum_{j=1}^3 g_{ij} B^j =
+    \begin{pmatrix}
+        \sum_{j=1}^3 g_{1j} B^j &
+        \sum_{j=1}^3 g_{2j} B^j &
+        \sum_{j=1}^3 g_{3j} B^j
+    \end{pmatrix}.
+\end{equation*}
+
+Si bien el índice $j$ es un índice mudo, en la expresión anterior el índice $i$ es libre (no está sumado) y aparece en posición inferior. 
+De este modo, la cantidad
+\begin{equation*}
+    \sum_{j=1}^3 g_{ij} B^j
+\end{equation*}
+posee un índice abajo.
+
+\begin{apuntebloque}{Definición}
+Sea el tensor contravariante $T^i$, se define el tensor covariante $T_i$, 
+asociado a $T^i$, como
+\begin{equation*}
+    T_i := \sum_{j=1}^3 g_{ij} T^j \,.
+\end{equation*}
+\end{apuntebloque}
+
+Por lo tanto, el producto escalar entre los vectores $\vec{A}$ y $\vec{B}$ 
+se puede escribir como
+\begin{align*}
+    \vec{A} \cdot \vec{B} 
+    &= \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i B^j \\[6pt]
+    &= \sum_{i=1}^3 A^i \left( \sum_{j=1}^3 g_{ij} B^j \right) \\[6pt]
+    &= \sum_{i=1}^3 A^i B_i \\[6pt]
+    &= B(A).
+\end{align*}
+
+También se puede escribir en la forma
+\begin{align*}
+    \vec{A} \cdot \vec{B} 
+    &= \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i B^j \\[6pt]
+    &= \sum_{j=1}^3 B^j \left( \sum_{i=1}^3 g_{ij} A^i \right) \\[6pt]
+    &= \sum_{j=1}^3 B^j A_j \\[6pt]
+    &= A(B).
+\end{align*}
+
+La métrica $g_{ij}$ permite definir un mapeo biyectivo entre 
+$\mathbb{V}$ y $\mathbb{V}^*$ como
+\begin{equation*}
+    g : \mathbb{V} \;\longrightarrow\; \mathbb{V}^* \,,
+\end{equation*}
+donde $g_{ij}$ actúa como
+\begin{equation*}
+    T^i \;\longmapsto\; \sum_{j=1}^3 g_{ij} T^j \,.
+\end{equation*}
+
+Como el mapeo es biyectivo, entonces existe la inversa
+\begin{align*}
+    g^{-1} :&\; \mathbb{V}^* \;\longrightarrow\; \mathbb{V}, \\
+    \qquad 
+    &T_i \;\longmapsto\; \sum_{j=1}^3 g^{ij} T_j \,.
+\end{align*}
+
+La métrica permite pasar de vectores contravariantes a covariantes, 
+y la métrica inversa realiza el proceso inverso.
+
+\begin{apuntebloque}{Definición}
+Sea el tensor covariante $T_i$, se define el tensor contravariante $T^i$, 
+asociado a $T_i$, como
+\begin{equation*}
+    T^i := \sum_{j=1}^3 g^{ij} T_j \,.
+\end{equation*}
+\end{apuntebloque}
+
+La norma de un vector $\vec{A}$ se puede reescribir como
+\begin{equation*}
+    \|\vec{A}\| 
+    = \sqrt{\sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i A^j} 
+    = \sqrt{\sum_{i=1}^3 A^i A^i} \,.
+\end{equation*}
+
+\begin{apuntebloque}{Ejemplo}
+
+\textbf{a) Coordenadas Cartesianas:}  
+Sea el vector $\vec{A}$, con componentes $A^i$ y métrica $\delta_{ij}$, entonces:
+
+\begin{equation*}
+    A_i = \sum_{j=1}^3 g_{ij} A^j = \sum_{j=1}^3 \delta_{ij} A^j = A^i \,.
+\end{equation*}
+
+Resumiendo:
+\begin{align*}
+    A_x &= A^x, \\
+    A_y &= A^y, \\
+    A_z &= A^z.
+\end{align*}
+
+\end{apuntebloque}
+\begin{apuntebloque}{}
+
+\textbf{b) Coordenadas Esféricas:}  
+Sea $\vec{A}$ un vector con componentes $(A^r, A^\phi, A^\theta)$, entonces $A_i$ toma la forma:
+
+\begin{align*}
+    A_r &= \sum_{j=1}^3 g_{1j} A^j = g_{11}A^r + g_{12}A^\phi + g_{13}A^\theta = A^r, \\[4pt]
+    A_\phi &= \sum_{j=1}^3 g_{2j} A^j = g_{21}A^r + g_{22}A^\phi + g_{23}A^\theta = r^2 \sin^2\theta \, A^\phi, \\[4pt]
+    A_\theta &= \sum_{j=1}^3 g_{3j} A^j = g_{31}A^r + g_{32}A^\phi + g_{33}A^\theta = r^2 A^\theta.
+\end{align*}
+
+Resumiendo:
+\begin{align*}
+    A_r &= A^r, \\
+    A_\phi &= r^2 \sin^2\theta \, A^\phi, \\
+    A_\theta &= r^2 A^\theta.
+\end{align*}
+
+\end{apuntebloque}
+
+
+\section{Covarianza del producto escalar}
+
+Hasta aquí se ha introducido un índice arriba y otro abajo.  
+La idea principal de esto es que el producto entre vectores sea 
+\textbf{covariante}, es decir, que sea el mismo en todos los sistemas de coordenados.  
+
+Lo anterior significa que, si tenemos los sistemas coordenados 
+$Ox^1x^2x^3$ y $O'x'^1x'^2x'^3$, entonces:
+
+\begin{equation*}
+    \sum_{i=1}^3 A^i B_i \;\Big|_{O}
+    \;=\;
+    \sum_{i=1}^3 A'^i B'_i \;\Big|_{O'} \,.
+\end{equation*}
+
+Esto será demostrado más adelante, cuando se estudien las \textbf{transformaciones de coordenadas}.
+
+Se debe tener en cuenta que las componentes del vector $\vec{A}$ 
+son distintas para sistemas de coordenadas diferentes.  
+
+Por ejemplo:
+\begin{equation*}
+    A_x \neq A_r, 
+    \qquad A_y \neq A_\phi, 
+    \qquad A_z \neq A_\theta \,,
+\end{equation*}
+sin embargo, todas ellas están relacionadas a través de una 
+\textbf{transformación de coordenadas}.
+
+
+\newpage
+
+\end{document}

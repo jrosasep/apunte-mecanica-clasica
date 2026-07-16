@@ -1,0 +1,952 @@
+% !TeX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Métrica}
+
+\section{Longitud de trayectoria y elemento de línea}
+
+Una partícula al moverse en $\mathbb{R}^3$ describe una curva, que 
+llamamos \textbf{Trayectoria}, y cada punto está descrito por un
+vector posición. Puesto que la trayectoria es continua, 
+esta se concibe como un conjunto continuo de posiciones.
+
+Una de las magnitudes físicas de interés es medir la 
+\textbf{longitud de la trayectoria}, esto es, la 
+\textbf{distancia recorrida} por la partícula.
+
+Recurramos al cálculo diferencial: consideremos un trozo de la trayectoria 
+entre dos puntos infinitesimalmente vecinos y aproximémoslo por una línea 
+recta, tal que 
+\begin{equation*}
+    ds = \lVert d\vec{x} \rVert \,,
+\end{equation*}
+y, por simplicidad, usaremos las coordenadas cartesianas.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/04_metrica/met_fig1.png}
+    \caption{A la izquierda: el elemento infinitesimal de longitud $ds$, 
+    con los vectores posición $\vec{x}$ y $\vec{x} + d\vec{x}$, unidos 
+    por el vector $d\vec{x}$. A la derecha: representación del vector 
+    $d\vec{x}$ en el espacio, cuya norma es igual a $ds$, junto con 
+    la proyección de sus componentes sobre los ejes cartesianos $x$, $y$ 
+    y $z$.}
+\end{figure}
+
+La longitud del segmento infinitesimal de línea, $ds$, puede ser 
+encontrada usando el teorema de Pitágoras: 
+\begin{equation*}
+    ds^2 = dT^2 + dz^2 = dx^2 + dy^2 + dz^2 \,,
+\end{equation*}
+es decir,
+\begin{equation*}
+    ds^2 = dx^2 + dy^2 + dz^2 \,.
+\end{equation*}
+
+Esto corresponde a la distancia infinitesimal en coordenadas cartesianas. 
+Por lo tanto, la distancia total de la trayectoria es
+\begin{equation*}
+    \Delta S = \int_{\vec{x}_i}^{\vec{x}_f} 
+    \sqrt{dx^2 + dy^2 + dz^2} \,.
+\end{equation*}
+
+\section{Elemento de línea en coordenadas esféricas}
+
+El mismo elemento de línea infinitesimal también puede ser 
+calculado en otros sistemas coordenados, por ejemplo, en 
+coordenadas esféricas. 
+
+Recordemos que las líneas coordenadas esféricas son:
+\begin{itemize}
+    \item \textbf{Líneas $r$:} rectas que pasan por el origen; $\theta$ y $\phi$ constantes, $r$ variable.
+    \item \textbf{Líneas $\phi$:} circunferencias horizontales de radio $r\sin\theta$ (a altura $z = r\cos\theta$); $r$ y $\theta$ constantes, $\phi$ variable.
+    \item \textbf{Líneas $\theta$:} semicírculos en planos meridianos (que contienen al eje $z$) de radio $r$; $r$ y $\phi$ constantes, $\theta$ variable.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.55\linewidth]{figures/04_metrica/met_fig2.png}
+    \caption{Elemento infinitesimal en coordenadas esféricas. 
+    Se muestran los incrementos diferenciales: 
+    radial $dr$, polar $r\,d\theta$ y azimutal $r\sin\theta\,d\phi$, 
+    que en conjunto definen el diferencial de línea $ds$ en este sistema.}
+\end{figure}
+
+Puesto que las líneas coordenadas son ortogonales, se tiene que
+\begin{align*}
+    ds^2 &= (ds_1)^2 + (ds_2)^2 + (ds_3)^2 \\[2pt]
+    &= (dr)^2 + (r \sin\theta \, d\phi)^2 + (r \, d\theta)^2 \,.
+\end{align*}
+
+Es decir,
+\begin{equation*}
+    ds^2 = dr^2 + r^2 \sin^2\theta \, d\phi^2 + r^2 d\theta^2 \,,
+\end{equation*}
+lo que corresponde a la distancia entre dos puntos infinitesimalmente 
+cercanos en coordenadas esféricas, y debe ser igual a la encontrada 
+en coordenadas cartesianas:
+\begin{align*}
+    ds^2 &= dx^2 + dy^2 + dz^2 \\[2pt]
+         &= dr^2 + r^2 \sin^2\theta \, d\phi^2 + r^2 d\theta^2 \,.
+\end{align*}
+
+\section{Elemento de línea en coordenadas generalizadas}
+
+La cantidad $ds^2$ se llama \textbf{Elemento de Línea}. 
+Ahora escribamos el elemento de línea en coordenadas generalizadas. 
+
+Usando
+\begin{equation*}
+    d\vec{x} = dx \, \hat{\imath} + dy \, \hat{\jmath} + dz \, \hat{k} \,,
+\end{equation*}
+entonces
+\begin{align*}
+    ds^2 &= dx^2 + dy^2 + dz^2 \\[2pt]
+          &= dx \, \hat{\imath} \cdot dx \, \hat{\imath} 
+           + dy \, \hat{\jmath} \cdot dy \, \hat{\jmath} 
+           + dz \, \hat{k} \cdot dz \, \hat{k} \\[2pt]
+          &= (dx \, \hat{\imath} + dy \, \hat{\jmath} + dz \, \hat{k})
+             \cdot (dx \, \hat{\imath} + dy \, \hat{\jmath} + dz \, \hat{k}) \,.
+\end{align*}
+
+Por lo tanto,
+\begin{equation}\label{4_metrica_ds^2}
+    ds^2 = d\vec{x} \cdot d\vec{x} \,.
+\end{equation}
+
+En un sistema de coordenadas $Ox^1x^2x^3$, la cantidad $d\vec{x}$ se escribe como
+\begin{align*}
+    d\vec{x}(x^1, x^2, x^3) &= 
+    \frac{\partial \vec{x}}{\partial x^1} \, dx^1 
+    + \frac{\partial \vec{x}}{\partial x^2} \, dx^2 
+    + \frac{\partial \vec{x}}{\partial x^3} \, dx^3 \\[4pt]
+    &= \vec{e}_1 \, dx^1 + \vec{e}_2 \, dx^2 + \vec{e}_3 \, dx^3 \,.
+\end{align*}
+
+De forma compacta:
+\begin{equation*}
+    d\vec{x} = \sum_{i=1}^3 \vec{e}_i \, dx^i \,.
+\end{equation*}
+
+Reemplazando en \eqref{4_metrica_ds^2}, se obtiene:
+\begin{align}
+    ds^2 &= \left( \sum_{i=1}^3 \vec{e}_i \, dx^i \right) 
+            \cdot 
+            \left( \sum_{j=1}^3 \vec{e}_j \, dx^j \right) \nonumber \\[2pt]
+          &= \sum_{i=1}^3 \sum_{j=1}^3 
+             \big( \vec{e}_i \cdot \vec{e}_j \big) \, dx^i dx^j \,.
+             \label{4_metrica_elemento_linea_general}
+\end{align}
+
+\section{Coeficientes métricos}
+
+\begin{apuntebloque}{Definición}
+Se definen los \textbf{coeficientes métricos} (o simplemente la 
+\textbf{métrica}), asociados al sistema coordenado $Ox^1x^2x^3$, como:
+\begin{equation}\label{4_metrica_g}
+    g_{ij} = \vec{e}_i \cdot \vec{e}_j \,.
+\end{equation}
+\end{apuntebloque}
+
+Por lo tanto, existen $3 \times 3 = 9$ coeficientes métricos. 
+Así, el elemento de línea \eqref{4_metrica_elemento_linea_general} toma la forma
+\begin{equation}\label{4_metrica_elemento_linea_sistema_coordenado_generalizado}
+    ds^2 = \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} \, dx^i dx^j \,.
+\end{equation}
+
+Esta expresión corresponde al elemento de línea escrito en el 
+sistema coordenado $Ox^1x^2x^3$ generalizado.
+
+\section{Ejemplos fundamentales}
+
+\subsection{Coordenadas cartesianas}
+
+\begin{apuntebloque}{Ejemplo: Coordenadas Cartesianas}
+En \textbf{coordenadas cartesianas}:
+\begin{equation*}
+    x^1 = x,\quad x^2 = y,\quad x^3 = z, \qquad
+    \vec{e}_1=\hat{\imath},\ \vec{e}_2=\hat{\jmath},\ \vec{e}_3=\hat{k}.
+\end{equation*}
+
+Coeficientes métricos:
+\begin{align*}
+    g_{11}&=\vec{e}_1\!\cdot\!\vec{e}_1=1,&
+    g_{12}&=\vec{e}_1\!\cdot\!\vec{e}_2=0,&
+    g_{13}&=\vec{e}_1\!\cdot\!\vec{e}_3=0,\\
+    g_{21}&=\vec{e}_2\!\cdot\!\vec{e}_1=0,&
+    g_{22}&=\vec{e}_2\!\cdot\!\vec{e}_2=1,&
+    g_{23}&=\vec{e}_2\!\cdot\!\vec{e}_3=0,\\
+    g_{31}&=\vec{e}_3\!\cdot\!\vec{e}_1=0,&
+    g_{32}&=\vec{e}_3\!\cdot\!\vec{e}_2=0,&
+    g_{33}&=\vec{e}_3\!\cdot\!\vec{e}_3=1.
+\end{align*}
+
+Elemento de línea:
+\begin{align*}
+    ds^2
+      &= \sum_{i=1}^3\sum_{j=1}^3 g_{ij}\,dx^i dx^j \\[2pt]
+      &= \sum_{j=1}^3 g_{1j}\,dx^1 dx^j
+       + \sum_{j=1}^3 g_{2j}\,dx^2 dx^j
+       + \sum_{j=1}^3 g_{3j}\,dx^3 dx^j \\[2pt]
+      &= g_{11}(dx^1)^2 + g_{12}\,dx^1 dx^2 + g_{13}\,dx^1 dx^3 \\
+      &\quad + g_{21}\,dx^2 dx^1 + g_{22}(dx^2)^2 + g_{23}\,dx^2 dx^3 \\
+      &\quad + g_{31}\,dx^3 dx^1 + g_{32}\,dx^3 dx^2 + g_{33}(dx^3)^2 \\[2pt]
+      &= 1\cdot(dx^1)^2 + 0\cdot dx^1 dx^2 + 0\cdot dx^1 dx^3 \\
+      &\quad + 0\cdot dx^2 dx^1 + 1\cdot(dx^2)^2 + 0\cdot dx^2 dx^3 \\
+      &\quad + 0\cdot dx^3 dx^1 + 0\cdot dx^3 dx^2 + 1\cdot(dx^3)^2 \\[4pt]
+      &= (dx^1)^2 + (dx^2)^2 + (dx^3)^2 \\[2pt]
+      &= dx^2 + dy^2 + dz^2 \,.
+\end{align*}
+\begin{equation*}
+    \therefore \quad ds^2=dx^2 + dy^2 + dz^2 \,.
+\end{equation*}
+En consecuencia, la métrica cartesiana es la \textbf{matriz identidad} de orden $3$:
+\begin{equation*}
+    [g_{ij}] = I_3 \qquad (\text{equivalentemente, } g_{ij}=\delta_{ij}).
+\end{equation*}
+\end{apuntebloque}
+
+\clearpage
+
+\subsection{Coordenadas esféricas}
+
+\begin{apuntebloque}{Ejemplo: Coordenadas Esféricas}
+En \textbf{coordenadas esféricas} tomamos
+\begin{equation*}
+    x^1 = r, \qquad x^2 = \phi, \qquad x^3 = \theta \,.
+\end{equation*}
+
+Las bases coordenadas (no unitarias en general) son
+\begin{align*}
+    \vec{e}_r(\phi,\theta) &= \cos\phi\,\sin\theta\,\hat{\imath}
+                           + \sin\phi\,\sin\theta\,\hat{\jmath}
+                           + \cos\theta\,\hat{k},\\
+    \vec{e}_\phi(r,\phi,\theta) &= r\sin\theta\,
+        \big(-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath}\big),\\
+    \vec{e}_\theta(r,\phi,\theta) &= r\,
+        \big(\cos\phi\cos\theta\,\hat{\imath}
+            +\sin\phi\cos\theta\,\hat{\jmath}
+            -\sin\theta\,\hat{k}\big).
+\end{align*}
+
+Por lo tanto, los coeficientes métricos son
+\begin{align*}
+    g_{11} &= \vec{e}_r\!\cdot\!\vec{e}_r = 1, &
+    g_{12} &= \vec{e}_r\!\cdot\!\vec{e}_\phi = 0, &
+    g_{13} &= \vec{e}_r\!\cdot\!\vec{e}_\theta = 0,\\
+    g_{21} &= \vec{e}_\phi\!\cdot\!\vec{e}_r = 0, &
+    g_{22} &= \vec{e}_\phi\!\cdot\!\vec{e}_\phi = r^2\sin^2\theta, &
+    g_{23} &= \vec{e}_\phi\!\cdot\!\vec{e}_\theta = 0,\\
+    g_{31} &= \vec{e}_\theta\!\cdot\!\vec{e}_r = 0, &
+    g_{32} &= \vec{e}_\theta\!\cdot\!\vec{e}_\phi = 0, &
+    g_{33} &= \vec{e}_\theta\!\cdot\!\vec{e}_\theta = r^2.
+\end{align*}
+
+Elemento de línea (expansión):
+\begin{align*}
+    ds^2
+      &= \sum_{i=1}^3\sum_{j=1}^3 g_{ij}\,dx^i dx^j \\[2pt]
+      &= \sum_{j=1}^3 g_{1j}\,dx^1 dx^j
+       + \sum_{j=1}^3 g_{2j}\,dx^2 dx^j
+       + \sum_{j=1}^3 g_{3j}\,dx^3 dx^j \\[2pt]
+      &= g_{11}(dx^1)^2 + g_{12}\,dx^1 dx^2 + g_{13}\,dx^1 dx^3 \\
+      &\quad + g_{21}\,dx^2 dx^1 + g_{22}(dx^2)^2 + g_{23}\,dx^2 dx^3 \\
+      &\quad + g_{31}\,dx^3 dx^1 + g_{32}\,dx^3 dx^2 + g_{33}(dx^3)^2 \\[4pt]
+      &= 1\cdot(dr)^2 + 0\cdot\,dr\,d\phi + 0\cdot\,dr\,d\theta \\
+      &\quad + 0\cdot\,d\phi\,dr + (r^2\sin^2\theta)\,(d\phi)^2 + 0\cdot\,d\phi\,d\theta \\
+      &\quad + 0\cdot\,d\theta\,dr + 0\cdot\,d\theta\,d\phi + r^2\,(d\theta)^2 \\[4pt]
+      &= dr^2 + r^2\sin^2\theta\,d\phi^2 + r^2\,d\theta^2 \,.
+\end{align*}
+\begin{equation*}
+    \therefore \quad ds^2=dr^2 + r^2\sin^2\theta\,d\phi^2 + r^2\,d\theta^2 \,.
+\end{equation*}
+
+\end{apuntebloque}
+
+\section{Simetría de la métrica y forma matricial}
+
+Notar que la métrica $g_{ij}$ posee la \textbf{propiedad de simetría}:
+\begin{align*}
+    &g_{ij} \;=\; \vec{e}_i \cdot \vec{e}_j \;=\; \vec{e}_j \cdot \vec{e}_i \;=\; g_{ji} \\[4pt]
+    &\therefore \quad g_{ij} = g_{ji} \,.
+\end{align*}
+
+Esto es, \textbf{la métrica es invariante bajo el intercambio de índices}. Por lo tanto,
+\begin{equation*}
+    g_{12} = g_{21}, \qquad
+    g_{13} = g_{31}, \qquad
+    g_{23} = g_{32}.
+\end{equation*}
+
+En consecuencia, el número de coeficientes métricos independientes se reduce de $9$ a $6$.
+
+Para entender esta simetría, interpretemos la métrica como una 
+\textbf{matriz de orden $3 \times 3$}. En la expresión $g_{ij}$:
+\begin{itemize}
+    \item El índice $i$ rotula las filas.
+    \item El índice $j$ rotula las columnas.
+\end{itemize}
+
+Entonces,
+\begin{equation*}
+    [g_{ij}] =
+    \begin{pmatrix}
+        g_{11} & g_{12} & g_{13} \\
+        g_{21} & g_{22} & g_{23} \\
+        g_{31} & g_{32} & g_{33}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \vec{e}_1 \cdot \vec{e}_1 & \vec{e}_1 \cdot \vec{e}_2 & \vec{e}_1 \cdot \vec{e}_3 \\
+        \vec{e}_2 \cdot \vec{e}_1 & \vec{e}_2 \cdot \vec{e}_2 & \vec{e}_2 \cdot \vec{e}_3 \\
+        \vec{e}_3 \cdot \vec{e}_1 & \vec{e}_3 \cdot \vec{e}_2 & \vec{e}_3 \cdot \vec{e}_3
+    \end{pmatrix}
+    = g \,.
+\end{equation*}
+
+Por lo tanto, $g_{ij} = g_{ji}$ equivale al \textbf{intercambio de filas por 
+columnas}, lo que en lenguaje matricial se escribe como
+\begin{equation*}
+    g^t = g \,,
+\end{equation*}
+donde $t$ significa \textbf{transpuesta}. Es decir, la matriz $g$ es 
+\textbf{simétrica}.
+
+Entonces, el triángulo superior es igual al triángulo inferior en la 
+matriz métrica. De los seis elementos de los dos triángulos de la matriz, 
+solo tres son independientes, y si a estos se les suman los tres elementos 
+de la diagonal, se concluye que la matriz métrica posee únicamente 
+\textbf{seis elementos independientes}.
+
+\section{Elemento de línea en forma matricial}
+
+El elemento de línea, aunque sea un escalar, se puede escribir en términos 
+matriciales. Escribamos los diferenciales $dx^i$, $i\in\{1,2,3\}$, como una 
+\textbf{matriz columna de orden $3 \times 1$}:
+\begin{equation*}
+    dx^i \;\;\longrightarrow\;\;
+    dX =
+    \begin{pmatrix}
+        dx^1 \\
+        dx^2 \\
+        dx^3
+    \end{pmatrix}.
+\end{equation*}
+
+Así, el elemento de línea se escribe como
+\begin{equation*}
+    ds^2 = dX^t \, g \, dX \,,
+\end{equation*}
+donde $dX^t$ es la transpuesta de $dX$.
+
+\begin{apuntebloque}{Ejemplo: Métrica en diferentes coordenadas}
+
+\textbf{a) Coordenadas Cartesianas}
+
+La métrica se obtiene como
+\begin{equation*}
+    g_{ij} =
+    \begin{pmatrix}
+        \hat{\imath}\!\cdot\!\hat{\imath} & \hat{\imath}\!\cdot\!\hat{\jmath} & \hat{\imath}\!\cdot\!\hat{k} \\
+        \hat{\jmath}\!\cdot\!\hat{\imath} & \hat{\jmath}\!\cdot\!\hat{\jmath} & \hat{\jmath}\!\cdot\!\hat{k} \\
+        \hat{k}\!\cdot\!\hat{\imath} & \hat{k}\!\cdot\!\hat{\jmath} & \hat{k}\!\cdot\!\hat{k}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}.
+\end{equation*}
+
+Esta es la \textbf{métrica asociada a las coordenadas cartesianas}, y se denomina
+\textbf{Métrica Euclidiana}.  
+
+El elemento de línea se escribe en forma matricial:
+\begin{align*}
+    ds^2 &= 
+    \begin{pmatrix}
+        dx & dy & dz
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        dx \\ dy \\ dz
+    \end{pmatrix} \\[4pt]
+    &= 
+    \begin{pmatrix}
+        dx & dy & dz
+    \end{pmatrix}
+    \begin{pmatrix}
+        dx \\ dy \\ dz
+    \end{pmatrix} \\[4pt]
+    &= dx^2 + dy^2 + dz^2 \,.
+\end{align*}
+
+\textbf{b) Coordenadas Esféricas}
+
+La métrica se obtiene como
+\begin{equation*}
+    g_{ij} =
+    \begin{pmatrix}
+        \vec{e}_r\!\cdot\!\vec{e}_r & \vec{e}_r\!\cdot\!\vec{e}_\phi & \vec{e}_r\!\cdot\!\vec{e}_\theta \\
+        \vec{e}_\phi\!\cdot\!\vec{e}_r & \vec{e}_\phi\!\cdot\!\vec{e}_\phi & \vec{e}_\phi\!\cdot\!\vec{e}_\theta \\
+        \vec{e}_\theta\!\cdot\!\vec{e}_r & \vec{e}_\theta\!\cdot\!\vec{e}_\phi & \vec{e}_\theta\!\cdot\!\vec{e}_\theta
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & r^2\sin^2\theta & 0 \\
+        0 & 0 & r^2
+    \end{pmatrix}.
+\end{equation*}
+
+Esta es la \textbf{métrica asociada a las coordenadas esféricas}.  
+
+El elemento de línea se escribe en forma matricial:
+\begin{align*}
+    ds^2 &=
+    \begin{pmatrix}
+        dr & d\phi & d\theta
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & r^2\sin^2\theta & 0 \\
+        0 & 0 & r^2
+    \end{pmatrix}
+    \begin{pmatrix}
+        dr \\ d\phi \\ d\theta
+    \end{pmatrix} \\[4pt]
+    &= 
+    \begin{pmatrix}
+        dr & d\phi & d\theta
+    \end{pmatrix}
+    \begin{pmatrix}
+        dr \\ r^2\sin^2\theta\,d\phi \\ r^2\,d\theta
+    \end{pmatrix} \\[4pt]
+    &= dr^2 + r^2\sin^2\theta\,d\phi^2 + r^2\,d\theta^2 \,.
+\end{align*}
+
+\bigskip
+
+\end{apuntebloque}
+
+\section{Factores de escala y vectores unitarios}
+
+\begin{apuntebloque}{}
+
+\textbf{Normas de los vectores coordenados}
+
+Se tiene que
+\begin{align*}
+    \|\vec{e}_1\| &= \sqrt{\vec{e}_1 \cdot \vec{e}_1} = \sqrt{g_{11}},\\
+    \|\vec{e}_2\| &= \sqrt{\vec{e}_2 \cdot \vec{e}_2} = \sqrt{g_{22}},\\
+    \|\vec{e}_3\| &= \sqrt{\vec{e}_3 \cdot \vec{e}_3} = \sqrt{g_{33}}.
+\end{align*}
+
+De manera compacta:
+\begin{equation*}
+    \|\vec{e}_i\| = \sqrt{g_{ii}}, 
+    \qquad i \in \{1,2,3\}.
+\end{equation*}
+
+Por lo tanto, los vectores unitarios se escriben como
+\begin{equation*}
+    \hat{e}_i = \frac{\vec{e}_i}{\sqrt{g_{ii}}},
+    \qquad i \in \{1,2,3\}.
+\end{equation*}
+
+Notar que
+\begin{equation*}
+    h_i = \|\vec{e}_i\| = \sqrt{g_{ii}}, 
+    \qquad i \in \{1,2,3\},
+\end{equation*}
+son los llamados \textbf{factores de escala} cuando las 
+coordenadas son ortogonales.
+
+\end{apuntebloque}
+
+\section{Ortogonalidad de líneas coordenadas}
+
+La definición de la métrica involucra a los vectores base 
+$\{\vec{e}_i\}_{i=1}^3$, y no a los vectores unitarios. 
+Por lo tanto, la métrica contiene la información propia 
+del sistema coordenado $Ox^1x^2x^3$, en particular 
+dónde se anula, diverge, etc.
+
+\begin{apuntebloque}{Proposición}
+Las líneas coordenadas generadas por las coordenadas $x^i$ y $x^j$, 
+con $i \neq j$, son ortogonales si y solo si
+\begin{equation*}
+    g_{ij} = 0, \qquad i \neq j \,.
+\end{equation*}
+\end{apuntebloque}
+
+\section{Delta de Kronecker y métrica euclideana}
+
+La métrica Euclideana puede ser escrita en una notación más 
+compacta definiendo:
+
+\begin{apuntebloque}{Definición}
+Se define la \textbf{delta de Kronecker} como
+\begin{equation*}
+\delta_{ij} =
+\begin{cases}
+    1, & \text{si } i = j, \\[6pt]
+    0, & \text{si } i \neq j.
+\end{cases}
+\end{equation*}
+\end{apuntebloque}
+
+Escribiendo la delta de Kronecker en forma explícita:
+\begin{align*}
+    \delta_{11} &= 1, & \delta_{12} &= 0, & \delta_{13} &= 0, \\
+    \delta_{21} &= 0, & \delta_{22} &= 1, & \delta_{23} &= 0, \\
+    \delta_{31} &= 0, & \delta_{32} &= 0, & \delta_{33} &= 1.
+\end{align*}
+
+Escribiéndola en forma matricial:
+\begin{equation*}
+    [\delta_{ij}] =
+    \begin{pmatrix}
+        \delta_{11} & \delta_{12} & \delta_{13} \\
+        \delta_{21} & \delta_{22} & \delta_{23} \\
+        \delta_{31} & \delta_{32} & \delta_{33}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}.
+\end{equation*}
+
+Por lo tanto, la métrica Euclideana toma la forma compacta:
+\begin{equation*}
+    g_{ij} = \delta_{ij}.
+\end{equation*}
+
+Se debe aclarar que $\delta_{ij}$ no es la matriz identidad, 
+sino que es la \textbf{métrica del espacio plano} $\mathbb{R}^3$ 
+descrito en coordenadas cartesianas.  
+De manera análoga, la métrica en coordenadas esféricas también 
+describe el espacio plano $\mathbb{R}^3$, pero en coordenadas 
+esféricas.  
+Como veremos más adelante, ambas métricas están relacionadas 
+por una \textbf{transformación de coordenadas}.
+
+\clearpage
+
+Sean $\vec{A}$ y $\vec{B}$ dos vectores descritos en el sistema de 
+coordenadas $Ox^1x^2x^3$, con base coordenada 
+$\{\vec{e}_i\}_{i=1}^3$. El producto escalar entre ellos toma la forma:
+\begin{align*}
+    \vec{A} \cdot \vec{B} 
+        &= \left( \sum_{i=1}^3 A^i \vec{e}_i \right) 
+           \cdot 
+           \left( \sum_{j=1}^3 B^j \vec{e}_j \right) \\[4pt]
+        &= \sum_{i=1}^3 \sum_{j=1}^3 
+           \big( \vec{e}_i \cdot \vec{e}_j \big) A^i B^j \\[4pt]
+        &= \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} \, A^i B^j \,.
+\end{align*}
+
+\begin{apuntebloque}{Definición}
+El \textbf{producto escalar} entre los vectores $\vec{A}$ y $\vec{B}$, 
+en el sistema coordenado $Ox^1x^2x^3$, es
+\begin{equation*}
+    \vec{A} \cdot \vec{B} 
+    = \sum_{i=1}^3 \sum_{j=1}^3 g_{ij}\,A^i B^j \,.
+\end{equation*}
+\end{apuntebloque}
+
+\begin{apuntebloque}{Definición}
+La \textbf{magnitud} de un vector $\vec{A}$, en el sistema coordenado 
+$Ox^1x^2x^3$, es
+\begin{equation*}
+    \|\vec{A}\| = \sqrt{\vec{A} \cdot \vec{A}}
+    = \sqrt{\sum_{i=1}^3 \sum_{j=1}^3 g_{ij}\,A^i A^j} \,.
+\end{equation*}
+\end{apuntebloque}
+
+\begin{apuntebloque}{Ejemplo: Producto escalar y magnitud en distintos sistemas coordenados}
+
+\textbf{a) Coordenadas Cartesianas}
+
+\begin{align*}
+    \vec{A} \cdot \vec{B} 
+        &= \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i B^j \\[4pt] 
+        &= \sum_{i=1}^3 \sum_{j=1}^3 \delta_{ij} A^i B^j \\[4pt]
+        &= \sum_{j=1}^3 \delta_{1j} A^1 B^j 
+         + \sum_{j=1}^3 \delta_{2j} A^2 B^j 
+         + \sum_{j=1}^3 \delta_{3j} A^3 B^j \\[4pt]
+        &= \delta_{11}A^1B^1 + \delta_{12}A^1B^2 + \delta_{13}A^1B^3 \\
+        &\quad + \delta_{21}A^2B^1 + \delta_{22}A^2B^2 + \delta_{23}A^2B^3 \\
+        &\quad + \delta_{31}A^3B^1 + \delta_{32}A^3B^2 + \delta_{33}A^3B^3 \\[4pt]
+        &= A^1B^1 + A^2B^2 + A^3B^3 \,.
+\end{align*}
+
+Por lo tanto,
+\begin{equation*}
+    \vec{A} \cdot \vec{B} = A^1B^1 + A^2B^2 + A^3B^3 \,.
+\end{equation*}
+
+La magnitud del vector $\vec{A}$ es
+\begin{equation*}
+    \|\vec{A}\| = \sqrt{(A^1)^2 + (A^2)^2 + (A^3)^2} \,.
+\end{equation*}
+
+\bigskip
+
+\end{apuntebloque}
+
+\begin{apuntebloque}{}
+
+\textbf{b) Coordenadas Esféricas}
+
+\begin{align*}
+    \vec{A} \cdot \vec{B} 
+        &= \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} A^i B^j \\[4pt]
+        &= \sum_{j=1}^3 g_{1j} A^r B^j 
+         + \sum_{j=1}^3 g_{2j} A^\phi B^j
+         + \sum_{j=1}^3 g_{3j} A^\theta B^j \\[4pt]
+        &= g_{11}A^r B^r + g_{12}A^r B^\phi + g_{13}A^r B^\theta \\
+        &\quad + g_{21}A^\phi B^r + g_{22}A^\phi B^\phi + g_{23}A^\phi B^\theta \\
+        &\quad + g_{31}A^\theta B^r + g_{32}A^\theta B^\phi + g_{33}A^\theta B^\theta \\[4pt]
+        &= A^r B^r + r^2\sin^2\theta \, A^\phi B^\phi + r^2 A^\theta B^\theta \,.
+\end{align*}
+
+Por lo tanto,
+\begin{equation*}
+    \vec{A} \cdot \vec{B} = A^r B^r + r^2\sin^2\theta \, A^\phi B^\phi + r^2 A^\theta B^\theta \,.
+\end{equation*}
+
+La magnitud del vector $\vec{A}$ es
+\begin{equation*}
+    \|\vec{A}\| = \sqrt{(A^r)^2 + r^2\sin^2\theta \,(A^\phi)^2 + r^2 (A^\theta)^2} \,.
+\end{equation*}
+\end{apuntebloque}
+
+Si la métrica $g_{ij}$ es vista como una matriz de $3 \times 3$, 
+entonces puede tener inversa. Pero, antes de definir la \textbf{métrica inversa}, primero reescribamos 
+las operaciones matriciales usando la \textbf{notación de índices}, 
+es decir, la \textbf{notación tensorial}.
+
+Sea $A$ una matriz de orden $3 \times 3$ y escribámosla usando 
+\textbf{notación de índices}:
+
+\[
+A \;\; \longrightarrow \;\; A^i{}_j,
+\]
+
+donde:
+\begin{itemize}
+    \item El índice $i$ rotula las filas.
+    \item El índice $j$ rotula las columnas.
+\end{itemize}
+
+En forma explícita:
+\begin{equation*}
+A^i{}_j =
+\begin{pmatrix}
+    A^1{}_1 & A^1{}_2 & A^1{}_3 \\
+    A^2{}_1 & A^2{}_2 & A^2{}_3 \\
+    A^3{}_1 & A^3{}_2 & A^3{}_3
+\end{pmatrix}.
+\end{equation*}
+
+Sean las matrices $A$ y $B$ y sean $\alpha, \beta \in \mathbb{R}$, 
+entonces su combinación lineal es
+\begin{align*}
+    C &= \alpha A + \beta B \\[4pt]
+    &=
+\alpha
+\begin{pmatrix}
+    A^1{}_1 & A^1{}_2 & A^1{}_3 \\
+    A^2{}_1 & A^2{}_2 & A^2{}_3 \\
+    A^3{}_1 & A^3{}_2 & A^3{}_3
+\end{pmatrix}
++
+\beta
+\begin{pmatrix}
+    B^1{}_1 & B^1{}_2 & B^1{}_3 \\
+    B^2{}_1 & B^2{}_2 & B^2{}_3 \\
+    B^3{}_1 & B^3{}_2 & B^3{}_3
+\end{pmatrix}\\[4pt]
+&=
+\begin{pmatrix}
+    \alpha A^1{}_1 & \alpha A^1{}_2 & \alpha A^1{}_3 \\
+    \alpha A^2{}_1 & \alpha A^2{}_2 & \alpha A^2{}_3 \\
+    \alpha A^3{}_1 & \alpha A^3{}_2 & \alpha A^3{}_3
+\end{pmatrix}
++
+\begin{pmatrix}
+    \beta B^1{}_1 & \beta B^1{}_2 & \beta B^1{}_3 \\
+    \beta B^2{}_1 & \beta B^2{}_2 & \beta B^2{}_3 \\
+    \beta B^3{}_1 & \beta B^3{}_2 & \beta B^3{}_3
+\end{pmatrix}\\[4pt]
+&=
+\begin{pmatrix}
+    \alpha A^1{}_1 + \beta B^1{}_1 & \alpha A^1{}_2 + \beta B^1{}_2 & \alpha A^1{}_3 + \beta B^1{}_3 \\
+    \alpha A^2{}_1 + \beta B^2{}_1 & \alpha A^2{}_2 + \beta B^2{}_2 & \alpha A^2{}_3 + \beta B^2{}_3 \\
+    \alpha A^3{}_1 + \beta B^3{}_1 & \alpha A^3{}_2 + \beta B^3{}_2 & \alpha A^3{}_3 + \beta B^3{}_3
+\end{pmatrix}\\[4pt]
+&=
+\begin{pmatrix}
+    C^1{}_1 & C^1{}_2 & C^1{}_3 \\
+    C^2{}_1 & C^2{}_2 & C^2{}_3 \\
+    C^3{}_1 & C^3{}_2 & C^3{}_3
+\end{pmatrix}.
+\end{align*}
+
+En notación de índices:
+\begin{equation*}
+    C^i{}_j = \alpha A^i{}_j + \beta B^i{}_j \,.
+\end{equation*}
+
+Ahora consideremos el producto matricial $C = AB$ en notación tensorial:
+
+\begin{align*}
+C &= AB \\[4pt] 
+&=
+\begin{pmatrix}
+    A^1{}_1 & A^1{}_2 & A^1{}_3 \\
+    A^2{}_1 & A^2{}_2 & A^2{}_3 \\
+    A^3{}_1 & A^3{}_2 & A^3{}_3
+\end{pmatrix}
+\begin{pmatrix}
+    B^1{}_1 & B^1{}_2 & B^1{}_3 \\
+    B^2{}_1 & B^2{}_2 & B^2{}_3 \\
+    B^3{}_1 & B^3{}_2 & B^3{}_3
+\end{pmatrix} \\[4pt]
+&=
+\begin{pmatrix}
+    \sum_{k=1}^3 A^1{}_k B^k{}_1 & \sum_{k=1}^3 A^1{}_k B^k{}_2 & \sum_{k=1}^3 A^1{}_k B^k{}_3 \\
+    \sum_{k=1}^3 A^2{}_k B^k{}_1 & \sum_{k=1}^3 A^2{}_k B^k{}_2 & \sum_{k=1}^3 A^2{}_k B^k{}_3 \\
+    \sum_{k=1}^3 A^3{}_k B^k{}_1 & \sum_{k=1}^3 A^3{}_k B^k{}_2 & \sum_{k=1}^3 A^3{}_k B^k{}_3
+\end{pmatrix} \\[4pt]
+&=
+\begin{pmatrix}
+    C^1{}_1 & C^1{}_2 & C^1{}_3 \\
+    C^2{}_1 & C^2{}_2 & C^2{}_3 \\
+    C^3{}_1 & C^3{}_2 & C^3{}_3
+\end{pmatrix}.
+\end{align*}
+
+En notación de índices:
+\begin{equation*}
+    C^i{}_j = \sum_{k=1}^3 A^i{}_k B^k{}_j \,.
+\end{equation*}
+
+El producto matricial se realiza con un índice arriba y otro abajo 
+(índice $k$), esto es porque el producto matricial no debe depender 
+del sistema coordenado.  
+
+Un producto matricial de especial interés es el de una matriz y su 
+inversa:
+\begin{equation*}
+    A A^{-1} = A^{-1} A = I \,,
+\end{equation*}
+donde $I$ es la \textbf{matriz identidad}.  
+
+Por lo tanto, necesitamos definir la matriz identidad.
+
+\begin{apuntebloque}{Definición}
+Se define la \textbf{matriz identidad} como
+\begin{equation*}
+\delta^i{}_j =
+\begin{cases}
+    1, & \text{si } i = j, \\[6pt]
+    0, & \text{si } i \neq j.
+\end{cases}
+\end{equation*}
+\end{apuntebloque}
+
+Escribiendo la definición en forma matricial:
+\begin{equation*}
+    \delta^i{}_j =
+    \begin{pmatrix}
+        \delta^1{}_1 & \delta^1{}_2 & \delta^1{}_3 \\
+        \delta^2{}_1 & \delta^2{}_2 & \delta^2{}_3 \\
+        \delta^3{}_1 & \delta^3{}_2 & \delta^3{}_3
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}.
+\end{equation*}
+
+Donde:
+\begin{itemize}
+    \item El índice $i$ rotula las \textbf{filas}.
+    \item El índice $j$ rotula las \textbf{columnas}.
+\end{itemize}
+
+La definición de la matriz identidad es la misma que la definición de la 
+métrica Euclidiana. Sin embargo, la definición de la matriz identidad es 
+independiente del sistema de coordenadas.  
+
+Usando la definición de la matriz identidad, escribimos el producto de una 
+matriz y su inversa en notación tensorial:
+\begin{equation*}
+    \sum_{k=1}^3 A^i{}_k (A^{-1})^k{}_j
+    = \sum_{k=1}^3 (A^{-1})^i{}_k A^k{}_j
+    = \delta^i{}_j \,.
+\end{equation*}
+
+No se debe olvidar que, para que exista la inversa de una matriz $A$, su 
+determinante debe ser distinto de cero:
+\begin{equation*}
+    \det(A^i{}_j) \neq 0 \,.
+\end{equation*}
+
+\begin{apuntebloque}{Definición}
+El \textbf{determinante de la métrica} $g_{ij}$ se denota como
+\begin{equation*}
+    g = \det(g_{ij}) \,.
+\end{equation*}
+\end{apuntebloque}
+
+Como $g_{ij}$ tiene los índices abajo, entonces la \textbf{matriz inversa} 
+tendrá los índices arriba, puesto que la \textbf{matriz identidad} posee 
+un índice abajo y uno arriba.
+
+Si $g \neq 0 \;\;\Rightarrow\;\; \exists\, g^{ij}$ tal que
+\begin{equation*}
+    \sum_{k=1}^3 g^{ik} g_{kj} = \delta^i{}_j,
+    \qquad
+    \sum_{k=1}^3 g_{jk} g^{ki} = \delta^i{}_j \,.
+\end{equation*}
+
+
+\begin{apuntebloque}{Observación}
+La clave de la demostración está en reconocer que:
+\begin{equation*}
+    (g^{-1})^t \cdot g = I
+\end{equation*}
+
+implica que $(g^{-1})^t$ es la inversa de $g$ por la izquierda, y por la unicidad de la inversa, debe ser igual a $g^{-1}$.
+\end{apuntebloque}
+
+
+\begin{apuntebloque}{Proposición}
+Si $g_{ij}$ es simétrico (es decir, $g^t = g$), entonces $g^{ij}$ también es simétrico.\\
+
+\textbf{Demostración:}
+
+Sea $g$ una matriz simétrica invertible. Por definición de matriz inversa:
+\begin{equation*}
+    g \cdot g^{-1} = I \,.
+\end{equation*}
+
+Tomando transpuesta en ambos lados:
+\begin{equation*}
+(g \cdot g^{-1})^t = I^t \,.
+\end{equation*}
+
+Por propiedades de la transpuesta:
+\begin{equation*}
+(g^{-1})^t \cdot g^t = I \,.
+\end{equation*}
+Dado que $g$ es simétrica ($g^t = g$):
+\begin{equation*}
+(g^{-1})^t \cdot g = I \,.
+\end{equation*}
+
+Esto muestra que $(g^{-1})^t$ es una inversa por la izquierda de $g$. Pero como la inversa de una matriz es única, se concluye que:
+\begin{equation*}
+(g^{-1})^t = g^{-1} \,.
+\end{equation*}
+
+Por lo tanto, $g^{-1}$ es simétrica, lo que en componentes significa:
+\begin{equation*}
+g^{ij} = g^{ji} \,.
+\end{equation*}
+\hfill $\square$
+\end{apuntebloque}
+
+
+\begin{apuntebloque}{Ejemplo: Determinante e inversa de la métrica}
+
+\textbf{a) Coordenadas Cartesianas}  \\
+
+La métrica en coordenadas cartesianas es $g_{ij} = \delta_{ij}$, 
+la cual tiene determinante uno. Su inversa es
+\begin{equation*}
+    [\delta^{ij}] =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix},
+    \qquad
+    \delta^{ij} =
+    \begin{cases}
+        1, & i = j, \\[6pt]
+        0, & i \neq j.
+    \end{cases}
+\end{equation*}
+
+Donde:
+\begin{itemize}
+    \item El índice $i$ rotula las \textbf{filas}.
+    \item El índice $j$ rotula las \textbf{columnas}.
+\end{itemize}
+
+La métrica inversa $\delta^{ij}$ es idéntica a la matriz identidad, 
+pero no es la matriz identidad: es la \textbf{métrica inversa euclidiana}.
+
+\bigskip
+
+\textbf{b) Coordenadas Esféricas} \\ 
+
+El determinante de la métrica en coordenadas esféricas es
+\begin{align*}
+    \det(g_{ij}) &=
+    \det\!
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & r^2\sin^2\theta & 0 \\
+        0 & 0 & r^2
+    \end{pmatrix} \\[4pt]
+    &= r^4 \sin^2\theta \,.
+\end{align*}
+
+Este determinante es distinto de cero, salvo en $r=0$ y 
+$\theta \notin \{ 0,\pi \}$, que son los puntos donde los vectores 
+$\vec{e}_\phi$ y $\vec{e}_\theta$ se anulan.  
+
+La métrica inversa en coordenadas esféricas es
+\begin{equation*}
+    [g^{ij}] =
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & \dfrac{1}{r^2 \sin^2\theta} & 0 \\
+        0 & 0 & \dfrac{1}{r^2}
+    \end{pmatrix},
+\end{equation*}
+la cual diverge en $r=0$ y en $\theta \notin \{0,\pi\}
+$.
+\end{apuntebloque}
+
+La métrica no solo permite obtener el elemento de línea, 
+sino que además contiene información acerca del sistema 
+coordenado, como por ejemplo dónde se anulan y/o divergen 
+los vectores base coordenados.  
+
+\begin{apuntebloque}{Proposición}
+La derivada de $g$ con respecto a la componente $g_{ij}$ satisface
+\begin{equation*}
+    \frac{\partial g}{\partial g_{ij}} = g \, g^{ij}.
+\end{equation*}
+\end{apuntebloque}
+
+\newpage
+
+\end{document}

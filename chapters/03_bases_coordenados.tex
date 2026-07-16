@@ -1,0 +1,1223 @@
+% !TeX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Bases Coordenados}
+
+\section{Sistemas coordenados y líneas coordenadas}
+
+Un sistema coordenado en el espacio consiste en \textbf{tres familias de curvas coordenadas} (equivalentemente, en tres familias de superficies coordenadas cuyas intersecciones definen dichas curvas), tales que por cada punto \emph{regular} de la región pasa exactamente una curva de cada familia. En cada punto regular, los \textbf{vectores tangentes} a esas tres curvas son \textbf{linealmente independientes} (y, en sistemas ortogonales, además son mutuamente perpendiculares). Cada familia induce un campo de direcciones, es decir, una posible dirección de movimiento en el espacio.
+
+Ahora formalicemos lo aprendido en las coordenadas cartesianas y esféricas, \textbf{de modo que} se aplique a cualquier sistema coordenado.
+
+
+\section{Vector posición y notación compacta}
+
+Una vez escogido el sistema coordenado, un punto $P$ del espacio ($\mathbb{R}^3$) queda determinado por el llamado \textbf{Vector Posición}
+\begin{equation*}
+     \vec{x} = \vec{x}(x^1,x^2,x^3)\,,
+\end{equation*}
+donde
+\begin{align*}
+    \alpha &= x^1 \,, \\
+    \beta &= x^2 \,, \\
+    \gamma &= x^3\,, 
+\end{align*}
+que depende de tres parámetros libres; $x^1$, $x^2$ y $x^3$ que definen el sistema coordenado, denotado como $Ox^1x^2x^3$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/03_bases_coordenados/bases_fig0.png}
+    \caption{Vector Posición.}
+\end{figure}
+
+\begin{apuntebloque}{Ejemplo}
+\begin{itemize}
+    \item \textbf{Coordenadas cartesianas:} $x^1=x$,  $x^2=y$ y $x^3=z$ 
+    \item \textbf{Coordenadas esféricas:} $x^1=r$,  $x^2=\phi$ y $x^3=\theta$ 
+\end{itemize}
+\end{apuntebloque}
+
+Al variar los tres parámetros sobre sus dominios, la aplicación
+\begin{equation*}
+\vec{x}: I_1 \times I_2 \times I_3 \longrightarrow \Omega \subseteq \mathbb{R}^3
+\end{equation*}
+cubre una región $\Omega$ del espacio (no necesariamente todo $\mathbb{R}^3$).
+Con un parámetro variable y dos fijos se obtiene una \textbf{línea coordenada};
+con dos parámetros variables y uno fijo se obtiene una \textbf{superficie coordenada}.
+
+\textbf{Líneas coordenadas} (dos parámetros fijos, uno variable):
+\begin{itemize}
+    \item \textbf{Línea 1 (variando $x^1$):} fijos $x^2 = x^2_0$, $x^3 = x^3_0$,
+    \begin{equation*}
+        \mathcal{C}_1(x^2_0,x^3_0)
+        = \left\{\, \vec{x}(x^1,x^2_0,x^3_0) \;\middle|\; x^1 \in I_1 \,\right\}.
+    \end{equation*}
+
+    \item \textbf{Línea 2 (variando $x^2$):} fijos $x^1 = x^1_0$, $x^3 = x^3_0$,
+    \begin{equation*}
+        \mathcal{C}_2(x^1_0,x^3_0)
+        = \left\{\, \vec{x}(x^1_0,x^2,x^3_0) \;\middle|\; x^2 \in I_2 \,\right\}.
+    \end{equation*}
+
+    \item \textbf{Línea 3 (variando $x^3$):} fijos $x^1 = x^1_0$, $x^2 = x^2_0$,
+    \begin{equation*}
+        \mathcal{C}_3(x^1_0,x^2_0)
+        = \left\{\, \vec{x}(x^1_0,x^2_0,x^3) \;\middle|\; x^3 \in I_3 \,\right\}.
+    \end{equation*}
+\end{itemize}
+
+\textbf{Superficies coordenadas} (un parámetro fijo, dos variables):
+\begin{itemize}
+    \item \textbf{Superficie 1:} $x^1 = x^1_0$,
+    \begin{equation*}
+        \mathcal{S}_1(x^1_0)
+        = \left\{\, \vec{x}(x^1_0,x^2,x^3) \;\middle|\; (x^2,x^3) \in I_2 \times I_3 \,\right\}.
+    \end{equation*}
+
+    \item \textbf{Superficie 2:} $x^2 = x^2_0$,
+    \begin{equation*}
+        \mathcal{S}_2(x^2_0)
+        = \left\{\, \vec{x}(x^1,x^2_0,x^3) \;\middle|\; (x^1,x^3) \in I_1 \times I_3 \,\right\}.
+    \end{equation*}
+
+    \item \textbf{Superficie 3:} $x^3 = x^3_0$,
+    \begin{equation*}
+        \mathcal{S}_3(x^3_0)
+        = \left\{\, \vec{x}(x^1,x^2,x^3_0) \;\middle|\; (x^1,x^2) \in I_1 \times I_2 \,\right\}.
+    \end{equation*}
+\end{itemize}
+
+\textbf{Región cubierta (volumen):}
+\begin{equation*}
+\Omega \;=\; \operatorname{Im}(\vec{x})
+\;=\; \left\{\, \vec{x}(x^1,x^2,x^3) \;\middle|\; (x^1,x^2,x^3)\in I_1\times I_2\times I_3 \,\right\}.
+\end{equation*}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\linewidth]{figures/03_bases_coordenados/bases_fig1.png}
+    \caption{Líneas coordenadas.}
+\end{figure}
+
+Para simplificar la notación de las líneas coordenadas, usaremos la siguiente convención:
+
+\begin{itemize}
+    \item $x^1$: denota las líneas coordenadas $\vec{x}(x^1, x^{2}_{0}, x^{3}_{0})$ .
+    \item $x^2$: denota las líneas coordenadas $\vec{x}(x^{1}_{0}, x^2, x^{3}_{0})$ .
+    \item $x^3$: denota las líneas coordenadas $\vec{x}(x^{1}_{0}, x^{2}_{0}, x^{3})$ .
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig2.png}
+    \caption{Líneas coordenadas $x^1$, $x^2$ y $x^3$ .}
+\end{figure}
+
+\clearpage
+\textbf{Ejemplo}: Dos ejemplos son las coordenadas cartesianas y esféricas
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig3.png}
+    \caption{Líneas coordenadas cartesianas.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig4.png}
+    \caption{Líneas coordenadas esféricas.}
+\end{figure}
+
+Para simplificar los futuros cálculos, introduciremos una notación más compacta:
+
+\begin{equation*}
+\left.
+\begin{aligned}
+    x^1 \\
+    x^2 \\
+    x^3 
+\end{aligned}
+\right\}
+\quad \longrightarrow \quad x^i\,, \quad \text{con } i = 1, 2, 3 \,.
+\end{equation*}
+
+Esto significa que podemos compactar las coordenadas de la forma:
+
+\begin{equation*}
+\left(x^1, x^2, x^3\right) \quad \longrightarrow \quad x^i\,, \quad \text{con } i = 1, 2, 3 \,.
+\end{equation*}
+
+Tal que podemos escribir el vector posición de manera más compacta como:
+
+\begin{equation*}
+\vec{x}\left(x^1, x^2, x^3\right) := \vec{x}\left(x^i\right)\,, \quad \text{con } i = 1, 2, 3 \,.
+\end{equation*}
+
+\clearpage
+\section{Vectores tangentes y base coordenada}
+Puesto que cada parámetro $x^i$, con $i = 1, 2, 3$, puede variar libremente generando una curva, entonces, de acuerdo a la definición estudiada en el capítulo anterior, dicha curva tendrá un vector tangente asociado, el cual determina la dirección en que evoluciona la línea coordenada.
+
+\begin{apuntebloque}{Definición:}
+Se definen los vectores tangentes asociados a cada línea coordenada del sistema coordenado $Ox^1x^2x^3$ elegido como:
+\begin{itemize}
+    \item \textbf{a)} La curva coordenada generada por $x^1$ posee el vector tangente:
+    \begin{equation*}
+        \vec{e}_1= \frac{\partial \vec{x}}{\partial x^1} \,.
+    \end{equation*}
+        \item \textbf{b)} La curva coordenada generada por $x^2$ posee el vector tangente:
+    \begin{equation*}
+        \vec{e}_2= \frac{\partial \vec{x}}{\partial x^2} \,.
+    \end{equation*}
+        \item \textbf{c)} La curva coordenada generada por $x^3$ posee el vector tangente:
+    \begin{equation*}
+        \vec{e}_3= \frac{\partial \vec{x}}{\partial x^3} \,.
+    \end{equation*}
+\end{itemize}
+\end{apuntebloque}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig5.png}
+    \caption{Vector tangente a la línea coordenada $x^1$.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig6.png}
+    \caption{Vector tangente a la línea coordenada $x^2$.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig7.png}
+    \caption{Vector tangente a la línea coordenada $x^3$.}
+\end{figure}
+
+\clearpage
+Así, en cada punto $P \in \mathbb{R}^3$ hay tres vectores linealmente independientes, de acuerdo al sistema de coordenado $Ox^1x^2x^3$,
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig8.png}
+    \caption{Vector tangentes.}
+\end{figure}
+
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+        \vec{e}_1&=\frac{\partial \vec{x}}{\partial x^1} \,,\\
+        \vec{e}_2&=\frac{\partial \vec{x}}{\partial x^2} \,,\\
+        \vec{e}_3&=\frac{\partial \vec{x}}{\partial x^3}\,.
+    \end{aligned}
+    \right. \quad \Leftrightarrow \quad \vec{e}_i=\frac{\partial \vec{x}}{\partial x^i}\,,\quad i\in\{1,2,3\} \,.
+\end{equation*}
+
+\begin{apuntebloque}{Definición}
+El vector tangente a la curva coordenada $x^i$, $i=1,2,3$ está dada por
+\begin{equation*}
+\vec{e}_i=\frac{\partial \vec{x}}{\partial x^i}\,, \quad i\in\{1,2,3\}  \,. 
+\end{equation*}
+ y son llamados una base coordenada o base holónoma\footnote{Depende del sistema de coordenado.}.
+\end{apuntebloque}
+
+Los vectores $\vec{e}_i\,, \, i = 1,2,3$, no son necesariamente ortogonales y tampoco unitarios.
+
+
+\begin{apuntebloque}{Proposición}
+ Si las líneas coordenadas $x^i$ y $x^j$, con $i\neq j$, son ortogonales entonces:
+ \begin{equation*}
+     \vec{e}_i \cdot \vec{e}_j = 0\, ,\quad i \neq j\,.
+ \end{equation*}
+\end{apuntebloque}
+
+\begin{apuntebloque}{Ejemplo: Coordenadas cartesianas}
+
+El vector posición de un punto $P \in \mathbb{R}^3$ en coordenadas cartesianas está dado por
+\begin{equation*}
+\vec{x}(x^i)=\vec{x}(x^1, x^2, x^3) = x\,\hat{\imath} + y\,\hat{\jmath} + z\,\hat{k}\,,
+\end{equation*}
+donde $x^1 = x$, $x^2 = y$ y $x^3 = z$.
+
+\begin{itemize}
+  \item[i)] El vector tangente a la línea coordenada generada por $x^1 = x$ es:
+  \begin{equation*}
+  \begin{aligned}
+  \vec{e}_1
+  &= \frac{\partial \vec{x}}{\partial x^1}
+  = \frac{\partial}{\partial x}\!\left(x\,\hat{\imath} + y\,\hat{\jmath} + z\,\hat{k}\right)
+  = \hat{\imath}\,.
+  \end{aligned}
+  \end{equation*}
+
+  \item[ii)] El vector tangente a la línea coordenada generada por $x^2 = y$ es:
+  \begin{equation*}
+  \begin{aligned}
+  \vec{e}_2
+  &= \frac{\partial \vec{x}}{\partial x^2}
+  = \frac{\partial}{\partial y}\!\left(x\,\hat{\imath} + y\,\hat{\jmath} + z\,\hat{k}\right)
+  = \hat{\jmath}\,.
+  \end{aligned}
+  \end{equation*}
+
+  \item[iii)] El vector tangente a la línea coordenada generada por $x^3 = z$ es:
+  \begin{equation*}
+  \begin{aligned}
+  \vec{e}_3
+  &= \frac{\partial \vec{x}}{\partial x^3}
+  = \frac{\partial}{\partial z}\!\left(x\,\hat{\imath} + y\,\hat{\jmath} + z\,\hat{k}\right)
+  = \hat{k}\,.
+  \end{aligned}
+  \end{equation*}
+\end{itemize}
+
+\end{apuntebloque}
+
+\begin{apuntebloque}{}
+
+Resumiendo, la base coordenada (holónoma) de las coordenadas cartesianas es
+\begin{equation*}
+\vec{e}_1 = \hat{\imath},\qquad
+\vec{e}_2 = \hat{\jmath},\qquad
+\vec{e}_3 = \hat{k}.
+\end{equation*}
+
+Los vectores de base son unitarios:
+\begin{equation*}
+\|\vec{e}_1\| = \|\hat{\imath}\| = \sqrt{\hat{\imath}\!\cdot\!\hat{\imath}} = 1,\qquad
+\|\vec{e}_2\| = \|\hat{\jmath}\| = \sqrt{\hat{\jmath}\!\cdot\!\hat{\jmath}} = 1,\qquad
+\|\vec{e}_3\| = \|\hat{k}\| = \sqrt{\hat{k}\!\cdot\!\hat{k}} = 1.
+\end{equation*}
+
+Además, los vectores de base son ortogonales:
+\begin{equation*}
+\hat{\imath}\!\cdot\!\hat{\jmath} = 0 \Rightarrow \vec{e}_1\!\cdot\!\vec{e}_2 = 0,\qquad
+\hat{\imath}\!\cdot\!\hat{k} = 0 \Rightarrow \vec{e}_1\!\cdot\!\vec{e}_3 = 0,\qquad
+\hat{\jmath}\!\cdot\!\hat{k} = 0 \Rightarrow \vec{e}_2\!\cdot\!\vec{e}_3 = 0.
+\end{equation*}
+Por lo tanto, $\vec{e}_i\!\cdot\!\vec{e}_j = 0$ para $i\neq j$ con $i,j\in\{1,2,3\}$, es decir, \textbf{las líneas coordenadas $x$, $y$ y $z$ son ortogonales}.
+
+Por último, las relaciones vectoriales básicas:
+\begin{equation*}
+\begin{aligned}
+\hat{\imath} \times \hat{\jmath} &= \hat{k} &&\Rightarrow&& \vec{e}_1 \times \vec{e}_2 = -\,\vec{e}_2 \times \vec{e}_1 = \vec{e}_3,\\[4pt]
+\hat{\imath} \times \hat{k} &= -\,\hat{\jmath} &&\Rightarrow&& \vec{e}_1 \times \vec{e}_3 = -\,\vec{e}_3 \times \vec{e}_1 = -\,\vec{e}_2,\\[4pt]
+\hat{\jmath} \times \hat{k} &= \hat{\imath} &&\Rightarrow&& \vec{e}_2 \times \vec{e}_3 = -\,\vec{e}_3 \times \vec{e}_2 = \vec{e}_1.
+\end{aligned}
+\end{equation*}
+
+El producto vectorial para esta base puede recordarse con la regla de la mano derecha (véase la Fig.~\ref{fig:orientacionesR3}). Con esta convención, $\{\hat{\imath},\hat{\jmath},\hat{k}\}$ forman una base coordenada ortonormal \textbf{dextrógira} (mano derecha). Finalmente, esta base es constante:
+\begin{equation*}
+\frac{\partial \vec{e}_i}{\partial x^j} = 0,\qquad i,j\in\{1,2,3\}.
+\end{equation*}
+\end{apuntebloque}
+
+% Figura fuera del cuadro (referenciada arriba)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/03_bases_coordenados/bases_fig9.png}
+    \caption{Orientaciones en $\mathbb{R}^3$: derecha (dextrógira) con $(\hat{\imath}\times\hat{\jmath})\cdot \hat{k}=+1$ y su imagen especular (levógira) con $(\hat{\imath}\times\hat{\jmath})\cdot \hat{k}=-1$. En estas notas se usa la convención dextrógira.}
+    \label{fig:orientacionesR3}
+\end{figure}
+
+\clearpage
+% Requiere en el preámbulo:
+
+\begin{apuntebloque}{Ejemplo: Coordenadas esféricas}
+
+El vector posición de un punto $P\in\mathbb{R}^3$ en coordenadas esféricas está dado por
+\begin{equation*}
+\vec{x}(r,\phi,\theta)=r\cos\phi\,\sin\theta\,\hat{\imath}+r\sin\phi\,\sin\theta\,\hat{\jmath}+r\cos\theta\,\hat{k}\,,
+\end{equation*}
+donde
+\begin{equation*}
+x^1=r\in[0,\infty),\qquad
+x^2=\phi\in[0,2\pi),\qquad
+x^3=\theta\in[0,\pi]\,.
+\end{equation*}
+
+\begin{itemize}
+\item[\textbf{i)}] \textbf{Línea $r$:}
+\begin{equation*}
+\vec{e}_1=\frac{\partial\vec{x}}{\partial x^1}
+=\frac{\partial\vec{x}}{\partial r}=\cos\phi\,\sin\theta\,\hat{\imath}+\sin\phi\,\sin\theta\,\hat{\jmath}+\cos\theta\,\hat{k}\\[2pt]=: \vec{e}_r\,.
+\end{equation*}
+Es directo observar que $\vec{e}_r=\hat{r}$; por tanto,
+\begin{equation*}
+\vec{e}_r(\phi,\theta)=\hat{r}(\phi,\theta),\qquad
+\|\vec{e}_r\|=\|\hat{r}\|=1,\qquad
+\vec{x}(r,\phi,\theta)=r\,\hat{r}(\phi,\theta).
+\end{equation*}
+Nótese que $\hat{r}$ nunca se anula.
+
+\item[\textbf{ii)}] \textbf{Línea $\phi$:}
+\begin{equation*}
+\vec{e}_2=\frac{\partial\vec{x}}{\partial x^2}
+=\frac{\partial\vec{x}}{\partial\phi}
+=-\,r\sin\phi\,\sin\theta\,\hat{\imath}+r\cos\phi\,\sin\theta\,\hat{\jmath}
+=r\sin\theta\big(-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath}\big)=: \vec{e}_\phi\,.
+\end{equation*}
+$\vec{e}_\phi$ es el vector tangente a la circunferencia $\vec{x}(r_0,\phi,\theta_0)$ (paralelo) para $r=r_0$ y $\theta=\theta_0$; véase Fig.~\ref{fig:sph-ephi-parallel}.
+
+\medskip
+\noindent Propiedades inmediatas:
+\begin{equation*}
+r=0\Rightarrow \vec{e}_\phi(0,\phi,\theta)=\vec{0},\qquad
+\theta\in\{0,\pi\}\Rightarrow \vec{e}_\phi(r,\phi,\theta)=\vec{0},\qquad
+\|\vec{e}_\phi\|=r\sin\theta.
+\end{equation*}
+En particular, $\|\vec{e}_\phi\|$ se anula en $r=0$ y en los polos $\theta\in\{0,\pi\}$, y crece linealmente con $r$.
+
+Para visualizar $r\to0$, considérese la circunferencia en el plano $Oxy$ ($\theta=\pi/2$):
+\begin{equation*}
+\vec{x}(r_0,\phi,\tfrac{\pi}{2})=r_0(\cos\phi\,\hat{\imath}+\sin\phi\,\hat{\jmath}),\qquad
+\vec{e}_\phi(r_0,\phi,\tfrac{\pi}{2})=r_0(-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath}),
+\end{equation*}
+donde existe un vector tangente para cada $\phi$. Cuando $r_0\to0$, la circunferencia colapsa a un punto y todos esos vectores se anulan (Fig.~\ref{fig:sph-origin-collapse}).
+
+Es común definir el unitario
+\begin{equation*}
+\hat{e}_\phi=\frac{\vec{e}_\phi}{r\sin\theta}=-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath},\qquad
+\|\hat{e}_\phi\|=\sqrt{(-\sin\phi)^2+(\cos\phi)^2}=1,
+\end{equation*}
+véase la comparación de longitudes en la Fig.~\ref{fig:sph-ephi-unit}.
+La diferencia conceptual es que el \emph{mismo} incremento angular $\Delta\phi$ produce arcos $\Delta S$ crecientes con el radio ($\Delta S=r\,\Delta\phi$), como ilustra la Fig.~\ref{fig:sph-arc-angle}; por eso $\vec{e}_\phi$ (no unitario) representa mejor el desplazamiento coordenado que el unitario $\hat{e}_\phi$.
+
+El mismo fenómeno de anulación ocurre en los polos: cuando $\theta\to0$ o $\theta\to\pi$, los paralelos se contraen al eje $z$ y $\|\vec{e}_\phi\|=r\sin\theta\to0$ (Fig.~\ref{fig:sph-poles}).
+
+\item[\textbf{iii)}] \textbf{Línea $\theta$:}
+\begin{align*}
+\vec{e}_\theta
+&=\frac{\partial\vec{x}}{\partial x^3}
+ =\frac{\partial\vec{x}}{\partial\theta} \\
+&=r\cos\phi\,\cos\theta\,\hat{\imath}
+ +r\sin\phi\,\cos\theta\,\hat{\jmath}
+ -r\sin\theta\,\hat{k} \\
+&=r\left[\cos\theta\left(\cos\phi\,\hat{\imath}+\sin\phi\,\hat{\jmath}\right)-\sin\theta\,\hat{k}\right]
+=:\vec{e}_\theta\,.
+\end{align*}
+tangente al meridiano $\vec{x}(r_0,\phi_0,\theta)$ (véase Fig.~\ref{fig:sph-etheta-meridian}). Se anula en $r=0$ y su norma es
+\begin{equation*}
+\|\vec{e}_\theta\|=r.
+\end{equation*}
+\end{itemize}
+
+\medskip
+\noindent \textbf{Resumen de bases holónomas:}
+\begin{equation*}
+\left\{
+\begin{aligned}
+\vec{e}_r(\phi,\theta)&=\cos\phi\,\sin\theta\,\hat{\imath}+\sin\phi\,\sin\theta\,\hat{\jmath}+\cos\theta\,\hat{k}\,,\\[4pt]
+\vec{e}_\phi(r,\phi,\theta)&=r\sin\theta\big(-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath}\big)\,,\\[4pt]
+\vec{e}_\theta(r,\phi,\theta)&=r\left[\cos\theta\left(\cos\phi\,\hat{\imath}+\sin\phi\,\hat{\jmath}\right)-\sin\theta\,\hat{k}\right] \,.
+\end{aligned}
+\right.
+\end{equation*}
+No todos son unitarios:
+\begin{equation*}
+\|\vec{e}_r\|=1,\qquad \|\vec{e}_\phi\|=r\sin\theta,\qquad \|\vec{e}_\theta\|=r.
+\end{equation*}
+
+\end{apuntebloque}
+
+\begin{apuntebloque}{}
+
+\noindent \textbf{Ortogonalidad y orientación.}
+\begin{equation*}
+\vec{e}_r\cdot\vec{e}_\phi=\vec{e}_r\cdot\vec{e}_\theta=\vec{e}_\phi\cdot\vec{e}_\theta=0,
+\end{equation*}
+por lo que las líneas coordenadas $r$, $\phi$ y $\theta$ son \textbf{mutuamente ortogonales} (Fig.~\ref{fig:sph-orthogonality}). Los productos vectoriales (con la convención elegida) son
+\begin{equation*}
+\left\{
+\begin{aligned}
+\vec{e}_r\times\vec{e}_\phi&=-\sin\theta\,\vec{e}_\theta\,,\\[4pt]
+\vec{e}_r\times\vec{e}_\theta&=\dfrac{1}{\sin\theta}\,\vec{e}_\phi\,,\\[4pt]
+\vec{e}_\phi\times\vec{e}_\theta&=-\,r^{2}\sin\theta\,\vec{e}_r\,,
+\end{aligned}
+\right.
+\end{equation*}
+de modo que la base coordenada es un sistema ortogonal \textbf{levógiro} bajo esta convención.
+
+\medskip
+\noindent \textbf{Variación de los vectores base.} Como $\vec{e}_r,\,\vec{e}_\phi,\,\vec{e}_\theta$ varían con la posición, sus derivadas se expresan en la misma base:
+\begin{equation*}
+\setlength{\jot}{4pt}
+\begin{array}{rcl @{\qquad} rcl @{\qquad} rcl}
+\displaystyle \frac{\partial \vec{e}_r}{\partial r} & = & 0 \,,
+& \displaystyle \frac{\partial \vec{e}_r}{\partial \phi} & = & \displaystyle \frac{1}{r}\,\vec{e}_\phi \,,
+& \displaystyle \frac{\partial \vec{e}_r}{\partial \theta} & = & \displaystyle \frac{1}{r}\,\vec{e}_\theta \,, \\[6pt]
+\displaystyle \frac{\partial \vec{e}_\phi}{\partial r} & = & \displaystyle \frac{1}{r}\,\vec{e}_\phi \,,
+& \displaystyle \frac{\partial \vec{e}_\phi}{\partial \phi} & = & \displaystyle -r \sin^2\theta\,\vec{e}_r - \tfrac{1}{2}\sin(2\theta)\,\vec{e}_\theta \,,
+& \displaystyle \frac{\partial \vec{e}_\phi}{\partial \theta} & = & \displaystyle \cot\theta\,\vec{e}_\phi \,,\\[6pt]
+\displaystyle \frac{\partial \vec{e}_\theta}{\partial r} & = & \displaystyle \frac{1}{r}\,\vec{e}_\theta \,,
+& \displaystyle \frac{\partial \vec{e}_\theta}{\partial \phi} & = & \displaystyle \cot\theta\,\vec{e}_\phi \,,
+& \displaystyle \frac{\partial \vec{e}_\theta}{\partial \theta} & = & \displaystyle -r\,\vec{e}_r \,.
+\end{array}
+\end{equation*}
+\end{apuntebloque}
+
+% --- Figuras fuera del cuadro (referenciadas en el texto) ---
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig10.png}
+    \caption{Vector $\vec{e}_\phi$ como tangente a la circunferencia $\vec{x}(r_0,\phi,\theta_0)$ (paralelo) para $r=r_0$ y $\theta=\theta_0$. En cada punto, $\vec{e}_\phi$ es tangente y su módulo es $r_0\sin\theta_0$.}
+    \label{fig:sph-ephi-parallel}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/03_bases_coordenados/bases_fig11.png}
+    \caption{Colapso de $\vec{e}_\phi$ en el origen: al tomar $r_0\to0$, la circunferencia en el plano $Oxy$ se contrae a un punto y todos los vectores tangentes se anulan; el ángulo $\phi$ es indeterminado en $r=0$.}
+    \label{fig:sph-origin-collapse}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/03_bases_coordenados/bases_fig12.png}
+    \caption{Normalización de $\vec{e}_\phi$: el unitario $\hat{e}_\phi=\vec{e}_\phi/(r\sin\theta)$ conserva la dirección pero tiene módulo $1$ independientemente de $r$.}
+    \label{fig:sph-ephi-unit}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\linewidth]{figures/03_bases_coordenados/bases_fig13.png}
+    \caption{Arco vs.\ ángulo: para un mismo $\Delta\phi$, los desplazamientos sobre circunferencias de radios $r_1$ y $r_2$ cumplen $\Delta S_1=r_1\Delta\phi$ y $\Delta S_2=r_2\Delta\phi$.}
+    \label{fig:sph-arc-angle}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig14.png}
+    \caption{Anulación de $\vec{e}_\phi$ en los polos: al acercarse $\theta\to0$ o $\theta\to\pi$, los paralelos se contraen al eje $z$ y $\|\vec{e}_\phi\|=r\sin\theta\to0$.}
+    \label{fig:sph-poles}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\linewidth]{figures/03_bases_coordenados/bases_fig15.png}
+    \caption{Vector $\vec{e}_\theta$ como tangente al meridiano (semicircunferencia) con $r=r_0$ y $\phi=\phi_0$. Su módulo es $\|\vec{e}_\theta\|=r_0$.}
+    \label{fig:sph-etheta-meridian}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\linewidth]{figures/03_bases_coordenados/bases_fig16.png}
+    \caption{Ortogonalidad y orientación: en cada punto, las líneas coordenadas $r$, $\phi$ y $\theta$ son mutuamente ortogonales. Se indica la orientación del triedro $(\vec{e}_r,\vec{e}_\phi,\vec{e}_\theta)$.}
+    \label{fig:sph-orthogonality}
+\end{figure}
+
+\newpage
+
+\section{Bases coordenadas y vectores unitarios}
+
+\begin{apuntebloque}{Definición}
+ Los vectores de la base coordenada $\{\vec{e}_i\}^3_{i=1}$ se normalizan en la forma
+\begin{equation*}
+    \hat{e}_i=\frac{\vec{e}_i}{\|\vec{e}_i\|}, \quad i\in \{1,2,3\}.
+\end{equation*}
+ con
+ \begin{equation*}
+     \|\vec{e}_i\|=\sqrt{\vec{e}_i\cdot\vec{e}_i} \,.
+ \end{equation*}
+\end{apuntebloque}
+
+La base coordenada $\{\vec{e}_i\}_{i=1}^{3}$ puede variar punto a punto del espacio, puesto que puede depender de las coordenadas:
+\begin{equation*}
+\vec{e}_i(x^1, x^2, x^3) := \vec{e}_i(x^j) \,.
+\end{equation*}
+
+Por lo que los vectores unitarios también pueden depender de las coordenadas, en general:
+\begin{equation*}
+\hat{e}_i(x^1, x^2, x^3) := \hat{e}_i(x^j) \,.
+\end{equation*}
+
+Las bases coordenadas $\{\vec{e}_i\}_{i=1}^{3}$ pueden cambiar de dirección y magnitud, pero los vectores unitarios base $\{\hat{e}_i\}_{i=1}^{3}$ solo pueden cambiar de dirección, pues su longitud es constante.
+
+\begin{apuntebloque}{Proposición}
+Sean $\{\hat{e}_i\}_{i=1}^3$ los vectores unitarios asociados a una base coordenada
+(en los puntos donde están definidos). Entonces, para todo $i,j\in\{1,2,3\}$,
+\begin{equation*}
+    \hat{e}_i \cdot \frac{\partial \hat{e}_i}{\partial x^j}=0\,.
+\end{equation*}
+
+\textbf{Demostración.} Denotemos $\partial_j:=\frac{\partial}{\partial x^j}$. Como $\hat{e}_i$ es unitario,
+\begin{align*}
+\hat{e}_i\cdot \hat{e}_i &= 1
+\\[2pt]\Rightarrow\quad
+\partial_j\!\big(\hat{e}_i\cdot \hat{e}_i\big) &= \partial_j(1)=0
+\\[2pt]\Rightarrow\quad
+(\partial_j \hat{e}_i)\cdot \hat{e}_i + \hat{e}_i\cdot(\partial_j \hat{e}_i) &= 0
+\qquad\text{(regla de Leibniz)}
+\\[2pt]\Rightarrow\quad
+2\,\hat{e}_i\cdot(\partial_j \hat{e}_i) &= 0
+\\[2pt]\Rightarrow\quad
+\hat{e}_i\cdot \frac{\partial \hat{e}_i}{\partial x^j} &= 0\,.
+\end{align*}
+\hfill $\square$
+\end{apuntebloque}
+La proposición anterior nos dice que los vectores unitarios coordenados cambian de dirección de forma ortogonal.
+
+\begin{apuntebloque}{Ejemplo: vectores unitarios en coordenadas cartesianas y esféricas}
+\begin{itemize}
+  \item[a)] \textbf{Coordenadas cartesianas.}  
+  En este caso, los vectores base coordenados ya son unitarios y, además, son constantes.
+
+  \item[b)] \textbf{Coordenadas esféricas.}  
+  El vector base $\vec{e}_r$ es unitario, pero $\vec{e}_\phi$ y $\vec{e}_\theta$ no lo son; por tanto, los normalizamos. Definimos el unitario asociado a $\vec{e}_\phi$ como
+  \begin{equation*}
+    \hat{\phi}
+    = \frac{\vec{e}_\phi}{\|\vec{e}_\phi\|}
+    = \frac{r\sin\theta\,(-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath})}{r\sin\theta},
+  \end{equation*}
+  de donde
+  \begin{equation*}
+    \Rightarrow\ \hat{\phi}(\phi) = -\sin\phi\,\hat{\imath} + \cos\phi\,\hat{\jmath}.
+  \end{equation*}
+
+\end{itemize}
+
+Definimos ahora el unitario asociado a $\vec{e}_\theta$:
+\begin{equation*}
+  \hat{\theta}
+  = \frac{\vec{e}_\theta}{\|\vec{e}_\theta\|}
+  = \frac{r\cos\phi\cos\theta\,\hat{\imath}+r\sin\phi\cos\theta\,\hat{\jmath}-r\sin\theta\,\hat{k}}{r},
+\end{equation*}
+luego
+\begin{equation*}
+  \Rightarrow\ \hat{\theta}(\phi,\theta)
+  = \cos\phi\cos\theta\,\hat{\imath} + \sin\phi\cos\theta\,\hat{\jmath} - \sin\theta\,\hat{k}.
+\end{equation*}
+
+\end{apuntebloque}
+
+\begin{apuntebloque}{}
+
+\textbf{Resumen.} Los unitarios asociados a la base esférica son
+\begin{equation*}
+\begin{aligned}
+  \hat{r}(\phi,\theta) &= \cos\phi\sin\theta\,\hat{\imath} + \sin\phi\sin\theta\,\hat{\jmath} + \cos\theta\,\hat{k},\\
+  \hat{\phi}(\phi)     &= -\sin\phi\,\hat{\imath} + \cos\phi\,\hat{\jmath},\\
+  \hat{\theta}(\phi,\theta) &= \cos\phi\cos\theta\,\hat{\imath} + \sin\phi\cos\theta\,\hat{\jmath} - \sin\theta\,\hat{k}.
+\end{aligned}
+\end{equation*}
+
+En términos de estos unitarios, los vectores base coordenados se escriben como
+\begin{equation*}
+\begin{aligned}
+  \vec{e}_r(\phi,\theta) &= \hat{r}(\phi,\theta),\\
+  \vec{e}_\phi(r,\phi,\theta) &= r\sin\theta\,\hat{\phi}(\phi),\\
+  \vec{e}_\theta(r,\phi,\theta) &= r\,\hat{\theta}(\phi,\theta).
+\end{aligned}
+\end{equation*}
+
+Como $\{\vec{e}_r,\vec{e}_\phi,\vec{e}_\theta\}$ es ortogonal, también lo es $\{\hat{r},\hat{\phi},\hat{\theta}\}$:
+\begin{equation*}
+  \hat{r}\cdot\hat{\phi}=0,\qquad
+  \hat{r}\cdot\hat{\theta}=0,\qquad
+  \hat{\phi}\cdot\hat{\theta}=0.
+\end{equation*}
+
+Por completitud, los productos vectoriales satisfacen
+\begin{equation*}
+  \hat{r}\times\hat{\phi}=-\hat{\theta},\qquad
+  \hat{r}\times\hat{\theta}=\hat{\phi},\qquad
+  \hat{\phi}\times\hat{\theta}=-\hat{r},
+\end{equation*}
+de modo que $\{\hat{r},\hat{\phi},\hat{\theta}\}$ forma una base ortonormal dextrógira.
+
+Finalmente, las derivadas de los unitarios con respecto a las coordenadas son
+\begin{equation*}
+\begin{aligned}
+  &\frac{\partial \hat{r}}{\partial r}=0,\qquad
+    \frac{\partial \hat{\phi}}{\partial r}=0,\qquad
+    \frac{\partial \hat{\theta}}{\partial r}=0,\\[4pt]
+  &\frac{\partial \hat{r}}{\partial \phi}=\sin\theta\,\hat{\phi},\qquad
+    \frac{\partial \hat{\phi}}{\partial \phi}=-\sin\theta\,\hat{r}-\cos\theta\,\hat{\theta},\qquad
+    \frac{\partial \hat{\theta}}{\partial \phi}=\cos\theta\,\hat{\phi},\\[4pt]
+  &\frac{\partial \hat{r}}{\partial \theta}=\hat{\theta},\qquad
+    \frac{\partial \hat{\phi}}{\partial \theta}=0,\qquad
+    \frac{\partial \hat{\theta}}{\partial \theta}=-\hat{r}.
+\end{aligned}
+\end{equation*}
+\end{apuntebloque}
+
+
+\textbf{Ejemplo:}
+\begin{itemize}
+    \item[a)] \textbf{Coordenadas Cartesianas:} \\
+    En este caso los vectores bases coordenados ya son unitarios y además son constantes.
+
+    \item[b)] \textbf{Coordenadas Esféricas:} \\
+    El vector base coordenado $\vec{e}_r$ ya es unitario, pero no así $\vec{e}_\phi$ y $\vec{e}_\theta$, entonces podemos normalizarlos. \\
+    Definimos el vector unitario asociado a $\vec{e}_\phi$ como
+    \begin{equation*}
+        \hat{\phi} = \frac{\vec{e}_\phi}{\|\vec{e}_\phi\|} = \frac{r \sin\theta (-\sin\phi\, \hat{\imath} + \cos\phi\, \hat{\jmath})}{r \sin\theta}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow \hat{\phi}(\phi) = -\sin\phi\, \hat{\imath} + \cos\phi\, \hat{\jmath}
+    \end{equation*}
+\end{itemize}
+
+Definimos el vector unitario asociado al vector $\vec{e}_\theta$ como
+\begin{equation*}
+    \hat{\theta} = \frac{\vec{e}_\theta}{\|\vec{e}_\theta\|} 
+    = \frac{r \cos\phi \cos\theta\, \hat{\imath} + r \sin\phi \cos\theta\, \hat{\jmath} - r \sin\theta\, \hat{k}}{r}
+\end{equation*}
+\begin{equation*}
+    \Rightarrow \hat{\theta}(\phi, \theta) = \cos\phi \cos\theta\, \hat{\imath} + \sin\phi \cos\theta\, \hat{\jmath} - \sin\theta\, \hat{k}
+\end{equation*}
+
+Resumiendo, los vectores unitarios asociados a la base coordenada esférica son
+\begin{equation*}
+\begin{aligned}
+    \hat{r}(\phi, \theta) &= \cos\phi \sin\theta\, \hat{\imath} + \sin\phi \sin\theta\, \hat{\jmath} + \cos\theta\, \hat{k} \\
+    \hat{\phi}(\phi) &= -\sin\phi\, \hat{\imath} + \cos\phi\, \hat{\jmath} \\
+    \hat{\theta}(\phi, \theta) &= \cos\phi \cos\theta\, \hat{\imath} + \sin\phi \cos\theta\, \hat{\jmath} - \sin\theta\, \hat{k}
+\end{aligned}
+\end{equation*}
+
+Tal que los vectores base $\{\vec{e}_r, \vec{e}_\phi, \vec{e}_\theta\}$ se pueden escribir en términos de los vectores unitarios base $\{\hat{r}, \hat{\phi}, \hat{\theta}\}$ en la forma:
+\begin{equation*}
+\begin{aligned}
+    \vec{e}_r(\phi, \theta) &= \hat{r}(\phi, \theta) \\
+    \vec{e}_\phi(r, \phi, \theta) &= r \sin\theta\, \hat{\phi}(\phi) \\
+    \vec{e}_\theta(r, \phi, \theta) &= r\, \hat{\theta}(\phi, \theta)
+\end{aligned}
+\end{equation*}
+
+Puesto que los vectores $\{\vec{e}_r, \vec{e}_\phi, \vec{e}_\theta\}$ son ortogonales, también lo son $\{\hat{r}, \hat{\phi}, \hat{\theta}\}$:
+\begin{equation*}
+\begin{aligned}
+    \hat{r} \cdot \hat{\phi} &= 0 \\
+    \hat{r} \cdot \hat{\theta} &= 0 \\
+    \hat{\phi} \cdot \hat{\theta} &= 0
+\end{aligned}
+\end{equation*}
+
+Por completitud, se tiene:
+\begin{equation*}
+\begin{aligned}
+    \hat{r} \times \hat{\phi} &= -\hat{\theta} \\
+    \hat{r} \times \hat{\theta} &= \hat{\phi} \\
+    \hat{\phi} \times \hat{\theta} &= -\hat{r}
+\end{aligned}
+\end{equation*}
+
+Por lo tanto, los vectores $\{\hat{r}, \hat{\phi}, \hat{\theta}\}$ forman una base ortonormal dextrógira.
+
+La variación de los vectores $\{\hat{r}, \hat{\phi}, \hat{\theta}\}$ con respecto a las coordenadas $r$, $\phi$ y $\theta$ es:
+
+\begin{equation*}
+\begin{aligned}
+    \frac{\partial \hat{r}}{\partial r} &= 0 &\qquad \frac{\partial \hat{\phi}}{\partial r} &= 0 &\qquad \frac{\partial \hat{\theta}}{\partial r} &= 0 \\
+    \frac{\partial \hat{r}}{\partial \phi} &= \sin\theta \, \hat{\phi} &\qquad \frac{\partial \hat{\phi}}{\partial \phi} &= \sin\theta \, \hat{r} - \cos\theta \, \hat{\theta} &\qquad \frac{\partial \hat{\theta}}{\partial \phi} &= \cos\theta \, \hat{\phi} \\
+    \frac{\partial \hat{r}}{\partial \theta} &= \hat{\theta} &\qquad \frac{\partial \hat{\phi}}{\partial \theta} &= 0 &\qquad \frac{\partial \hat{\theta}}{\partial \theta} &= -\hat{r}
+\end{aligned}
+\end{equation*}
+
+Dado un sistema de coordenadas, podemos tener como bases los vectores coordenados $\{\vec{e}_i\}_{i=1}^3$ o los vectores unitarios coordenados $\{\hat{e}_i\}_{i=1}^3$. Los dos conjuntos de vectores están asociados al sistema coordenado elegido para describir el mismo fenómeno físico. Pero, ¿cuál de los dos es más útil?
+
+Recordemos que los dos conjuntos de vectores $\{\vec{e}_i\}_{i=1}^3$ y $\{\hat{e}_i\}_{i=1}^3$ no poseen la misma información geométrica del sistema coordenado.
+
+\begin{apuntebloque}{Proposición}
+ Los vectores unitarios no se anulan o divergen en ningún punto del espacio, además sus componentes están acotados.
+\\
+\\
+\textbf{Demostración:}
+
+Sea $\hat{e}=\left(e_1,e_2,e_3\right)$ un vector unitario, entonces
+\begin{equation*}
+    \|\vec{e}\|=\sqrt{(e_1)^2+(e_2)^2+(e_3)^2} = 1
+\end{equation*}
+lo que define una esfera unitaria
+\begin{equation*}
+    (e_1)^2+(e_2)^2+(e_3)^2 = 1
+\end{equation*}
+Por lo tanto, las tres componentes $\hat{e}$ no son simultáneamente nulos, $\therefore \quad \hat{e}\neq0$ en todo el espacio.
+
+Además, $|\hat{e}_1| \leq 1$, $|\hat{e}_2| \leq 1$ y $|\hat{e}_3| \leq 1$, o sea, las componentes de $\hat{e}$ están acotados. 
+
+\hfill $\square$
+\end{apuntebloque}
+
+Usando la definición de vector unitario, podemos relacionar el vector base coordenado $\vec{e}_i$ con el vector unitario coordenado $\hat{e}_i$ de la forma:
+\begin{equation*}
+\vec{e}_i = \|\vec{e}_i\| \hat{e}_i
+\end{equation*}
+
+Y puesto que $\hat{e}_i \neq 0$, entonces si $\vec{e}_i$ se anula o diverge, es porque $\|\vec{e}_i\|$ se anula o diverge. Por lo tanto, los conjuntos $\{\vec{e}_i\}_{i=1}^3$ y $\{\hat{e}_i\}_{i=1}^3$ no contienen la misma información geométrica del sistema coordenado.
+
+\section{Definición: Espacio vectorial}
+
+Un \textbf{espacio vectorial} (o \textbf{espacio lineal}) $\mathbb{V}(n, \mathbb{K})$, de dimensión $n$ y sobre el cuerpo $\mathbb{K}$ (como $\mathbb{R}$ o $\mathbb{C}$), es un conjunto con dos operaciones binarias —suma y multiplicación por escalares de $\mathbb{K}$— definidas sobre $\mathbb{V}(n, \mathbb{K})$. Los elementos de $\mathbb{V}(n, \mathbb{K})$ son llamados \textit{vectores} y satisfacen los siguientes axiomas:
+
+\paragraph{Axioma 1:} (Propiedades de la suma vectorial)
+\begin{itemize}
+    \item Si $V, U \in \mathbb{V}(n, \mathbb{K}) \quad \Rightarrow \quad V + U = U + V \in \mathbb{V}(n, \mathbb{K})$ \hfill (conmutatividad)
+    \item Si $V, U, W \in \mathbb{V}(n, \mathbb{K}) \quad \Rightarrow \quad (V + U) + W = V + (U + W)$ \hfill (asociatividad)
+    \item $\exists \;0 \in \mathbb{V}(n, \mathbb{K})$ tal que $\forall \; V \in\mathbb{V}(n, \mathbb{K})$ se cumple $V + 0 = 0 + V = V$ \hfill (elemento neutro)
+    \item $\forall \;V \in \mathbb{V}(n, \mathbb{K}) \;\exists\;(-V )\in \mathbb{V}(n, \mathbb{K})$ tal que $V + (-V) = 0$ \hfill (elemento opuesto)
+\end{itemize}
+
+\paragraph{Axioma 2:} (Propiedades de la multiplicación por escalares)
+\begin{itemize}
+    \item Si $V \in \mathbb{V}(n, \mathbb{K})$ y $\alpha \in \mathbb{K}$ tal que $\alpha V \in \mathbb{V}(n, \mathbb{K})$ \hfill (cerradura)
+    \item Si $V \in \mathbb{V}(n, \mathbb{K})$ y $\alpha, \beta \in \mathbb{K}$ tal que $(\alpha + \beta)V = \alpha V + \beta V$ \hfill (distributividad escalar)
+    \item Si $V, U \in \mathbb{V}(n, \mathbb{K})$ y $\alpha \in \mathbb{K}$ tal que $\alpha(V + U) = \alpha V + \alpha U$ \hfill (distributividad vectorial)
+    \item Si $V \in \mathbb{V}(n, \mathbb{K})$ y $1 \in \mathbb{K}$ tal que $1V = V$ \hfill (elemento neutro multiplicativo)
+\end{itemize}
+
+Sea $\{V_i\}_{i=1}^{k}$ un conjunto de $k$ vectores en $\mathbb{V}(n, \mathbb{K})$. Si la ecuación
+\begin{equation*}
+\alpha^1 V_1 + \alpha^2 V_2 + \dots + \alpha^k V_k = 0
+\end{equation*}
+tiene una solución no trivial, es decir, $\alpha^i \neq 0$ para algún $i = 1,2,\dots,k$, se dice que el conjunto $\{V_i\}_{i=1}^{k}$ es llamado \textbf{linealmente dependiente}, mientras que si posee únicamente la solución trivial, $\alpha_i = 0$ para todo $i = 1,2,\dots,k$, se dice que el conjunto $\{V_i\}_{i=1}^{k}$ es llamado \textbf{linealmente independiente}.
+
+Un conjunto de vectores linealmente independiente $\{e_i\}_{i=1}^{n}$ es llamado una \textbf{base} de $V(n,K)$, si cualquier vector $V \in V(n,K)$ puede escribirse unívocamente como una combinación de $\{e_i\}_{i=1}^{n}$:
+\begin{equation*}
+V = V^1 e_1 + V^2 e_2 + \dots + V^n e_n = \sum_{i=1}^{n} V^i e_i
+\end{equation*}
+Los números $V^i \in \mathbb{K}$ son llamados las \textbf{componentes} del vector $V$ con respecto a la base $\{e_i\}_{i=1}^{n}$. Asumimos $n$ finito.
+
+Sea $\vec{A}$ un vector de $\mathbb{R}^3$, se escoge un sistema de coordenadas $Ox_1x_2x_3$ con el objeto de escribir el vector. Luego, de forma natural se escoge como base de $\mathbb{R}^3$ a los vectores base coordenados asociados al sistema de coordenadas, pues describen la geometría del sistema coordenado, el cual se eligió en acuerdo al fenómeno físico bajo estudio. Entonces, el vector $\vec{A}$ se escribe como:
+\begin{equation*}
+\vec{A} = A^1 \vec{e}_1 + A^2 \vec{e}_2 + A^3 \vec{e}_3 = \sum_{i=1}^{3} A^i \vec{e}_i
+\end{equation*}
+donde $A^i$ es la componente del vector $\vec{A}$ con respecto a la base coordenada $\{\vec{e}_i\}_{i=1}^{3}$.
+
+También se pueden elegir los vectores unitarios coordenados $\{\hat{e}_i\}_{i=1}^{3}$, asociados a los vectores coordenados, tal que:
+\begin{equation*}
+\vec{A} = \sum_{i=1}^{3} A^i \vec{e}_i = \sum_{i=1}^{3} A^i \|\vec{e}_i\| \hat{e}_i = \sum_{i=1}^{3} \tilde{A}^i \hat{e}_i
+\end{equation*}
+donde $\tilde{A}^i = \|\vec{e}_i\| A^i$ es la componente del vector $\vec{A}$ en la base $\{\hat{e}_i\}_{i=1}^{3}$.
+
+Las componentes $A^i$ y $\tilde{A}^i$ no poseen la misma información, pero el vector $\vec{A}$ debe ser el mismo para los dos conjuntos de vectores base.
+
+Los conjuntos $\{\vec{e}_i\}_{i=1}^{3}$ y $\{\hat{e}_i\}_{i=1}^{3}$ son dos conjuntos de vectores asociados al mismo sistema de coordenadas. Son tangentes a las líneas coordenadas, por lo tanto, poseen las mismas curvas integrales: las líneas coordenadas $Ox_1x_2x_3$.
+
+Pero estos conjuntos de vectores poseen distintas parametrizaciones:
+
+\begin{itemize}
+    \item Los vectores base $\{\vec{e}_i\}_{i=1}^{3}$ están parametrizados por las coordenadas $x^i$, $i = 1, 2, 3$: 
+    \begin{equation*}
+        \vec{e}_i(x^1, x^2, x^3) = \vec{e}_i(x^j).
+    \end{equation*}
+    
+    \item Los vectores $\{\hat{e}_i\}_{i=1}^{3}$, como veremos más adelante, están parametrizados por la longitud de las líneas coordenadas:
+    \begin{equation*}
+        \vec{x}(S^1, S^2, S^3) = \vec{x}(S^i),
+    \end{equation*}
+    donde $S^i$ es la longitud de la línea coordenada $x^i$, $i = 1, 2, 3$.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig17.png}
+\end{figure}
+
+\section{Elección de la Base}
+En la elección de uno de estos sistemas de coordenados \textbf{usaremos como base los vectores coordenados} $\{\vec{e}_i\}_{i=1}^{3}$, puesto que poseen más información del sistema coordenado que los vectores coordenados unitarios.
+
+\begin{apuntebloque}{Definición}
+Al sistema de coordenado $O x^1 x^2 x^3$ le asignaremos como base los vectores coordenados
+\begin{equation*}
+   \vec{e}_i = \frac{\partial \vec{x}}{\partial x_i}, \quad i=1,2,3 
+\end{equation*}
+\end{apuntebloque}
+
+Un vector $\vec{A} \in \mathbb{R}^3$ se escribe como una combinación lineal de los vectores coordenados base, y puesto que $\vec{A}$ puede ser un campo vectorial, entonces depende de las coordenadas $x_i$, $i = 1,2,3$, al igual que los vectores $\{\vec{e}_i\}_{i=1}^{3}$, y también las componentes $A_i$, $i = 1,2,3$, pueden depender de las coordenadas:
+\begin{equation*}
+\vec{A}(x^1, x^2, x^3) = \sum_{i=1}^{3} A^i(x^1, x^2, x^3)\, \vec{e}_i(x^1, x^2, x^3)
+\end{equation*}
+
+Usando la notación compacta:
+\begin{equation*}
+\vec{A}(x^j) = \sum_{i=1}^{3} A^i(x^k)\, \vec{e}_i(x^l)
+\end{equation*}
+
+\textbf{Ejemplo}
+
+El vector $\vec{A}$ se escribe:
+
+\begin{itemize}
+    \item\textbf{a) Coordenadas cartesianas}
+\begin{equation*}
+\begin{aligned}
+\vec{A} &= A^1 \, \vec{e}_1 + A^2 \, \vec{e}_2 + A^3 \, \vec{e}_3 \\
+&= A^x \, \hat{\imath} + A^y \, \hat{\jmath} + A^z \, \hat{k}    
+\end{aligned}
+\end{equation*}
+
+    \item \textbf{b) Coordenadas esféricas}
+\begin{equation*}
+\begin{aligned}
+\vec{A} &= A^1 \, \vec{e}_1 + A^2 \, \vec{e}_2 + A^3 \, \vec{e}_3 \\
+&= A^r \, \vec{e}_r + A^\phi \, \vec{e}_\phi + A^\theta \, \vec{e}_\theta \\
+&= A^r \, \hat{r} + r \sin\theta \, A^\phi \, \hat{\phi} + r \, A^\theta \, \hat{\theta}    
+\end{aligned}
+\end{equation*}
+\end{itemize}
+
+Recordemos que las coordenadas son entes puramente matemáticos, y una cantidad física no depende del sistema coordenado, por lo que, si es un vector, entonces:
+
+\begin{apuntebloque}{Definición}
+Los vectores no dependen del sistema coordenado.
+\end{apuntebloque}
+
+La definición establece que una magnitud física vectorial debe ser el mismo para todos los sistemas coordenados:
+
+\begin{apuntebloque}{Definición}
+Sea $\vec{T}$ una magnitud física vectorial, y sean $Ox^1x^2x^3$ y $O'x'^1x'^2x'^3$ dos sistemas coordenados, entonces la definición establece que:
+
+\begin{equation*}
+\vec{T}\big|_O = \vec{T}\big|_{O'}
+\end{equation*}
+\end{apuntebloque}
+
+La que corresponde a una realización de la covarianza de la física.
+
+\textbf{Ejemplo:}
+
+Sea el vector $\vec{A}$, entonces debe ser el mismo, por ejemplo, en el sistema coordenado cartesiano y esférico:
+
+\begin{equation}\label{bases_13}
+\begin{aligned}
+A^1\, \hat{\imath} + A^2\, \hat{\jmath} + A^3\, \hat{k} &= A^r\, \vec{e}_r + A^\phi\, \vec{e}_\phi + A^\theta\, \vec{e}_\theta \\
+&= A^r\, \hat{r} + r \sin \theta\, A^\phi\, \hat{\phi} + r A^\theta\, \hat{\theta}    
+\end{aligned}
+\end{equation}
+
+Esta definición permite transformar las componentes de un vector escrito en el sistema coordenado $Ox^1x^2x^3$ a escribirlo en el sistema coordenado $O'x'^1x'^2x'^3$.
+
+Por ejemplo, podemos transformar las componentes del vector $\vec{A}(x, y, z)$ a las componentes del vector $\vec{A}(r, \phi, \theta)$.
+
+\begin{itemize}
+    \item  Multiplicando \eqref{bases_13} por $\hat{r}$:
+
+\begin{equation*}
+\left(A^1\, \hat{\imath} + A^2\, \hat{\jmath} + A^3\, \hat{k} \right)\cdot \hat{r} = \left(A^r\, \hat{r} + r \sin \theta\, A^\phi\, \hat{\phi} + r A^\theta\, \hat{\theta}\right) \cdot \hat{r}
+\end{equation*}
+
+\begin{equation*}
+\begin{aligned}
+A^r \hat{r} \cdot \hat{r} + r \sin \theta A^\phi\, \hat{\phi} \cdot \hat{r} + r A^\theta \hat{\theta} \cdot \hat{r} &= A^r \cdot 1 + r \sin \theta A^\phi \cdot 0 + r A^\theta \cdot 0 \\
+&=A^1\, \hat{\imath} \cdot \hat{r} + A^2\, \hat{\jmath} \cdot \hat{r} + A^3\, \hat{k} \cdot \hat{r}    
+\end{aligned}
+\end{equation*}
+
+\begin{equation*}
+\therefore \quad A^r = \cos \phi \sin \theta A^1 + \sin \phi \sin \theta A^2 + \cos \theta A^3
+\end{equation*}
+
+La componente $A^r$ depende de las coordenadas $(r, \phi, \theta)$, pero las componentes $A^1$, $A^2$ y $A^3$ dependen de las coordenadas $(x, y, z)$, por lo que hay que expresarlas en coordenadas $(r, \phi, \theta)$:
+
+\begin{equation*}
+\begin{aligned}
+A^1(x, y, z) &= A^1(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\
+A^2(x, y, z) &= A^2(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\
+A^3(x, y, z) &= A^3(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta))    
+\end{aligned}
+\end{equation*}
+
+Luego,
+
+\begin{equation*}
+\begin{aligned}
+A^r(r, \phi, \theta) &= \cos \phi \sin \theta A^1(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\
+&+ \sin \phi \sin \theta A^2(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\
+&+ \cos \theta A^3(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta))    
+\end{aligned}
+\end{equation*}
+
+\item Multiplicando \eqref{bases_13} por $\hat{\phi}$:
+
+\begin{equation*}
+A^1 \hat{i} + A^2 \hat{j} + A^3 \hat{k} \cdot \hat{\phi} = A^r \hat{r} + r \sin\theta A^\phi \hat{\phi} + r A^\theta \hat{\theta} \cdot \hat{\phi}
+\end{equation*}
+
+\begin{equation*}
+A^r \hat{r} \cdot \hat{\phi} + r \sin\theta A^\phi \hat{\phi} \cdot \hat{\phi} + r A^\theta \hat{\theta} \cdot \hat{\phi} = A^1 \hat{i} \cdot \hat{\phi} + A^2 \hat{j} \cdot \hat{\phi} + A^3
+\end{equation*}
+
+\begin{equation*}
+r \sin\theta A^\phi = -\sin\phi A^1 + \cos\phi A^2
+\end{equation*}
+
+Por lo tanto,
+
+\begin{equation*}
+\begin{aligned}
+A^\phi(r, \phi, \theta) &= - \frac{\sin\phi}{r \sin\theta} A^1(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\ 
+&+ \frac{\cos\phi}{r \sin\theta} A^2(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta))    
+\end{aligned}
+\end{equation*}
+
+\item Multiplicando (13) por $\hat{\theta}$:
+
+\begin{equation*}
+A^1 \hat{i} + A^2 \hat{j} + A^3 \hat{k} \cdot \hat{\theta} = A^r \hat{r} + r \sin\theta A^\phi \hat{\phi} + r A^\theta \hat{\theta} \cdot \hat{\theta}
+\end{equation*}
+
+\begin{equation*}
+A^r \hat{r} \cdot \hat{\theta} + r \sin\theta A^\phi \hat{\phi} \cdot \hat{\theta} + r A^\theta \hat{\theta} \cdot \hat{\theta} = A^1 \hat{i} \cdot \hat{\theta} + A^2 \hat{j} \cdot \hat{\theta} + A^3
+\end{equation*}
+
+\begin{equation*}
+r A^\theta = \cos\phi \cos\theta A^1 + \sin\phi \cos\theta A^2 - \sin\theta A^3
+\end{equation*}
+
+Por lo tanto,
+
+\begin{equation*}
+\begin{aligned}
+A^\theta(r, \phi, \theta) &= \frac{\cos\phi \cos\theta}{r} A^1(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\ &
++ \frac{\sin\phi \cos\theta}{r} A^2(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta)) \\&- \frac{\sin\theta}{r} A^3(x(r, \phi, \theta), y(r, \phi, \theta), z(r, \phi, \theta))
+\end{aligned}
+\end{equation*}
+
+\end{itemize}
+
+También se puede realizar el proceso inverso, o sea, despejar 
+$(A^1, A^2, A^3)$ en función de los $(A^r, A^\varphi, A^\theta)$. 
+
+\begin{itemize}
+    \item Multipliquemos (13) por $\hat{\imath}$:
+
+\begin{equation*}
+\begin{aligned}
+A^1 \hat{\imath} + A^2 \hat{\jmath} + A^3 \hat{k} \cdot \hat{\imath} 
+&= A^r \hat{r} + r \sin\theta A^\varphi \hat{\varphi} + r A^\theta \hat{\theta} \cdot \hat{\imath} \\
+A^1 (\hat{\imath} \cdot \hat{\imath}) + A^2 (\hat{\jmath} \cdot \hat{\imath}) + A^3 (\hat{k} \cdot \hat{\imath}) 
+&= A^r (\hat{r} \cdot \hat{\imath}) + r \sin\theta A^\varphi (\hat{\varphi} \cdot \hat{\imath}) + r A^\theta (\hat{\theta} \cdot \hat{\imath})
+\end{aligned}
+\end{equation*}
+
+\begin{equation*}
+\therefore \quad A^1 = \cos\varphi \sin\theta A^r + \sin\varphi \sin\theta A^\varphi + \cos\theta A^\theta
+\end{equation*}
+
+Debemos expresar las coordenadas $(r,\phi,\theta)$ en función de las coordenadas $(x,y,z)$, y para ello hacemos
+\begin{equation*}
+\begin{aligned}
+x(r,\phi,\theta) &= r\cos\phi\,\sin\theta,\\
+y(r,\phi,\theta) &= r\sin\phi\,\sin\theta,\\
+z(r,\phi,\theta) &= r\cos\theta.
+\end{aligned}
+\end{equation*}
+y usando las identidades
+\begin{equation*}
+\cos\alpha = \frac{1}{\sqrt{1+\tan^2\alpha}}, 
+\qquad 
+\sin\alpha = \frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}},
+\end{equation*}
+se obtiene
+\begin{equation*}
+\begin{aligned}
+r(x,y,z) &= \sqrt{x^2+y^2+z^2},\\
+\tan\phi(x,y) &= \frac{y}{x},\\
+\tan\theta(x,y,z) &= \frac{\sqrt{x^2+y^2}}{z}.
+\end{aligned}
+\end{equation*}
+Se obtiene
+\begin{equation*}
+\begin{aligned}
+\cos\phi &= \frac{x}{\sqrt{x^2 + y^2}},\\[4pt]
+\sin\phi &= \frac{y}{\sqrt{x^2 + y^2}},\\[4pt]
+\cos\theta &= \frac{z}{\sqrt{x^2 + y^2 + z^2}},\\[4pt]
+\sin\theta &= \frac{\sqrt{x^2 + y^2}}{\sqrt{x^2 + y^2 + z^2}}\,.
+\end{aligned}
+\end{equation*}
+
+Luego, abreviando
+\begin{equation*}
+\Xi=(r(x,y,z),\phi(x,y),\theta(x,y,z)),
+\end{equation*}
+se tiene
+\begin{equation*}
+\begin{aligned}
+A_1(x,y,z) \;=&\; \frac{x}{x^2+y^2+z^2}\,A_r(\Xi)
+\;-\; y\,A_\phi(\Xi)\\[4pt]
+&\;+\; \frac{xz}{x^2+y^2+z^2}\,A_\theta(\Xi)\,.
+\end{aligned}
+\end{equation*}
+
+Multiplicando (13) por $\hat{\jmath}$,
+\begin{equation*}
+\big(A_1\hat{\imath}+A_2\hat{\jmath}+A_3\hat{k}\big)\cdot\hat{\jmath}
+=\big(A_r\hat{r}+r\sin\theta\,A_\phi\,\hat{\phi}+rA_\theta\,\hat{\theta}\big)\cdot\hat{\jmath},
+\end{equation*}
+es decir,
+\begin{equation*}
+A_1\,(\hat{\imath}\!\cdot\!\hat{\jmath}) \;+\; A_2\,(\hat{\jmath}\!\cdot\!\hat{\jmath}) \;+\; A_3\,(\hat{k}\!\cdot\!\hat{\jmath})
+=\; A_r\,(\hat{r}\!\cdot\!\hat{\jmath}) \;+\; r\sin\theta\,A_\phi\,(\hat{\phi}\!\cdot\!\hat{\jmath})
+\;+\; rA_\theta\,(\hat{\theta}\!\cdot\!\hat{\jmath}),
+\end{equation*}
+de donde
+\begin{equation*}
+A_2 \;=\; \sin\phi\,\sin\theta\,A_r \;+\; r\cos\phi\,\sin\theta\,A_\phi \;+\; r\sin\phi\,\cos\theta\,A_\theta.
+\end{equation*}
+
+Así,
+\begin{equation*}
+\begin{aligned}
+A_2(x,y,z) \;=&\; \frac{y}{x^2+y^2+z^2}\,A_r(\Xi)
+\;+\; y\,A_\phi(\Xi)\\[4pt]
+&\;+\; \frac{yz}{x^2+y^2+z^2}\,A_\theta(\Xi)\,.
+\end{aligned}
+\end{equation*}
+
+Y multiplicando (13) por $\hat{k}$,
+\begin{equation*}
+\big(A_1\hat{\imath}+A_2\hat{\jmath}+A_3\hat{k}\big)\cdot\hat{k}
+=\big(A_r\hat{r}+r\sin\theta\,A_\phi\,\hat{\phi}+rA_\theta\,\hat{\theta}\big)\cdot\hat{k},
+\end{equation*}
+esto es,
+\begin{equation*}
+A_1\,(\hat{\imath}\!\cdot\!\hat{k}) \;+\; A_2\,(\hat{\jmath}\!\cdot\!\hat{k}) \;+\; A_3\,(\hat{k}\!\cdot\!\hat{k})
+=\; A_r\,(\hat{r}\!\cdot\!\hat{k}) \;+\; r\sin\theta\,A_\phi\,(\hat{\phi}\!\cdot\!\hat{k})
+\;+\; rA_\theta\,(\hat{\theta}\!\cdot\!\hat{k}),
+\end{equation*}
+y por tanto
+\begin{equation*}
+A_3 \;=\; \cos\theta\,A_r \;-\; r\sin\theta\,A_\theta.
+\end{equation*}
+
+Así,
+\begin{equation*}
+\begin{aligned}
+A_3(x,y,z) \;=&\; \frac{z}{x^2+y^2+z^2}\,A_r(\Xi)\\[4pt]
+&\;-\; \big(x^2+y^2\big)\,A_\theta(\Xi).
+\end{aligned}
+\end{equation*}
+
+\end{itemize}
+
+\begin{apuntebloque}{Ejemplo}
+Apliquemos lo anterior, expresando los vectores base cartesianos $(\hat{\imath}, \hat{\jmath}, \hat{k})$ en función de los vectores base esféricos $(\vec{e}_r, \vec{e}_\phi, \vec{e}_\theta)$.
+
+Sea $\vec{A}=\hat{\imath}$, entonces $A_1=1$, $A_2=0$ y $A_3=0$, luego
+\begin{equation*}
+\hat{\imath} \;=\; A_r\,\vec{e}_r \;+\; A_\phi\,\vec{e}_\phi \;+\; A_\theta\,\vec{e}_\theta.
+\end{equation*}
+
+\emph{Contrayendo con $\vec{e}_r$:}
+\begin{equation*}
+\big(A_r\,\vec{e}_r + A_\phi\,\vec{e}_\phi + A_\theta\,\vec{e}_\theta\big)\!\cdot\!\vec{e}_r
+= \hat{\imath}\!\cdot\!\vec{e}_r
+\;\;\Rightarrow\;\;
+A_r(\vec{e}_r\!\cdot\!\vec{e}_r)+A_\phi(\vec{e}_\phi\!\cdot\!\vec{e}_r)+A_\theta(\vec{e}_\theta\!\cdot\!\vec{e}_r)
+= \hat{\imath}\!\cdot\!\vec{e}_r,
+\end{equation*}
+y como $\vec{e}_r\!\cdot\!\vec{e}_r=1$, $\vec{e}_\phi\!\cdot\!\vec{e}_r=0$, $\vec{e}_\theta\!\cdot\!\vec{e}_r=0$ y $\hat{\imath}\!\cdot\!\vec{e}_r=\cos\phi\,\sin\theta$, se obtiene
+\begin{equation*}
+A_r=\cos\phi\,\sin\theta.
+\end{equation*}
+
+\emph{Contrayendo con $\vec{e}_\phi$:}
+\begin{equation*}
+\big(\cos\phi\,\sin\theta\,\vec{e}_r + A_\phi\,\vec{e}_\phi + A_\theta\,\vec{e}_\theta\big)\!\cdot\!\vec{e}_\phi
+= \hat{\imath}\!\cdot\!\vec{e}_\phi,
+\end{equation*}
+es decir,
+\begin{equation*}
+A_\phi\,(\vec{e}_\phi\!\cdot\!\vec{e}_\phi) = \hat{\imath}\!\cdot\!\vec{e}_\phi
+\quad\Rightarrow\quad
+r^2\sin^2\theta\,A_\phi = -\,r\sin\phi\,\sin\theta,
+\end{equation*}
+de donde
+\begin{equation*}
+A_\phi = -\,\frac{\sin\phi}{r\sin\theta}.
+\end{equation*}
+
+\emph{Contrayendo con $\vec{e}_\theta$:}
+\begin{equation*}
+\big(\cos\phi\,\sin\theta\,\vec{e}_r - \tfrac{\sin\phi}{r\sin\theta}\,\vec{e}_\phi + A_\theta\,\vec{e}_\theta\big)\!\cdot\!\vec{e}_\theta
+= \hat{\imath}\!\cdot\!\vec{e}_\theta,
+\end{equation*}
+esto es,
+\begin{equation*}
+A_\theta\,(\vec{e}_\theta\!\cdot\!\vec{e}_\theta) = \hat{\imath}\!\cdot\!\vec{e}_\theta
+\quad\Rightarrow\quad
+r^2\,A_\theta = -\,r\cos\phi\,\cos\theta,
+\end{equation*}
+por lo que
+\begin{equation*}
+A_\theta = \frac{\cos\phi\,\cos\theta}{r}.
+\end{equation*}
+
+En consecuencia,
+\begin{equation*}
+\boxed{\;
+\hat{\imath} \;=\; \cos\phi\,\sin\theta\,\vec{e}_r \;-\; \frac{\sin\phi}{r\sin\theta}\,\vec{e}_\phi
+\;+\; \frac{\cos\phi\,\cos\theta}{r}\,\vec{e}_\theta \;}
+\end{equation*}
+
+Análogamente, para $\hat{\jmath}$ y $\hat{k}$ se obtiene
+\begin{equation*}
+\boxed{\;
+\hat{\jmath} \;=\; \sin\phi\,\sin\theta\,\vec{e}_r \;+\; \frac{\cos\phi}{r\sin\theta}\,\vec{e}_\phi
+\;+\; \frac{\sin\phi\,\cos\theta}{r}\,\vec{e}_\theta \;}
+\end{equation*}
+\begin{equation*}
+\boxed{\;
+\hat{k} \;=\; \cos\theta\,\vec{e}_r \;-\; \frac{\sin\theta}{r}\,\vec{e}_\theta \;}
+\end{equation*}
+
+Se debe notar que no se introdujeron las coordenadas $(x,y,z)$ por razones estéticas.
+
+Además, también puede expresarse $(\vec{e}_r,\vec{e}_\phi,\vec{e}_\theta)$ en función de $(\hat{\imath},\hat{\jmath},\hat{k})$. Una forma es suponer
+\begin{equation*}
+\vec{e}_r = A_x\,\hat{\imath} + A_y\,\hat{\jmath} + A_z\,\hat{k},\quad
+\vec{e}_\phi = B_x\,\hat{\imath} + B_y\,\hat{\jmath} + B_z\,\hat{k},\quad
+\vec{e}_\theta = C_x\,\hat{\imath} + C_y\,\hat{\jmath} + C_z\,\hat{k},
+\end{equation*}
+y determinar los coeficientes. La segunda forma es invertir las ecuaciones anteriores. Escribiendo en forma matricial,
+\begin{equation*}
+\begin{pmatrix}
+\cos\phi\,\sin\theta & -\dfrac{\sin\phi}{r\sin\theta} & \dfrac{\cos\phi\,\cos\theta}{r}\\[6pt]
+\sin\phi\,\sin\theta & \dfrac{\cos\phi}{r\sin\theta} & \dfrac{\sin\phi\,\cos\theta}{r}\\[6pt]
+\cos\theta & 0 & -\dfrac{\sin\theta}{r}
+\end{pmatrix}
+\begin{pmatrix}
+\hat{\imath}\\[2pt] \hat{\jmath}\\[2pt] \hat{k}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\vec{e}_r\\[2pt] \vec{e}_\phi\\[2pt] \vec{e}_\theta
+\end{pmatrix}.
+\end{equation*}
+\end{apuntebloque}
+
+\begin{apuntebloque}{}
+La matriz es invertible, y al invertirla resulta
+\begin{equation*}
+\begin{pmatrix}
+\vec{e}_r\\[2pt] \vec{e}_\phi\\[2pt] \vec{e}_\theta
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos\phi\,\sin\theta & \sin\phi\,\sin\theta & \cos\theta\\[6pt]
+-\,r\sin\phi\,\sin\theta & r\cos\phi\,\sin\theta & 0\\[6pt]
+r\cos\phi\,\cos\theta & r\sin\phi\,\cos\theta & -\,r\sin\theta
+\end{pmatrix}
+\begin{pmatrix}
+\hat{\imath}\\[2pt] \hat{\jmath}\\[2pt] \hat{k}
+\end{pmatrix}.
+\end{equation*}
+En forma explícita,
+\begin{equation*}
+\vec{e}_r = \cos\phi\,\sin\theta\,\hat{\imath} + \sin\phi\,\sin\theta\,\hat{\jmath} + \cos\theta\,\hat{k},
+\qquad
+\vec{e}_\phi = r\sin\theta\big(-\sin\phi\,\hat{\imath} + \cos\phi\,\hat{\jmath}\big),
+\end{equation*}
+\begin{equation*}
+\vec{e}_\theta = r\big(\cos\phi\,\cos\theta\,\hat{\imath} + \sin\phi\,\cos\theta\,\hat{\jmath} - \sin\theta\,\hat{k}\big).
+\end{equation*}
+\end{apuntebloque}
+
+\newpage
+
+\end{document}

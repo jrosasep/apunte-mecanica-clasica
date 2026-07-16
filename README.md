@@ -1,43 +1,79 @@
 # Apunte de Mecánica Clásica
 
-Proyecto personal de reestructuración de los apuntes de **Juan Crisóstomo** para los cursos de **Mecánica Clásica 1 y 2**.
+Versión modular en formato `book` del apunte de **Mecánica Clásica**.
 
-El material reunido en este repositorio nace a partir de una transcripción y reorganización progresiva de los contenidos, con la intención de darles una estructura más clara, continua y útil para estudio.
+El proyecto fue reorganizado para que cada capítulo pueda editarse de forma independiente desde la carpeta `chapters/`, manteniendo `main.tex` como archivo principal de compilación.
 
-## Estado del proyecto
+## Estructura
 
-Actualmente este proyecto se encuentra **en pausa**.
+```text
+main.tex
+preamble.tex
+frontmatter.tex
+logo.png
+chapters/
+figures/
+LICENSE
+main.pdf
+```
 
-De momento, el repositorio se sube como respaldo y punto de partida para retomarlo más adelante.
+## Capítulos
 
-## Contenido
+- `chapters/00_introduccion.tex` — Introducción
+- `chapters/01_sistema_de_referencia.tex` — Sistema de Referencia
+- `chapters/02_sistema_de_coordenadas.tex` — Sistema de Coordenadas
+- `chapters/03_bases_coordenados.tex` — Bases Coordenados
+- `chapters/04_metrica.tex` — Métrica
+- `chapters/05_simbolos_de_christoffel.tex` — Símbolos de Christoffel
+- `chapters/06_espacio_vectorial_dual.tex` — Espacio Vectorial Dual
+- `chapters/07_operadores_diferenciales_clasicos.tex` — Operadores Diferenciales Clásicos
+- `chapters/08_transformaciones_de_coordenadas.tex` — Transformaciones de Coordenadas
+- `chapters/09_analisis_tensorial.tex` — Análisis Tensorial
+- `chapters/10_mecanica.tex` — Mecánica
+- `chapters/11_mecanica_racional.tex` — Mecánica Racional
+- `chapters/12_formalismo_lagrangiano.tex` — Formalismo Lagrangiano
+- `chapters/13_principio_de_hamilton.tex` — Principio de Hamilton
+- `chapters/14_teoria_de_hamilton_jacobi.tex` — Teoría de Hamilton-Jacobi
 
-El documento disponible recoge, entre otros temas, material sobre:
+## Figuras
 
-- sistemas de referencia;
-- sistemas de coordenadas;
-- bases coordenadas;
-- métrica;
-- símbolos de Christoffel;
-- espacio vectorial dual;
-- operadores diferenciales clásicos;
-- transformaciones de coordenadas;
-- análisis tensorial;
-- mecánica;
-- formalismo lagrangiano;
-- principio de Hamilton;
-- teoría de Hamilton-Jacobi.
+Las imágenes fueron reorganizadas en una única carpeta:
 
-## Archivo principal
+```text
+figures/<nombre_del_capitulo>/
+```
 
-- `Apunte_de_Mecánica_Clasica.pdf`
+Cada capítulo apunta a sus propias figuras mediante rutas del tipo:
 
-## Nota
+```tex
+\includegraphics{figures/00_introduccion/fig1.png}
+```
 
-Este repositorio corresponde a un proyecto en desarrollo detenido temporalmente.  
-Su contenido podrá ser ampliado, corregido, reordenado y continuado más adelante.
 
-## Créditos
+## Ajustes visuales aplicados
 
-Material basado en los apuntes de **Juan Crisóstomo**.  
-Transcripción y reorganización realizadas por **José Ignacio Rosas Sepúlveda**.
+Esta versión usa una plantilla sobria en blanco y negro. Se eliminaron los bloques de color; las definiciones, ejemplos, proposiciones y observaciones se presentan ahora mediante reglas finas y tipografía limpia.
+
+También se mantuvieron ajustes de paginación para mejorar la lectura del PDF:
+
+- menor separación vertical alrededor de figuras y captions;
+- activación de `\raggedbottom` para reducir espacios blancos artificiales;
+- ajustes puntuales en ecuaciones largas que producían desbordes horizontales;
+- capítulos aún no transcritos marcados como `Capítulo en preparación`, en lugar de quedar visualmente vacíos.
+
+## Compilación
+
+En Overleaf o localmente, el archivo principal debe ser:
+
+```text
+main.tex
+```
+
+Compilación local:
+
+```bash
+pdflatex main.tex
+pdflatex main.tex
+```
+
+Los capítulos usan `subfiles`, por lo que también pueden abrirse y editarse individualmente.

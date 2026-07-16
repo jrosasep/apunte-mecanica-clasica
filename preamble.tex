@@ -1,0 +1,109 @@
+\setlength{\headheight}{16pt}
+
+% Paquetes matemáticos y tipográficos
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{microtype}
+\usepackage{needspace}
+\usepackage{xparse}
+\usepackage{etoolbox}
+
+% Idioma en español
+\usepackage[spanish]{babel}
+
+% Manejo de imágenes
+\usepackage{graphicx}
+\usepackage{float}
+
+% Para hipervínculos
+\usepackage[hidelinks]{hyperref}
+
+% Configuración de márgenes
+\usepackage[a4paper, left=2.2cm, right=2.2cm, top=24mm, bottom=25mm]{geometry}
+
+% Tipografía
+\usepackage{lmodern}
+
+% Mes en portada
+\newcommand{\mesyanio}{%
+  \ifcase\month\relax
+    \or Enero%
+    \or Febrero%
+    \or Marzo%
+    \or Abril%
+    \or Mayo%
+    \or Junio%
+    \or Julio%
+    \or Agosto%
+    \or Septiembre%
+    \or Octubre%
+    \or Noviembre%
+    \or Diciembre%
+  \fi~\number\year
+}
+
+% Numeración de ecuaciones por sección.
+\numberwithin{equation}{section}
+
+% Bloques sobrios para definiciones, proposiciones, ejemplos y observaciones.
+% No usan cajas ni colores: sólo reglas finas y tipografía limpia.
+\NewDocumentEnvironment{apuntebloque}{m}{%
+  \par\addvspace{0.85\baselineskip}%
+  \Needspace{5\baselineskip}%
+  \noindent\rule{\linewidth}{0.35pt}\par\nopagebreak
+  \ifstrempty{#1}{}{\noindent\textsc{#1}\par\nopagebreak\smallskip}%
+  \noindent\ignorespaces
+}{%
+  \par\noindent\rule{\linewidth}{0.35pt}%
+  \par\addvspace{0.65\baselineskip}%
+}
+
+% Estilo sobrio de títulos en blanco y negro
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\filleft\normalfont\large\scshape \chaptertitlename\ \thechapter}
+  {0.8ex}
+  {\titlerule\vspace{1.2ex}\filright}
+  [\vspace{1ex}\titlerule]
+\titlespacing*{\chapter}{0pt}{-0.5em}{2.2em}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}
+  {\thesection.}{0.75em}{}
+\titlespacing*{\section}{0pt}{1.4em plus 0.4em minus 0.2em}{0.55em}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {\thesubsection.}{0.75em}{}
+\titlespacing*{\subsection}{0pt}{1.1em plus 0.3em minus 0.2em}{0.4em}
+
+% Ajustes de lectura y paginación
+\raggedbottom
+\allowdisplaybreaks[2]
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\captionsetup{skip=4pt}
+
+% Separación de párrafos
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+
+% Evita hifenaciones excesivas
+\sloppy
+
+% Configuración del índice
+\usepackage{tocloft}
+\setcounter{tocdepth}{2}
+
+% Compilación modular de capítulos
+\usepackage{subfiles}
+
+% Rutas de figuras para compilación desde main.tex y desde chapters/*.tex
+\graphicspath{{./}{../}}
+
+
