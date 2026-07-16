@@ -1,5 +1,9 @@
-% !TeX root = ../main.tex
-\documentclass[../main.tex]{subfiles}
+% !TeX root = main.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
 
 \begin{document}
 
@@ -45,6 +49,8 @@ $\dfrac{\partial \vec{e}_i}{\partial x^j}$ también es un vector.
 Por lo tanto, debe ser una combinación lineal de los vectores base 
 coordenados.
 
+
+\newpage
 
 \section{Descomposición en la base coordenada}
 

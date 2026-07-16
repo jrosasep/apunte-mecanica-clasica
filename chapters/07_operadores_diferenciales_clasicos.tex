@@ -1,5 +1,9 @@
-% !TeX root = ../main.tex
-\documentclass[../main.tex]{subfiles}
+% !TeX root = main.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
 
 \begin{document}
 
@@ -56,6 +60,8 @@ cartesianas, se tiene que
     \vec{\nabla} = \sum_{i=1}^3 \hat{E}^i \,\frac{\partial}{\partial x^i} \,.
 \end{equation*}
 
+
+\newpage
 
 \subsection{Definición general}
 

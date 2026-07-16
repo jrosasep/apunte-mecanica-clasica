@@ -1,5 +1,9 @@
-% !TeX root = ../main.tex
-\documentclass[../main.tex]{subfiles}
+% !TeX root = main.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
 
 \begin{document}
 
@@ -265,6 +269,8 @@ Elemento de línea (expansión):
 
 \end{apuntebloque}
 
+\newpage
+
 \section{Simetría de la métrica y forma matricial}
 
 Notar que la métrica $g_{ij}$ posee la \textbf{propiedad de simetría}:
@@ -486,6 +492,8 @@ con $i \neq j$, son ortogonales si y solo si
     g_{ij} = 0, \qquad i \neq j \,.
 \end{equation*}
 \end{apuntebloque}
+
+\newpage
 
 \section{Delta de Kronecker y métrica euclideana}
 

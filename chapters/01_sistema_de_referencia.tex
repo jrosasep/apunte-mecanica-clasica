@@ -1,5 +1,9 @@
-% !TeX root = ../main.tex
-\documentclass[../main.tex]{subfiles}
+% !TeX root = main.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
 
 \begin{document}
 
@@ -184,6 +188,8 @@ La constante $\vec{x}_0$ se puede elegir igual a cero, simplemente haciendo que 
 \end{equation}
 
 La transformación (\ref{sist_ref;equa:cambio_de_observador_inerciales_x_0=0}) recibe el nombre de \textbf{Boost de Galileo}, y deja la \textbf{segunda ley de Newton invariante}.
+
+\newpage
 
 \section{Composición de velocidades y observadores inerciales}
 

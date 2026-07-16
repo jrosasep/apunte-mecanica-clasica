@@ -1,6 +1,9 @@
-% !TeX root = ../main.tex
-\documentclass[../main.tex]{subfiles}
-
+% !TeX root = main.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
 \begin{document}
 
 \chapter{Sistema de Coordenadas}
@@ -29,6 +32,8 @@ También pudo usar \textbf{otras líneas para realizar el trabajo}, por ejemplo:
 \textbf{Las coordenadas son líneas que se trazan en el espacio}, y se pueden escoger muchos tipos de líneas.  
 \textbf{La elección del tipo de coordenadas dependerá de la geometría que posee el movimiento que describa la partícula bajo estudio.}  
 
+\newpage
+
 \section{Curva en el espacio}
 
 Nuestro espacio posee \textbf{tres dimensiones}, esto es, \textbf{tres direcciones linealmente independientes}, tal que hay tres posibles direcciones para moverse.  
@@ -46,7 +51,7 @@ Una curva en el espacio es un conjunto $C\subset \mathbb{R}^3$ tal que es la ima
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig2.png}
+    \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig2.png}
     \caption{Curva parametrizada por el parámetro $\lambda$.}
 \end{figure}
 
