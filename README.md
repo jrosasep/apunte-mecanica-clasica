@@ -1,10 +1,6 @@
 # Apunte de Mecánica Clásica
 
-Apunte en desarrollo de **Mecánica Clásica**, construido a partir de la transcripción y reorganización de las notas de clases del Dr. **Juan Crisóstomo**.
-
-El objetivo del repositorio es disponer de una versión editable, ordenada y compilable en LaTeX, útil para estudiar, corregir y extender el material del curso. La organización visual, la modularización del documento y parte de la transcripción fueron realizadas por **José Rosas**, con asistencia de **GPT**.
-
-> Este repositorio no corresponde a un material oficial del curso. Es una transcripción personal en revisión.
+Este documento en desarrollo tiene la finalidad de recopilar los apuntes del Dr. **Juan Crisóstomo** de los cursos de **Mecánica Clásica 1** y **Mecánica Clásica 2**, con el afan de reorganizar el material y disponer de un archivo editable de este, capricho del autor.
 
 ## Contenido
 
@@ -81,10 +77,10 @@ Cada capítulo debe citar sus figuras mediante `\label{...}` y `Figura~\ref{...}
 
 Agradezco al Dr. **Juan Crisóstomo** por las clases y por el material base a partir del cual se desarrolla este apunte.
 
-La transcripción, reorganización y edición en LaTeX se ha realizado con asistencia de **GPT**, usado como apoyo para estructurar el documento, convertir contenido a LaTeX, homogeneizar estilo y preparar versiones editables. La revisión final, corrección de errores y responsabilidad sobre el contenido corresponden al autor del repositorio.
+La transcripción, reorganización y edición en LaTeX se ha realizado con asistencia de **ChatGPT** desde el primer semestre del 2025, usado como apoyo para estructurar el documento, convertir contenido a LaTeX, homogeneizar estilo y preparar versiones editables. La revisión final, corrección de errores y responsabilidad sobre el contenido corresponden al autor del repositorio.
 
 ## Autor
 
-**José Rosas**  
+**José Ignacio Rosas Sepulveda**  
 Licenciatura en Ciencias Físicas  
 Universidad de Concepción
