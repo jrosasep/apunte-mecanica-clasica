@@ -1,0 +1,253 @@
+% !TeX root = ../apunte_mecanica_clasica.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
+\begin{document}
+
+\chapter{Formalismo hamiltoniano}
+\label{ch:formalismo-hamiltoniano}
+% Transcripción estilizada desde Clase MC 3-2.pdf.
+% Figuras organizadas en figures/11_formalismo_hamiltoniano/.
+
+\section{Formulación de Hamilton de la mecánica}
+\label{sec:fh-formulacion-hamilton}
+
+El formalismo que continúa a la formulación de Lagrange es la llamada \textbf{formulación hamiltoniana}. El formalismo hamiltoniano no es particularmente superior a las técnicas lagrangianas en la solución de los problemas mecánicos, sino que es \textbf{equivalente}. Su utilidad está en que proporciona una estructura físico-matemática para extensiones teóricas en muchas áreas de la física.
+
+En \textbf{mecánica clásica}, el formalismo de Hamilton proporciona las bases para el desarrollo de la teoría de Hamilton-Jacobi y el método de la teoría de perturbaciones. Fuera del contexto de la mecánica clásica, la formulación de Hamilton proporciona el lenguaje para la construcción de la mecánica cuántica y de la mecánica estadística.
+
+Asumiremos que los sistemas mecánicos son \textbf{holónomos} y que las fuerzas derivan de un potencial que sólo depende de la posición, o de potenciales generalizados dependientes de la velocidad. En la formulación lagrangiana de un sistema con $f$ grados de libertad se tienen $f$ ecuaciones del movimiento de la forma
+\begin{equation}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)-\frac{\partial L}{\partial q^i}=0,
+    \qquad i=1,\dots,f.
+    \label{eq:fh-euler-lagrange}
+\end{equation}
+Como las ecuaciones \eqref{eq:fh-euler-lagrange} son de segundo orden, el movimiento del sistema es determinado para todo tiempo sólo cuando los $2f$ valores iniciales son especificados: los $f$ valores de las coordenadas $\{q^i\}_{i=1}^{f}$ y los $f$ valores de las velocidades $\{\dot q^i\}_{i=1}^{f}$ para un tiempo particular $t_0$.
+
+La formulación hamiltoniana está basada sobre un cuadro fundamentalmente diferente:
+\begin{itemize}
+    \item \textbf{primer orden:} el movimiento es descrito en términos de ecuaciones del movimiento de primer orden;
+    \item \textbf{variables independientes:} se usan $2f$ variables independientes;
+    \item \textbf{condiciones iniciales:} se requieren $2f$ condiciones iniciales para determinar la evolución.
+\end{itemize}
+
+La formulación hamiltoniana se basa en la elección de las $f$ coordenadas generalizadas $q^i$ y los $f$ momenta generalizados $p_i$, definidos por
+\begin{equation}
+    p_i = \frac{\partial L}{\partial \dot q^i}\left(q^j,\dot q^j,t\right).
+    \label{eq:fh-momento-canonico}
+\end{equation}
+Desde el punto de vista matemático, la transición desde la formulación lagrangiana a la hamiltoniana corresponde al cambio de variables
+\begin{equation}
+    (q^j,\dot q^j,t) \longmapsto (q^j,p_j,t).
+    \label{eq:fh-cambio-variables}
+\end{equation}
+El procedimiento para este cambio de variable es proporcionado por las llamadas \textbf{transformaciones de Legendre}.
+
+\section{Transformación de Legendre}
+\label{sec:fh-transformacion-legendre}
+
+Por simplicidad pedagógica consideraremos primero el caso de funciones de una sola variable independiente $x$. Sea la función
+\begin{equation}
+    f=f(x).
+    \label{eq:fh-funcion-una-variable}
+\end{equation}
+Supongamos que deseamos cambiar la variable independiente $x$ a la variable
+\begin{equation}
+    u=\frac{df}{dx},
+    \label{eq:fh-def-u}
+\end{equation}
+que corresponde a la pendiente de la tangente a la curva en el punto $x$. La construcción geométrica original de $f(x)$ se representa en la Figura~\ref{fig:fh-grafica-fx}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/11_formalismo_hamiltoniano/grafica_funcion_fx.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/11_formalismo_hamiltoniano/grafica_funcion_fx.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: gráfica de $f=f(x)$.}}%
+    }
+    \caption{Representación gráfica de una función $f=f(x)$.}
+    \label{fig:fh-grafica-fx}
+\end{figure}
+
+La pregunta que aparece es: si $u=df/dx$ se toma como nueva variable independiente, ¿qué variable dependiente debemos elegir para no perder la información contenida en $f(x)$? Si la variable dependiente se toma simplemente como $f$, la gráfica resultante $u$ versus $f(u)$ no contiene necesariamente toda la información de la curva original, como se ilustra en la Figura~\ref{fig:fh-grafica-pendiente-u}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/11_formalismo_hamiltoniano/grafica_pendiente_u.png}{%
+        \includegraphics[width=0.58\linewidth]{figures/11_formalismo_hamiltoniano/grafica_pendiente_u.png}%
+    }{%
+        \fbox{\parbox{0.58\linewidth}{\centering Figura pendiente: gráfica de $f$ en función de $u=df/dx$.}}%
+    }
+    \caption{Intento de usar $u=df/dx$ como variable independiente manteniendo $f$ como variable dependiente.}
+    \label{fig:fh-grafica-pendiente-u}
+\end{figure}
+
+Para evitar pérdida de información, consideremos la tangente a la curva $f(x)$. Una tangente con pendiente $u$ satisface
+\begin{equation}
+    f(x)=ux+n,
+    \label{eq:fh-recta-tangente}
+\end{equation}
+por lo que
+\begin{equation}
+    n=f(x)-ux.
+    \label{eq:fh-interseccion-n}
+\end{equation}
+La geometría de esta construcción aparece en la Figura~\ref{fig:fh-tangente-legendre}. El dato relevante no es sólo la pendiente $u$, sino también la intersección $n$, que cambia al variar la tangente.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/11_formalismo_hamiltoniano/tangente_transformacion_legendre.png}{%
+        \includegraphics[width=0.68\linewidth]{figures/11_formalismo_hamiltoniano/tangente_transformacion_legendre.png}%
+    }{%
+        \fbox{\parbox{0.68\linewidth}{\centering Figura pendiente: tangente y transformación de Legendre.}}%
+    }
+    \caption{Tangente a $f(x)$, pendiente $u$ e intersección $n$.}
+    \label{fig:fh-tangente-legendre}
+\end{figure}
+
+Si elegimos $u$ como variable independiente y $n$ como variable dependiente, se tiene
+\begin{equation}
+    n(u)=f(x)-ux.
+    \label{eq:fh-n-de-u}
+\end{equation}
+Diferenciando,
+\begin{align}
+    dn &= df-u\,dx-x\,du, \label{eq:fh-dn-pre}\\
+       &= u\,dx-u\,dx-x\,du, \label{eq:fh-dn-simplifica}\\
+       &= -x\,du. \label{eq:fh-dn-final}
+\end{align}
+Por lo tanto,
+\begin{equation}
+    x=-\frac{dn}{du}.
+    \label{eq:fh-x-de-n}
+\end{equation}
+Esta construcción conserva la información de la función original. En la convención usada para el formalismo hamiltoniano se introduce la transformación de Legendre en la forma
+\begin{equation}
+    g(u)=xu-f(x),
+    \label{eq:fh-transformada-legendre-general}
+\end{equation}
+con
+\begin{equation}
+    \frac{dg}{du}=x.
+    \label{eq:fh-derivada-transformada}
+\end{equation}
+
+\section{Hamiltoniano como transformada de Legendre}
+\label{sec:fh-hamiltoniano-legendre}
+
+En mecánica, el papel de $x$ lo juegan las velocidades generalizadas $\dot q^i$, mientras que el papel de $u$ lo juegan los momenta canónicos $p_i$. La transformada de Legendre del lagrangiano define el \textbf{hamiltoniano}
+\begin{equation}
+    H(q^i,p_i,t)=\sum_{i=1}^{f} p_i\dot q^i-L(q^i,\dot q^i,t),
+    \label{eq:fh-def-hamiltoniano}
+\end{equation}
+con
+\begin{equation}
+    p_i=\frac{\partial L}{\partial \dot q^i}.
+    \label{eq:fh-pi-def-legendre}
+\end{equation}
+La definición \eqref{eq:fh-def-hamiltoniano} debe entenderse después de expresar las velocidades $\dot q^i$ en función de $(q^j,p_j,t)$.
+
+El diferencial de $H$ se calcula como
+\begin{align}
+    dH &= \sum_i p_i\,d\dot q^i+\sum_i \dot q^i\,dp_i-dL, \label{eq:fh-dh-uno}\\
+       &= \sum_i \dot q^i\,dp_i-\sum_i \frac{\partial L}{\partial q^i}\,dq^i-\frac{\partial L}{\partial t}\,dt. \label{eq:fh-dh-dos}
+\end{align}
+Comparando con
+\begin{equation}
+    dH=\sum_i \frac{\partial H}{\partial q^i}dq^i+
+    \sum_i \frac{\partial H}{\partial p_i}dp_i+
+    \frac{\partial H}{\partial t}dt,
+    \label{eq:fh-dh-general}
+\end{equation}
+se obtienen las ecuaciones canónicas.
+
+\section{Ecuaciones canónicas de Hamilton}
+\label{sec:fh-ecuaciones-canonicas}
+
+Las \textbf{ecuaciones canónicas de Hamilton} son
+\begin{align}
+    \dot q^i &= \frac{\partial H}{\partial p_i},
+    \label{eq:fh-hamilton-q}\\
+    \dot p_i &= -\frac{\partial H}{\partial q^i}.
+    \label{eq:fh-hamilton-p}
+\end{align}
+Estas ecuaciones reemplazan las $f$ ecuaciones de segundo orden de Euler-Lagrange por $2f$ ecuaciones de primer orden. El espacio coordenado por $(q^i,p_i)$ recibe el nombre de \textbf{espacio de fase}.
+
+Como ejemplo, para un sistema con hamiltoniano de la forma
+\begin{equation}
+    H=\frac{p^2}{2m}+\frac{1}{2}kx^2,
+    \label{eq:fh-hamiltoniano-oscilador}
+\end{equation}
+las ecuaciones hamiltonianas son
+\begin{align}
+    \dot x &= \frac{\partial H}{\partial p}=\frac{p}{m},
+    \label{eq:fh-oscilador-xdot}\\
+    \dot p &= -\frac{\partial H}{\partial x}=-kx.
+    \label{eq:fh-oscilador-pdot}
+\end{align}
+La forma explícita de este ejemplo se resume en la Figura~\ref{fig:fh-ejemplo-oscilador}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/11_formalismo_hamiltoniano/ejemplo_hamiltoniano_oscilador.png}{%
+        \includegraphics[width=0.72\linewidth]{figures/11_formalismo_hamiltoniano/ejemplo_hamiltoniano_oscilador.png}%
+    }{%
+        \fbox{\parbox{0.72\linewidth}{\centering Figura pendiente: ejemplo de ecuaciones hamiltonianas.}}%
+    }
+    \caption{Ejemplo de ecuaciones hamiltonianas para un sistema cuadrático.}
+    \label{fig:fh-ejemplo-oscilador}
+\end{figure}
+
+\section{Significado físico del Hamiltoniano}
+\label{sec:fh-significado-fisico-hamiltoniano}
+
+Si el lagrangiano no depende explícitamente del tiempo, entonces el hamiltoniano se conserva. En efecto,
+\begin{equation}
+    \frac{dH}{dt}=\frac{\partial H}{\partial t}.
+    \label{eq:fh-dhdt-parcial}
+\end{equation}
+Por lo tanto, si
+\begin{equation}
+    \frac{\partial H}{\partial t}=0,
+    \label{eq:fh-hamiltoniano-autonomo}
+\end{equation}
+entonces
+\begin{equation}
+    H=\text{constante}.
+    \label{eq:fh-hamiltoniano-conservado}
+\end{equation}
+
+El hamiltoniano $H$ representa la \textbf{energía mecánica} $E$ del sistema sólo si se cumplen dos condiciones:
+\begin{itemize}
+    \item $H$ no depende explícitamente del tiempo;
+    \item las fuerzas activas son estrictamente conservativas.
+\end{itemize}
+
+En sistemas donde el lagrangiano tiene una energía cinética homogénea de segundo grado en las velocidades, el teorema de Euler para funciones homogéneas, mostrado en la Figura~\ref{fig:fh-teorema-euler}, permite escribir el hamiltoniano como energía total.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/11_formalismo_hamiltoniano/teorema_euler_homogeneas.png}{%
+        \includegraphics[width=0.65\linewidth]{figures/11_formalismo_hamiltoniano/teorema_euler_homogeneas.png}%
+    }{%
+        \fbox{\parbox{0.65\linewidth}{\centering Figura pendiente: teorema de Euler para funciones homogéneas.}}%
+    }
+    \caption{Teorema de Euler para funciones homogéneas.}
+    \label{fig:fh-teorema-euler}
+\end{figure}
+
+Para un lagrangiano natural
+\begin{equation}
+    L=T-V,
+    \label{eq:fh-lagrangiano-natural}
+\end{equation}
+con $T$ homogénea de grado dos en las velocidades y $V$ independiente de las velocidades, se obtiene
+\begin{equation}
+    H=T+V=E.
+    \label{eq:fh-hamiltoniano-energia}
+\end{equation}
+Así, bajo estas hipótesis, el hamiltoniano coincide con la energía mecánica del sistema.
+
+\end{document}

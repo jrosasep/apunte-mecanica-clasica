@@ -1,10 +1,9 @@
-% !TeX root = main.tex
+% !TeX root = ../apunte_mecanica_clasica.tex
 \IfFileExists{../apunte_mecanica_clasica.tex}{%
   \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
 }{%
   \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
 }
-
 \begin{document}
 
 \chapter{Bases Coordenados}
@@ -28,12 +27,13 @@ donde
     \beta &= x^2 \,, \\
     \gamma &= x^3\,, 
 \end{align*}
-que depende de tres parámetros libres; $x^1$, $x^2$ y $x^3$ que definen el sistema coordenado, denotado como $Ox^1x^2x^3$.
-
-\begin{figure}[h]
+que depende de tres parámetros libres; $x^1$, $x^2$ y $x^3$ que definen el sistema coordenado, denotado como $Ox^1x^2x^3$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:03-bases-coordenados:bases-fig0}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/03_bases_coordenados/bases_fig0.png}
     \caption{Vector Posición.}
+
+    \label{fig:03-bases-coordenados:bases-fig0}
 \end{figure}
 
 \begin{apuntebloque}{Ejemplo}
@@ -98,11 +98,13 @@ con dos parámetros variables y uno fijo se obtiene una \textbf{superficie coord
 \Omega \;=\; \operatorname{Im}(\vec{x})
 \;=\; \left\{\, \vec{x}(x^1,x^2,x^3) \;\middle|\; (x^1,x^2,x^3)\in I_1\times I_2\times I_3 \,\right\}.
 \end{equation*}
-
-\begin{figure}[ht]
+Esta región cubierta por las líneas coordenadas se muestra en la Figura~\ref{fig:03-bases-coordenados:bases-fig1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\linewidth]{figures/03_bases_coordenados/bases_fig1.png}
     \caption{Líneas coordenadas.}
+
+    \label{fig:03-bases-coordenados:bases-fig1}
 \end{figure}
 
 Para simplificar la notación de las líneas coordenadas, usaremos la siguiente convención:
@@ -110,28 +112,31 @@ Para simplificar la notación de las líneas coordenadas, usaremos la siguiente 
 \begin{itemize}
     \item $x^1$: denota las líneas coordenadas $\vec{x}(x^1, x^{2}_{0}, x^{3}_{0})$ .
     \item $x^2$: denota las líneas coordenadas $\vec{x}(x^{1}_{0}, x^2, x^{3}_{0})$ .
-    \item $x^3$: denota las líneas coordenadas $\vec{x}(x^{1}_{0}, x^{2}_{0}, x^{3})$ .
+    \item $x^3$: denota las líneas coordenadas $\vec{x}(x^{1}_{0}, x^{2}_{0}, x^{3})$ . La figura asociada a esta construcción se muestra en la Figura~\ref{fig:03-bases-coordenados:bases-fig2}.
 \end{itemize}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig2.png}
     \caption{Líneas coordenadas $x^1$, $x^2$ y $x^3$ .}
+
+    \label{fig:03-bases-coordenados:bases-fig2}
 \end{figure}
 
 \clearpage
-\textbf{Ejemplo}: Dos ejemplos son las coordenadas cartesianas y esféricas
-
+\textbf{Ejemplo}: Dos ejemplos son las coordenadas cartesianas y esféricas, representadas en las Figuras~\ref{fig:03-bases-coordenados:bases-fig3} y~\ref{fig:03-bases-coordenados:bases-fig4}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig3.png}
     \caption{Líneas coordenadas cartesianas.}
-\end{figure}
 
+    \label{fig:03-bases-coordenados:bases-fig3}
+\end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig4.png}
     \caption{Líneas coordenadas esféricas.}
+
+    \label{fig:03-bases-coordenados:bases-fig4}
 \end{figure}
 
 Para simplificar los futuros cálculos, introduciremos una notación más compacta:
@@ -179,33 +184,38 @@ Se definen los vectores tangentes asociados a cada línea coordenada del sistema
         \vec{e}_3= \frac{\partial \vec{x}}{\partial x^3} \,.
     \end{equation*}
 \end{itemize}
+Los vectores tangentes asociados a las líneas coordenadas $x^1$, $x^2$ y $x^3$ se muestran en las Figuras~\ref{fig:03-bases-coordenados:bases-fig5},~\ref{fig:03-bases-coordenados:bases-fig6} y~\ref{fig:03-bases-coordenados:bases-fig7}.
 \end{apuntebloque}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig5.png}
     \caption{Vector tangente a la línea coordenada $x^1$.}
-\end{figure}
 
+    \label{fig:03-bases-coordenados:bases-fig5}
+\end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig6.png}
     \caption{Vector tangente a la línea coordenada $x^2$.}
-\end{figure}
 
+    \label{fig:03-bases-coordenados:bases-fig6}
+\end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{figures/03_bases_coordenados/bases_fig7.png}
     \caption{Vector tangente a la línea coordenada $x^3$.}
+
+    \label{fig:03-bases-coordenados:bases-fig7}
 \end{figure}
 
 \clearpage
-Así, en cada punto $P \in \mathbb{R}^3$ hay tres vectores linealmente independientes, de acuerdo al sistema de coordenado $Ox^1x^2x^3$,
-
-\begin{figure}[ht]
+Así, en cada punto $P \in \mathbb{R}^3$ hay tres vectores linealmente independientes, de acuerdo al sistema de coordenado $Ox^1x^2x^3$, La figura asociada a esta construcción se muestra en la Figura~\ref{fig:03-bases-coordenados:bases-fig8}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig8.png}
     \caption{Vector tangentes.}
+
+    \label{fig:03-bases-coordenados:bases-fig8}
 \end{figure}
 
 \begin{equation*}
@@ -318,7 +328,7 @@ El producto vectorial para esta base puede recordarse con la regla de la mano de
 \end{apuntebloque}
 
 % Figura fuera del cuadro (referenciada arriba)
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/03_bases_coordenados/bases_fig9.png}
     \caption{Orientaciones en $\mathbb{R}^3$: derecha (dextrógira) con $(\hat{\imath}\times\hat{\jmath})\cdot \hat{k}=+1$ y su imagen especular (levógira) con $(\hat{\imath}\times\hat{\jmath})\cdot \hat{k}=-1$. En estas notas se usa la convención dextrógira.}
@@ -464,49 +474,49 @@ de modo que la base coordenada es un sistema ortogonal \textbf{levógiro} bajo e
 % --- Figuras fuera del cuadro (referenciadas en el texto) ---
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig10.png}
     \caption{Vector $\vec{e}_\phi$ como tangente a la circunferencia $\vec{x}(r_0,\phi,\theta_0)$ (paralelo) para $r=r_0$ y $\theta=\theta_0$. En cada punto, $\vec{e}_\phi$ es tangente y su módulo es $r_0\sin\theta_0$.}
     \label{fig:sph-ephi-parallel}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/03_bases_coordenados/bases_fig11.png}
     \caption{Colapso de $\vec{e}_\phi$ en el origen: al tomar $r_0\to0$, la circunferencia en el plano $Oxy$ se contrae a un punto y todos los vectores tangentes se anulan; el ángulo $\phi$ es indeterminado en $r=0$.}
     \label{fig:sph-origin-collapse}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/03_bases_coordenados/bases_fig12.png}
     \caption{Normalización de $\vec{e}_\phi$: el unitario $\hat{e}_\phi=\vec{e}_\phi/(r\sin\theta)$ conserva la dirección pero tiene módulo $1$ independientemente de $r$.}
     \label{fig:sph-ephi-unit}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/03_bases_coordenados/bases_fig13.png}
     \caption{Arco vs.\ ángulo: para un mismo $\Delta\phi$, los desplazamientos sobre circunferencias de radios $r_1$ y $r_2$ cumplen $\Delta S_1=r_1\Delta\phi$ y $\Delta S_2=r_2\Delta\phi$.}
     \label{fig:sph-arc-angle}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig14.png}
     \caption{Anulación de $\vec{e}_\phi$ en los polos: al acercarse $\theta\to0$ o $\theta\to\pi$, los paralelos se contraen al eje $z$ y $\|\vec{e}_\phi\|=r\sin\theta\to0$.}
     \label{fig:sph-poles}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/03_bases_coordenados/bases_fig15.png}
     \caption{Vector $\vec{e}_\theta$ como tangente al meridiano (semicircunferencia) con $r=r_0$ y $\phi=\phi_0$. Su módulo es $\|\vec{e}_\theta\|=r_0$.}
     \label{fig:sph-etheta-meridian}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/03_bases_coordenados/bases_fig16.png}
     \caption{Ortogonalidad y orientación: en cada punto, las líneas coordenadas $r$, $\phi$ y $\theta$ son mutuamente ortogonales. Se indica la orientación del triedro $(\vec{e}_r,\vec{e}_\phi,\vec{e}_\theta)$.}
@@ -814,12 +824,15 @@ Pero estos conjuntos de vectores poseen distintas parametrizaciones:
     \begin{equation*}
         \vec{x}(S^1, S^2, S^3) = \vec{x}(S^i),
     \end{equation*}
-    donde $S^i$ es la longitud de la línea coordenada $x^i$, $i = 1, 2, 3$.
+    donde $S^i$ es la longitud de la línea coordenada $x^i$, $i = 1, 2, 3$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:03-bases-coordenados:bases-fig17}.
 \end{itemize}
-
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/03_bases_coordenados/bases_fig17.png}
+
+    \caption{Relación entre bases coordenadas y bases unitarias.}
+
+    \label{fig:03-bases-coordenados:bases-fig17}
 \end{figure}
 
 \section{Elección de la Base}

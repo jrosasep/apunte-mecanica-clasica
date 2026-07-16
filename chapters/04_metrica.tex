@@ -1,10 +1,9 @@
-% !TeX root = main.tex
+% !TeX root = ../apunte_mecanica_clasica.tex
 \IfFileExists{../apunte_mecanica_clasica.tex}{%
   \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
 }{%
   \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
 }
-
 \begin{document}
 
 \chapter{Métrica}
@@ -26,9 +25,8 @@ recta, tal que
 \begin{equation*}
     ds = \lVert d\vec{x} \rVert \,,
 \end{equation*}
-y, por simplicidad, usaremos las coordenadas cartesianas.
-
-\begin{figure}[ht]
+y, por simplicidad, usaremos las coordenadas cartesianas. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:04-metrica:met-fig1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{figures/04_metrica/met_fig1.png}
     \caption{A la izquierda: el elemento infinitesimal de longitud $ds$, 
@@ -37,6 +35,8 @@ y, por simplicidad, usaremos las coordenadas cartesianas.
     $d\vec{x}$ en el espacio, cuya norma es igual a $ds$, junto con 
     la proyección de sus componentes sobre los ejes cartesianos $x$, $y$ 
     y $z$.}
+
+    \label{fig:04-metrica:met-fig1}
 \end{figure}
 
 La longitud del segmento infinitesimal de línea, $ds$, puede ser 
@@ -66,16 +66,17 @@ Recordemos que las líneas coordenadas esféricas son:
 \begin{itemize}
     \item \textbf{Líneas $r$:} rectas que pasan por el origen; $\theta$ y $\phi$ constantes, $r$ variable.
     \item \textbf{Líneas $\phi$:} circunferencias horizontales de radio $r\sin\theta$ (a altura $z = r\cos\theta$); $r$ y $\theta$ constantes, $\phi$ variable.
-    \item \textbf{Líneas $\theta$:} semicírculos en planos meridianos (que contienen al eje $z$) de radio $r$; $r$ y $\phi$ constantes, $\theta$ variable.
+    \item \textbf{Líneas $\theta$:} semicírculos en planos meridianos (que contienen al eje $z$) de radio $r$; $r$ y $\phi$ constantes, $\theta$ variable. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:04-metrica:met-fig2}.
 \end{itemize}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.55\linewidth]{figures/04_metrica/met_fig2.png}
     \caption{Elemento infinitesimal en coordenadas esféricas. 
     Se muestran los incrementos diferenciales: 
     radial $dr$, polar $r\,d\theta$ y azimutal $r\sin\theta\,d\phi$, 
     que en conjunto definen el diferencial de línea $ds$ en este sistema.}
+
+    \label{fig:04-metrica:met-fig2}
 \end{figure}
 
 Puesto que las líneas coordenadas son ortogonales, se tiene que

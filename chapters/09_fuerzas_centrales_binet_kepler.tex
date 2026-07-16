@@ -1,0 +1,1011 @@
+% !TeX root = ../apunte_mecanica_clasica.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
+\begin{document}
+
+\chapter{Fuerzas centrales, ecuación de Binet y problema de Kepler}
+\label{ch:fuerzas-centrales-binet-kepler}
+% Figuras extraídas desde Clase MC 2-2.pdf y organizadas en figures/09_fuerzas_centrales_binet_kepler/.
+
+\section{Fuerzas centrales}
+
+\subsection{Definición de fuerza central}
+
+Una fuerza $\vec F$ se dice que es una \textbf{fuerza central} si la dirección de ésta pasa por el punto donde está el centro de la fuerza.
+
+La definición anterior establece que si un cuerpo, ubicado en la posición $P$, está sometido a la acción de un agente externo ubicado en un punto $Q$, entonces la fuerza central ejercida por el agente externo es proporcional al vector que va del punto $Q$ al punto $P$, esto es
+\begin{equation}
+    \vec F \propto \vec x = \vec x_P - \vec x_Q .
+    \label{eq:fcbk-fuerza-central-proporcional}
+\end{equation}
+La construcción geométrica asociada a esta definición se muestra en la Figura~\ref{fig:fcbk-fuerza-central-geometria}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/fuerza_central_geometria.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/fuerza_central_geometria.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: geometría de una fuerza central.}}%
+    }
+    \caption{Geometría de una fuerza central: el agente externo se ubica en $Q$ y el cuerpo en $P$.}
+    \label{fig:fcbk-fuerza-central-geometria}
+\end{figure}
+
+Por comodidad, ajustamos el sistema de coordenado tal que $\vec x_Q=\vec 0$, entonces $\vec x=\vec x_P$, es decir, lo colocamos sobre $Q$. Por lo tanto,
+\begin{equation}
+    \vec F = f(x^i)\,\vec x,
+    \label{eq:fcbk-fuerza-central-general}
+\end{equation}
+donde $f(x^i)$ es el factor de proporcionalidad y puede depender de las coordenadas. Se satisface:
+\begin{itemize}
+    \item si $f(x^i)<0$, la fuerza es \textbf{atractiva};
+    \item si $f(x^i)>0$, la fuerza es \textbf{repulsiva}.
+\end{itemize}
+
+\subsection{Conservación del momentum angular}
+
+\begin{quote}
+\textbf{Proposición.} En un movimiento central el \textbf{momentum angular} es constante.
+\end{quote}
+
+\noindent
+\textbf{Demostración.} Tenemos que el torque está dado por
+\begin{equation}
+    \begin{aligned}
+        \frac{d\vec l}{dt}
+        &= \vec\tau \\
+        &= \vec x \times \vec F \\
+        &= \vec x \times f(x^i)\vec x \\
+        &= f(x^i)\,\vec x\times \vec x \\
+        &= \vec 0 .
+    \end{aligned}
+    \label{eq:fcbk-torque-fuerza-central}
+\end{equation}
+Luego,
+\begin{equation}
+    \frac{d\vec l}{dt}=\vec 0,
+    \qquad \Longrightarrow \qquad
+    \vec l=\text{constante}.
+    \label{eq:fcbk-momentum-angular-constante}
+\end{equation}
+Por lo tanto, $\vec l$ es una constante del movimiento. \hfill $\square$
+
+Puesto que $\vec l$ es un vector, o sea posee tres componentes, la proposición anterior proporciona tres constantes del movimiento: $l_x$, $l_y$ y $l_z$. Además, el módulo de $\vec l$ también es constante.
+
+\subsection{El movimiento central es planar}
+
+\begin{quote}
+\textbf{Proposición.} Un movimiento central es un \textbf{movimiento planar}.
+\end{quote}
+
+\noindent
+\textbf{Demostración.} Puesto que $\vec l$ es constante, en magnitud y dirección, y como sabemos que el momentum angular de una partícula, que posee momentum lineal $\vec p=m\vec v$, con respecto al eje de giro que pasa por $O$, es dado por
+\begin{equation}
+    \vec l=\vec x\times \vec p = m\vec x\times \vec v .
+    \label{eq:fcbk-def-momentum-angular}
+\end{equation}
+Dado que $\vec x$ y $\vec v$ definen un plano, entonces $\vec l$ es perpendicular al plano formado por $\vec x$ y $\vec v$. Podemos concluir que como $\vec l$ es constante entonces $\vec x$ y $\vec v$ están permanentemente en un plano. Por lo tanto, un movimiento central es un movimiento planar, como se ilustra en la Figura~\ref{fig:fcbk-movimiento-central-planar}. \hfill $\square$
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/movimiento_central_planar.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/movimiento_central_planar.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: movimiento central planar.}}%
+    }
+    \caption{El vector $\vec l$ es perpendicular al plano generado por $\vec x$ y $\vec v$.}
+    \label{fig:fcbk-movimiento-central-planar}
+\end{figure}
+
+De lo anterior, podemos ajustar el sistema coordenado de tal forma que hacemos $z=0$ para todo el movimiento. Por lo tanto,
+\begin{equation}
+    \vec F = f(x,y)\vec x = f(x,y)(x\hat{\imath}+y\hat{\jmath}).
+    \label{eq:fcbk-fuerza-plano-xy}
+\end{equation}
+Esto significa que la coordenada $z$ se elimina de las ecuaciones del movimiento, como se representa en la Figura~\ref{fig:fcbk-plano-z0}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/plano_movimiento_z0.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/plano_movimiento_z0.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: elección del plano $z=0$.}}%
+    }
+    \caption{Elección del plano de movimiento tal que $z=0$.}
+    \label{fig:fcbk-plano-z0}
+\end{figure}
+
+La elección del sistema coordenado con $z=0$ implica que dos componentes del momentum angular son cero, $l_x=0$ y $l_y=0$, entonces
+\begin{equation}
+    \vec l = l_z\hat{k}.
+    \label{eq:fcbk-momentum-angular-z}
+\end{equation}
+Así, sólo hay una constante del movimiento asociada al momentum angular.
+
+\subsection{Fuerza central conservativa}
+
+Si exigimos que la fuerza central sea conservativa entonces se debe cumplir que
+\begin{equation}
+    \vec\nabla\times \vec F=\vec 0.
+    \label{eq:fcbk-condicion-conservativa}
+\end{equation}
+En el plano $z=0$, usando \eqref{eq:fcbk-fuerza-plano-xy}, se obtiene
+\begin{equation}
+    \begin{aligned}
+    \vec\nabla\times\vec F
+    &=
+    \begin{vmatrix}
+    \hat{\imath} & \hat{\jmath} & \hat{k} \\
+    \partial_x & \partial_y & \partial_z \\
+    x f(x,y) & y f(x,y) & 0
+    \end{vmatrix} \\
+    &=\left(y\frac{\partial f}{\partial x}-x\frac{\partial f}{\partial y}\right)\hat{k}.
+    \end{aligned}
+    \label{eq:fcbk-racional-fuerza-central}
+\end{equation}
+Por lo tanto, la condición conservativa implica
+\begin{equation}
+    y\frac{\partial f}{\partial x}-x\frac{\partial f}{\partial y}=0.
+    \label{eq:fcbk-condicion-fxy}
+\end{equation}
+
+La expresión anterior se puede escribir en la forma
+\begin{equation}
+    y\frac{\partial f}{\partial x}-x\frac{\partial f}{\partial y}
+    =-(-y,x,0)\cdot \vec\nabla f =0,
+    \label{eq:fcbk-vector-tangente-f}
+\end{equation}
+donde $(-y,x,0)$ es un vector tangente a la circunferencia de radio $\sqrt{x^2+y^2}$.
+
+Introducimos, por la geometría del problema, las coordenadas cilíndricas:
+\begin{equation}
+    x=r\cos\phi,
+    \qquad
+    y=r\sin\phi,
+    \qquad
+    z=z,
+    \label{eq:fcbk-coordenadas-cilindricas}
+\end{equation}
+con $r>0$, $0\leq \phi<2\pi$ y $z\in\mathbb{R}$. Los vectores base coordenado son
+\begin{equation}
+    \vec e_r=\cos\phi\,\hat{\imath}+\sin\phi\,\hat{\jmath}=\hat r,
+    \qquad
+    \vec e_\phi=r(-\sin\phi\,\hat{\imath}+\cos\phi\,\hat{\jmath})=r\hat\phi,
+    \qquad
+    \vec e_z=\hat{k}.
+    \label{eq:fcbk-bases-cilindricas}
+\end{equation}
+Así tenemos que
+\begin{equation}
+    (-y,x,0)=(-r\sin\phi,r\cos\phi,0)=\vec e_\phi=r\hat\phi,
+    \label{eq:fcbk-vector-tangente-cilindrico}
+\end{equation}
+y el gradiente se escribe como
+\begin{equation}
+    \vec\nabla f = \vec e_r\frac{\partial f}{\partial r}
+    + \vec e_\phi\frac{1}{r^2}\frac{\partial f}{\partial \phi}.
+    \label{eq:fcbk-gradiente-f-cilindrico}
+\end{equation}
+Entonces,
+\begin{equation}
+    y\frac{\partial f}{\partial x}-x\frac{\partial f}{\partial y}
+    =\frac{\partial f(r,\phi)}{\partial \phi}=0.
+    \label{eq:fcbk-f-no-depende-phi}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    f(r,\phi)=f(r),
+    \label{eq:fcbk-f-de-r}
+\end{equation}
+es decir, no depende del ángulo $\phi$.
+
+Como $\vec x=r\hat r$, la fuerza central queda
+\begin{equation}
+    \vec F(r,\phi)=f(r)\vec x=f(r)r\hat r.
+    \label{eq:fcbk-fuerza-fr-rhat-intermedia}
+\end{equation}
+Sin pérdida de generalidad, absorbemos la variable $r$ en $f(r)$, o sea hacemos $rf(r)\to f(r)$, aunque puedan poseer distintas dimensionalidades. Tenemos así
+\begin{equation}
+    \vec F(r,\phi)=f(r)\hat r.
+    \label{eq:fcbk-fuerza-central-radial}
+\end{equation}
+
+\subsection{Resumen de la reducción planar}
+
+Resumiendo lo obtenido hasta ahora: en una fuerza central
+\begin{equation}
+    \vec F(x^i)=f(x^i)\vec x,
+    \label{eq:fcbk-fuerza-central-resumen-1}
+\end{equation}
+el momentum angular se conserva. Como consecuencia, el movimiento es planar, por lo que se ajusta el sistema de coordenado, con el fin de simplificar las ecuaciones del movimiento, tal que $z=0$.
+
+Si se exige que la fuerza central sea conservativa, se concluye que
+\begin{equation}
+    f(x,y)=f\left(\sqrt{x^2+y^2}\right).
+    \label{eq:fcbk-f-radial-cartesiano}
+\end{equation}
+Cambiando a coordenadas cilíndricas, la expresión de la fuerza central cambia a
+\begin{equation}
+    \vec F(r,\phi)=f(r)\hat r,
+    \label{eq:fcbk-fuerza-central-resumen-2}
+\end{equation}
+y el momentum angular toma la forma
+\begin{equation}
+    \vec l=l_z\hat{k}=m(x\dot y-y\dot x)\hat{k}=mr^2\dot\phi\,\hat{k}.
+    \label{eq:fcbk-l-mr2phidot-vector}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    l=mr^2\dot\phi
+    \label{eq:fcbk-l-mr2phidot}
+\end{equation}
+es constante.
+
+\newpage
+\section{Ecuación de Binet y rapidez areolar}
+
+\subsection{Ecuaciones de movimiento en coordenadas cilíndricas}
+
+La aceleración en coordenadas cilíndricas está dada por
+\begin{equation}
+    \vec a=(\ddot r-r\dot\phi^2)\hat r+(2\dot r\dot\phi+r\ddot\phi)\hat\phi.
+    \label{eq:fcbk-aceleracion-cilindrica}
+\end{equation}
+Por la segunda ley de Newton, usando \eqref{eq:fcbk-fuerza-central-resumen-2}, tenemos
+\begin{equation}
+    m\left[(\ddot r-r\dot\phi^2)\hat r+(2\dot r\dot\phi+r\ddot\phi)\hat\phi\right]
+    =f(r)\hat r+0\hat\phi.
+    \label{eq:fcbk-newton-cilindricas}
+\end{equation}
+Comparando componentes se concluye que
+\begin{align}
+    m(\ddot r-r\dot\phi^2)&=f(r),
+    \label{eq:fcbk-ecuacion-radial}\\
+    m(2\dot r\dot\phi+r\ddot\phi)&=0.
+    \label{eq:fcbk-ecuacion-angular}
+\end{align}
+De la segunda ecuación se tiene
+\begin{equation}
+    2\dot r\dot\phi+r\ddot\phi
+    =\frac{1}{r}\left(2r\dot r\dot\phi+r^2\ddot\phi\right)
+    =\frac{1}{r}\frac{d}{dt}\left(r^2\dot\phi\right).
+    \label{eq:fcbk-derivada-r2phidot}
+\end{equation}
+Entonces, de \eqref{eq:fcbk-ecuacion-angular} y \eqref{eq:fcbk-derivada-r2phidot}, se obtiene
+\begin{equation}
+    r^2\dot\phi=\text{constante}.
+    \label{eq:fcbk-r2phidot-constante}
+\end{equation}
+Esto es equivalente a la conservación del momentum angular escrita en \eqref{eq:fcbk-l-mr2phidot}.
+
+\subsection{Rapidez areolar}
+
+Consideremos dos posiciones de la partícula en el instante $t$ y $t+dt$. El área que describe el vector posición, cuando se mueve desde $Q$ a $Q'$, es
+\begin{equation}
+    dA=\frac{1}{2}bdh.
+    \label{eq:fcbk-area-diferencial-triangulo}
+\end{equation}
+Con $b=r+dr$ y $dh=r\sin(d\phi)\simeq r\,d\phi$, entonces
+\begin{equation}
+    dA=\frac{1}{2}(r+dr)r\,d\phi\simeq \frac{1}{2}r^2d\phi.
+    \label{eq:fcbk-dA-areolar}
+\end{equation}
+De esta manera, la \textbf{rapidez areolar} queda dada por
+\begin{equation}
+    v_a=\frac{dA}{dt}=\frac{1}{2}r^2\frac{d\phi}{dt}=\frac{1}{2}r^2\dot\phi.
+    \label{eq:fcbk-rapidez-areolar}
+\end{equation}
+La interpretación geométrica del área barrida por el radio vector se muestra en la Figura~\ref{fig:fcbk-rapidez-areolar}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/rapidez_areolar.png}{%
+        \includegraphics[width=0.62\linewidth]{figures/09_fuerzas_centrales_binet_kepler/rapidez_areolar.png}%
+    }{%
+        \fbox{\parbox{0.62\linewidth}{\centering Figura pendiente: rapidez areolar.}}%
+    }
+    \caption{Área diferencial barrida por el radio vector durante el intervalo $dt$.}
+    \label{fig:fcbk-rapidez-areolar}
+\end{figure}
+
+Por \eqref{eq:fcbk-r2phidot-constante}, se obtiene
+\begin{equation}
+    r^2\dot\phi=\text{constante},
+    \qquad
+    2v_a=\text{constante},
+    \qquad
+    \therefore \quad v_a=\text{constante}.
+    \label{eq:fcbk-rapidez-areolar-constante}
+\end{equation}
+En un movimiento central, la rapidez areolar es constante.
+
+Al parecer obtuvimos una nueva constante del movimiento, además del momentum angular. Sin embargo, la constancia de la rapidez areolar es una consecuencia de la constancia del momentum angular. En efecto,
+\begin{equation}
+    v_a=\frac{1}{2}r^2\dot\phi=\frac{1}{2}\frac{l}{m}=\frac{l}{2m},
+    \label{eq:fcbk-va-l-sobre-2m}
+\end{equation}
+y por lo tanto
+\begin{equation}
+    \frac{dv_a}{dt}=\frac{1}{2m}\frac{dl}{dt}=0.
+    \label{eq:fcbk-va-constante-por-l}
+\end{equation}
+
+De \eqref{eq:fcbk-derivada-r2phidot} y \eqref{eq:fcbk-rapidez-areolar} se tiene que
+\begin{equation}
+    a_\phi=2\dot r\dot\phi+r\ddot\phi
+    =\frac{1}{r}\frac{d}{dt}(r^2\dot\phi)
+    =\frac{1}{r}\frac{d}{dt}(2v_a)
+    =\frac{2}{r}\frac{dv_a}{dt}=0.
+    \label{eq:fcbk-aceleracion-angular-nula}
+\end{equation}
+El vector aceleración posee sólo componente radial:
+\begin{equation}
+    \vec a=(\ddot r-r\dot\phi^2)\hat r.
+    \label{eq:fcbk-aceleracion-solo-radial}
+\end{equation}
+
+\subsection{Ecuaciones de itinerario}
+
+De esta forma, se tiene que las ecuaciones del movimiento se simplifican a la forma
+\begin{align}
+    m(\ddot r-r\dot\phi^2)&=f(r),
+    \label{eq:fcbk-edo-r-inicial}\\
+    mr^2\dot\phi&=l.
+    \label{eq:fcbk-edo-phi-inicial}
+\end{align}
+Esto es, una ecuación diferencial ordinaria de segundo orden en el tiempo para la variable $r$ y una ecuación diferencial ordinaria de primer orden en el tiempo para la variable $\phi$.
+
+Se debe aclarar que las ecuaciones del movimiento originales son dos ecuaciones diferenciales ordinarias de segundo orden para $r$ y $\phi$; por lo tanto, al ser integradas debieran arrojar cuatro constantes de integración. Sin embargo, la conservación del momentum angular reduce el orden de la ecuación diferencial en $\phi$, lo que corresponde a una primera integral; por lo tanto, $l$ es una constante de integración, y sólo quedan tres constantes de integración.
+
+La ecuación diferencial para $r$ se puede desacoplar de la variable $\phi$ y dejarla sólo en función de $r$. En efecto, de \eqref{eq:fcbk-edo-phi-inicial} se usa
+\begin{equation}
+    \dot\phi=\frac{l}{mr^2}.
+    \label{eq:fcbk-phidot-l-mr2}
+\end{equation}
+Entonces, sustituyendo en \eqref{eq:fcbk-edo-r-inicial},
+\begin{equation}
+    \begin{aligned}
+    m(\ddot r-r\dot\phi^2)&=f(r),\\
+    m\left(\ddot r-r\left(\frac{l}{mr^2}\right)^2\right)&=f(r),\\
+    m\left(\ddot r-\frac{l^2}{m^2r^3}\right)&=f(r).
+    \end{aligned}
+    \label{eq:fcbk-desacople-r}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    m\ddot r-\frac{l^2}{mr^3}=f(r).
+    \label{eq:fcbk-ecuacion-r-desacoplada}
+\end{equation}
+Así, obtenemos las ecuaciones de itinerario del movimiento:
+\begin{align}
+    m\ddot r-\frac{l^2}{mr^3}&=f(r),
+    \label{eq:fcbk-itinerario-r}\\
+    mr^2\dot\phi&=l.
+    \label{eq:fcbk-itinerario-phi}
+\end{align}
+Conocido $f(r)$ se puede obtener $r(t)$ de la primera ecuación y posteriormente de la segunda ecuación se obtiene $\phi(t)$.
+
+\subsection{Ecuación de la trayectoria}
+
+Sin embargo, las dos ecuaciones anteriores se pueden fundir en una sola. En efecto, de las ecuaciones del movimiento podemos conocer $r(t)$ y $\phi(t)$, pero podemos eliminar el tiempo de las ecuaciones despejando el tiempo en función del ángulo, $t=t(\phi)$, tal que
+\begin{equation}
+    r(t(\phi))=r(\phi),
+    \label{eq:fcbk-r-de-phi}
+\end{equation}
+lo que se llama \textbf{ecuación de la trayectoria}.
+
+Entonces,
+\begin{equation}
+    \begin{aligned}
+    \dot r
+    &=\frac{dr}{dt}\\
+    &=\frac{d\phi}{dt}\frac{dr}{d\phi}\\
+    &=\dot\phi\frac{dr}{d\phi}\\
+    &=\frac{l}{mr^2}\frac{dr}{d\phi}\\
+    &=-\frac{l}{m}\frac{d}{d\phi}\left(\frac{1}{r}\right).
+    \end{aligned}
+    \label{eq:fcbk-rdot-u}
+\end{equation}
+Luego,
+\begin{equation}
+    \begin{aligned}
+    \ddot r
+    &=\frac{d\dot r}{dt}\\
+    &=\frac{d\phi}{dt}\frac{d\dot r}{d\phi}\\
+    &=-\frac{l}{mr^2}\frac{l}{m}\frac{d^2}{d\phi^2}\left(\frac{1}{r}\right).
+    \end{aligned}
+    \label{eq:fcbk-rddot-u-intermedio}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    \ddot r=-\frac{l^2}{m^2r^2}\frac{d^2}{d\phi^2}\left(\frac{1}{r}\right).
+    \label{eq:fcbk-rddot-u}
+\end{equation}
+
+Sustituyendo \eqref{eq:fcbk-rddot-u} en \eqref{eq:fcbk-itinerario-r}, se obtiene
+\begin{equation}
+    -\frac{l^2}{mr^2}\left[\frac{d^2}{d\phi^2}\left(\frac{1}{r}\right)+\frac{1}{r}\right]=f(r).
+    \label{eq:fcbk-binet}
+\end{equation}
+Esta ecuación se llama \textbf{ecuación de Binet}. Logramos desacoplar las variables $r$ y $\phi$; sólo basta conocer $f(r)$.
+
+Resumiendo las ecuaciones del movimiento:
+\begin{align}
+    -\frac{l^2}{mr^2}\left[\frac{d^2}{d\phi^2}\left(\frac{1}{r}\right)+\frac{1}{r}\right]&=f(r),
+    \label{eq:fcbk-binet-resumen}\\
+    \dot\phi&=\frac{l}{mr^2}.
+    \label{eq:fcbk-phidot-resumen}
+\end{align}
+Conocido $f(r)$ podemos obtener $r(\phi)$, integrando la ecuación de Binet. Luego se introduce en la segunda ecuación y se puede obtener $\phi(t)$ y luego $r(t)$. No olvidar que hay tres constantes de integración.
+
+\subsection{Potencial asociado a una fuerza central conservativa}
+
+Podemos simplificar aún más la primera ecuación recordando que se impuso que la fuerza central sea conservativa, o sea existe un potencial asociado a la fuerza central:
+\begin{equation}
+    \vec F=-\vec\nabla U.
+    \label{eq:fcbk-fuerza-potencial}
+\end{equation}
+Entonces,
+\begin{equation}
+    f(r)\hat r=-\frac{\partial U}{\partial r}\hat r-\frac{1}{r}\frac{\partial U}{\partial \phi}\hat\phi.
+    \label{eq:fcbk-potencial-cilindrico}
+\end{equation}
+Claramente se observa que
+\begin{equation}
+    \frac{\partial U}{\partial \phi}=0,
+    \label{eq:fcbk-U-no-depende-phi}
+\end{equation}
+y por lo tanto
+\begin{equation}
+    U=U(r).
+    \label{eq:fcbk-U-de-r}
+\end{equation}
+Luego,
+\begin{equation}
+    \frac{dU}{dr}=-f(r),
+    \label{eq:fcbk-dUdr}
+\end{equation}
+y entonces
+\begin{equation}
+    U(r)=-\int_{r_0}^{r}f(r)\,dr,
+    \label{eq:fcbk-U-integral}
+\end{equation}
+donde $r_0$ es el radio de referencia donde se define $U(r_0)=0$.
+
+Como la fuerza central es conservativa, entonces la energía mecánica se conserva:
+\begin{equation}
+    E=\frac{1}{2}mv^2+U(r).
+    \label{eq:fcbk-energia-mecanica}
+\end{equation}
+La velocidad en coordenadas cilíndricas está dada por
+\begin{equation}
+    \vec v=\dot r\vec e_r+\dot\phi\vec e_\phi+\dot z\vec e_z=\dot r\hat r+r\dot\phi\hat\phi,
+    \label{eq:fcbk-velocidad-cilindrica}
+\end{equation}
+y luego
+\begin{equation}
+    v^2=\vec v\cdot\vec v=\dot r^2+r^2\dot\phi^2.
+    \label{eq:fcbk-v2-cilindrica}
+\end{equation}
+Por lo tanto, la energía se reescribe como
+\begin{equation}
+    E=\frac{1}{2}m(\dot r^2+r^2\dot\phi^2)+U(r).
+    \label{eq:fcbk-energia-r-phi}
+\end{equation}
+Usando \eqref{eq:fcbk-phidot-l-mr2}, se obtiene
+\begin{equation}
+    E=\frac{1}{2}m\dot r^2+\frac{l^2}{2mr^2}+U(r).
+    \label{eq:fcbk-energia-reducida}
+\end{equation}
+Tenemos dos ecuaciones de primer orden:
+\begin{align}
+    E&=\frac{1}{2}m\dot r^2+\frac{l^2}{2mr^2}+U(r),
+    \label{eq:fcbk-energia-reducida-resumen}\\
+    l&=mr^2\dot\phi.
+    \label{eq:fcbk-l-resumen-final}
+\end{align}
+Se ha reducido el orden de la derivada temporal en la ecuación radial en un orden, por lo que la energía es una constante de integración.
+
+\newpage
+\section{Problema de Kepler}
+
+\subsection{Ley de gravitación universal y ecuación de Binet}
+
+La idea es estudiar el movimiento de una partícula sometida a la acción de una fuerza central dependiente del inverso del cuadrado del radio, esto es, la \textbf{ley de gravitación universal de Newton}:
+\begin{equation}
+    \vec F=-\frac{k}{r^2}\hat r,
+    \qquad
+    f(r)=-\frac{k}{r^2}.
+    \label{eq:fcbk-kepler-fuerza-inversa-cuadrado}
+\end{equation}
+Introduciéndola en la ecuación de Binet \eqref{eq:fcbk-binet}, se tiene
+\begin{equation}
+    -\frac{l^2}{mr^2}\left[\frac{d^2}{d\phi^2}\left(\frac{1}{r}\right)+\frac{1}{r}\right]
+    =-\frac{k}{r^2}.
+    \label{eq:fcbk-kepler-binet-sustitucion}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    \frac{d^2}{d\phi^2}\left(\frac{1}{r}\right)+\frac{1}{r}=\frac{km}{l^2}.
+    \label{eq:fcbk-kepler-binet-final}
+\end{equation}
+
+Si efectuamos el cambio de variable
+\begin{equation}
+    u=\frac{1}{r},
+    \label{eq:fcbk-kepler-u}
+\end{equation}
+entonces la ecuación de Binet se simplifica en la forma
+\begin{equation}
+    \frac{d^2u}{d\phi^2}+u=\frac{km}{l^2}.
+    \label{eq:fcbk-kepler-u-edo}
+\end{equation}
+La solución de esta ecuación es dada por
+\begin{equation}
+    u=u_p+u_h,
+    \label{eq:fcbk-kepler-u-general}
+\end{equation}
+donde $u_p$ es la solución particular,
+\begin{equation}
+    u_p=\frac{km}{l^2},
+    \label{eq:fcbk-kepler-up}
+\end{equation}
+y $u_h$ corresponde a la solución de la ecuación homogénea
+\begin{equation}
+    \frac{d^2u_h}{d\phi^2}+u_h=0,
+    \label{eq:fcbk-kepler-uh-edo}
+\end{equation}
+cuya solución es
+\begin{equation}
+    u_h=A\sin(\phi-\phi_0),
+    \label{eq:fcbk-kepler-uh}
+\end{equation}
+donde $A$ y $\phi_0$ son constantes de integración. La solución a la ecuación de Binet entonces es
+\begin{equation}
+    u(\phi)=A\sin(\phi-\phi_0)+\frac{km}{l^2}.
+    \label{eq:fcbk-kepler-u-sol}
+\end{equation}
+Equivalentemente,
+\begin{equation}
+    \frac{1}{r}=\frac{km}{l^2}\left(1+\frac{Al^2}{mk}\sin(\phi-\phi_0)\right).
+    \label{eq:fcbk-kepler-inversa-r}
+\end{equation}
+Así,
+\begin{equation}
+    r(\phi)=\frac{\frac{l^2}{km}}{1+\frac{Al^2}{mk}\sin(\phi-\phi_0)}.
+    \label{eq:fcbk-kepler-r-sol-intermedia}
+\end{equation}
+Si definimos
+\begin{equation}
+    p=\frac{l^2}{km},
+    \qquad
+    e=\frac{Al^2}{mk},
+    \label{eq:fcbk-kepler-p-e-def}
+\end{equation}
+tenemos
+\begin{equation}
+    r(\phi)=\frac{p}{1+e\sin(\phi-\phi_0)}.
+    \label{eq:fcbk-kepler-r-conica-general}
+\end{equation}
+Si ajustamos de forma apropiada el eje polar tenemos $\phi_0=0$; por lo tanto,
+\begin{equation}
+    r(\phi)=\frac{p}{1+e\sin\phi},
+    \label{eq:fcbk-kepler-r-conica}
+\end{equation}
+la que corresponde a la ecuación focal de una sección cónica de parámetro $p$ y excentricidad $e$.
+
+\subsection{Secciones cónicas}
+
+Las soluciones del problema de Kepler se organizan geométricamente en términos de \textbf{secciones cónicas}: circunferencia, elipse, parábola e hipérbola. Estas formas se muestran en la Figura~\ref{fig:fcbk-secciones-conicas}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/secciones_conicas.png}{%
+        \includegraphics[width=0.7\linewidth]{figures/09_fuerzas_centrales_binet_kepler/secciones_conicas.png}%
+    }{%
+        \fbox{\parbox{0.7\linewidth}{\centering Figura pendiente: secciones cónicas.}}%
+    }
+    \caption{Secciones cónicas asociadas a distintos valores de la excentricidad.}
+    \label{fig:fcbk-secciones-conicas}
+\end{figure}
+
+La ecuación anterior posee una constante de integración $A$, la que podemos ajustar con la energía del sistema. En efecto, la energía potencial del sistema está dada por
+\begin{equation}
+    U(r)=-\int_{\infty}^{r}\frac{k}{r^2}\,dr=-\frac{k}{r},
+    \label{eq:fcbk-kepler-potencial}
+\end{equation}
+donde el radio de referencia se fijó en infinito, puesto que la fuerza tiende a cero en infinito. Entonces
+\begin{equation}
+    E=\frac{1}{2}m\dot r^2+\frac{l^2}{2mr^2}-\frac{k}{r}.
+    \label{eq:fcbk-kepler-energia}
+\end{equation}
+
+Despejando $\dot r$, se obtiene
+\begin{equation}
+    \dot r^2=\frac{2}{m}\left(E-\frac{l^2}{2mr^2}+\frac{k}{r}\right).
+    \label{eq:fcbk-kepler-rdot2}
+\end{equation}
+Pero, por \eqref{eq:fcbk-rdot-u},
+\begin{equation}
+    \dot r=\frac{l}{mr^2}\frac{dr}{d\phi}.
+    \label{eq:fcbk-kepler-rdot-dr-dphi}
+\end{equation}
+Sea $u=1/r$. Al integrar se tiene nuevamente
+\begin{equation}
+    r(\phi)=\frac{p}{1+e\sin(\phi-\phi_0)},
+    \label{eq:fcbk-kepler-r-integrada}
+\end{equation}
+con
+\begin{equation}
+    p=\frac{l^2}{km},
+    \qquad
+    e=\sqrt{1+\frac{2El^2}{mk^2}}.
+    \label{eq:fcbk-kepler-excentricidad-energia}
+\end{equation}
+La expresión \eqref{eq:fcbk-kepler-r-integrada} corresponde a la ecuación focal de una sección cónica de parámetro $p$ y excentricidad $e$.
+
+\subsection{Excentricidad como razón foco-directriz}
+
+Sean $F$ un punto fijo, llamado \textbf{foco}, y una recta fija, llamada \textbf{directriz}, en el plano. Sea $P$ un punto sobre la curva en el plano y se define la excentricidad $e$ como el cociente entre la distancia del punto $P$ al foco y la distancia del punto $P$ a la directriz:
+\begin{equation}
+    e=\frac{PF}{PQ}=\frac{r}{PQ}.
+    \label{eq:fcbk-excentricidad-foco-directriz}
+\end{equation}
+La geometría foco-directriz de una cónica se muestra en la Figura~\ref{fig:fcbk-conica-foco-directriz}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/conica_foco_directriz.png}{%
+        \includegraphics[width=0.45\linewidth]{figures/09_fuerzas_centrales_binet_kepler/conica_foco_directriz.png}%
+    }{%
+        \fbox{\parbox{0.45\linewidth}{\centering Figura pendiente: foco, directriz y excentricidad.}}%
+    }
+    \caption{Definición geométrica de la excentricidad mediante foco y directriz.}
+    \label{fig:fcbk-conica-foco-directriz}
+\end{figure}
+
+Sea $d$ la distancia entre el foco, en el polo, y la directriz correspondiente. Entonces,
+\begin{equation}
+    r\sin\phi+PQ=d.
+    \label{eq:fcbk-conica-relacion-d}
+\end{equation}
+Usando \eqref{eq:fcbk-excentricidad-foco-directriz}, se tiene $PQ=r/e$, de modo que
+\begin{equation}
+    r\sin\phi+\frac{r}{e}=d.
+    \label{eq:fcbk-conica-relacion-pq}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    r(e\sin\phi+1)=ed,
+    \label{eq:fcbk-conica-intermedia}
+\end{equation}
+y finalmente
+\begin{equation}
+    r(\phi)=\frac{ed}{1+e\sin\phi}.
+    \label{eq:fcbk-conica-focal}
+\end{equation}
+Si la distancia $d$ es constante, entonces la ecuación anterior es la ecuación focal, medida desde el foco, de una sección cónica. La excentricidad $e$ clasifica el tipo de cónica:
+\begin{itemize}
+    \item la cónica es una \textbf{circunferencia} si $e=0$;
+    \item la cónica es una \textbf{elipse} si $0<e<1$;
+    \item la cónica es una \textbf{parábola} si $e=1$;
+    \item la cónica es una \textbf{hipérbola} si $e>1$.
+\end{itemize}
+
+\subsection{Energía y clasificación de órbitas}
+
+Volviendo a la energía, es claro que la energía está acotada. Desde \eqref{eq:fcbk-kepler-excentricidad-energia},
+\begin{equation}
+    e=\sqrt{1+\frac{2El^2}{mk^2}}.
+    \label{eq:fcbk-e-raiz-energia}
+\end{equation}
+Como el argumento de la raíz debe ser no negativo,
+\begin{equation}
+    1+\frac{2El^2}{mk^2}\geq 0,
+    \label{eq:fcbk-condicion-raiz-e}
+\end{equation}
+se concluye que
+\begin{equation}
+    E\geq -\frac{mk^2}{2l^2}.
+    \label{eq:fcbk-cota-energia}
+\end{equation}
+Por lo tanto, existe una energía mínima
+\begin{equation}
+    E_{\min}=-\frac{mk^2}{2l^2},
+    \label{eq:fcbk-energia-minima}
+\end{equation}
+la que es negativa.
+
+De acuerdo a los valores de $e$, tenemos que la trayectoria puede ser hiperbólica, parabólica, elíptica o circular:
+\begin{itemize}
+    \item si $e>1$, entonces $E>0$ y la trayectoria es una \textbf{hipérbola};
+    \item si $e=1$, entonces $E=0$ y la trayectoria es una \textbf{parábola};
+    \item si $0<e<1$, entonces $E_{\min}<E<0$ y la trayectoria es una \textbf{elipse};
+    \item si $e=0$, entonces $E=E_{\min}$ y la trayectoria es una \textbf{circunferencia} de radio
+    \begin{equation}
+        r=p=\frac{l^2}{km}=\text{constante}.
+        \label{eq:fcbk-radio-circular}
+    \end{equation}
+\end{itemize}
+
+En resumen:
+\begin{center}
+\begin{tabular}{c c c}
+\hline
+$e$ & Órbita & Energía \\
+\hline
+$e>1$ & Hipérbola & $E>0$ \\
+$e=1$ & Parábola & $E=0$ \\
+$0<e<1$ & Elipse & $E_{\min}<E<0$ \\
+$e=0$ & Circunferencia & $E=E_{\min}=-\dfrac{mk^2}{2l^2}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+Si $E\geq 0$, entonces $T\geq |U|$ y aparecen hipérbolas y parábolas. Si $E<0$, entonces $T\leq |U|$ y aparecen elipses y circunferencias.
+
+\subsection{Leyes de Kepler}
+
+Las \textbf{leyes de Kepler} pueden escribirse como:
+\begin{itemize}
+    \item \textbf{Primera ley:} los planetas describen órbitas elípticas en torno del Sol, y el Sol se encuentra en uno de los focos de la elipse.
+    \item \textbf{Segunda ley:} el radio vector barre áreas iguales en tiempos iguales; la rapidez areolar es constante.
+    \item \textbf{Tercera ley:} el cuadrado del periodo de la órbita es proporcional al cubo del semieje mayor:
+    \begin{equation}
+        T^2=\frac{4\pi^2}{GM}a^3.
+        \label{eq:fcbk-tercera-ley-kepler}
+    \end{equation}
+\end{itemize}
+
+La Tierra gira alrededor de una estrella llamada Sol, en una órbita elíptica con parámetros: excentricidad $0{,}01671123$, perihelio $147098290\,\mathrm{km}$, afelio $152098232\,\mathrm{km}$ e inclinación $23{,}5^\circ$. La Figura~\ref{fig:fcbk-orbita-tierra} muestra una representación de la órbita terrestre.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/orbita_tierra_parametros.png}{%
+        \includegraphics[width=0.62\linewidth]{figures/09_fuerzas_centrales_binet_kepler/orbita_tierra_parametros.png}%
+    }{%
+        \fbox{\parbox{0.62\linewidth}{\centering Figura pendiente: órbita terrestre.}}%
+    }
+    \caption{Representación de la órbita terrestre con perihelio, afelio, equinoccios y solsticios.}
+    \label{fig:fcbk-orbita-tierra}
+\end{figure}
+
+Es conveniente insistir que en un movimiento central el momentum angular con respecto a cualquier eje que pasa por el centro de fuerzas es constante. La importancia del momentum angular se debe precisamente al gran número de fuerzas centrales que aparecen en la física.
+
+Es conveniente usar coordenadas polares $(r,\phi)$ y la fórmula de Binet en los casos en que $r$ y $\phi$ están relacionados de una forma sencilla:
+\begin{equation}
+    -\frac{l^2}{mr^2}\left[\frac{d^2}{d\phi^2}\left(\frac{1}{r}\right)+\frac{1}{r}\right]=f(r).
+    \label{eq:fcbk-binet-uso-practico}
+\end{equation}
+Cuando $r(\phi)$ es una función complicada, es conveniente usar coordenadas polares $(r,\phi)$ y el principio de conservación de energía:
+\begin{equation}
+    \frac{l^2}{2mr^4}\left[\left(\frac{dr}{d\phi}\right)^2+r^2\right]+U(r)=E.
+    \label{eq:fcbk-energia-r-de-phi}
+\end{equation}
+Si se conocen las condiciones iniciales $l$ y $E$, se puede, en principio, determinar $r=r(\phi)$.
+
+\newpage
+\section{Problema unidimensional equivalente}
+
+\subsection{Potencial efectivo}
+
+Volvamos a la ecuación de energía
+\begin{equation}
+    E=\frac{1}{2}m\dot r^2+\frac{l^2}{2mr^2}+U(r).
+    \label{eq:fcbk-energia-para-potencial-efectivo}
+\end{equation}
+A partir de esta ecuación podemos obtener información cualitativa importante.
+
+Si definimos el nuevo potencial
+\begin{equation}
+    V_{\mathrm{ef}}(r)=\frac{l^2}{2mr^2}+U(r),
+    \label{eq:fcbk-potencial-efectivo}
+\end{equation}
+llamado \textbf{potencial efectivo}, entonces la energía se escribe
+\begin{equation}
+    E=\frac{1}{2}m\dot r^2+V_{\mathrm{ef}}(r).
+    \label{eq:fcbk-energia-potencial-efectivo}
+\end{equation}
+
+El término
+\begin{equation}
+    V_c(r)=\frac{l^2}{2mr^2}
+    \label{eq:fcbk-potencial-centrifugo}
+\end{equation}
+en $V_{\mathrm{ef}}(r)$ es la energía potencial asociada a la fuerza centrífuga y es llamada \textbf{potencial centrífugo}. En efecto,
+\begin{equation}
+    F_c=-\frac{dV_c}{dr}
+    =-\frac{d}{dr}\left(\frac{l^2}{2mr^2}\right)
+    =\frac{l^2}{mr^3}.
+    \label{eq:fcbk-fuerza-centrifuga-potencial}
+\end{equation}
+Usando $l=mr^2\dot\phi$, se tiene
+\begin{equation}
+    F_c=\frac{(mr^2\dot\phi)^2}{mr^3}=mr\dot\phi^2=mr\omega^2=m\frac{v^2}{r}.
+    \label{eq:fcbk-fuerza-centrifuga-formas}
+\end{equation}
+Esta fuerza no apunta hacia el centro, sino hacia afuera. Esta es la razón del nombre de $V_c$.
+
+\subsection{Región de movimiento y puntos de retorno}
+
+Los límites de la región del movimiento son los valores de $r$ para los cuales se cumple
+\begin{equation}
+    \frac{1}{2}m\dot r^2=E-V_{\mathrm{ef}}(r)\geq 0.
+    \label{eq:fcbk-region-movimiento}
+\end{equation}
+En el límite de la región, $E=V_{\mathrm{ef}}(r)$, se cumple $\dot r=0$, lo que define un \textbf{punto de retorno} de la trayectoria.
+
+Si existe un valor mínimo de $r$, es decir, si existe un $r_{\min}$ tal que $r\geq r_{\min}$, entonces el movimiento es infinito, o sea, el movimiento comienza y termina en el infinito; la Figura~\ref{fig:fcbk-radio-minimo-orbita-abierta} representa esta situación.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/radio_minimo_orbita_abierta.png}{%
+        \includegraphics[width=0.50\linewidth]{figures/09_fuerzas_centrales_binet_kepler/radio_minimo_orbita_abierta.png}%
+    }{%
+        \fbox{\parbox{0.50\linewidth}{\centering Figura pendiente: radio mínimo.}}%
+    }
+    \caption{Trayectoria no acotada con un radio mínimo $r_{\min}$.}
+    \label{fig:fcbk-radio-minimo-orbita-abierta}
+\end{figure}
+
+Si existen $r_{\min}$ y $r_{\max}$, es decir, $r_{\min}\leq r\leq r_{\max}$, entonces el movimiento es finito, lo que significa que el movimiento es acotado. El análisis cualitativo se lleva a cabo sobre un gráfico de $V_{\mathrm{ef}}$ versus $r$, que se construye trazando separadamente las curvas $-k/r$ y $l^2/(2mr^2)$, como en la Figura~\ref{fig:fcbk-potencial-efectivo-componentes}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/potencial_efectivo_componentes.png}{%
+        \includegraphics[width=0.52\linewidth]{figures/09_fuerzas_centrales_binet_kepler/potencial_efectivo_componentes.png}%
+    }{%
+        \fbox{\parbox{0.52\linewidth}{\centering Figura pendiente: componentes del potencial efectivo.}}%
+    }
+    \caption{Construcción del potencial efectivo a partir de $-k/r$ y $l^2/(2mr^2)$.}
+    \label{fig:fcbk-potencial-efectivo-componentes}
+\end{figure}
+
+Si sumamos estas dos curvas obtenemos $V_{\mathrm{ef}}$. El potencial efectivo posee un cero en
+\begin{equation}
+    r_c=\frac{l^2}{2km},
+    \label{eq:fcbk-rc-potencial-efectivo}
+\end{equation}
+y además posee un mínimo ubicado en
+\begin{equation}
+    r_{\min}=\frac{l^2}{km}=2r_c,
+    \label{eq:fcbk-rmin-potencial-efectivo}
+\end{equation}
+tal que
+\begin{equation}
+    V_{\mathrm{ef,min}}=-\frac{k^2m}{2l^2}=E_{\min}.
+    \label{eq:fcbk-vef-min}
+\end{equation}
+La forma cualitativa de $V_{\mathrm{ef}}$ se muestra en la Figura~\ref{fig:fcbk-potencial-efectivo-minimo}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/potencial_efectivo_minimo.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/potencial_efectivo_minimo.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: mínimo del potencial efectivo.}}%
+    }
+    \caption{Potencial efectivo con cero en $r_c$ y mínimo en $r_{\min}$.}
+    \label{fig:fcbk-potencial-efectivo-minimo}
+\end{figure}
+
+A partir de este gráfico es posible obtener una descripción cualitativa de las posibles trayectorias. La barrera centrífuga $V_c(r)$ impide que las partículas caigan al centro de fuerzas cualquiera que sea la energía, siempre y cuando $l\neq 0$.
+
+\subsection{Regiones permitidas y prohibidas}
+
+A partir del gráfico $V_{\mathrm{ef}}$ versus $r$ podemos trazar líneas de energía constante. El movimiento no es posible si
+\begin{equation}
+    \frac{1}{2}m\dot r^2<0,
+    \label{eq:fcbk-region-prohibida-condicion}
+\end{equation}
+por lo que se define una \textbf{región prohibida} para el movimiento de una partícula, como se indica en la Figura~\ref{fig:fcbk-region-prohibida}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/energia_constante_region_prohibida.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/energia_constante_region_prohibida.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: región prohibida.}}%
+    }
+    \caption{Línea de energía constante y región prohibida para el movimiento radial.}
+    \label{fig:fcbk-region-prohibida}
+\end{figure}
+
+Consideremos una partícula de energía $E_1>0$. Entonces $E_1-V_{\mathrm{ef}}(r)\geq 0$ y en el punto de retorno $r=r_A$ se tiene $E_1=V_{\mathrm{ef}}(r_A)$. Cuando $E_1\geq V_{\mathrm{ef}}(r)$ se tiene $r_A\leq r<\infty$. Tenemos una región permitida y una región prohibida, como se muestra en la Figura~\ref{fig:fcbk-energia-positiva-retorno}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/energia_positiva_punto_retorno.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/energia_positiva_punto_retorno.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: energía positiva y punto de retorno.}}%
+    }
+    \caption{Caso $E_1>0$: existe un punto de retorno inferior y el movimiento no está acotado superiormente.}
+    \label{fig:fcbk-energia-positiva-retorno}
+\end{figure}
+
+La analogía con regiones permitidas y prohibidas se ilustra en la Figura~\ref{fig:fcbk-regiones-permitidas-prohibidas}: la partícula no puede entrar en regiones donde la energía cinética radial sería negativa.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/regiones_permitidas_prohibidas.png}{%
+        \includegraphics[width=0.65\linewidth]{figures/09_fuerzas_centrales_binet_kepler/regiones_permitidas_prohibidas.png}%
+    }{%
+        \fbox{\parbox{0.65\linewidth}{\centering Figura pendiente: regiones permitidas y prohibidas.}}%
+    }
+    \caption{Analogía cualitativa entre regiones permitidas y prohibidas del movimiento.}
+    \label{fig:fcbk-regiones-permitidas-prohibidas}
+\end{figure}
+
+De la figura es claro que la partícula nunca podrá estar a una distancia menor que $r_A$ del origen, ya que de otro modo $m\dot r^2/2<0$, por lo que $\dot r$ correspondería a una rapidez radial imaginaria. Por otro lado, el valor de $r$ no tiene límite superior, por lo cual la órbita no está acotada y por lo tanto no está cerrada. Una partícula procedente del infinito rebota en la barrera centrífuga dirigiéndose de nuevo hacia el infinito.
+
+Consideremos ahora una partícula de energía $E_2=0$. En este caso $m\dot r^2/2=V_{\mathrm{ef}}$ y en el punto de retorno $r=r_c$ se tiene $\dot r=0$. Por lo tanto, el movimiento es infinito, $r_c\leq r<\infty$, como se muestra en la Figura~\ref{fig:fcbk-energia-cero-retorno}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/energia_cero_punto_retorno.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/energia_cero_punto_retorno.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: energía cero y punto de retorno.}}%
+    }
+    \caption{Caso $E_2=0$: el movimiento es infinito y posee un punto de retorno.}
+    \label{fig:fcbk-energia-cero-retorno}
+\end{figure}
+
+Consideremos una partícula de energía $E_3<0$. En este caso se obtiene que además del límite inferior en el radio, $r_B$, también existe un valor máximo para el radio, $r_D$, que no puede sobrepasar con energía cinética radial positiva. El movimiento está limitado y existen dos puntos de retorno, como se observa en la Figura~\ref{fig:fcbk-energia-negativa-retorno}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/energia_negativa_puntos_retorno.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/energia_negativa_puntos_retorno.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: energía negativa y puntos de retorno.}}%
+    }
+    \caption{Caso $E_3<0$: el movimiento queda acotado entre dos puntos de retorno.}
+    \label{fig:fcbk-energia-negativa-retorno}
+\end{figure}
+
+Esto no significa que las órbitas tengan que ser necesariamente cerradas. Lo más que cabe asegurar es que las órbitas están limitadas por dos circunferencias de radios $r_B$ y $r_D$, estando los puntos absidales en dichas circunferencias, como se ilustra en la Figura~\ref{fig:fcbk-orbita-acotada-absidales}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/orbita_acotada_absidales.png}{%
+        \includegraphics[width=0.52\linewidth]{figures/09_fuerzas_centrales_binet_kepler/orbita_acotada_absidales.png}%
+    }{%
+        \fbox{\parbox{0.52\linewidth}{\centering Figura pendiente: órbita acotada y puntos absidales.}}%
+    }
+    \caption{Órbita acotada entre dos circunferencias de radios $r_B$ y $r_D$.}
+    \label{fig:fcbk-orbita-acotada-absidales}
+\end{figure}
+
+Finalmente, consideremos una partícula de energía $E_4=E_{\min}$. Este es precisamente el mínimo de la curva de potencial efectivo: los límites mínimo y máximo coinciden. En este caso sólo es posible que
+\begin{equation}
+    \dot r=0,
+    \qquad
+    r=r_{\min}=\text{constante},
+    \label{eq:fcbk-orbita-circular-condicion}
+\end{equation}
+por lo tanto, la órbita es una circunferencia. La Figura~\ref{fig:fcbk-orbita-circular-energia-minima} muestra este caso.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/09_fuerzas_centrales_binet_kepler/orbita_circular_energia_minima.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/09_fuerzas_centrales_binet_kepler/orbita_circular_energia_minima.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: órbita circular.}}%
+    }
+    \caption{Caso $E_4=E_{\min}$: el movimiento circular ocurre en el mínimo del potencial efectivo.}
+    \label{fig:fcbk-orbita-circular-energia-minima}
+\end{figure}
+
+Si la energía satisface
+\begin{equation}
+    E<E_{\min},
+    \label{eq:fcbk-energia-menor-minima}
+\end{equation}
+el movimiento no es posible, puesto que la velocidad radial sería imaginaria, $\dot r\in\mathbb{C}$.
+
+\end{document}

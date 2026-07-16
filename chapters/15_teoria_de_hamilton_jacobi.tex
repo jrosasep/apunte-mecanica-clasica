@@ -1,0 +1,264 @@
+% !TeX root = ../apunte_mecanica_clasica.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
+\begin{document}
+
+\chapter{Teoría de Hamilton-Jacobi}
+\label{ch:teoria-hamilton-jacobi}
+% Transcripción estilizada desde Clase MC 3-6.pdf.
+% Figuras organizadas en figures/15_teoria_de_hamilton_jacobi/.
+
+\section{Transformaciones canónicas y solución del movimiento}
+\label{sec:hj-transformaciones-canonicas}
+
+Ya se mencionó que las \textbf{transformaciones canónicas} pueden ser usadas para proporcionar un procedimiento de resolución de problemas mecánicos. Dos métodos han sido sugeridos:
+\begin{itemize}
+    \item \textbf{Primer método.} Si la función hamiltoniana es conservada, entonces una solución podría obtenerse transformando a nuevas coordenadas canónicas en que todas las coordenadas son cíclicas, proporcionando así nuevas ecuaciones del movimiento con solución trivial.
+    \item \textbf{Segundo método.} Una técnica alternativa es obtener una transformación canónica de las coordenadas y momentos $(q,p)$, en el tiempo $t$, a un nuevo conjunto de cantidades constantes, que pueden ser los $2n$ valores iniciales $(q_0,p_0)$ en $t=0$.
+\end{itemize}
+
+Con tal información, las ecuaciones de transformación que relacionan las viejas y nuevas variables son exactamente la solución deseada del problema mecánico:
+\begin{align}
+    Q^i &= q^i(q_0,p_0,t),
+    \label{eq:hj-qi-solucion}\\
+    P_i &= p_i(q_0,p_0,t).
+    \label{eq:hj-pi-solucion}
+\end{align}
+Ellas dan las coordenadas y momentos como función de sus condiciones iniciales y el tiempo. Este último procedimiento es el más general, especialmente porque es aplicable, en principio al menos, aun cuando la hamiltoniana involucre explícitamente el tiempo.
+
+\section{Ecuación de Hamilton-Jacobi}
+\label{sec:hj-ecuacion-hamilton-jacobi}
+
+Podemos asegurar automáticamente que las nuevas variables son constantes en el tiempo requiriendo que la hamiltoniana transformada $K$ sea idénticamente cero,
+\begin{equation}
+    K=0.
+    \label{eq:hj-k-cero}
+\end{equation}
+Entonces, las ecuaciones del movimiento son
+\begin{align}
+    \dot Q^i &= \frac{\partial K}{\partial P_i}=0
+    \quad \Rightarrow \quad Q^i=\text{constante},
+    \label{eq:hj-q-constante}\\
+    \dot P_i &= -\frac{\partial K}{\partial Q^i}=0
+    \quad \Rightarrow \quad P_i=\text{constante}.
+    \label{eq:hj-p-constante}
+\end{align}
+Como hemos visto, $K$ está relacionado con el viejo hamiltoniano y con la función generatriz mediante
+\begin{equation}
+    K=H+\frac{\partial F}{\partial t}.
+    \label{eq:hj-k-h-f}
+\end{equation}
+Por lo tanto, $K$ será cero si $F$ satisface
+\begin{equation}
+    H+\frac{\partial F}{\partial t}=0.
+    \label{eq:hj-condicion-f}
+\end{equation}
+
+Es conveniente elegir $F$ como una función de las viejas coordenadas $q^i$, los nuevos momentos constantes $P_i$ y el tiempo $t$. En la notación de las transformaciones canónicas, esta función generatriz será del tipo
+\begin{equation}
+    F_2=F_2(q^i,P_i,t).
+    \label{eq:hj-f2}
+\end{equation}
+Para escribir la hamiltoniana en \eqref{eq:hj-condicion-f} como una función de las mismas variables se usa la ecuación de transformación
+\begin{equation}
+    p_i=\frac{\partial F_2}{\partial q^i}.
+    \label{eq:hj-p-f2}
+\end{equation}
+Así, la ecuación \eqref{eq:hj-condicion-f} se convierte en
+\begin{equation}
+    H\left(q^1,\dots,q^n,
+    \frac{\partial F_2}{\partial q^1},\dots,
+    \frac{\partial F_2}{\partial q^n},t\right)
+    +\frac{\partial F_2}{\partial t}=0.
+    \label{eq:hj-hamilton-jacobi-f2}
+\end{equation}
+La ecuación \eqref{eq:hj-hamilton-jacobi-f2}, conocida como \textbf{ecuación de Hamilton-Jacobi}, constituye una ecuación diferencial parcial de primer orden en las $n+1$ variables $q^1,
+\dots,q^n$ y $t$ para la función generatriz deseada. La forma central de esta ecuación se destaca en la Figura~\ref{fig:hj-ecuacion-hamilton-jacobi}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/15_teoria_de_hamilton_jacobi/ecuacion_hamilton_jacobi.png}{%
+        \includegraphics[width=0.72\linewidth]{figures/15_teoria_de_hamilton_jacobi/ecuacion_hamilton_jacobi.png}%
+    }{%
+        \fbox{\parbox{0.72\linewidth}{\centering Figura pendiente: ecuación de Hamilton-Jacobi.}}%
+    }
+    \caption{Forma de la ecuación de Hamilton-Jacobi para la función generatriz.}
+    \label{fig:hj-ecuacion-hamilton-jacobi}
+\end{figure}
+
+Es costumbre denotar la solución $F_2$ de la ecuación de Hamilton-Jacobi por $S$ y llamarla \textbf{función principal de Hamilton}:
+\begin{equation}
+    F_2=S.
+    \label{eq:hj-f2-s}
+\end{equation}
+
+\subsection{Solución completa}
+\label{subsec:hj-solucion-completa}
+
+Matemáticamente, la ecuación de Hamilton-Jacobi tiene la forma de una ecuación diferencial parcial de primer orden en $n+1$ variables. Se supone que existe una solución de la forma
+\begin{equation}
+    S=S(q^1,
+    \dots,q^n,\alpha_1,
+    \dots,
+    \alpha_{n+1},t),
+    \label{eq:hj-solucion-con-constantes}
+\end{equation}
+donde $\alpha_1,
+\dots,
+\alpha_{n+1}$ son constantes independientes de integración.
+
+Tales soluciones son conocidas como \textbf{soluciones completas}. Una de las constantes de integración es irrelevante, porque $S$ no aparece directamente en la ecuación de Hamilton-Jacobi, sino sólo sus derivadas parciales. Por tanto, si $S$ es solución, entonces
+\begin{equation}
+    S+\alpha
+    \label{eq:hj-s-mas-constante}
+\end{equation}
+también es solución para cualquier constante $\alpha$.
+
+Entonces basta considerar una solución que dependa de $n$ constantes esenciales,
+\begin{equation}
+    S=S(q^i,\alpha_i,t),
+    \qquad i=1,\dots,n.
+    \label{eq:hj-solucion-completa}
+\end{equation}
+Estas constantes se identifican con los nuevos momentos constantes,
+\begin{equation}
+    P_i=\alpha_i.
+    \label{eq:hj-alpha-momentos}
+\end{equation}
+
+\section{Hamiltoniana independiente del tiempo}
+\label{sec:hj-hamiltoniana-independiente-tiempo}
+
+Si el hamiltoniano no depende explícitamente del tiempo, entonces es posible separar la función principal de Hamilton en la forma
+\begin{equation}
+    S(q^i,\alpha_i,t)=W(q^i,\alpha_i)-Et,
+    \label{eq:hj-separacion-tiempo}
+\end{equation}
+donde $W$ se llama \textbf{función característica de Hamilton}. Sustituyendo \eqref{eq:hj-separacion-tiempo} en la ecuación de Hamilton-Jacobi se obtiene
+\begin{equation}
+    H\left(q^1,
+    \dots,q^n,
+    \frac{\partial W}{\partial q^1},
+    \dots,
+    \frac{\partial W}{\partial q^n}\right)=E.
+    \label{eq:hj-ecuacion-w}
+\end{equation}
+El significado físico de $W(q,\alpha)$ puede ser comprendido al escribir su derivada temporal total, como se resume en la Figura~\ref{fig:hj-funcion-caracteristica-w}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/15_teoria_de_hamilton_jacobi/funcion_caracteristica_w.png}{%
+        \includegraphics[width=0.68\linewidth]{figures/15_teoria_de_hamilton_jacobi/funcion_caracteristica_w.png}%
+    }{%
+        \fbox{\parbox{0.68\linewidth}{\centering Figura pendiente: significado físico de $W$.}}%
+    }
+    \caption{Relación entre la función característica $W$ y el momento canónico.}
+    \label{fig:hj-funcion-caracteristica-w}
+\end{figure}
+
+\section{Oscilador armónico}
+\label{sec:hj-oscilador-armonico}
+
+Para un sistema unidimensional con hamiltoniano
+\begin{equation}
+    H=\frac{p^2}{2m}+V(q),
+    \label{eq:hj-hamiltoniano-1d}
+\end{equation}
+la ecuación de Hamilton-Jacobi independiente del tiempo se escribe como
+\begin{equation}
+    \frac{1}{2m}\left(\frac{\partial W}{\partial q}\right)^2+V(q)=E.
+    \label{eq:hj-hj-1d}
+\end{equation}
+De aquí,
+\begin{equation}
+    \frac{\partial W}{\partial q}=\sqrt{2m(E-V(q))},
+    \label{eq:hj-dw-dq}
+\end{equation}
+y por integración
+\begin{equation}
+    W(q,E)=\int \sqrt{2m(E-V(q))}\,dq.
+    \label{eq:hj-w-integral}
+\end{equation}
+
+Para el oscilador armónico,
+\begin{equation}
+    V(q)=\frac{1}{2}m\omega^2q^2,
+    \label{eq:hj-potencial-oscilador}
+\end{equation}
+se obtiene
+\begin{equation}
+    W(q,E)=\int \sqrt{2mE-m^2\omega^2q^2}\,dq.
+    \label{eq:hj-w-oscilador}
+\end{equation}
+La coordenada temporal se recupera mediante la relación
+\begin{equation}
+    \frac{\partial S}{\partial E}=\frac{\partial W}{\partial E}-t=\text{constante}.
+    \label{eq:hj-tiempo-desde-w}
+\end{equation}
+
+\section{Cuadro ondulatorio clásico}
+\label{sec:hj-cuadro-ondulatorio-clasico}
+
+Una onda plana se caracteriza por la propiedad de que su dirección de propagación y su amplitud son las mismas en todas partes. Una onda electromagnética arbitraria no tiene, obviamente, esta propiedad. Sin embargo, muchas ondas electromagnéticas pueden ser consideradas planas en regiones del orden de la longitud de onda.
+
+Esto permite introducir el concepto de \textbf{rayos}, que son líneas tales que en cada punto su tangente coincide con la dirección de propagación de la onda. El estudio de las leyes de propagación de las ondas bajo estas condiciones constituye el objetivo de la óptica geométrica.
+
+La óptica geométrica considera la propagación de las ondas, en particular de la luz, como una propagación de rayos, completamente divorciada de sus propiedades ondulatorias. Esto significa tomar el límite de pequeñas longitudes de onda,
+\begin{equation}
+    \lambda\rightarrow 0.
+    \label{eq:hj-limite-longitud-onda}
+\end{equation}
+
+Las superficies de onda son superficies de fase constante. Si $L_0(x,y,z)$ representa la fase espacial, las superficies
+\begin{equation}
+    L_0(x,y,z)=\text{constante}
+    \label{eq:hj-superficies-fase}
+\end{equation}
+son frentes de onda. En la analogía con la mecánica, las superficies $S=\text{constante}$ desempeñan un papel semejante, como se indica en la Figura~\ref{fig:hj-superficies-onda}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/15_teoria_de_hamilton_jacobi/superficies_onda_s_constante.png}{%
+        \includegraphics[width=0.72\linewidth]{figures/15_teoria_de_hamilton_jacobi/superficies_onda_s_constante.png}%
+    }{%
+        \fbox{\parbox{0.72\linewidth}{\centering Figura pendiente: superficies $S=\text{constante}$.}}%
+    }
+    \caption{Superficies de onda y superficies de acción constante en la analogía óptico-mecánica.}
+    \label{fig:hj-superficies-onda}
+\end{figure}
+
+La dirección de los rayos está determinada por el gradiente de la fase, de modo que
+\begin{equation}
+    \vec k=\nabla L_0.
+    \label{eq:hj-vector-onda-gradiente}
+\end{equation}
+Análogamente, en mecánica la dirección de la trayectoria está determinada por
+\begin{equation}
+    \vec p=\nabla S.
+    \label{eq:hj-momento-gradiente-accion}
+\end{equation}
+
+Si se considera la propagación de la superficie $S=\text{constante}$, el desplazamiento normal durante un intervalo $dt$ permite interpretar una velocidad asociada a la propagación de estas superficies. La Figura~\ref{fig:hj-velocidad-superficie} resume esta interpretación.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/15_teoria_de_hamilton_jacobi/velocidad_superficie_accion.png}{%
+        \includegraphics[width=0.70\linewidth]{figures/15_teoria_de_hamilton_jacobi/velocidad_superficie_accion.png}%
+    }{%
+        \fbox{\parbox{0.70\linewidth}{\centering Figura pendiente: velocidad de una superficie de acción constante.}}%
+    }
+    \caption{Interpretación geométrica de la propagación de una superficie de acción constante.}
+    \label{fig:hj-velocidad-superficie}
+\end{figure}
+
+La velocidad de onda en un punto dado de una superficie $S=\text{constante}$ es inversamente proporcional a la velocidad espacial de la partícula cuyo movimiento describe $S$. La dirección de la trayectoria en cualquier punto del espacio está determinada por la dirección del momentum,
+\begin{equation}
+    \vec p=\nabla W.
+    \label{eq:hj-momentum-gradiente-w}
+\end{equation}
+Así, las trayectorias mecánicas son normales a las superficies de acción constante, del mismo modo que los rayos son normales a los frentes de onda.
+
+\end{document}

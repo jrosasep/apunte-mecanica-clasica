@@ -1,0 +1,444 @@
+% !TeX root = ../apunte_mecanica_clasica.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
+\begin{document}
+
+\chapter{Transformaciones de Coordenadas}
+
+
+\section{Motivación física del cambio de coordenadas}
+
+Cuando estudiamos un sistema físico, anhelamos que las ecuaciones del movimiento sean simples en su forma funcional, con el fin de poder resolverlas.
+Pero, a veces no ocurre este anhelo.
+Sin embargo, si cambiamos el sistema coordenado a otro, las ecuaciones se podrían, en principio, simplificar.
+Por ejemplo, en el problema de fuerzas centrales conservativas, la segunda ley de Newton se reduce a
+\begin{equation*}
+m\,\vec{a} = f(x^2+y^2)\,\vec{x}.
+\end{equation*}
+Si se usan coordenadas cartesianas, las ecuaciones del movimiento se escriben de forma explícita como:
+\begin{align*}
+m\,\ddot{x} &= f(x^2+y^2)\,x, \\[4pt]
+m\,\ddot{y} &= f(x^2+y^2)\,y, \\[4pt]
+z &= 0.
+\end{align*}
+Esto se traduce en dos ecuaciones diferenciales ordinarias acopladas y, en general, no lineales. Resolver estas ecuaciones no siempre es simple.
+
+Sin embargo, si usamos coordenadas cilíndricas, 
+\begin{equation*} 
+\left.\begin{aligned}
+x &= r\cos\phi, \\
+y &= r\sin\phi, \\
+z &= 0, 
+\end{aligned} \right\} \qquad r \ge 0,\; 0 \le \phi < 2\pi,
+\end{equation*}
+las ecuaciones del movimiento del problema central se simplifican a
+\begin{align*}
+m\!\left(\ddot r - r\,\dot\phi^{\,2}\right) = f(r), \\[4pt]
+m\!\left(r^{2}\ddot\phi + 2r\,\dot r\,\dot\phi\right) = 0.
+\end{align*}
+
+La segunda ecuación se reduce a
+\begin{align*}
+\frac{d}{dt}\!\left(m r^{2}\dot\phi\right)=0,
+\end{align*}
+\begin{equation*}
+    \therefore\quad m r^{2}\dot\phi = l.
+\end{equation*}
+
+Usando coordenadas cilíndricas se obtiene una constante del movimiento, el momento angular $l$. Por lo tanto, una de las ecuaciones del movimiento reduce su orden diferencial de segundo a primero.
+
+Usando esta constante del movimiento, las ecuaciones del movimiento en coordenadas cilíndricas se reducen a
+\begin{align*}
+m\,\ddot r \;&=\; f(r) \;+\; \frac{l^{2}}{m\,r^{3}}, 
+\\[4pt]
+m\,r^{2}\,\dot\phi \;&=\; l.
+\end{align*}
+Por lo tanto, las ecuaciones del movimiento se simplifican notablemente al pasar de coordenadas cartesianas a cilíndricas. Esto no garantiza su resolubilidad en forma cerrada; sin embargo, la simplificación ayuda de manera sustantiva.
+
+
+\section{Definición informal y líneas coordenadas}
+
+Una transformación de coordenadas corresponde a un \textbf{cambio de coordenadas que permita escribir las ecuaciones del movimiento en una forma más simple}. Por ejemplo, cambiar de coordenadas cartesianas a coordenadas esféricas
+\begin{align*}
+x&=r\cos\phi\,\sin\theta, \\[4pt]
+y&=r\sin\phi\,\sin\theta, \\[4pt]
+z&=r\cos\theta,
+\end{align*}
+cambio que se traduce en las restricciones
+\begin{equation*}
+    r\ge 0, \qquad 0\le \phi < 2\pi, \qquad 0\le \theta \le \pi,
+\end{equation*}
+
+y en la aplicación
+\begin{equation*}
+    (x,y,z)\;\longrightarrow\; (r,\phi,\theta).
+\end{equation*}
+
+Una transformación de coordenadas no solo cambia los parámetros de las coordenadas, sino que también modifica las líneas coordenadas. En el ejemplo de cambiar de cartesianas a esféricas se cambian de tres rectas a un rayo, una circunferencia y una media circunferencia La figura asociada a esta construcción se muestra en la Figura~\ref{fig:08-transformaciones-de-coordenadas:tdc-fig1}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/16_transformaciones_de_coordenadas/tdc_fig1.png}
+    \caption{En el paso de cartesianas a esféricas: con $(\phi,\theta)$ fijos y $r$ variable, la línea coordenada es un rayo que parte del origen; con $(r,\theta)$ fijos y $\phi$ variable, es una circunferencia (paralela al plano $xy$); con $(r,\phi)$ fijos y $\theta$ variable, es una media circunferencia (un meridiano).}
+
+    \label{fig:08-transformaciones-de-coordenadas:tdc-fig1}
+\end{figure}
+
+
+\newpage
+
+\section{Formulación general}
+
+Formalmente, una transformación de coordenadas corresponde a un cambio de la forma
+\begin{equation*}
+    (x^{1},x^{2},x^{3}) \;\longleftrightarrow\; (x'^{1},x'^{2},x'^{3}),
+\end{equation*}
+
+tal que
+\begin{equation*}
+    \left. \begin{aligned}
+        x^{1}=x^{1}(x'^{1},x'^{2},x'^{3})=x^{1}(x'^{j}),\\[6pt]
+        x^{2}=x^{2}(x'^{1},x'^{2},x'^{3})=x^{2}(x'^{j}),\\[6pt]
+        x^{3}=x^{3}(x'^{1},x'^{2},x'^{3})=x^{3}(x'^{j}),
+    \end{aligned}
+    \right\} \quad \Rightarrow \quad x^{i}=x^{i}(x'^{j}).
+\end{equation*}
+El vector posición de un punto arbitrario cambia en la forma:
+\begin{equation*}
+    \vec{x}(x^{i}) \;=\; \vec{x}\!\big(x^{i}(x'^{j})\big) \;=\; \vec{x}'(x'^{j})
+\end{equation*}
+
+\begin{equation*}
+    \therefore\quad\vec{x}(x^{i}) \;=\; \vec{x}'(x'^{j}).
+\end{equation*}
+
+En general, $\vec{x}(x^{i}) \neq \vec{x}(x'^{\,j})$, puesto que la forma funcional del vector posición puede cambiar con las nuevas coordenadas $x'^{\,i}$. Usaremos la nomenclatura (a menos que se indique explícitamente lo contrario):
+\begin{itemize}
+    \item $x^{i}$: coordenadas viejas,
+    \item $x'^{\,i}$: coordenadas nuevas.
+\end{itemize}
+
+
+\subsection{Ejemplos de cambios de coordenadas}
+
+\begin{apuntebloque}{Ejemplo}
+
+a) Podemos pasar de coordenadas cartesianas a coordenadas cilíndricas
+\begin{equation*}
+    \left.
+    \begin{aligned}
+        x^{1}&=x,\\
+        x^2&=y,\\
+        x^3&=z,
+    \end{aligned}
+    \right\} \quad \longrightarrow\quad
+        \left\{
+    \begin{aligned}
+        x'^{1}&=r,\\
+        x'^2&=\phi,\\
+        x'^3&=z.
+    \end{aligned}
+    \right.
+\end{equation*}
+
+a través de la transformación
+\begin{align*}
+x &= x(r,\phi)=r\cos\phi,\\
+y &= y(r,\phi)=r\sin\phi,\\
+z &= z(z)=z.
+\end{align*}
+
+El vector posición de un punto arbitrario en coordenadas cartesianas y cilíndricas es
+\begin{align*}
+\vec{x}(x,y,z)&=x\,\hat{\imath}+y\,\hat{\jmath}+z\,\hat{k}\\[4pt]
+&= r\cos\phi\,\hat{\imath}+r\sin\phi\,\hat{\jmath}+z\,\hat{k}\\[4pt]
+&= \vec{x}'(r,\phi,z),
+\end{align*}
+donde
+\begin{align*}
+\vec{x}(x,y,z)&=x\,\hat{\imath}+y\,\hat{\jmath}+z\,\hat{k},\\[4pt]
+\vec{x}'(r,\phi,z)&=r\cos\phi\,\hat{\imath}+r\sin\phi\,\hat{\jmath}+z\,\hat{k}.
+\end{align*}
+
+En coordenadas cartesianas, el vector posición $\vec{x}(x,y,z)$ es lineal en $x$, $y$ y $z$; en coordenadas cilíndricas, el vector posición $\vec{x}'(r,\phi,z)$ es lineal en $r$ y $z$, y no es lineal en $\phi$ (aparece en funciones trigonométricas).
+\\
+
+b) Podemos pasar de coordenadas cartesianas a coordenadas esféricas
+
+\begin{equation*}
+    \left.
+    \begin{aligned}
+        x^{1}&=x,\\
+        x^2&=y,\\
+        x^3&=z,
+    \end{aligned}
+    \right\} \quad \longrightarrow\quad
+        \left\{
+    \begin{aligned}
+        x'^{1}&=r,\\
+        x'^2&=\phi,\\
+        x'^3&=\theta.
+    \end{aligned}
+    \right.
+\end{equation*}
+
+a través de la transformación
+\begin{align*}
+x &= x(r,\phi,\theta)=r\cos\phi\,\sin\theta,\\
+y &= y(r,\phi,\theta)=r\sin\phi\,\sin\theta,\\
+z &= z(r,\theta)=r\cos\theta.
+\end{align*}
+
+El vector posición de un punto arbitrario en coordenadas cartesianas y esféricas es
+\begin{align*}
+\vec{x}(x,y,z)&=x\,\hat{\imath}+y\,\hat{\jmath}+z\,\hat{k}\\[4pt]
+&= r\cos\phi\sin\theta\,\hat{\imath}+r\sin\phi\sin\theta\,\hat{\jmath}+r\cos\theta\,\hat{k}\\[4pt]
+&= \vec{x}'(r,\phi,\theta),
+\end{align*}
+donde
+\begin{align*}
+\vec{x}(x,y,z)&=x\,\hat{\imath}+y\,\hat{\jmath}+z\,\hat{k},\\[4pt]
+\vec{x}'(r,\phi,\theta)&=r\cos\phi\sin\theta\,\hat{\imath}+r\sin\phi\sin\theta\,\hat{\jmath}+r\cos\theta\,\hat{k}.
+\end{align*}
+
+En coordenadas cartesianas, el vector posición $\vec{x}(x,y,z)$ es lineal en $x$, $y$ y $z$; pero, en coordenadas esféricas, el vector posición $\vec{x}'(r,\phi,\theta)$ es lineal solo en $r$ y no es lineal en $\phi$ ni en $\theta$ (aparecen en funciones trigonométricas).
+
+\end{apuntebloque}
+
+\newpage
+
+
+\section{Coordenizaciones de $\mathbb{R}^3$}
+
+Una coordenización de $\mathbb{R}^3$ es un mapeo de $M\subseteq \mathbb{R}^3$ en $\mathbb{R}^3$, donde
+\begin{equation*}
+    M = I_1 \times I_2 \times I_3,
+\end{equation*}
+con $x^{1}\in I_1$, $x^{2}\in I_2$ y $x^{3}\in I_3$, y $\times$ es el símbolo de producto cartesiano. Es claro que $I_i\subseteq \mathbb{R}$, con $i\in \{1,2,3\}$. Luego,
+\begin{align*}
+\vec{x} &: M \to \mathbb{R}^3, \\[4pt] &\quad x^{i} \mapsto \vec{x}(x^{i}).
+\end{align*}
+
+\begin{apuntebloque}{Ejemplo}
+
+a) En coordenadas cartesianas se tiene
+\begin{equation*}
+    \left.\begin{aligned}
+        x^{1}\in I_{1}&=(-\infty,\infty)=\mathbb{R},\\[4pt]
+        x^{2}\in I_{2}&=(-\infty,\infty)=\mathbb{R},\\[4pt]
+        x^{3}\in I_{3}&=(-\infty,\infty)=\mathbb{R},
+    \end{aligned}\right\} \quad
+\to \quad M=\mathbb{R}\times \mathbb{R}\times \mathbb{R} = \mathbb{R}^3,
+\end{equation*}
+por lo tanto
+\begin{align*}
+\vec{x} &: \mathbb{R}^{3}\to\mathbb{R}^{3}, \\[4pt]  &(x,y,z)\;\mapsto\;\vec{x}(x,y,z).
+\end{align*}
+\\
+b) En coordenadas cilíndricas se tiene
+\begin{equation*}
+    \left.\begin{aligned}
+        r \in I_{1} = [0,\infty),\\[4pt]
+        \phi \in I_{2} = [0,2\pi),\\[4pt]
+        z \in I_{3} = (-\infty,\infty)=\mathbb{R},
+    \end{aligned}\right\} \quad
+\to \quad M=[0,\infty)\times[0,2\pi)\times\mathbb{R},
+\end{equation*}
+por lo tanto
+\begin{align*}
+\vec{x} &: M \to \mathbb{R}^3, \\[4pt]  
+&(r,\phi,z)\;\mapsto\;\vec{x}(r,\phi,z).
+\end{align*}
+\\
+
+c) En coordenadas esféricas se tiene
+\begin{equation*}
+    \left.\begin{aligned}
+        r \in I_{1} = [0,\infty),\\[4pt]
+        \phi \in I_{2} = [0,2\pi),\\[4pt]
+        \theta \in I_{3} = [0,\pi],
+    \end{aligned}\right\} \quad
+\to \quad M=[0,\infty)\times[0,2\pi)\times[0,\pi],
+\end{equation*}
+por lo tanto
+\begin{align*}
+\vec{x} &: M \to \mathbb{R}^3, \\[4pt]  
+&(r,\phi,\theta)\;\mapsto\;\vec{x}(r,\phi,\theta).
+\end{align*}
+\end{apuntebloque}
+
+
+\section{Transformación entre coordenizaciones}
+
+Una transformación de coordenadas es un mapeo de una coordenización en otra de $\mathbb{R}^3$; esto es,
+\begin{align*}
+x'^{\,i}&: M \to M', \\[4pt]  
+&x^{j} \mapsto x'^{\,i}(x^{j}),
+\end{align*}
+con $x^{i}\in M \;\longleftrightarrow\; x'^{\,i}\in M' \;\longleftrightarrow\; \mathbb{R}^3$.
+
+\newpage
+
+\section{Jacobiano shit}
+
+\subsection{Invertibilidad y matriz jacobiana}
+
+La transformación de coordenadas debe ser invertible, es decir,
+\begin{equation*}
+    x'^{\,i}(x^{j}) \;\longleftrightarrow\; x^{i}(x'^{\,j}).
+\end{equation*}
+
+Por el teorema de la función implícita se sabe que el determinante de la matriz jacobiana de la transformación,
+\begin{equation*}
+    J^{i}{}_{j} \;=\; \frac{\partial x^{i}}{\partial x'^{\,j}},
+\end{equation*}
+
+llamada \textbf{jacobiano} y denotada por
+\begin{equation*}
+    J \;:=\; \det\!\big(J^{i}{}_{j}\big) \;=\; \det\!\left(\frac{\partial x^{i}}{\partial x'^{\,j}}\right),
+\end{equation*}
+
+debe ser distinto de cero,
+\begin{equation*}
+    J \;\neq\; 0.
+\end{equation*}
+
+La matriz jacobiana es
+\begin{equation*}
+\big(J^{i}{}_{j}\big)\;=\;\left(\frac{\partial x^{i}}{\partial x'^{\,j}}\right)
+=\begin{pmatrix}
+\dfrac{\partial x^{1}}{\partial x'^{\,1}} & \dfrac{\partial x^{1}}{\partial x'^{\,2}} & \dfrac{\partial x^{1}}{\partial x'^{\,3}}\\[8pt]
+\dfrac{\partial x^{2}}{\partial x'^{\,1}} & \dfrac{\partial x^{2}}{\partial x'^{\,2}} & \dfrac{\partial x^{2}}{\partial x'^{\,3}}\\[8pt]
+\dfrac{\partial x^{3}}{\partial x'^{\,1}} & \dfrac{\partial x^{3}}{\partial x'^{\,2}} & \dfrac{\partial x^{3}}{\partial x'^{\,3}}
+\end{pmatrix}.
+\end{equation*}
+El índice $i$ rotula las filas y el índice $j$ rotula las columnas.
+
+\begin{apuntebloque}{Definición}
+ Una transformación de coordenadas $x'^{\,i}(x^{j})$ se dice \textbf{invertible} si el jacobiano de la transformación es distinto de cero:
+\begin{equation*}
+J \;:=\; \det\!\big(J^{i}{}_{j}\big)
+\;=\; \det\!\left(\frac{\partial x^{i}}{\partial x'^{\,j}}\right)
+\;\neq\; 0.
+\end{equation*}
+
+\end{apuntebloque}
+
+
+\subsection{Ejemplos de jacobianos}
+
+\begin{apuntebloque}{Ejemplo}
+
+a) Sea la transformación de coordenadas cartesianas a cilíndricas. Entonces, la jacobiana es
+\begin{equation*}
+\left(J^{i}{}_{j}\right)
+=\left(\frac{\partial x^{i}}{\partial x'^{\,j}}\right)
+=\begin{pmatrix}
+\dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \phi} & \dfrac{\partial x}{\partial z}\\[8pt]
+\dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial \phi} & \dfrac{\partial y}{\partial z}\\[8pt]
+\dfrac{\partial z}{\partial r} & \dfrac{\partial z}{\partial \phi} & \dfrac{\partial z}{\partial z}
+\end{pmatrix}
+=\begin{pmatrix}
+\cos\phi & -r\sin\phi & 0\\
+\sin\phi & \phantom{-}r\cos\phi & 0\\
+0 & 0 & 1
+\end{pmatrix}.
+\end{equation*}
+
+Entonces, el jacobiano de la transformación es
+\begin{equation*}
+J \;=\; \det\!\big(J^{i}{}_{j}\big)
+\;=\; \det\!\left(\frac{\partial x^{i}}{\partial x'^{\,j}}\right)
+\;=\; r,
+\end{equation*}
+el cual es distinto de cero si $r\neq 0$. El caso $r=0$ corresponde al eje $z$ ($x=y=0$, $z\in\mathbb{R}$), donde el vector coordenado $\vec{e}_{\phi}=\partial \vec{x}/\partial \phi$ se anula.
+
+La inversa es
+\begin{align*}
+r &= \sqrt{x^{2}+y^{2}}\,,\\[6pt]
+\phi &= \arctan\!\left(\frac{y}{x}\right)\,,\\[6pt]
+z &= z.
+\end{align*}
+
+\end{apuntebloque}
+
+\begin{apuntebloque}{}
+
+
+b) Sea la transformación de coordenadas cartesianas a esféricas. Entonces, la jacobiana es
+\begin{equation*}
+J^{i}{}_{j}
+=\frac{\partial x^{i}}{\partial x'^{\,j}}
+=\begin{pmatrix}
+\dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \phi} & \dfrac{\partial x}{\partial \theta}\\[8pt]
+\dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial \phi} & \dfrac{\partial y}{\partial \theta}\\[8pt]
+\dfrac{\partial z}{\partial r} & \dfrac{\partial z}{\partial \phi} & \dfrac{\partial z}{\partial \theta}
+\end{pmatrix}
+=\begin{pmatrix}
+\cos\phi\,\sin\theta & -\,r\sin\phi\,\sin\theta & r\cos\phi\,\cos\theta\\
+\sin\phi\,\sin\theta & \phantom{-}\,r\cos\phi\,\sin\theta & r\sin\phi\,\cos\theta\\
+\cos\theta & 0 & -\,r\sin\theta
+\end{pmatrix}.
+\end{equation*}
+
+Entonces, el jacobiano de la transformación es
+\begin{equation*}
+J \;=\; \det\!\big(J^{i}{}_{j}\big)
+\;=\; \det\!\left(\frac{\partial x^{i}}{\partial x'^{\,j}}\right)
+\;=\; -\,r^{2}\sin\theta,
+\end{equation*}
+el cual es distinto de cero si $r\neq 0$ y $\theta\neq 0,\pi$. El caso $r=0$ corresponde al origen (un punto), y $\theta=0,\pi$ corresponde al eje $z$ ($x=y=0$, $z\in\mathbb{R}$), donde el vector coordenado $\vec e_{\phi}=\partial \vec x/\partial \phi$ se anula.
+
+La inversa es
+\begin{align*}
+r &= \sqrt{x^{2}+y^{2}+z^{2}}\,,\\[6pt]
+\phi &= \arctan\!\left(\frac{y}{x}\right)\,,\\[6pt]
+\theta &= \arccos\!\left(\frac{z}{r}\right)\,.
+\end{align*}
+
+\end{apuntebloque}
+
+
+\newpage
+
+\subsection{Orientación de bases coordenadas}
+
+\textbf{Observación.} La diferencia de signo entre el jacobiano de la transformación a cilíndricas y el de la transformación a esféricas se debe a que las coordenadas cilíndricas poseen vectores coordenados dextógiros, mientras que las coordenadas esféricas poseen vectores coordenados levógiros. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:base_Oxi}.
+\begin{figure}[H]
+  \centering
+
+  \begin{subfigure}[t]{0.48\textwidth}
+    \textbf{Sistema $O\,x^{i}$:}
+    \[
+      \vec{x}=\vec{x}(x^{i}), 
+      \qquad 
+      \vec{e}_{i}(x^{j}) \;=\; \frac{\partial \vec{x}(x^{j})}{\partial x^{i}}.
+    \]
+    \vspace{2mm}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/16_transformaciones_de_coordenadas/tdc_fig2.png}
+    \caption{Base coordenada asociada al sistema $O\,x^{i}$.}
+    \label{fig:base_Oxi}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \textbf{Sistema $O'\,x'^{\,i}$:}
+    \[
+      \vec{x}'=\vec{x}'(x'^{\,i}), 
+      \qquad 
+      \vec{e}'_{\,i}(x'^{\,j}) \;=\; \frac{\partial \vec{x}'(x'^{\,j})}{\partial x'^{\,i}}.
+    \]
+    \vspace{2mm}
+    \centering
+    \includegraphics[width=1.0\linewidth]{figures/16_transformaciones_de_coordenadas/tdc_fig3.png}
+    \caption{Base coordenada asociada al sistema $O'\,x'^{\,i}$.}
+    \label{fig:base_Oprime}
+  \end{subfigure}
+
+\end{figure}
+
+\newpage
+
+\end{document}

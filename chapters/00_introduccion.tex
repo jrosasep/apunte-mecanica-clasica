@@ -1,10 +1,9 @@
-% !TeX root = main.tex
+% !TeX root = ../apunte_mecanica_clasica.tex
 \IfFileExists{../apunte_mecanica_clasica.tex}{%
   \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
 }{%
   \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
 }
-
 \begin{document}
 
 \chapter{Introducción}
@@ -71,21 +70,25 @@ En este curso consideraremos dos tipos de movimientos:
 
 \section{Ejemplos de movimiento geométrico}
 
-Un ejemplo de movimiento geométrico es de la geometría básica donde una recta se define como \textbf{El lugar geométrico de un punto en movimiento}, definiendo una dirección: El punto geométrico (sin volumen) se puede mover en una dirección, definida por la misma recta, pero en dos sentido: Sentido $S_1$ y sentido $S_2$, tal que $S_1=-S_2$.
-
-\begin{figure}[ht]
+Un ejemplo de movimiento geométrico es de la geometría básica donde una recta se define como \textbf{El lugar geométrico de un punto en movimiento}, definiendo una dirección: El punto geométrico (sin volumen) se puede mover en una dirección, definida por la misma recta, pero en dos sentido: Sentido $S_1$ y sentido $S_2$, tal que $S_1=-S_2$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:00-introduccion:mov-geo1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/00_introduccion/mov_geo1.png}
     \caption{El lugar geométrico de un punto en movimiento.}
+
+    \label{fig:00-introduccion:mov-geo1}
 \end{figure}
 
-Otro ejemplo de un movimiento geométrico es cuando graficamos una función, pues movemos la variable independiente desde un punto inicial a un punto final. Por ejemplo $f(x) = e^x$ con $x \in \mathbb{R}$, el punto $x$ se mueve desde $-\infty$ a $+\infty$, generando un movimiento en el eje $y$. Por lo tanto, hay un movimiento geométrico en $x$ (independiente) e $y$ (dependiente).
-
-\begin{figure}[h]
+Otro ejemplo de un movimiento geométrico es cuando graficamos una función, pues movemos la variable independiente desde un punto inicial a un punto final. Por ejemplo $f(x) = e^x$ con $x \in \mathbb{R}$, el punto $x$ se mueve desde $-\infty$ a $+\infty$, generando un movimiento en el eje $y$. Por lo tanto, hay un movimiento geométrico en $x$ (independiente) e $y$ (dependiente). La figura asociada a esta construcción se muestra en la Figura~\ref{fig:00-introduccion:mov-geo2}.
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\linewidth]{figures/00_introduccion/mov_geo2.png}
+    \includegraphics[width=0.4\linewidth]{figures/00_introduccion/mov_geo2.png}
     \caption{Gráfica de la función $f(x)=e^x$.}
+
+    \label{fig:00-introduccion:mov-geo2}
 \end{figure}
+
+\clearpage
 
 \section{Lugar, posición y movimiento}
 
@@ -115,7 +118,7 @@ La respuesta la podemos entender como sigue:
 
 \begin{itemize}
     \item Supongamos que sólo existieran dos cuerpos en el Universo, entonces el movimiento circular, como muestra la figura \ref{fig:dos_cuerpos_movimiento_circular}, uno de ellos entorno del otro, no podría ser pensado.
-    \begin{figure}[ht]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\linewidth]{figures/00_introduccion/fig1.png}
         \caption{Un cuerpo gira alrededor de otro cuerpo.}
@@ -125,12 +128,10 @@ La respuesta la podemos entender como sigue:
     Los cuerpos siempre tendrán la misma distancia, el radio del círculo, y como no hay un tercer cuerpo no se puede medir un ángulo, por lo tanto, los dos cuerpos no saben que están rotando. \textbf{Por lo tanto, se necesita otro cuerpo}.
 \end{itemize}
 
-\clearpage
-
 \begin{itemize}
 \item Si ahora existieran sólo tres cuerpos en el Universo, el movimiento mostrado en la figura \ref{fig:tres_cuerpos_movimiento_circular} tampoco podría ser pensado, puesto que las distancias entre los cuerpos $d_{12}$, $d_{13}$ y $d_{23}$ no cambian durante el movimiento. \textbf{Por lo tanto, se necesita otro cuerpo}.
 
-    \begin{figure}[ht]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.3\linewidth]{figures/00_introduccion/fig2.png}
         \caption{El cuerpo 3 rota en torno al eje de distancia $d_{12}$.}

@@ -1,10 +1,9 @@
-% !TeX root = main.tex
+% !TeX root = ../apunte_mecanica_clasica.tex
 \IfFileExists{../apunte_mecanica_clasica.tex}{%
   \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
 }{%
   \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
 }
-
 \begin{document}
 
 \chapter{Símbolos de Christoffel}
@@ -23,14 +22,15 @@ puntos $P$ y $Q$, con coordenadas $x^i$ y $x^i + dx^i$, respectivamente.
 
 Podemos compararlos a primer orden en $dx^j$, para estudiar cómo 
 cambian los vectores $\vec{e}_i(x^j)$ cuando pasamos de $x^j$ a 
-$x^j + dx^j$.
-
-\begin{figure}[h]
+$x^j + dx^j$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:05-simbolos-de-christoffel:sim-fig1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/05_simbolos_de_christoffel/sim_fig1.png}
     \caption{Comparación entre los vectores base $\vec{e}_i$ en dos 
     puntos cercanos $P(x^j)$ y $Q(x^j + dx^j)$, mostrando cómo varían 
     con la posición en el espacio.}
+
+    \label{fig:05-simbolos-de-christoffel:sim-fig1}
 \end{figure}
 
 Luego, tenemos que el cambio es dado por (se usa la regla de la cadena):

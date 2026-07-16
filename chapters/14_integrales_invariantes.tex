@@ -1,0 +1,450 @@
+\documentclass[../apunte_mecanica_clasica.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Integrales invariantes de Poincaré}
+\label{ch:integrales-invariantes}
+
+Las \textbf{transformaciones canónicas} se definen como transformaciones de coordenadas en el espacio de fase bajo las cuales las ecuaciones de Hamilton son invariantes en forma. La pregunta natural es si existen otras cantidades que sean invariantes bajo transformaciones canónicas. Poincaré encontró un conjunto de dichas cantidades, conocidas como \textbf{integrales invariantes}.
+
+\section{Primera integral invariante de Poincaré}
+
+Sea $S$ una superficie arbitraria bidimensional del espacio de fase. El primer invariante integral de Poincaré se escribe como
+\begin{equation}
+    I_1 = \iint_S \sum_{i=1}^{f} dq^i\,dp_i .
+    \label{eq:poincare-i1}
+\end{equation}
+El \textbf{teorema de Poincaré} establece que la integral \eqref{eq:poincare-i1} es invariante en forma bajo transformaciones canónicas.
+
+Para demostrarlo, consideremos una superficie bidimensional $S$ completamente determinada por dos parámetros, que denotaremos por $(u,v)$. Entonces las coordenadas del espacio de fase pueden escribirse como
+\begin{equation}
+    q^i=q^i(u,v),
+    \qquad
+    p_i=p_i(u,v).
+    \label{eq:parametrizacion-superficie-fase}
+\end{equation}
+
+El elemento de área que aparece en \eqref{eq:poincare-i1} transforma como
+\begin{align}
+    \sum_i dq^i\,dp_i
+    &= dq^1dp_1+dq^2dp_2+\cdots+dq^f dp_f \\
+    &= \left[
+    \frac{\partial(q^1,p_1)}{\partial(u,v)}+
+    \frac{\partial(q^2,p_2)}{\partial(u,v)}+
+    \cdots+
+    \frac{\partial(q^f,p_f)}{\partial(u,v)}
+    \right]du\,dv \\
+    &= \sum_i \frac{\partial(q^i,p_i)}{\partial(u,v)}\,du\,dv,
+    \label{eq:elemento-area-jacobiano}
+\end{align}
+
+donde
+\begin{equation}
+    \frac{\partial(q^i,p_i)}{\partial(u,v)}
+    =
+    \begin{vmatrix}
+        \dfrac{\partial q^i}{\partial u} & \dfrac{\partial p_i}{\partial u} \\
+        \dfrac{\partial q^i}{\partial v} & \dfrac{\partial p_i}{\partial v}
+    \end{vmatrix}
+    \label{eq:jacobiano-qi-pi}
+\end{equation}
+es el \textbf{jacobiano} de la transformación. Por lo tanto,
+\begin{equation}
+    \sum_i dq^i\,dp_i
+    =
+    \sum_i \frac{\partial(q^i,p_i)}{\partial(u,v)}\,du\,dv.
+    \label{eq:i1-parametrizado-qp}
+\end{equation}
+
+La afirmación de que $I_1$ es invariante bajo transformaciones canónicas significa que $I_1$ tiene el mismo valor tanto si se usan las coordenadas canónicas $(q^i,p_i)$ como si se usan las nuevas coordenadas canónicas $(Q^i,P_i)$. Explícitamente,
+\begin{equation}
+    \iint_S \sum_i dq^i\,dp_i
+    =
+    \iint_S \sum_i dQ^i\,dP_i.
+    \label{eq:invariancia-i1}
+\end{equation}
+
+Puesto que la región de integración es arbitraria, la igualdad \eqref{eq:invariancia-i1} será válida si los integrandos son iguales, es decir,
+\begin{equation}
+    \sum_i \frac{\partial(q^i,p_i)}{\partial(u,v)}
+    =
+    \sum_i \frac{\partial(Q^i,P_i)}{\partial(u,v)}.
+    \label{eq:igualdad-jacobianos-canonica}
+\end{equation}
+
+\subsection{Demostración usando una función generatriz}
+
+Para probar \eqref{eq:igualdad-jacobianos-canonica}, consideremos una transformación canónica generada por una función de tipo $F_2(q,P,t)$. Entonces
+\begin{equation}
+    p_i=\frac{\partial F_2}{\partial q^i},
+    \qquad
+    Q^i=\frac{\partial F_2}{\partial P_i}.
+    \label{eq:generatriz-f2-integrales}
+\end{equation}
+
+Para la transformación $F_2(q,P,t)$ se tiene
+\begin{align}
+    \frac{\partial p_i}{\partial u}
+    &=
+    \sum_j \frac{\partial^2F_2}{\partial q^j\partial q^i}
+    \frac{\partial q^j}{\partial u}
+    +
+    \sum_j \frac{\partial^2F_2}{\partial P_j\partial q^i}
+    \frac{\partial P_j}{\partial u},
+    \label{eq:dpi-du} \\
+    \frac{\partial p_i}{\partial v}
+    &=
+    \sum_j \frac{\partial^2F_2}{\partial q^j\partial q^i}
+    \frac{\partial q^j}{\partial v}
+    +
+    \sum_j \frac{\partial^2F_2}{\partial P_j\partial q^i}
+    \frac{\partial P_j}{\partial v}.
+    \label{eq:dpi-dv}
+\end{align}
+
+Introduciendo \eqref{eq:dpi-du} y \eqref{eq:dpi-dv} en el primer miembro de \eqref{eq:igualdad-jacobianos-canonica} resulta
+\begin{align}
+    \sum_i \frac{\partial(q^i,p_i)}{\partial(u,v)}
+    &=
+    \sum_i
+    \left(
+    \frac{\partial q^i}{\partial u}\frac{\partial p_i}{\partial v}
+    -
+    \frac{\partial q^i}{\partial v}\frac{\partial p_i}{\partial u}
+    \right) .
+    \label{eq:expansion-primer-miembro}
+\end{align}
+
+Al sustituir las derivadas de $p_i$ en términos de $F_2$, los términos que contienen derivadas segundas con respecto a $q^i$ y $q^j$ se cancelan por simetría, quedando
+\begin{align}
+    \sum_i \frac{\partial(q^i,p_i)}{\partial(u,v)}
+    &=
+    \sum_{i,j}
+    \frac{\partial^2F_2}{\partial P_j\partial q^i}
+    \left(
+    \frac{\partial q^i}{\partial u}\frac{\partial P_j}{\partial v}
+    -
+    \frac{\partial q^i}{\partial v}\frac{\partial P_j}{\partial u}
+    \right).
+    \label{eq:cancelacion-f2}
+\end{align}
+
+Usando ahora $Q^j=\partial F_2/\partial P_j$, se obtiene
+\begin{equation}
+    \sum_i \frac{\partial(q^i,p_i)}{\partial(u,v)}
+    =
+    \sum_j
+    \left(
+    \frac{\partial Q^j}{\partial u}\frac{\partial P_j}{\partial v}
+    -
+    \frac{\partial Q^j}{\partial v}\frac{\partial P_j}{\partial u}
+    \right)
+    =
+    \sum_j \frac{\partial(Q^j,P_j)}{\partial(u,v)}.
+    \label{eq:demostracion-i1-final}
+\end{equation}
+Esto prueba la invariancia de $I_1$ bajo transformaciones canónicas.
+
+\section{Integrales invariantes superiores}
+
+De manera análoga se prueba que
+\begin{equation}
+    I_2
+    =
+    \int_S
+    \left(\sum_i dq^i\,dp_i\right)
+    \left(\sum_j dq^j\,dp_j\right)
+    \label{eq:poincare-i2}
+\end{equation}
+es invariante bajo transformaciones canónicas, donde $S$ es una superficie tetradimensional arbitraria en el espacio de fase $2f$-dimensional.
+
+Esta cadena puede extenderse a invariantes integrales de orden superior. En particular,
+\begin{equation}
+    I_f
+    =
+    \int dq^1\cdots dq^f\,dp_1\cdots dp_f,
+    \label{eq:poincare-if}
+\end{equation}
+donde la integral se extiende a una región arbitraria del espacio de fase. La invariancia de \eqref{eq:poincare-if} equivale a decir que el \textbf{volumen en el espacio de fase} es invariante bajo transformaciones canónicas. Más adelante esto se relaciona con el hecho de que el volumen encerrado en fase es constante con respecto al tiempo.
+
+\section{Corchetes de Lagrange}
+
+La condición de invariancia \eqref{eq:igualdad-jacobianos-canonica} puede escribirse usando los \textbf{corchetes de Lagrange}. Se define el corchete de Lagrange de $u$ y $v$ por
+\begin{equation}
+    \{u,v\}_{q,p}
+    =
+    \sum_i
+    \left(
+    \frac{\partial q^i}{\partial u}\frac{\partial p_i}{\partial v}
+    -
+    \frac{\partial q^i}{\partial v}\frac{\partial p_i}{\partial u}
+    \right).
+    \label{eq:corchete-lagrange-def}
+\end{equation}
+Entonces la condición de invariancia puede escribirse como
+\begin{equation}
+    \{u,v\}_{q,p}=\{u,v\}_{Q,P}.
+    \label{eq:invariancia-corchetes-lagrange}
+\end{equation}
+Los \textbf{corchetes de Lagrange} son, por tanto, invariantes bajo transformaciones canónicas.
+
+De la definición \eqref{eq:corchete-lagrange-def} se observa inmediatamente que
+\begin{equation}
+    \{u,v\}_{q,p}=-\{v,u\}_{q,p}.
+    \label{eq:antisimetra-lagrange}
+\end{equation}
+
+Para el conjunto canónico de variables $(q^i,p_i)$ se obtienen los corchetes fundamentales
+\begin{align}
+    \{q^i,q^j\}_{q,p} &= 0,
+    \label{eq:lagrange-qq} \\
+    \{p_i,p_j\}_{q,p} &= 0,
+    \label{eq:lagrange-pp} \\
+    \{q^i,p_j\}_{q,p} &= \delta^i_j.
+    \label{eq:lagrange-qp}
+\end{align}
+Estas relaciones son conocidas como los \textbf{corchetes fundamentales de Lagrange}.
+
+\section{Corchetes de Poisson}
+
+Más utilizados todavía son los \textbf{corchetes de Poisson}. Para dos funciones $u(q,p,t)$ y $v(q,p,t)$ se definen por
+\begin{equation}
+    [u,v]_{q,p}
+    =
+    \sum_{k=1}^{f}
+    \left(
+    \frac{\partial u}{\partial q^k}\frac{\partial v}{\partial p_k}
+    -
+    \frac{\partial u}{\partial p_k}\frac{\partial v}{\partial q^k}
+    \right).
+    \label{eq:corchete-poisson-def}
+\end{equation}
+En la notación de estas notas se omitirán, de aquí en adelante, los subíndices del corchete de Poisson cuando el sistema de coordenadas canónicas sea claro.
+
+Los corchetes de Poisson satisfacen la identidad de antisimetría
+\begin{equation}
+    [u,v]=-[v,u].
+    \label{eq:antisimetra-poisson}
+\end{equation}
+Además, para las coordenadas canónicas fundamentales,
+\begin{align}
+    [q^i,q^j]&=0,
+    \label{eq:poisson-qq} \\
+    [p_i,p_j]&=0,
+    \label{eq:poisson-pp} \\
+    [q^i,p_j]&=\delta^i_j.
+    \label{eq:poisson-qp}
+\end{align}
+
+Existe una estrecha relación entre los corchetes de Lagrange y los corchetes de Poisson. Si $u_\alpha$, con $\alpha=1,2,\ldots,2f$, es un conjunto de $2f$ funciones independientes de las coordenadas canónicas $(q^i,p_i)$, entonces puede considerarse cada $u_\alpha$ como función de las $2f$ coordenadas de fase. En ese caso, las matrices formadas por los corchetes de Lagrange y de Poisson son inversas entre sí. En particular,
+\begin{equation}
+    \sum_{\gamma=1}^{2f}
+    [u_\alpha,u_\gamma]\{u_\gamma,u_\beta\}
+    =
+    \delta_{\alpha\beta}.
+    \label{eq:relacion-lagrange-poisson}
+\end{equation}
+Esta relación permite traducir condiciones de canonicidad escritas mediante corchetes de Lagrange en condiciones equivalentes escritas mediante corchetes de Poisson.
+
+\section{Propiedades algebraicas de los corchetes de Poisson}
+
+Los corchetes de Poisson poseen varias propiedades algebraicas importantes. Para funciones $F$, $G$ y $H$ en el espacio de fase, se tiene:
+
+\begin{itemize}
+    \item \textbf{Nulidad consigo mismo:}
+    \begin{equation}
+        [F,F]=0.
+        \label{eq:poisson-nulo}
+    \end{equation}
+
+    \item \textbf{Antisimetría:}
+    \begin{equation}
+        [F,G]=-[G,F].
+        \label{eq:poisson-antisym}
+    \end{equation}
+
+    \item \textbf{Linealidad:}
+    \begin{equation}
+        [aF+bG,H]=a[F,H]+b[G,H],
+        \label{eq:poisson-linealidad}
+    \end{equation}
+    con $a,b$ constantes.
+
+    \item \textbf{Regla del producto:}
+    \begin{equation}
+        [FG,H]=F[G,H]+G[F,H].
+        \label{eq:poisson-producto}
+    \end{equation}
+
+    \item \textbf{Identidad de Jacobi:}
+    \begin{equation}
+        [F,[G,H]]+[G,[H,F]]+[H,[F,G]]=0.
+        \label{eq:poisson-jacobi}
+    \end{equation}
+\end{itemize}
+
+La identidad \eqref{eq:poisson-jacobi} es una propiedad estructural central: muestra que los corchetes de Poisson tienen la forma algebraica de un corchete de Lie sobre el espacio de funciones del espacio de fase.
+
+\section{Condiciones de canonicidad}
+
+Una transformación de coordenadas de fase
+\begin{equation}
+    (q^i,p_i) \longmapsto (Q^i,P_i)
+    \label{eq:transformacion-fase-general}
+\end{equation}
+es canónica si preserva la estructura de los corchetes fundamentales. En términos de los corchetes de Poisson, esto equivale a las condiciones
+\begin{align}
+    [Q^i,Q^j] &= 0,
+    \label{eq:cond-canonica-qq} \\
+    [P_i,P_j] &= 0,
+    \label{eq:cond-canonica-pp} \\
+    [Q^i,P_j] &= \delta^i_j.
+    \label{eq:cond-canonica-qp}
+\end{align}
+Estas relaciones son la versión en corchetes de Poisson de las condiciones fundamentales de canonicidad.
+
+En particular, si una transformación preserva los corchetes fundamentales, entonces preserva también la forma de las ecuaciones de Hamilton. De este modo, el formalismo Hamiltoniano queda escrito en una forma que no depende del conjunto particular de coordenadas canónicas elegido.
+
+\section{Ecuaciones del movimiento en forma de corchetes de Poisson}
+
+Consideremos una función arbitraria $F(q,p,t)$ en el espacio de fase. De la definición \eqref{eq:corchete-poisson-def} se obtiene
+\begin{align}
+    [F,q^i]
+    &=
+    -\frac{\partial F}{\partial p_i},
+    \label{eq:F-qi} \\
+    [F,p_i]
+    &=
+    \frac{\partial F}{\partial q^i}.
+    \label{eq:F-pi}
+\end{align}
+Si la función $F$ se toma como el Hamiltoniano del sistema,
+\begin{equation}
+    F=H(q,p,t),
+    \label{eq:F-igual-H}
+\end{equation}
+las ecuaciones de Hamilton pueden escribirse como
+\begin{align}
+    \dot q^i &= \frac{\partial H}{\partial p_i}=[q^i,H],
+    \label{eq:hamilton-poisson-q} \\
+    \dot p_i &= -\frac{\partial H}{\partial q^i}=[p_i,H].
+    \label{eq:hamilton-poisson-p}
+\end{align}
+Así, las ecuaciones del movimiento toman una forma invariante bajo transformaciones canónicas.
+
+Más generalmente, si $F(q,p,t)$ es una función cualquiera del espacio de fase, entonces
+\begin{equation}
+    \frac{dF}{dt}
+    =
+    \frac{\partial F}{\partial t}+[F,H].
+    \label{eq:evolucion-f-poisson}
+\end{equation}
+En particular, si $F$ no depende explícitamente del tiempo, entonces
+\begin{equation}
+    \frac{dF}{dt}=[F,H].
+    \label{eq:evolucion-f-sin-tiempo}
+\end{equation}
+Por lo tanto, $F$ es una constante del movimiento si y sólo si
+\begin{equation}
+    [F,H]=0.
+    \label{eq:condicion-constante-movimiento}
+\end{equation}
+
+\section{Teorema de Liouville}
+
+La invariancia del volumen de fase bajo transformaciones canónicas conduce al \textbf{teorema de Liouville}. Sea $\rho(q,p,t)$ una densidad de puntos representativos en el espacio de fase. El volumen elemental de fase es
+\begin{equation}
+    d\Gamma=dq^1\cdots dq^f\,dp_1\cdots dp_f.
+    \label{eq:volumen-fase-elemental}
+\end{equation}
+La evolución Hamiltoniana preserva este volumen, es decir,
+\begin{equation}
+    d\Gamma(t)=d\Gamma(0).
+    \label{eq:liouville-volumen}
+\end{equation}
+
+La ecuación de continuidad en el espacio de fase se escribe como
+\begin{equation}
+    \frac{\partial \rho}{\partial t}
+    +
+    \sum_i
+    \left[
+    \frac{\partial}{\partial q^i}(\rho\dot q^i)
+    +
+    \frac{\partial}{\partial p_i}(\rho\dot p_i)
+    \right]
+    =0.
+    \label{eq:continuidad-fase}
+\end{equation}
+Usando las ecuaciones de Hamilton,
+\begin{equation}
+    \dot q^i=\frac{\partial H}{\partial p_i},
+    \qquad
+    \dot p_i=-\frac{\partial H}{\partial q^i},
+    \label{eq:hamilton-liouville}
+\end{equation}
+se obtiene que la divergencia del flujo Hamiltoniano en el espacio de fase es nula:
+\begin{equation}
+    \sum_i
+    \left(
+    \frac{\partial \dot q^i}{\partial q^i}
+    +
+    \frac{\partial \dot p_i}{\partial p_i}
+    \right)
+    =0.
+    \label{eq:divergencia-flujo-hamiltoniano}
+\end{equation}
+Por consiguiente, \eqref{eq:continuidad-fase} toma la forma
+\begin{equation}
+    \frac{d\rho}{dt}
+    =
+    \frac{\partial \rho}{\partial t}+[
+ho,H]=0.
+    \label{eq:teorema-liouville}
+\end{equation}
+Esta ecuación expresa que la densidad de puntos representativos es constante a lo largo de las trayectorias Hamiltonianas en el espacio de fase.
+
+\section{Ejemplo: oscilador armónico unidimensional}
+
+Para el oscilador armónico unidimensional,
+\begin{equation}
+    H(q,p)=\frac{p^2}{2m}+\frac{1}{2}kq^2,
+    \label{eq:hamiltoniano-oscilador-ii}
+\end{equation}
+las ecuaciones de Hamilton pueden escribirse mediante corchetes de Poisson:
+\begin{align}
+    \dot q &= [q,H]=\frac{p}{m},
+    \label{eq:qdot-osc-poisson} \\
+    \dot p &= [p,H]=-kq.
+    \label{eq:pdot-osc-poisson}
+\end{align}
+De \eqref{eq:qdot-osc-poisson} y \eqref{eq:pdot-osc-poisson} se obtiene
+\begin{equation}
+    \ddot q + \omega^2 q =0,
+    \qquad
+    \omega^2=\frac{k}{m}.
+    \label{eq:edo-oscilador-poisson}
+\end{equation}
+La solución general es
+\begin{equation}
+    q(t)=A\cos(\omega t)+B\sin(\omega t),
+    \label{eq:sol-oscilador-q}
+\end{equation}
+con $A$ y $B$ determinados por las condiciones iniciales.
+
+\section{Resumen conceptual}
+
+El resultado central de este capítulo es que la estructura Hamiltoniana no depende del sistema particular de coordenadas canónicas. Las transformaciones canónicas preservan:
+
+\begin{itemize}
+    \item la forma de las ecuaciones de Hamilton;
+    \item la primera integral invariante de Poincaré $I_1$;
+    \item las integrales invariantes superiores;
+    \item los corchetes fundamentales de Lagrange y de Poisson;
+    \item el volumen del espacio de fase;
+    \item la forma de la evolución escrita mediante corchetes de Poisson.
+\end{itemize}
+
+En este sentido, las integrales invariantes de Poincaré y los corchetes de Poisson permiten formular la mecánica Hamiltoniana como una teoría geométrica sobre el espacio de fase.
+
+\end{document}

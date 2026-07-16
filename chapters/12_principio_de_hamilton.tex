@@ -1,0 +1,340 @@
+% !TeX root = ../apunte_mecanica_clasica.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
+\begin{document}
+
+\chapter{Principio de Hamilton}
+\label{ch:principio-de-hamilton}
+% Transcripción estilizada desde Clase MC 3-3.pdf.
+% Figuras organizadas en figures/12_principio_de_hamilton/.
+
+\section{Trabajos virtuales}
+\label{sec:ph-trabajos-virtuales}
+
+Los conceptos de \textbf{desplazamientos virtuales} y \textbf{trabajos virtuales} permiten suministrar una técnica alternativa a las ecuaciones de Newton para resolver problemas de estática. Este formalismo es muy usado en la ingeniería estructural.
+
+La posición de una partícula en mecánica newtoniana está definida con relación a un marco de referencia por cuatro variables,
+\begin{equation}
+    (x,y,z,t).
+    \label{eq:ph-variables-posicion-tiempo}
+\end{equation}
+El desplazamiento de la partícula en un intervalo de tiempo se representa por
+\begin{equation}
+    d\vec x=\vec x(t+dt)-\vec x(t).
+    \label{eq:ph-desplazamiento-fisico}
+\end{equation}
+
+Los mecanicistas encontraron conveniente imaginar y definir desplazamientos puramente geométricos que se producen fuera del tiempo, conocidos como \textbf{desplazamientos virtuales}. La notación será
+\begin{equation}
+    \text{desplazamiento físico: } d\vec x \quad \text{o} \quad dx^i,
+    \label{eq:ph-notacion-desplazamiento-fisico}
+\end{equation}
+\begin{equation}
+    \text{desplazamiento virtual: } \delta \vec x \quad \text{o} \quad \delta x^i.
+    \label{eq:ph-notacion-desplazamiento-virtual}
+\end{equation}
+La definición de desplazamiento virtual implica
+\begin{equation}
+    \delta t=0.
+    \label{eq:ph-delta-t-cero}
+\end{equation}
+Los desplazamientos virtuales siempre son infinitesimales e instantáneos.
+
+\subsection{Desplazamientos virtuales compatibles e incompatibles}
+\label{subsec:ph-desplazamientos-compatibles}
+
+Un objeto completamente confinado no puede tener desplazamiento físico, es decir,
+\begin{equation}
+    d\vec x=0.
+    \label{eq:ph-desplazamiento-fisico-nulo}
+\end{equation}
+Sin embargo, nada impide imaginar desplazamientos virtuales hacia posiciones que no se realizan físicamente. Esta idea se muestra en la Figura~\ref{fig:ph-tornillo-desplazamiento-virtual}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/desplazamiento_virtual_tornillo.png}{%
+        \includegraphics[width=0.52\linewidth]{figures/12_principio_de_hamilton/desplazamiento_virtual_tornillo.png}%
+    }{%
+        \fbox{\parbox{0.52\linewidth}{\centering Figura pendiente: desplazamiento virtual de un tornillo.}}%
+    }
+    \caption{Ejemplo de desplazamientos virtuales imaginados para un objeto confinado.}
+    \label{fig:ph-tornillo-desplazamiento-virtual}
+\end{figure}
+
+Supongamos que hay un libro $A$ en reposo sobre una mesa $H$. Se pueden imaginar desplazamientos virtuales compatibles con el vínculo de la mesa, como desplazamientos a lo largo de una recta, o desplazamientos incompatibles, como elevar o bajar el objeto atravesando la mesa. La Figura~\ref{fig:ph-desplazamientos-mesa} ilustra este ejemplo.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/desplazamientos_virtuales_mesa.png}{%
+        \includegraphics[width=0.63\linewidth]{figures/12_principio_de_hamilton/desplazamientos_virtuales_mesa.png}%
+    }{%
+        \fbox{\parbox{0.63\linewidth}{\centering Figura pendiente: desplazamientos virtuales sobre una mesa.}}%
+    }
+    \caption{Desplazamientos virtuales compatibles e incompatibles con un vínculo geométrico.}
+    \label{fig:ph-desplazamientos-mesa}
+\end{figure}
+
+Este ejemplo conduce a la siguiente clasificación:
+\begin{itemize}
+    \item \textbf{Desplazamientos virtuales compatibles con los vínculos:} respetan la condición de los vínculos.
+    \item \textbf{Desplazamientos virtuales incompatibles con los vínculos:} no respetan la condición de los vínculos.
+    \item \textbf{Desplazamientos virtuales invertibles:} se pueden realizar en uno u otro sentido y son compatibles con los vínculos.
+    \item \textbf{Desplazamientos virtuales no invertibles.}
+\end{itemize}
+
+Matemáticamente, un desplazamiento virtual es igual al diferencial matemático, pero instantáneo. Si $f=f(x,y,t)$, entonces
+\begin{equation}
+    \delta f(x,y,t)=\frac{\partial f}{\partial x}\delta x+
+    \frac{\partial f}{\partial y}\delta y,
+    \qquad \delta t=0.
+    \label{eq:ph-delta-f}
+\end{equation}
+
+\section{Trabajo virtual}
+\label{sec:ph-trabajo-virtual}
+
+El trabajo realizado por una fuerza $\vec F$ en un desplazamiento físico $d\vec x$ está dado por
+\begin{equation}
+    dW=\vec F\cdot d\vec x.
+    \label{eq:ph-trabajo-fisico}
+\end{equation}
+Análogamente, el \textbf{trabajo virtual} realizado por una fuerza $\vec F$ en un desplazamiento virtual $\delta\vec x$ es
+\begin{equation}
+    \delta W=\vec F\cdot \delta\vec x.
+    \label{eq:ph-trabajo-virtual}
+\end{equation}
+
+Consideremos una partícula libre en equilibrio. Entonces la fuerza neta sobre la partícula satisface
+\begin{equation}
+    \vec F=\vec 0.
+    \label{eq:ph-equilibrio-particula-libre}
+\end{equation}
+Si $\delta\vec x$ es un desplazamiento virtual de la partícula, se obtiene
+\begin{equation}
+    \delta W=\vec F\cdot \delta\vec x=0.
+    \label{eq:ph-trabajo-virtual-equilibrio}
+\end{equation}
+Para una partícula sometida a varias fuerzas, la condición de equilibrio y el trabajo virtual nulo se visualizan en la Figura~\ref{fig:ph-equilibrio-fuerzas}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/particula_equilibrio_fuerzas.png}{%
+        \includegraphics[width=0.58\linewidth]{figures/12_principio_de_hamilton/particula_equilibrio_fuerzas.png}%
+    }{%
+        \fbox{\parbox{0.58\linewidth}{\centering Figura pendiente: partícula en equilibrio.}}%
+    }
+    \caption{Partícula en equilibrio sometida a varias fuerzas.}
+    \label{fig:ph-equilibrio-fuerzas}
+\end{figure}
+
+El trabajo virtual de las fuerzas externas aplicadas sobre una partícula libre en equilibrio es cero cualquiera sea el desplazamiento virtual de la partícula.
+
+\section{Principio de trabajos virtuales}
+\label{sec:ph-principio-trabajos-virtuales}
+
+Consideremos una partícula en equilibrio, sometida a la acción de fuerzas activas $\vec F^{(a)}$ y reacciones vinculares $\vec \phi$. La condición de equilibrio se escribe como
+\begin{equation}
+    \vec F^{(a)}+\vec\phi=\vec 0.
+    \label{eq:ph-equilibrio-fuerzas-activas-vinculares}
+\end{equation}
+Si aplicamos a la partícula un desplazamiento virtual $\delta\vec x$, entonces
+\begin{equation}
+    \delta W=\left(\vec F^{(a)}+\vec\phi\right)\cdot \delta\vec x=0.
+    \label{eq:ph-trabajo-total-vinculos}
+\end{equation}
+Definimos
+\begin{align}
+    \delta W^{(a)} &= \vec F^{(a)}\cdot\delta\vec x,
+    \label{eq:ph-trabajo-activo}\\
+    \delta W^{(\phi)} &= \vec\phi\cdot\delta\vec x.
+    \label{eq:ph-trabajo-vincular}
+\end{align}
+Luego,
+\begin{equation}
+    \delta W^{(a)}+\delta W^{(\phi)}=0.
+    \label{eq:ph-suma-trabajos-virtuales}
+\end{equation}
+
+En ausencia de roce, las reacciones vinculares son normales a los desplazamientos virtuales compatibles. Por lo tanto,
+\begin{equation}
+    \delta W^{(\phi)}=0,
+    \label{eq:ph-trabajo-reacciones-nulo}
+\end{equation}
+y se obtiene el \textbf{principio de trabajos virtuales}:
+\begin{equation}
+    \delta W^{(a)}=0.
+    \label{eq:ph-principio-trabajos-virtuales}
+\end{equation}
+La geometría de las fuerzas activas y reacciones vinculares se representa en la Figura~\ref{fig:ph-reacciones-vinculares}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/reacciones_vinculares.png}{%
+        \includegraphics[width=0.60\linewidth]{figures/12_principio_de_hamilton/reacciones_vinculares.png}%
+    }{%
+        \fbox{\parbox{0.60\linewidth}{\centering Figura pendiente: reacciones vinculares.}}%
+    }
+    \caption{Fuerzas activas y reacciones vinculares para una partícula en equilibrio.}
+    \label{fig:ph-reacciones-vinculares}
+\end{figure}
+
+\subsection{Ejemplo: escalera apoyada}
+\label{subsec:ph-ejemplo-escalera}
+
+La tercera ecuación proviene de la suma de los torques usando el punto $A$, donde la escalera toca el suelo, como punto de giro. Si se asume un desplazamiento virtual compatible con los vínculos, la escalera resbala por el piso y la pared. La configuración se muestra en la Figura~\ref{fig:ph-escalera-trabajos-virtuales}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/escalera_trabajos_virtuales.png}{%
+        \includegraphics[width=0.60\linewidth]{figures/12_principio_de_hamilton/escalera_trabajos_virtuales.png}%
+    }{%
+        \fbox{\parbox{0.60\linewidth}{\centering Figura pendiente: escalera y trabajos virtuales.}}%
+    }
+    \caption{Escalera apoyada sometida a desplazamientos virtuales compatibles con los vínculos.}
+    \label{fig:ph-escalera-trabajos-virtuales}
+\end{figure}
+
+Cuando la escalera se desliza a lo largo del eje $x>0$, en un desplazamiento virtual el ángulo $\theta$ disminuye. Esta relación geométrica queda ilustrada en la Figura~\ref{fig:ph-escalera-deslizamiento}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/escalera_deslizamiento.png}{%
+        \includegraphics[width=0.58\linewidth]{figures/12_principio_de_hamilton/escalera_deslizamiento.png}%
+    }{%
+        \fbox{\parbox{0.58\linewidth}{\centering Figura pendiente: deslizamiento de una escalera.}}%
+    }
+    \caption{Relación entre el desplazamiento de la base de la escalera y la variación angular.}
+    \label{fig:ph-escalera-deslizamiento}
+\end{figure}
+
+\section{Principio de D'Alembert}
+\label{sec:ph-principio-dalembert}
+
+El \textbf{principio de D'Alembert} establece que el trabajo virtual total de las reacciones vinculares es nulo bajo un desplazamiento virtual compatible con los vínculos. En términos dinámicos, para una partícula se introduce la fuerza de inercia y se escribe
+\begin{equation}
+    \left(\vec F-m\vec a\right)\cdot\delta\vec x=0.
+    \label{eq:ph-dalembert-particula}
+\end{equation}
+Para un sistema de $N$ partículas,
+\begin{equation}
+    \sum_{a=1}^{N}\left(\vec F_a-m_a\vec a_a\right)
+    \cdot\delta\vec r_a=0.
+    \label{eq:ph-dalembert-sistema}
+\end{equation}
+Este principio permite pasar desde una formulación newtoniana con vínculos hacia una formulación variacional en coordenadas generalizadas.
+
+\section{Principio de Hamilton}
+\label{sec:ph-principio-hamilton}
+
+La mecánica construida a partir del llamado \textbf{principio de Hamilton} recibe el nombre de \textbf{mecánica analítica}. El principio de Hamilton es un principio variacional: uno de los principales problemas del cálculo de variaciones consiste en hallar la curva que hace extremal una funcional dada.
+
+Sea $\alpha$ una curva de referencia,
+\begin{equation}
+    y(t)=y(t,0).
+    \label{eq:ph-curva-referencia}
+\end{equation}
+Siempre es posible hacer esto: escogemos una curva de referencia y ajustamos el parámetro $\alpha$ al valor cero para esta curva. La familia de curvas vecinas se visualiza en la Figura~\ref{fig:ph-curvas-extremales}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/curvas_extremales_accion.png}{%
+        \includegraphics[width=0.48\linewidth]{figures/12_principio_de_hamilton/curvas_extremales_accion.png}%
+    }{%
+        \fbox{\parbox{0.48\linewidth}{\centering Figura pendiente: curvas variacionales.}}%
+    }
+    \caption{Familia de curvas usada en el cálculo de variaciones.}
+    \label{fig:ph-curvas-extremales}
+\end{figure}
+
+La variación de la curva se define por
+\begin{equation}
+    \delta y(t)=\left.\frac{\partial y(t,\alpha)}{\partial \alpha}\right|_{\alpha=0}d\alpha.
+    \label{eq:ph-variacion-y}
+\end{equation}
+La construcción geométrica de esta variación aparece en la Figura~\ref{fig:ph-variacion-curva}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/12_principio_de_hamilton/variacion_curva_referencia.png}{%
+        \includegraphics[width=0.62\linewidth]{figures/12_principio_de_hamilton/variacion_curva_referencia.png}%
+    }{%
+        \fbox{\parbox{0.62\linewidth}{\centering Figura pendiente: variación de una curva de referencia.}}%
+    }
+    \caption{Variación de una curva de referencia dentro de una familia de curvas.}
+    \label{fig:ph-variacion-curva}
+\end{figure}
+
+El funcional de acción se define como
+\begin{equation}
+    S[q]=\int_{t_1}^{t_2}L(q^i,\dot q^i,t)\,dt.
+    \label{eq:ph-accion}
+\end{equation}
+El \textbf{principio de Hamilton} establece que la trayectoria física satisface
+\begin{equation}
+    \delta S=0,
+    \label{eq:ph-principio-hamilton}
+\end{equation}
+para variaciones que mantienen fijos los extremos,
+\begin{equation}
+    \delta q^i(t_1)=\delta q^i(t_2)=0.
+    \label{eq:ph-extremos-fijos}
+\end{equation}
+
+\section{Ecuaciones de Euler-Lagrange}
+\label{sec:ph-euler-lagrange}
+
+A partir de \eqref{eq:ph-accion}, se tiene
+\begin{align}
+    \delta S
+    &= \int_{t_1}^{t_2}\left(
+    \frac{\partial L}{\partial q^i}\delta q^i+
+    \frac{\partial L}{\partial \dot q^i}\delta \dot q^i
+    \right)dt. \label{eq:ph-delta-s-uno}
+\end{align}
+Como
+\begin{equation}
+    \delta\dot q^i=\frac{d}{dt}(\delta q^i),
+    \label{eq:ph-delta-qdot}
+\end{equation}
+se integra por partes el segundo término. Usando las condiciones de extremos fijos \eqref{eq:ph-extremos-fijos}, queda
+\begin{equation}
+    \delta S=\int_{t_1}^{t_2}\left[
+    \frac{\partial L}{\partial q^i}-
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)
+    \right]\delta q^i\,dt.
+    \label{eq:ph-delta-s-final}
+\end{equation}
+Como las variaciones $\delta q^i$ son arbitrarias, se obtiene
+\begin{equation}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)-
+    \frac{\partial L}{\partial q^i}=0.
+    \label{eq:ph-euler-lagrange}
+\end{equation}
+Estas son las \textbf{ecuaciones de Euler-Lagrange}.
+
+\section{Ecuaciones de Hamilton}
+\label{sec:ph-ecuaciones-hamilton}
+
+El principio de Hamilton también permite formular las ecuaciones de Hamilton al pasar desde el lagrangiano $L(q^i,\dot q^i,t)$ hacia el hamiltoniano
+\begin{equation}
+    H(q^i,p_i,t)=\sum_i p_i\dot q^i-L.
+    \label{eq:ph-hamiltoniano-def}
+\end{equation}
+Con
+\begin{equation}
+    p_i=\frac{\partial L}{\partial \dot q^i},
+    \label{eq:ph-momento-canonico}
+\end{equation}
+se obtienen las ecuaciones canónicas
+\begin{align}
+    \dot q^i &= \frac{\partial H}{\partial p_i},
+    \label{eq:ph-hamilton-q}\\
+    \dot p_i &= -\frac{\partial H}{\partial q^i}.
+    \label{eq:ph-hamilton-p}
+\end{align}
+Así, el mismo principio variacional permite obtener tanto la forma lagrangiana como la forma hamiltoniana de las ecuaciones del movimiento.
+
+\end{document}

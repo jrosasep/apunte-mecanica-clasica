@@ -1,10 +1,9 @@
-% !TeX root = main.tex
+% !TeX root = ../apunte_mecanica_clasica.tex
 \IfFileExists{../apunte_mecanica_clasica.tex}{%
   \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
 }{%
   \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
 }
-
 \begin{document}
 
 \chapter{Sistema de Referencia}
@@ -28,15 +27,16 @@ Esta definición es lo que se llama sistema de referencia.
 Es muy común pensar que el observador está unido al punto de referencia, lo que en general no es correcta.
 
 \begin{apuntebloque}{Ejemplo}
-Al estudiar el movimiento de Tierra alrededor del Sol, los observadores son los humanos, los que están en la tierra, y el punto de referencia se coloca en el Sol.
+Al estudiar el movimiento de Tierra alrededor del Sol, los observadores son los humanos, los que están en la tierra, y el punto de referencia se coloca en el Sol. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:01-sistema-de-referencia:ejemplo}.
 \end{apuntebloque}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/01_sistema_de_referencia/ejemplo.png}
     \caption{
         Representación esquemática del sistema de referencia empleado al estudiar el movimiento de la Tierra alrededor del Sol. El punto de referencia se fija en el centro del Sol (marcado en la figura), mientras que el observador se encuentra en la superficie de la Tierra. Obsérvese que el observador y el punto de referencia no necesariamente coinciden, como ocurre en este ejemplo.
     }
+
+    \label{fig:01-sistema-de-referencia:ejemplo}
 \end{figure}
 
 \section{Arbitrariedad del punto de referencia y covarianza de la física}
@@ -69,12 +69,13 @@ El que las magnitudes físicas no dependan de la elección del sistema de coorde
 
 Las leyes de la mecánica clásica no debieran depender del sistema coordenado, \textbf{pero si depende del observador; si es inercial o no inercial}, puesto que en un sistema no inercial aparecen los llamados \textbf{Efectos Inerciales}, los que el observador no inercial los interpreta como fuerzas. Por lo tanto, la mecánica de Newton no es covariante, pues depende del tipo de observador.
 
-En efecto, consideramos un cuerpo de masa $m$, que se mueve en el espacio y que rotularemos con la letra $P$ (partícula puntual), y sean dos observadores $O$ y $O'$, tal que cada uno estudiara la evolución del cuerpo $P$.
-
-\begin{figure}[h]
+En efecto, consideramos un cuerpo de masa $m$, que se mueve en el espacio y que rotularemos con la letra $P$ (partícula puntual), y sean dos observadores $O$ y $O'$, tal que cada uno estudiara la evolución del cuerpo $P$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:01-sistema-de-referencia:sis-ref1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/01_sistema_de_referencia/sis_ref1.png}
     \caption{Un cuerpo $P$ es observado por dos observadores.}
+
+    \label{fig:01-sistema-de-referencia:sis-ref1}
 \end{figure}
 
 donde

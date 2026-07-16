@@ -1,79 +1,90 @@
 # Apunte de Mecánica Clásica
 
-Versión modular en formato `book` del apunte de **Mecánica Clásica**.
+Apunte en desarrollo de **Mecánica Clásica**, construido a partir de la transcripción y reorganización de las notas de clases del Dr. **Juan Crisóstomo**.
 
-El proyecto fue reorganizado para que cada capítulo pueda editarse de forma independiente desde la carpeta `chapters/`, manteniendo `main.tex` como archivo principal de compilación.
+El objetivo del repositorio es disponer de una versión editable, ordenada y compilable en LaTeX, útil para estudiar, corregir y extender el material del curso. La organización visual, la modularización del documento y parte de la transcripción fueron realizadas por **José Rosas**, con asistencia de **GPT**.
 
-## Estructura
+> Este repositorio no corresponde a un material oficial del curso. Es una transcripción personal en revisión.
+
+## Contenido
+
+El apunte se organiza en formato `book` y está separado por capítulos editables:
 
 ```text
-main.tex
+apunte_mecanica_clasica.tex
 preamble.tex
 frontmatter.tex
-logo.png
 chapters/
 figures/
-LICENSE
-main.pdf
+logo.png
 ```
 
-## Capítulos
-
-- `chapters/00_introduccion.tex` — Introducción
-- `chapters/01_sistema_de_referencia.tex` — Sistema de Referencia
-- `chapters/02_sistema_de_coordenadas.tex` — Sistema de Coordenadas
-- `chapters/03_bases_coordenados.tex` — Bases Coordenados
-- `chapters/04_metrica.tex` — Métrica
-- `chapters/05_simbolos_de_christoffel.tex` — Símbolos de Christoffel
-- `chapters/06_espacio_vectorial_dual.tex` — Espacio Vectorial Dual
-- `chapters/07_operadores_diferenciales_clasicos.tex` — Operadores Diferenciales Clásicos
-- `chapters/08_transformaciones_de_coordenadas.tex` — Transformaciones de Coordenadas
-- `chapters/09_analisis_tensorial.tex` — Análisis Tensorial
-- `chapters/10_mecanica.tex` — Mecánica
-- `chapters/11_mecanica_racional.tex` — Mecánica Racional
-- `chapters/12_formalismo_lagrangiano.tex` — Formalismo Lagrangiano
-- `chapters/13_principio_de_hamilton.tex` — Principio de Hamilton
-- `chapters/14_teoria_de_hamilton_jacobi.tex` — Teoría de Hamilton-Jacobi
-
-## Figuras
-
-Las imágenes fueron reorganizadas en una única carpeta:
+La estructura actual considera:
 
 ```text
-figures/<nombre_del_capitulo>/
+Parte I   Geometría, coordenadas y herramientas matemáticas
+Parte II  Mecánica newtoniana y fuerzas centrales
+Parte III Mecánica analítica
+Parte IV  Material introductorio para Mecánica Clásica II
 ```
 
-Cada capítulo apunta a sus propias figuras mediante rutas del tipo:
-
-```tex
-\includegraphics{figures/00_introduccion/fig1.png}
-```
-
-
-## Ajustes visuales aplicados
-
-Esta versión usa una plantilla sobria en blanco y negro. Se eliminaron los bloques de color; las definiciones, ejemplos, proposiciones y observaciones se presentan ahora mediante reglas finas y tipografía limpia.
-
-También se mantuvieron ajustes de paginación para mejorar la lectura del PDF:
-
-- menor separación vertical alrededor de figuras y captions;
-- activación de `\raggedbottom` para reducir espacios blancos artificiales;
-- ajustes puntuales en ecuaciones largas que producían desbordes horizontales;
-- capítulos aún no transcritos marcados como `Capítulo en preparación`, en lugar de quedar visualmente vacíos.
+Algunos capítulos aún están en revisión, especialmente aquellos transcritos desde apuntes manuscritos o desde clases cuya fidelidad debe verificarse contra el material original.
 
 ## Compilación
 
-En Overleaf o localmente, el archivo principal debe ser:
+En Overleaf, marcar como archivo principal:
 
 ```text
-main.tex
+apunte_mecanica_clasica.tex
 ```
 
-Compilación local:
+Compilación local recomendada:
 
 ```bash
-pdflatex main.tex
-pdflatex main.tex
+pdflatex apunte_mecanica_clasica.tex
+pdflatex apunte_mecanica_clasica.tex
 ```
 
-Los capítulos usan `subfiles`, por lo que también pueden abrirse y editarse individualmente.
+También se puede usar `latexmk`:
+
+```bash
+latexmk -pdf apunte_mecanica_clasica.tex
+```
+
+## Organización de figuras
+
+Las figuras se guardan por capítulo:
+
+```text
+figures/<numero_nombre_del_capitulo>/
+```
+
+Por ejemplo:
+
+```text
+figures/09_mecanica/
+figures/10_fuerzas_centrales_binet_kepler/
+figures/11_mecanica_racional/
+```
+
+Cada capítulo debe citar sus figuras mediante `\label{...}` y `Figura~\ref{...}`.
+
+## Notas de edición
+
+- Los capítulos están en `chapters/` y pueden editarse individualmente.
+- El archivo `preamble.tex` contiene la configuración tipográfica y matemática.
+- El archivo `frontmatter.tex` contiene portada, nota inicial y elementos preliminares.
+- Se recomienda revisar manualmente la fidelidad de cada transcripción antes de considerar el capítulo como terminado.
+- Las figuras recortadas pueden ser reemplazadas por versiones mejores manteniendo el mismo nombre de archivo.
+
+## Agradecimientos
+
+Agradezco al Dr. **Juan Crisóstomo** por las clases y por el material base a partir del cual se desarrolla este apunte.
+
+La transcripción, reorganización y edición en LaTeX se ha realizado con asistencia de **GPT**, usado como apoyo para estructurar el documento, convertir contenido a LaTeX, homogeneizar estilo y preparar versiones editables. La revisión final, corrección de errores y responsabilidad sobre el contenido corresponden al autor del repositorio.
+
+## Autor
+
+**José Rosas**  
+Licenciatura en Ciencias Físicas  
+Universidad de Concepción

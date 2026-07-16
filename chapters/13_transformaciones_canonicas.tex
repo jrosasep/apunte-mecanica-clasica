@@ -1,0 +1,910 @@
+\documentclass[../apunte_mecanica_clasica.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Transformaciones canónicas}
+\label{ch:transformaciones-canonicas}
+
+Existe un tipo de problemas para los cuales la solución de las ecuaciones de Hamilton es trivial. Consideremos el caso en que el Hamiltoniano no depende explícitamente del tiempo,
+\(H(q^i,p_i)\). Entonces
+\begin{equation}
+    \frac{dH}{dt}=\frac{\partial H}{\partial t}=0,
+    \label{eq:tc-h-conservado}
+\end{equation}
+por lo tanto, \(H(q^i,p_i)\) es una \textbf{constante del movimiento}.
+
+Supongamos que todas las coordenadas generalizadas son \textbf{cíclicas}, esto es,
+\begin{equation}
+    L=L(\dot q^i,t),
+    \label{eq:tc-lagrangiano-coordenadas-ciclicas}
+\end{equation}
+y como el Hamiltoniano es una constante del movimiento, entonces
+\begin{equation}
+    \frac{dH}{dt}=-\frac{\partial L}{\partial t}=0.
+    \label{eq:tc-h-l-tiempo}
+\end{equation}
+Así, el Lagrangiano solo depende de las velocidades generalizadas,
+\begin{equation}
+    L=L(\dot q^i).
+    \label{eq:tc-l-depende-solo-velocidades}
+\end{equation}
+Lo anterior implica que los momenta conjugados serán todos constantes. En efecto,
+\begin{equation}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)-\frac{\partial L}{\partial q^i}=0,
+    \label{eq:tc-el-ciclica}
+\end{equation}
+y puesto que \(\partial L/\partial q^i=0\), se obtiene
+\begin{equation}
+    \frac{dp_i}{dt}=0,
+    \qquad\Rightarrow\qquad
+    p_i=\text{constante}.
+    \label{eq:tc-momenta-constantes}
+\end{equation}
+Redefiniremos estas constantes como
+\begin{equation}
+    p_i=\alpha_i=\text{constante}.
+    \label{eq:tc-alpha-constante}
+\end{equation}
+Por lo tanto, el Hamiltoniano no depende de las coordenadas generalizadas, puesto que
+\begin{equation}
+    \dot p_i=-\frac{\partial H}{\partial q^i}=0.
+    \label{eq:tc-h-no-depende-q}
+\end{equation}
+Luego,
+\begin{equation}
+    H=H(p_i)=H(\alpha_i)=H(\alpha_1,\ldots,\alpha_f).
+    \label{eq:tc-h-alpha}
+\end{equation}
+El Hamiltoniano solo depende de los momenta conjugados, los cuales son constantes. Por consiguiente,
+\begin{equation}
+    \dot q^i=\frac{\partial H}{\partial p_i}
+    =\frac{\partial H}{\partial \alpha_i}.
+    \label{eq:tc-qdot-alpha}
+\end{equation}
+Como \(\partial H/\partial \alpha_i\) es función de constantes, se escribe
+\begin{equation}
+    \dot q^i=\omega^i(\alpha_1,\ldots,\alpha_f)=\text{constante}.
+    \label{eq:tc-omega-constante}
+\end{equation}
+De aquí,
+\begin{equation}
+    dq^i=\omega^i dt,
+    \label{eq:tc-dq-omega}
+\end{equation}
+y por integración,
+\begin{equation}
+    q^i(t)=\omega^i t+\beta^i,
+    \label{eq:tc-solucion-lineal}
+\end{equation}
+donde las \(\beta^i\) son constantes de integración determinadas por las condiciones iniciales.
+
+\section{Ejemplo: partícula libre}
+\label{sec:tc-particula-libre}
+
+Una partícula de masa \(m\) que se mueve libre de interacciones tendrá función Lagrangiana
+\begin{equation}
+    L=\frac{1}{2}m\left(\dot x^2+\dot y^2+\dot z^2\right)
+    =\frac{1}{2}m\dot x^i\dot x^i.
+    \label{eq:tc-libre-lagrangiano}
+\end{equation}
+Claramente las coordenadas \(x^i\), con \(i=1,2,3\), son cíclicas, por lo que los momenta son constantes del movimiento:
+\begin{equation}
+    p_i=\frac{\partial L}{\partial \dot x^i}=m\dot x^i=\alpha_i.
+    \label{eq:tc-libre-momentum}
+\end{equation}
+Entonces el Hamiltoniano está dado por
+\begin{align}
+    H
+    &=\sum_{i=1}^{3}\dot x^i p_i-L                                      
+      =\sum_{i=1}^{3}\frac{\alpha_i\alpha_i}{m}
+       -\frac{1}{2}m\sum_{i=1}^{3}\frac{\alpha_i}{m}\frac{\alpha_i}{m}      
+       \notag\\
+    &=\frac{1}{2m}\sum_{i=1}^{3}\alpha_i\alpha_i.
+    \label{eq:tc-libre-hamiltoniano}
+\end{align}
+Como \(H\) no depende explícitamente del tiempo, es una constante del movimiento. Luego,
+\begin{equation}
+    \dot x^i=\frac{\partial H}{\partial p_i}
+    =\frac{\partial H}{\partial \alpha_i}=\frac{\alpha_i}{m}=\text{constante},
+    \label{eq:tc-libre-xdot}
+\end{equation}
+y por lo tanto
+\begin{equation}
+    x^i(t)=\frac{\alpha_i}{m}t+x_0^i.
+    \label{eq:tc-libre-solucion}
+\end{equation}
+
+Puede parecer que la solución de este problema es de poco interés práctico, debido a que todas las coordenadas generalizadas son cíclicas. Sin embargo, un sistema puede ser descrito por muchos conjuntos de coordenadas generalizadas. Por ejemplo, al estudiar el movimiento de una partícula en un plano, pueden ser utilizadas como coordenadas generalizadas las cartesianas
+\begin{equation}
+    q^1=x,
+    \qquad
+    q^2=y,
+    \label{eq:tc-cartesianas}
+\end{equation}
+o bien las coordenadas polares planas
+\begin{equation}
+    q^1=r,
+    \qquad
+    q^2=\phi.
+    \label{eq:tc-polares}
+\end{equation}
+Ambos sistemas de coordenadas son igualmente válidos para describir el sistema; sin embargo, uno de ellos puede resultar más adecuado para estudiar el problema. Por ejemplo, en el problema de fuerzas centrales el Lagrangiano está dado por
+\begin{equation}
+    L=\frac{1}{2}m\left(\dot x^2+\dot y^2\right)-V\left(\sqrt{x^2+y^2}\right).
+    \label{eq:tc-l-central-cartesiano}
+\end{equation}
+En coordenadas cartesianas, \(x\) e \(y\) no son cíclicas, pero en coordenadas polares el Lagrangiano toma la forma
+\begin{equation}
+    L=\frac{1}{2}m\left(\dot r^2+r^2\dot\phi^2\right)-V(r),
+    \label{eq:tc-l-central-polar}
+\end{equation}
+donde la coordenada \(\phi\) es cíclica. Por lo tanto, su momentum conjugado,
+\begin{equation}
+    p_\phi=mr^2\dot\phi,
+    \label{eq:tc-momentum-angular}
+\end{equation}
+es una constante del movimiento.
+
+En un sistema físico dado se observa que:
+\begin{itemize}
+    \item \textbf{Número de coordenadas cíclicas:} depende de la elección de las coordenadas generalizadas.
+    \item \textbf{Existencia de coordenadas adecuadas:} en cada caso puede haber un conjunto de coordenadas tal que todas ellas sean cíclicas.
+\end{itemize}
+Una vez encontrado el sistema de coordenadas generalizadas donde todos los \(q^i\) son cíclicos, el resto del problema es trivial. Debido a que normalmente las coordenadas generalizadas que sugiere un problema no son cíclicas, es necesario encontrar un procedimiento que transforme un conjunto de coordenadas en otro más adecuado.
+
+\section{Transformaciones de coordenadas}
+\label{sec:tc-transformaciones-coordenadas}
+
+Una \textbf{transformación de coordenada} consiste en pasar de un conjunto de coordenadas \(\{q^i\}_{i=1}^{f}\) a otro conjunto de coordenadas \(\{Q^i\}_{i=1}^{f}\), mediante ecuaciones de la forma
+\begin{equation}
+    Q^i=Q^i(q^j,t).
+    \label{eq:tc-transformacion-puntual}
+\end{equation}
+La transformación debe ser invertible. Por el teorema de la función implícita, la transformación \eqref{eq:tc-transformacion-puntual} es invertible si y sólo si se cumple la condición
+\begin{equation}
+    \det\left(\frac{\partial Q^i}{\partial q^j}\right)\neq 0.
+    \label{eq:tc-jacobiano-no-nulo}
+\end{equation}
+Donde \(\partial Q^i/\partial q^j\) es la matriz jacobiana de la transformación. Si se cumple \eqref{eq:tc-jacobiano-no-nulo}, entonces la transformación inversa existe y puede escribirse como
+\begin{equation}
+    q^i=q^i(Q^j,t).
+    \label{eq:tc-transformacion-inversa}
+\end{equation}
+
+\subsection{Ejemplo: coordenadas polares}
+\label{subsec:tc-ejemplo-polares}
+
+Sea la transformación de coordenadas
+\begin{equation}
+    x(r,\phi)=r\cos\phi,
+    \qquad
+    y(r,\phi)=r\sin\phi,
+    \qquad
+    r>0,
+    \quad
+    0\leq \phi<2\pi.
+    \label{eq:tc-polares-transformacion}
+\end{equation}
+El determinante de la matriz jacobiana es
+\begin{align}
+    \det\left(\frac{\partial Q^i}{\partial q^j}\right)
+    &=
+    \det
+    \begin{pmatrix}
+        \frac{\partial x}{\partial r} & \frac{\partial x}{\partial \phi} \\
+        \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \phi}
+    \end{pmatrix}                                                        
+    =
+    \det
+    \begin{pmatrix}
+        \cos\phi & -r\sin\phi \\
+        \sin\phi & r\cos\phi
+    \end{pmatrix}                                                        
+    \notag\\
+    &=r\cos^2\phi+r\sin^2\phi
+      =r.
+    \label{eq:tc-jacobiano-polares}
+\end{align}
+La transformación es invertible si se cumple \(r\neq 0\), que corresponde al origen del sistema coordenado, donde se anula el vector coordenado
+\begin{equation}
+    \vec e_\phi=\frac{\partial \vec x}{\partial \phi}
+    =r\left(-\sin\phi\,\hat i+\cos\phi\,\hat j\right).
+    \label{eq:tc-vector-ephi}
+\end{equation}
+Esto ocurre debido a que no se pueden definir ángulos en un punto. La inversa de \eqref{eq:tc-polares-transformacion} es
+\begin{equation}
+    r=\sqrt{x^2+y^2},
+    \qquad
+    \tan\phi=\frac{y}{x},
+    \qquad
+    x\in\mathbb{R},
+    \quad
+    y\in\mathbb{R}.
+    \label{eq:tc-inversa-polares}
+\end{equation}
+
+\section{Principio de acción en distintos sistemas coordenados}
+\label{sec:tc-accion-dos-coordenadas}
+
+Para cada sistema de coordenadas el principio de acción se escribirá de manera correspondiente. Para el sistema \(\{q^i\}_{i=1}^{f}\), el principio de acción es
+\begin{equation}
+    I=\int_{t_i}^{t_f}L(q^i,\dot q^i,t)\,dt,
+    \label{eq:tc-accion-q}
+\end{equation}
+y las ecuaciones de Euler-Lagrange son
+\begin{equation}
+    \frac{\delta L}{\delta q^i}
+    =\frac{\partial L}{\partial q^i}
+    -\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)=0.
+    \label{eq:tc-euler-lagrange-q}
+\end{equation}
+Para el sistema \(\{Q^i\}_{i=1}^{f}\), el principio de acción es
+\begin{equation}
+    \bar I=\int_{t_i}^{t_f}\bar L(Q^i,\dot Q^i,t)\,dt,
+    \label{eq:tc-accion-Q}
+\end{equation}
+y las ecuaciones de Euler-Lagrange son
+\begin{equation}
+    \frac{\delta \bar L}{\delta Q^i}
+    =\frac{\partial \bar L}{\partial Q^i}
+    -\frac{d}{dt}\left(\frac{\partial \bar L}{\partial \dot Q^i}\right)=0.
+    \label{eq:tc-euler-lagrange-Q}
+\end{equation}
+En general, las funciones Lagrangianas \(L(q^i,\dot q^i,t)\) y \(\bar L(Q^i,\dot Q^i,t)\) tendrán formas funcionales distintas.
+
+Puesto que ambos sistemas de coordenadas deben describir el mismo fenómeno físico, entonces los principios de acción \(I\) y \(\bar I\) deben extremizarse en las mismas curvas extremales, aunque tengan expresiones distintas en los sistemas coordenados \(q^i\) y \(Q^i\). Por lo tanto, los valores numéricos de \(I\) y \(\bar I\) deben ser el mismo para el mismo intervalo de tiempo:
+\begin{equation}
+    I=\bar I.
+    \label{eq:tc-igualdad-acciones}
+\end{equation}
+Así,
+\begin{equation}
+    \int_{t_i}^{t_f}L(q^i,\dot q^i,t)\,dt
+    =
+    \int_{t_i}^{t_f}\bar L(Q^i,\dot Q^i,t)\,dt,
+    \label{eq:tc-igualdad-integrales-accion}
+\end{equation}
+y se obtiene
+\begin{equation}
+    L(q^i,\dot q^i,t)=\bar L(Q^i,\dot Q^i,t).
+    \label{eq:tc-lagrangianos-relacionados}
+\end{equation}
+La expresión \eqref{eq:tc-lagrangianos-relacionados} se considera la definición de la función Lagrangiana \(\bar L(Q^i,\dot Q^i,t)\). Esto es, si reemplazamos \eqref{eq:tc-transformacion-inversa} en la función Lagrangiana \(L(q^i,\dot q^i,t)\), obtenemos la función Lagrangiana \(\bar L(Q^i,\dot Q^i,t)\).
+
+Las ecuaciones de movimiento en los sistemas coordenados \(q^i\) y \(Q^i\) están relacionadas en la forma
+\begin{equation}
+    \frac{\delta \bar L}{\delta Q^i}
+    =\sum_{j=1}^{f}\frac{\partial q^j}{\partial Q^i}\frac{\delta L}{\delta q^j}.
+    \label{eq:tc-relacion-variacionales}
+\end{equation}
+
+\subsection{Ejemplo: fuerzas centrales}
+\label{subsec:tc-ejemplo-fuerzas-centrales}
+
+Sea el principio de acción del problema de fuerzas centrales, escrito en coordenadas cartesianas,
+\begin{equation}
+    I=\int_{t_i}^{t_f}
+    \left[
+    \frac{1}{2}m(\dot x^2+\dot y^2)-V\left(\sqrt{x^2+y^2}\right)
+    \right]dt,
+    \label{eq:tc-accion-fuerzas-centrales-cart}
+\end{equation}
+donde la función Lagrangiana es
+\begin{equation}
+    L(x,y,\dot x,\dot y)
+    =\frac{1}{2}m(\dot x^2+\dot y^2)-V\left(\sqrt{x^2+y^2}\right).
+    \label{eq:tc-l-fuerzas-centrales-cart}
+\end{equation}
+Las ecuaciones de movimiento son
+\begin{align}
+    \frac{\delta L}{\delta x}
+    &=\frac{\partial L}{\partial x}
+    -\frac{d}{dt}\left(\frac{\partial L}{\partial \dot x}\right)=0,
+    \label{eq:tc-eq-x-central}\\
+    \frac{\delta L}{\delta y}
+    &=\frac{\partial L}{\partial y}
+    -\frac{d}{dt}\left(\frac{\partial L}{\partial \dot y}\right)=0.
+    \label{eq:tc-eq-y-central}
+\end{align}
+Explícitamente,
+\begin{equation}
+    \frac{\delta L}{\delta x}
+    =-m\ddot x-\frac{\partial V}{\partial x}=0,
+    \label{eq:tc-central-x-final}
+\end{equation}
+y
+\begin{equation}
+    \frac{\delta L}{\delta y}
+    =-m\ddot y-\frac{\partial V}{\partial y}=0.
+    \label{eq:tc-central-y-final}
+\end{equation}
+
+Las coordenadas polares son otras coordenadas con las que se puede estudiar el problema de fuerzas centrales, y en este caso resultan más convenientes que las coordenadas cartesianas. La transformación es
+\begin{equation}
+    x(r,\phi)=r\cos\phi,
+    \qquad
+    y(r,\phi)=r\sin\phi,
+    \qquad
+    z=0.
+    \label{eq:tc-transformacion-polar-fc}
+\end{equation}
+Los vectores base de las coordenadas polares son
+\begin{align}
+    \vec e_r&=\frac{\partial \vec x}{\partial r}
+    =\cos\phi\,\hat i+\sin\phi\,\hat j,
+    \label{eq:tc-er-polar}\\
+    \vec e_\phi&=\frac{\partial \vec x}{\partial \phi}
+    =r\left(-\sin\phi\,\hat i+\cos\phi\,\hat j\right).
+    \label{eq:tc-ephi-polar}
+\end{align}
+De aquí,
+\begin{equation}
+    \lVert \vec e_r\rVert=1,
+    \qquad
+    \lVert \vec e_\phi\rVert=r,
+    \qquad
+    g_{r\phi}=\vec e_r\cdot \vec e_\phi=0.
+    \label{eq:tc-metrica-polar}
+\end{equation}
+Los vectores velocidad y aceleración coordenados polares son
+\begin{align}
+    \vec v&=\dot r\,\vec e_r+\dot\phi\,\vec e_\phi,
+    \label{eq:tc-velocidad-polar}\\
+    \vec a&=(\ddot r-r\dot\phi^2)\vec e_r+
+    \left(2\dot r\dot\phi+r\ddot\phi\right)\frac{\vec e_\phi}{r}.
+    \label{eq:tc-aceleracion-polar}
+\end{align}
+Al introducir \eqref{eq:tc-transformacion-polar-fc} en \eqref{eq:tc-l-fuerzas-centrales-cart}, la función Lagrangiana queda
+\begin{equation}
+    \bar L(r,\dot r,\dot\phi)
+    =\frac{1}{2}m(\dot r^2+r^2\dot\phi^2)-V(r).
+    \label{eq:tc-l-central-polar-nuevo}
+\end{equation}
+Las ecuaciones de movimiento generadas por \eqref{eq:tc-l-central-polar-nuevo} son, para \(Q^1=r\),
+\begin{equation}
+    \frac{\delta \bar L}{\delta r}
+    =m r\dot\phi^2-\frac{dV}{dr}-\frac{d}{dt}(m\dot r)=0,
+    \label{eq:tc-eq-r-polar}
+\end{equation}
+o equivalentemente
+\begin{equation}
+    m\ddot r-mr\dot\phi^2+\frac{dV}{dr}=0.
+    \label{eq:tc-eq-r-polar-final}
+\end{equation}
+Para \(Q^2=\phi\),
+\begin{equation}
+    \frac{\delta \bar L}{\delta \phi}
+    =-\frac{d}{dt}\left(mr^2\dot\phi\right)=0,
+    \label{eq:tc-eq-phi-polar}
+\end{equation}
+de donde
+\begin{equation}
+    L=mr^2\dot\phi
+    \label{eq:tc-momento-angular-central}
+\end{equation}
+es la magnitud del \textbf{momentum angular}, que es constante del movimiento.
+
+Obtenemos las ecuaciones de movimiento \eqref{eq:tc-eq-r-polar-final} y \eqref{eq:tc-eq-phi-polar} usando la expresión \eqref{eq:tc-relacion-variacionales}, lo que muestra que las ecuaciones de movimiento en las nuevas coordenadas se recuperan a partir de las antiguas.
+
+\section{Transformaciones puntuales y transformaciones canónicas}
+\label{sec:tc-puntuales-canonicas}
+
+Las ecuaciones de una transformación de coordenadas, tal como el paso de coordenadas cartesianas a polares planas, tienen la forma general \eqref{eq:tc-transformacion-puntual}. Se llaman \textbf{transformaciones puntuales}. En la formulación Hamiltoniana, los momenta son también variables independientes, de modo que no sólo se transforman las coordenadas generalizadas.
+
+Es necesario ampliar el concepto de transformación de coordenadas de manera que incluya, en forma simultánea, transformaciones que van desde \((q^i,p_i)\) a un nuevo conjunto \((Q^i,P_i)\), mediante ecuaciones de transformación
+\begin{equation}
+    Q^i=Q^i(q^j,p_j,t),
+    \qquad
+    P_i=P_i(q^j,p_j,t).
+    \label{eq:tc-transformacion-fase}
+\end{equation}
+De esta manera las nuevas coordenadas quedan definidas no sólo en función de las primitivas, sino también de los antiguos momenta.
+
+En el desarrollo de la mecánica Hamiltoniana sólo interesan aquellas transformaciones para las cuales las nuevas coordenadas \(Q^i\) y \(P_i\) sean \textbf{coordenadas canónicas}. Las nuevas coordenadas \(Q^i\) y \(P_i\) serán canónicas siempre que exista una cierta función
+\begin{equation}
+    K(Q^i,P_i,t)
+    \label{eq:tc-nuevo-hamiltoniano}
+\end{equation}
+tal que las ecuaciones de movimiento del nuevo sistema coordenado tengan la forma Hamiltoniana
+\begin{equation}
+    \dot Q^i=\frac{\partial K}{\partial P_i},
+    \qquad
+    \dot P_i=-\frac{\partial K}{\partial Q^i}.
+    \label{eq:tc-ecuaciones-hamilton-nuevas}
+\end{equation}
+Las transformaciones para las cuales se verifican las ecuaciones \eqref{eq:tc-ecuaciones-hamilton-nuevas} son conocidas como \textbf{transformaciones canónicas}. La función \(K\) desempeña el papel de la nueva Hamiltoniana.
+
+\begin{quote}
+\textbf{Definición.} Una transformación canónica es una transformación de coordenadas que deja invariante en forma las ecuaciones canónicas de Hamilton.
+\end{quote}
+La definición nos dice que si el sistema de coordenadas \((q^i,p_i)\) satisface las ecuaciones canónicas
+\begin{equation}
+    \dot q^i=\frac{\partial H}{\partial p_i},
+    \qquad
+    \dot p_i=-\frac{\partial H}{\partial q^i},
+    \label{eq:tc-ecuaciones-hamilton-antiguas}
+\end{equation}
+entonces, mediante cierta transformación canónica, el sistema \((Q^i,P_i)\) también satisface ecuaciones canónicas,
+\begin{equation}
+    \dot Q^i=\frac{\partial K}{\partial P_i},
+    \qquad
+    \dot P_i=-\frac{\partial K}{\partial Q^i}.
+    \label{eq:tc-ecuaciones-hamilton-nuevas-2}
+\end{equation}
+Esto significa que la transformación deja invariante las ecuaciones de Hamilton.
+
+Si \((Q^i,P_i)\) son coordenadas canónicas, entonces satisfacen las ecuaciones como indica Hamilton modificadas en la forma
+\begin{equation}
+    \delta\int_{t_i}^{t_f}\left[
+    \sum_{i=1}^{f}\dot Q^iP_i-K(Q^i,P_i,t)
+    \right]dt=0.
+    \label{eq:tc-principio-hamilton-nuevo}
+\end{equation}
+Simultáneamente, las coordenadas antiguas satisfacen
+\begin{equation}
+    \delta\int_{t_i}^{t_f}\left[
+    \sum_{i=1}^{f}\dot q^i p_i-H(q^i,p_i,t)
+    \right]dt=0.
+    \label{eq:tc-principio-hamilton-antiguo}
+\end{equation}
+La validez simultánea de \eqref{eq:tc-principio-hamilton-nuevo} y \eqref{eq:tc-principio-hamilton-antiguo} no significa que ambas integrales sean iguales. Sin embargo, para que ambas expresiones extremales sean iguales a cero implica que los integrandos pueden diferir por la derivada total de una función arbitraria \(F\). La integral de una derivada total es dependiente solamente de los puntos finales:
+\begin{equation}
+    \int_{t_i}^{t_f}\frac{dF}{dt}\,dt=F(t_f)-F(t_i).
+    \label{eq:tc-derivada-total}
+\end{equation}
+La variación de esta integral es automáticamente cero para cualquier función, ya que la variación se anula en los puntos extremos:
+\begin{equation}
+    \delta\int_{t_i}^{t_f}\frac{dF}{dt}\,dt=0.
+    \label{eq:tc-variacion-derivada-total}
+\end{equation}
+De esta forma podemos afirmar que
+\begin{equation}
+    \delta\int_{t_i}^{t_f}\left[
+    \sum_{i=1}^{f}\dot Q^iP_i-K(Q^i,P_i,t)
+    \right]dt
+    +
+    \delta\int_{t_i}^{t_f}\frac{dF}{dt}\,dt=0.
+    \label{eq:tc-accion-nueva-mas-total}
+\end{equation}
+Nada ha cambiado, puesto que sólo se ha sumado un cero. Puesto que \(F\) es arbitraria, siempre es posible elegirla tal que los integrandos de \eqref{eq:tc-principio-hamilton-antiguo} y \eqref{eq:tc-accion-nueva-mas-total} sean iguales:
+\begin{equation}
+    \sum_{i=1}^{f}\dot q^i p_i-H
+    =
+    \sum_{i=1}^{f}\dot Q^iP_i-K+\frac{dF}{dt}.
+    \label{eq:tc-condicion-generatriz}
+\end{equation}
+La función arbitraria \(F\) se llama \textbf{función generatriz}. Esta función genera la transformación \((q^i,p_i)\to(Q^i,P_i)\) de tal manera que el nuevo \(Q^i,P_i\) es invariante en forma en las ecuaciones canónicas de Hamilton.
+
+\section{Funciones generatrices}
+\label{sec:tc-funciones-generatrices}
+
+Una vez conocida la función \(F\), las ecuaciones de transformación quedan determinadas por completo. El proceso inverso, esto es, encontrar la transformación canónica dado \(F\), recibe el nombre de \textbf{función generatriz}.
+
+\subsection{Función generatriz de tipo uno}
+\label{subsec:tc-f1}
+
+Sea una función generatriz de la forma
+\begin{equation}
+    F_1=F_1(q^i,Q^i,t).
+    \label{eq:tc-F1-def}
+\end{equation}
+Su derivada total es
+\begin{equation}
+    \frac{dF_1}{dt}
+    =\sum_{i=1}^{f}\frac{\partial F_1}{\partial q^i}\dot q^i
+    +\sum_{i=1}^{f}\frac{\partial F_1}{\partial Q^i}\dot Q^i
+    +\frac{\partial F_1}{\partial t}.
+    \label{eq:tc-F1-derivada}
+\end{equation}
+Reemplazando \eqref{eq:tc-F1-derivada} en \eqref{eq:tc-condicion-generatriz} se obtiene
+\begin{equation}
+    \sum_{i=1}^{f}\dot q^ip_i-H
+    =
+    \sum_{i=1}^{f}\dot Q^iP_i-K
+    +\sum_{i=1}^{f}\frac{\partial F_1}{\partial q^i}\dot q^i
+    +\sum_{i=1}^{f}\frac{\partial F_1}{\partial Q^i}\dot Q^i
+    +\frac{\partial F_1}{\partial t}.
+    \label{eq:tc-F1-comparacion}
+\end{equation}
+Como \(q^i\), \(Q^i\) y \(1\) son independientes, se obtiene
+\begin{subequations}
+\label{eq:tc-F1-ecuaciones}
+\begin{align}
+    p_i&=\frac{\partial F_1}{\partial q^i},
+    \label{eq:tc-F1-p}\\
+    P_i&=-\frac{\partial F_1}{\partial Q^i},
+    \label{eq:tc-F1-P}\\
+    K&=H+\frac{\partial F_1}{\partial t}.
+    \label{eq:tc-F1-K}
+\end{align}
+\end{subequations}
+
+\subsection{Ejemplo: oscilador armónico simple}
+\label{subsec:tc-oscilador-F1}
+
+Consideremos el oscilador armónico simple. El Hamiltoniano es
+\begin{equation}
+    H(q,p)=\frac{p^2}{2m}+\frac{1}{2}m\omega^2q^2.
+    \label{eq:tc-oscilador-H}
+\end{equation}
+Verifiquemos si la siguiente transformación es canónica:
+\begin{equation}
+    q=\sqrt{\frac{2P}{m\omega}}\sin Q,
+    \qquad
+    p=\sqrt{2m\omega P}\cos Q.
+    \label{eq:tc-oscilador-transformacion}
+\end{equation}
+Calculando,
+\begin{equation}
+    \dot q\,p-H
+    =P\dot Q-\omega P+\frac{d}{dt}\left(P\cos Q\sin Q\right).
+    \label{eq:tc-oscilador-comparacion}
+\end{equation}
+Comparando \eqref{eq:tc-oscilador-comparacion} con \eqref{eq:tc-condicion-generatriz}, se obtiene
+\begin{equation}
+    K(Q,P)=\omega P,
+    \label{eq:tc-oscilador-K}
+\end{equation}
+y
+\begin{equation}
+    F=P\cos Q\sin Q.
+    \label{eq:tc-oscilador-F-intermedia}
+\end{equation}
+Usando la primera ecuación de \eqref{eq:tc-oscilador-transformacion}, puede escribirse
+\begin{equation}
+    F(q,Q)=\frac{1}{2}m\omega q^2\cot Q.
+    \label{eq:tc-oscilador-F1}
+\end{equation}
+Claramente, la transformación \eqref{eq:tc-oscilador-transformacion} es una transformación canónica. La nueva coordenada \(Q\) es cíclica, entonces desde \eqref{eq:tc-oscilador-K} se concluye
+\begin{equation}
+    \dot P=-\frac{\partial K}{\partial Q}=0,
+    \qquad
+    P=\text{constante},
+    \label{eq:tc-oscilador-P-constante}
+\end{equation}
+y
+\begin{equation}
+    \dot Q=\frac{\partial K}{\partial P}=\omega.
+    \label{eq:tc-oscilador-Qdot}
+\end{equation}
+Luego,
+\begin{equation}
+    Q(t)=\omega t+\alpha.
+    \label{eq:tc-oscilador-Q-solucion}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    q(t)=\sqrt{\frac{2P}{m\omega}}\sin(\omega t+\alpha),
+    \qquad
+    p(t)=\sqrt{2m\omega P}\cos(\omega t+\alpha).
+    \label{eq:tc-oscilador-solucion-P}
+\end{equation}
+Además,
+\begin{equation}
+    H=\omega P=K,
+    \label{eq:tc-oscilador-HK}
+\end{equation}
+y como \(K\) no depende explícitamente del tiempo, es constante e igual a la energía,
+\begin{equation}
+    P=\frac{E}{\omega}.
+    \label{eq:tc-oscilador-P-energia}
+\end{equation}
+Así,
+\begin{equation}
+    q(t)=\sqrt{\frac{2E}{m\omega^2}}\sin(\omega t+\alpha),
+    \qquad
+    p(t)=\sqrt{2mE}\cos(\omega t+\alpha).
+    \label{eq:tc-oscilador-solucion-energia}
+\end{equation}
+
+\subsection{Ejemplo: partícula en campo gravitatorio constante}
+\label{subsec:tc-particula-gravedad-F1}
+
+Consideremos una partícula de masa \(m\) en caída libre en un campo gravitacional. El Hamiltoniano está dado por
+\begin{equation}
+    H(q,p)=\frac{p^2}{2m}+mgq.
+    \label{eq:tc-gravedad-H}
+\end{equation}
+Queremos encontrar una transformación canónica con una función generatriz \(F_1\), tal que el Hamiltoniano en las nuevas coordenadas sea de la forma
+\begin{equation}
+    K(Q)=mgQ.
+    \label{eq:tc-gravedad-K}
+\end{equation}
+Por \eqref{eq:tc-F1-K}, se tiene
+\begin{equation}
+    K(Q)=H(q,p)+\frac{\partial F_1}{\partial t}.
+    \label{eq:tc-gravedad-K-F1}
+\end{equation}
+Entonces
+\begin{equation}
+    mgQ=\frac{p^2}{2m}+mgq+\frac{\partial F_1}{\partial t}.
+    \label{eq:tc-gravedad-eq}
+\end{equation}
+Se concluye que la función generatriz \(F_1\) no depende explícitamente del tiempo. Tomando \(\partial F_1/\partial t=0\), se obtiene
+\begin{equation}
+    p^2=2m^2g(Q-q),
+    \qquad
+    p=\sqrt{2m^2g(Q-q)}.
+    \label{eq:tc-gravedad-p}
+\end{equation}
+Usando \eqref{eq:tc-F1-p},
+\begin{equation}
+    p=\frac{\partial F_1}{\partial q}
+    =\sqrt{2m^2g(Q-q)}.
+    \label{eq:tc-gravedad-F1-dq}
+\end{equation}
+Por integración,
+\begin{equation}
+    F_1(q,Q)=-\frac{1}{3}\sqrt{8m^2g(Q-q)^3}.
+    \label{eq:tc-gravedad-F1}
+\end{equation}
+Luego,
+\begin{equation}
+    P=-\frac{\partial F_1}{\partial Q}=\sqrt{2m^2g(Q-q)},
+    \label{eq:tc-gravedad-P}
+\end{equation}
+y comparando con \eqref{eq:tc-gravedad-p}, se obtiene
+\begin{equation}
+    p=P.
+    \label{eq:tc-gravedad-pP}
+\end{equation}
+Introduciendo \eqref{eq:tc-gravedad-pP} en \eqref{eq:tc-gravedad-p},
+\begin{equation}
+    q(Q,P)=Q-\frac{P^2}{2m^2g}.
+    \label{eq:tc-gravedad-qQP}
+\end{equation}
+Resumiendo, las transformaciones canónicas son
+\begin{equation}
+    q(Q,P)=Q-\frac{P^2}{2m^2g},
+    \qquad
+    p(P)=P.
+    \label{eq:tc-gravedad-transformacion}
+\end{equation}
+Para verificar que las ecuaciones \eqref{eq:tc-gravedad-transformacion} son las transformaciones canónicas buscadas, las introducimos en el Hamiltoniano \eqref{eq:tc-gravedad-H}:
+\begin{align}
+    H&=\frac{P^2}{2m}+mg\left(Q-\frac{P^2}{2m^2g}\right)
+      =mgQ.
+    \label{eq:tc-gravedad-HK}
+\end{align}
+Así, se recupera el Hamiltoniano nuevo \eqref{eq:tc-gravedad-K}. Puesto que \(K\) no depende explícitamente del tiempo, es una constante del movimiento,
+\begin{equation}
+    \frac{dK}{dt}=\frac{\partial K}{\partial t}=0.
+    \label{eq:tc-gravedad-K-conservado}
+\end{equation}
+Además,
+\begin{equation}
+    K=E=mgQ,
+    \qquad
+    Q=\frac{E}{mg}.
+    \label{eq:tc-gravedad-Q-energia}
+\end{equation}
+Las ecuaciones del movimiento del nuevo Hamiltoniano son
+\begin{equation}
+    \dot Q=\frac{\partial K}{\partial P}=0,
+    \qquad
+    \dot P=-\frac{\partial K}{\partial Q}=-mg.
+    \label{eq:tc-gravedad-eqmov}
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    Q(t)=\frac{E}{mg},
+    \qquad
+    P(t)=P_0-mgt.
+    \label{eq:tc-gravedad-QP-solucion}
+\end{equation}
+Usando \eqref{eq:tc-gravedad-qQP}, se encuentra
+\begin{equation}
+    q(t)=q_0+\frac{P_0}{m}t-\frac{1}{2}gt^2.
+    \label{eq:tc-gravedad-q-solucion}
+\end{equation}
+Esto muestra que las ecuaciones \eqref{eq:tc-gravedad-transformacion} contienen la solución usual del lanzamiento vertical.
+
+\subsection{Función generatriz de tipo dos}
+\label{subsec:tc-F2}
+
+Si las variables independientes de \(F\) son \(q^i\) y \(P_i\), entonces la función generatriz es \(F_2(q^i,P_i,t)\). Esta función puede obtenerse desde \(F_1\) mediante una transformación de Legendre. Se escribe
+\begin{equation}
+    F_2(q^i,P_i,t)=\sum_{i=1}^{f}Q^iP_i+F_1(q^i,Q^i,t).
+    \label{eq:tc-F2-def}
+\end{equation}
+De ella se obtienen las ecuaciones
+\begin{subequations}
+\label{eq:tc-F2-ecuaciones}
+\begin{align}
+    p_i&=\frac{\partial F_2}{\partial q^i},
+    \label{eq:tc-F2-p}\\
+    Q^i&=\frac{\partial F_2}{\partial P_i},
+    \label{eq:tc-F2-Q}\\
+    K&=H+\frac{\partial F_2}{\partial t}.
+    \label{eq:tc-F2-K}
+\end{align}
+\end{subequations}
+
+\subsection{Ejemplos de funciones generatrices de tipo dos}
+\label{subsec:tc-ejemplos-F2}
+
+Si
+\begin{equation}
+    F_2(q^i,P_i,t)=\sum_{i=1}^{f}q^iP_i,
+    \label{eq:tc-F2-identidad}
+\end{equation}
+entonces
+\begin{equation}
+    p_i=P_i,
+    \qquad
+    Q^i=q^i,
+    \qquad
+    K=H.
+    \label{eq:tc-F2-identidad-transformacion}
+\end{equation}
+La función generatriz \eqref{eq:tc-F2-identidad} corresponde a la transformación identidad.
+
+Como segundo ejemplo, consideremos el Hamiltoniano del oscilador armónico amortiguado escrito como
+\begin{equation}
+    H(q,p,t)=e^{-2\lambda t/m}\frac{p^2}{2m}
+    +\frac{1}{2}m\omega^2e^{2\lambda t/m}q^2.
+    \label{eq:tc-H-amortiguado}
+\end{equation}
+Sea la función generatriz
+\begin{equation}
+    F_2(q,P,t)=e^{\lambda t/m}qP.
+    \label{eq:tc-F2-amortiguado}
+\end{equation}
+Entonces
+\begin{equation}
+    p=e^{\lambda t/m}P,
+    \qquad
+    Q=e^{\lambda t/m}q.
+    \label{eq:tc-transformacion-amortiguado}
+\end{equation}
+El nuevo Hamiltoniano queda
+\begin{equation}
+    K(Q,P)=\frac{P^2}{2m}+\frac{1}{2}m\omega^2Q^2+\frac{\lambda}{m}QP.
+    \label{eq:tc-K-amortiguado}
+\end{equation}
+La función generatriz \eqref{eq:tc-F2-amortiguado} genera una transformación canónica tal que el nuevo Hamiltoniano no depende explícitamente del tiempo; por lo tanto, es una constante del movimiento.
+
+\subsection{Función generatriz de tipo tres}
+\label{subsec:tc-F3}
+
+Cuando las variables independientes son \(p_i\) y \(Q^i\), la función generatriz es \(F_3(p_i,Q^i,t)\). Esta puede obtenerse desde \(F_1\) mediante una transformación de Legendre. Las ecuaciones correspondientes son
+\begin{subequations}
+\label{eq:tc-F3-ecuaciones}
+\begin{align}
+    q^i&=-\frac{\partial F_3}{\partial p_i},
+    \label{eq:tc-F3-q}\\
+    P_i&=-\frac{\partial F_3}{\partial Q^i},
+    \label{eq:tc-F3-P}\\
+    K&=H+\frac{\partial F_3}{\partial t}.
+    \label{eq:tc-F3-K}
+\end{align}
+\end{subequations}
+
+Un ejemplo simple es
+\begin{equation}
+    F_3(Q^i,p_i)=-\sum_{i=1}^{f}Q^ip_i.
+    \label{eq:tc-F3-identidad}
+\end{equation}
+Entonces
+\begin{equation}
+    q^i=Q^i,
+    \qquad
+    P_i=p_i,
+    \label{eq:tc-F3-identidad-transformacion}
+\end{equation}
+por lo que \eqref{eq:tc-F3-identidad} corresponde a la transformación identidad.
+
+Sea ahora la función generatriz
+\begin{equation}
+    F_3(Q,p)=-\frac{1}{2}Q^2\tan(2p).
+    \label{eq:tc-F3-ejemplo}
+\end{equation}
+Entonces la transformación canónica es
+\begin{equation}
+    q=\frac{Q^2}{\cos^2(2p)},
+    \qquad
+    P=Q\tan(2p).
+    \label{eq:tc-F3-ejemplo-transformacion}
+\end{equation}
+Usando
+\begin{equation}
+    \cos(2p)=\frac{Q}{\sqrt{Q^2+P^2}},
+    \label{eq:tc-cos-ejemplo-F3}
+\end{equation}
+se obtiene, siguiendo la transcripción de la clase,
+\begin{equation}
+    q(Q,P)=Q\sqrt{Q^2+P^2},
+    \qquad
+    p(Q,P)=\frac{1}{2}\tan^{-1}\left(\frac{P}{Q}\right).
+    \label{eq:tc-F3-ejemplo-final}
+\end{equation}
+
+\subsection{Función generatriz de tipo cuatro}
+\label{subsec:tc-F4}
+
+Cuando las variables independientes son \(p_i\) y \(P_i\), la función generatriz es \(F_4(p_i,P_i,t)\). Las ecuaciones correspondientes son
+\begin{subequations}
+\label{eq:tc-F4-ecuaciones}
+\begin{align}
+    q^i&=-\frac{\partial F_4}{\partial p_i},
+    \label{eq:tc-F4-q}\\
+    Q^i&=\frac{\partial F_4}{\partial P_i},
+    \label{eq:tc-F4-Q}\\
+    K&=H+\frac{\partial F_4}{\partial t}.
+    \label{eq:tc-F4-K}
+\end{align}
+\end{subequations}
+
+Un ejemplo es
+\begin{equation}
+    F_4(p,P)=\frac{1}{2}P^2\cot(2p).
+    \label{eq:tc-F4-ejemplo}
+\end{equation}
+Entonces
+\begin{equation}
+    q=\frac{P^2}{\sin^2(2p)},
+    \qquad
+    Q=P\cot(2p).
+    \label{eq:tc-F4-ejemplo-transformacion}
+\end{equation}
+Usando la identidad
+\begin{equation}
+    \sin(2p)=\frac{P}{\sqrt{Q^2+P^2}},
+    \label{eq:tc-sin-ejemplo-F4}
+\end{equation}
+se obtiene
+\begin{equation}
+    q=Q^2+P^2.
+    \label{eq:tc-F4-q-final}
+\end{equation}
+Con esto se obtienen cuatro tipos fundamentales de funciones generatrices.
+
+\section{Resumen de funciones generatrices}
+\label{sec:tc-resumen-generatrices}
+
+Las cuatro funciones generatrices fundamentales pueden resumirse como sigue:
+\begin{itemize}
+    \item \textbf{Tipo 1:} \(F_1(q,Q,t)\), con
+    \begin{equation}
+        p_i=\frac{\partial F_1}{\partial q^i},
+        \qquad
+        P_i=-\frac{\partial F_1}{\partial Q^i},
+        \qquad
+        K=H+\frac{\partial F_1}{\partial t}.
+        \label{eq:tc-resumen-F1}
+    \end{equation}
+
+    \item \textbf{Tipo 2:} \(F_2(q,P,t)\), con
+    \begin{equation}
+        p_i=\frac{\partial F_2}{\partial q^i},
+        \qquad
+        Q^i=\frac{\partial F_2}{\partial P_i},
+        \qquad
+        K=H+\frac{\partial F_2}{\partial t}.
+        \label{eq:tc-resumen-F2}
+    \end{equation}
+
+    \item \textbf{Tipo 3:} \(F_3(p,Q,t)\), con
+    \begin{equation}
+        q^i=-\frac{\partial F_3}{\partial p_i},
+        \qquad
+        P_i=-\frac{\partial F_3}{\partial Q^i},
+        \qquad
+        K=H+\frac{\partial F_3}{\partial t}.
+        \label{eq:tc-resumen-F3}
+    \end{equation}
+
+    \item \textbf{Tipo 4:} \(F_4(p,P,t)\), con
+    \begin{equation}
+        q^i=-\frac{\partial F_4}{\partial p_i},
+        \qquad
+        Q^i=\frac{\partial F_4}{\partial P_i},
+        \qquad
+        K=H+\frac{\partial F_4}{\partial t}.
+        \label{eq:tc-resumen-F4}
+    \end{equation}
+\end{itemize}
+
+Estas funciones permiten construir transformaciones canónicas que conservan la forma de las ecuaciones de Hamilton y, cuando se eligen adecuadamente, simplifican la solución del problema dinámico.
+
+\end{document}

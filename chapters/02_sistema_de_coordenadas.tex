@@ -1,4 +1,4 @@
-% !TeX root = main.tex
+% !TeX root = ../apunte_mecanica_clasica.tex
 \IfFileExists{../apunte_mecanica_clasica.tex}{%
   \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
 }{%
@@ -17,12 +17,13 @@ Una vez establecido el punto de referencia y los instrumentos de medidas, se pro
 Un ejemplo de \textbf{coordenización del espacio} ocurre cuando un estudiante quiere traspasar un dibujo de un libro, 
 revista, diario, etc., a su cuaderno de estudio o presentación para su clase. Lo que el estudiante hace es 
 \textbf{crear una cuadrícula en el dibujo y también en el cuaderno}, cambiando, tal vez, el \textbf{tamaño de la cuadrícula}. 
-Una vez hecha la cuadrícula, \textbf{se trata de repetir los trazos en cada cuadrícula del dibujo en cada cuadrícula del cuaderno}.
-
-\begin{figure}[h]
+Una vez hecha la cuadrícula, \textbf{se trata de repetir los trazos en cada cuadrícula del dibujo en cada cuadrícula del cuaderno}. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig1.jpg}
     \caption{Método de la cuadrícula}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig1}
 \end{figure}
 
 Lo que el estudiante hizo fue \textbf{coordenizar con líneas rectas la región donde está el dibujo}, con el 
@@ -47,12 +48,14 @@ Una curva en el espacio es un conjunto $C\subset \mathbb{R}^3$ tal que es la ima
     &\lambda \rightarrow \vec{x}(\lambda) \,.
 \end{aligned}
 \end{equation*}
+Esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig2}.
 \end{apuntebloque}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig2.png}
     \caption{Curva parametrizada por el parámetro $\lambda$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig2}
 \end{figure}
 
 Lo anterior se resume en la simple expresión:
@@ -86,12 +89,14 @@ z &= z_0 + \lambda e_3
 \end{aligned}
 \right\} \quad \Rightarrow \quad \lambda = \frac{x-x_0}{e_1} = \frac{y-y_0}{e_2} = \frac{z-z_0}{e_3} \,.
 \end{equation*}
+Esta recta parametrizada se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig3}.
 \end{apuntebloque}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig3.png}
     \caption{Ecuación de la recta.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig3}
 \end{figure}
 
 \begin{apuntebloque}{Ejemplo: Ecuación de una hélice}
@@ -106,13 +111,14 @@ z(\lambda) &= \nu_0 \lambda
 \right\} \quad \lambda \in \mathbb{R} \,,
 \end{equation}
 
-donde $r$ es el radio, $\omega$ es la razón angular de giro de la curva ($\omega \lambda$ \textbf{debe ser adimensional}) y $\epsilon = \pm 1$, el signo determina el sentido de giro: Dextrógiro\footnote{Dextrógiro: sentido de giro en el mismo sentido de las agujas del reloj.} $(+1)$ o Levógiro $(-1)$\footnote{Levógiro: sentido contrario a las agujas del reloj.}. La constante $\nu_0$ es el avance en el sentido $z$.
+donde $r$ es el radio, $\omega$ es la razón angular de giro de la curva ($\omega \lambda$ \textbf{debe ser adimensional}) y $\epsilon = \pm 1$, el signo determina el sentido de giro: Dextrógiro\footnote{Dextrógiro: sentido de giro en el mismo sentido de las agujas del reloj.} $(+1)$ o Levógiro $(-1)$\footnote{Levógiro: sentido contrario a las agujas del reloj.}. La constante $\nu_0$ es el avance en el sentido $z$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig4}.
 \end{apuntebloque}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig4.png}
     \caption{Hélice}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig4}
 \end{figure}
 
 \section{Vector tangente}
@@ -122,12 +128,14 @@ Sea $C$ una curva suave parametrizada $\vec{x}(\lambda),\, \lambda \in \mathbb{R
 \begin{equation*}
     \vec{T}(\lambda) = \frac{d\vec{x}(\lambda)}{d\lambda} \,.  % Cambiado dt por d\lambda
 \end{equation*}
+La construcción geométrica del vector tangente se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig5}.
 \end{apuntebloque}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig5.png}
     \caption{Vector tangente}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig5}
 \end{figure}
 
 Por lo tanto, \textbf{toda curva suave $C$} (sin puntos angulosos\footnote{Un punto anguloso es un punto de una curva en el que la dirección cambia abruptamente, es decir, la curva no tiene una derivada bien definida en ese punto.}) \textbf{posee un vector tangente en cada punto}.
@@ -303,17 +311,15 @@ Esto generaliza el caso particular en que $k$ es constante, para el cual:
 
 El rango de la función $\mu(\lambda)$ depende de la forma específica de $k(\lambda)$, pero la función $e^{\mu(\lambda)}$ es siempre estrictamente positiva. Por lo tanto, las ecuaciones en \eqref{sist_coor:solución_ejemplo_b} describen semirrectas (rayos) en el plano $z = z_0$ que, en general, \textbf{no incluyen el origen}, salvo que $x_0 = y_0 = 0$.
 
-Si $x_0 > 0$ e $y_0 > 0$, entonces $x$ e $y$ se mantienen positivos para todo $\lambda$, y la curva se encuentra contenida en el primer cuadrante del plano $z = z_0$, sin pasar por el origen.
-
-\begin{figure}[h]
+Si $x_0 > 0$ e $y_0 > 0$, entonces $x$ e $y$ se mantienen positivos para todo $\lambda$, y la curva se encuentra contenida en el primer cuadrante del plano $z = z_0$, sin pasar por el origen. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:rayo1}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig6.png}
     \caption{Rayo en el primer cuadrante}\label{fig:rayo1}
 \end{figure}
 
-La “otra mitad” necesaria para completar una línea recta corresponde al caso $x_0 < 0$ e $y_0 < 0$, es decir, un rayo contenido en el tercer cuadrante del sistema de coordenadas, también sin pasar por el origen.
-
-\begin{figure}[h]
+La “otra mitad” necesaria para completar una línea recta corresponde al caso $x_0 < 0$ e $y_0 < 0$, es decir, un rayo contenido en el tercer cuadrante del sistema de coordenadas, también sin pasar por el origen. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:rayo2}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig7.png}
     \caption{Rayo en el tercer cuadrante}\label{fig:rayo2}
@@ -327,9 +333,8 @@ Al permitir que las constantes de integración $x_0$ e $y_0$ recorran todos los 
 \frac{y}{x} = \frac{y_0\, e^{\mu(\lambda)}}{x_0\, e^{\mu(\lambda)}} = \frac{y_0}{x_0} = m \implies y = m x, \quad \text{con } m = \frac{y_0}{x_0} \in \mathbb{R}\,.
 \end{equation*}
 
-Es decir, la solución está contenida en una familia de rectas en el plano $z = z_0$ que pasan por el eje $z$.
-
-\begin{figure}[h]
+Es decir, la solución está contenida en una familia de rectas en el plano $z = z_0$ que pasan por el eje $z$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:rectas}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig8.png}
     \caption{Conjunto de rectas que intersectan el eje $z$}\label{fig:rectas}
@@ -516,9 +521,8 @@ La constante de integración $A$ representa el radio de la circunferencia descri
 x^2 + y^2 &= A^2 \,,\\
 z &= z_0 \,.
 \end{align*}
-La curva es recorrida en sentido antihorario conforme aumenta $\lambda$, siendo $\vec{\xi} = (-y, x, 0)$ el vector tangente a la circunferencia en cada punto. El parámetro $\alpha$ determina el ángulo inicial en el que la trayectoria comienza; su valor puede fijarse arbitrariamente eligiendo adecuadamente la orientación de los ejes coordenados.
-
-\begin{figure}[h]
+La curva es recorrida en sentido antihorario conforme aumenta $\lambda$, siendo $\vec{\xi} = (-y, x, 0)$ el vector tangente a la circunferencia en cada punto. El parámetro $\alpha$ determina el ángulo inicial en el que la trayectoria comienza; su valor puede fijarse arbitrariamente eligiendo adecuadamente la orientación de los ejes coordenados. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:circulo_general}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig9.png}
     \caption{Circunferencia de radio $A$ (o $r_0$) descrita por la solución general en el plano $z = z_0$, con centro en el eje $z$ y parámetro angular $\alpha$ indicando la posición inicial.}
@@ -535,9 +539,8 @@ Utilizando las identidades trigonométricas $-\cos\theta = \cos(\theta + \pi)$ y
 x(\lambda) &= |A| \cos(k\lambda + \alpha + \pi)\,, \\[2pt]
 y(\lambda) &= |A| \sin(k\lambda + \alpha + \pi)\,.
 \end{align*}
-Así, la circunferencia tiene radio $|A| > 0$ y se recorre a partir del ángulo inicial $\alpha + \pi$.
-
-\begin{figure}[h]
+Así, la circunferencia tiene radio $|A| > 0$ y se recorre a partir del ángulo inicial $\alpha + \pi$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:circulo_signo}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig10.png}
     \caption{Interpretación geométrica para $A < 0$: la solución es equivalente a la de $A > 0$ con un corrimiento de fase de $\pi$ en el ángulo inicial, es decir, se recorre la misma circunferencia pero iniciando en el punto opuesto.}
@@ -554,18 +557,16 @@ x(\lambda) &= r_0\cos(k\lambda + \alpha)\,, \\[2pt]
 y(\lambda) &= r_0\sin(k\lambda + \alpha)\,.
 \end{align*}
 
-Al variar el valor de $r_0$ sobre $[0, \infty)$, se obtiene una familia de circunferencias concéntricas en el plano $z = z_0$:
-
-\begin{figure}[h]
+Al variar el valor de $r_0$ sobre $[0, \infty)$, se obtiene una familia de circunferencias concéntricas en el plano $z = z_0$: La figura asociada a esta construcción se muestra en la Figura~\ref{fig:familia_circunferencias}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig11.png}
     \caption{Familia de circunferencias concéntricas para distintos valores de $r_0 \geq 0$, todas contenidas en el plano $z = z_0$ y centradas en el eje $z$.}
     \label{fig:familia_circunferencias}
 \end{figure}
 
-Así, la colección de soluciones corresponde a un conjunto infinito de circunferencias concéntricas de distintos radios $r_0$, todas centradas en el eje $z$ y contenidas en el plano $z = z_0$.
-
-\begin{figure}[h]
+Así, la colección de soluciones corresponde a un conjunto infinito de circunferencias concéntricas de distintos radios $r_0$, todas centradas en el eje $z$ y contenidas en el plano $z = z_0$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:conjunto_circunferencias}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig12.png}
     \caption{Conjunto de circunferencias concéntricas de diferentes radios $r_0$, todas centradas en el eje $z$ y contenidas en el plano $z = z_0$. Representa la familia de soluciones al variar la constante de integración $r_0$.}
@@ -632,12 +633,13 @@ z &= z_0
 \qquad \phi \in[0,2\pi) \,.
 \end{equation}
 
-Para $\phi = 0$, la trayectoria parte del punto $(r_0\cos\alpha,\, r_0\sin\alpha,\, z_0)$, que corresponde a la posición inicial sobre la circunferencia determinada por la fase $\alpha$.
-
-\begin{figure}[h]
+Para $\phi = 0$, la trayectoria parte del punto $(r_0\cos\alpha,\, r_0\sin\alpha,\, z_0)$, que corresponde a la posición inicial sobre la circunferencia determinada por la fase $\alpha$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig13}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig13.png}
     \caption{Punto inicial de la circunferencia $(r_0\cos\alpha,\, r_0\sin\alpha,\, z_0)$, determinado por la fase angular $\alpha$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig13}
 
 \end{figure}
 
@@ -697,12 +699,13 @@ De este modo, cada uno de los tres parámetros $(\rho, \phi, z)$ puede interpret
     \item Para $\rho$ y $\phi$ constantes, y $z$ variable, se obtiene una recta paralela al eje $z$.
 \end{itemize}
 
-Por tanto, el sistema cilíndrico surge naturalmente como generalización de las familias de soluciones obtenidas: rectas radiales, circunferencias y alturas, cubriendo todo $\mathbb{R}^3$.
+Por tanto, el sistema cilíndrico surge naturalmente como generalización de las familias de soluciones obtenidas: rectas radiales, circunferencias y alturas, cubriendo todo $\mathbb{R}^3$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig15}.
 \clearpage
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig15.png}
     \caption{Representación geométrica del sistema de coordenadas cilíndricas $(\rho, \phi, z)$. La posición de cualquier punto en el espacio queda determinada de manera única por su distancia al eje $z$ ($\rho$), su ángulo respecto al eje $x$ ($\phi$) y su altura ($z$).}
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig15}
 \end{figure}
 
 
@@ -712,7 +715,7 @@ Por tanto, el sistema cilíndrico surge naturalmente como generalización de las
 \item \textbf{Simplificación didáctica:} La solución $x = A \cos(k\lambda + \alpha)$ ilustra claramente la geometría circular sin integrales complejas.
 \item \textbf{Límite:} Si el campo no es uniforme ($k$ variable), aparecen trayectorias no cerradas (ej: espirales). Ver Figura \ref{fig:espiral}.
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{figures/02_sistema_de_coordenadas/espiral_log.png}
 \caption{Espiral logarítmica generada por $k(\lambda) = 1/\lambda$.}
@@ -740,12 +743,13 @@ y cada parámetro describe una familia de curvas coordenadas.
 
 \textbf{`Es fundamental conocer el rango de valores que puede tomar cada parámetro, ya que esto determina la cobertura (globalidad) del sistema de coordenadas sobre la región de interés."}
 
-Una vez elegido un \textbf{punto de referencia} (por ejemplo, el origen), se fija un sistema de coordenadas asociado a ese punto, de modo que \textbf{por él pasan tres curvas de referencia}, una para cada familia coordenada.
-
-\begin{figure}[h]
+Una vez elegido un \textbf{punto de referencia} (por ejemplo, el origen), se fija un sistema de coordenadas asociado a ese punto, de modo que \textbf{por él pasan tres curvas de referencia}, una para cada familia coordenada. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig16}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig16.png}
     \caption{Curvas de referencia pasando por el punto de referencia.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig16}
 \end{figure}
 
 \begin{enumerate}
@@ -753,21 +757,23 @@ Una vez elegido un \textbf{punto de referencia} (por ejemplo, el origen), se fij
     
     \item Donde $\vec{x}(\alpha_0, \beta, \gamma_0)$ es la curva rotulada por $\beta$, con $\alpha_0$ y $\gamma_0$ fijos y valores de referencia, y es la curva de referencia para el conjunto infinito de curvas rotuladas por $\beta$. Desde esta curva se generan todas las demás curvas de la familia $\beta$, las cuales son equivalentes a $\vec{x}(\alpha_0, \beta, \gamma_0)$, y pasan por distintos puntos del espacio al variar los otros parámetros.
     
-    \item Donde $\vec{x}(\alpha_0, \beta_0, \gamma)$ es la curva rotulada por $\gamma$, con $\alpha_0$ y $\beta_0$ fijos y valores de referencia, y es la curva de referencia para el conjunto infinito de curvas rotuladas por $\gamma$. Desde esta curva se generan todas las demás curvas de la familia $\gamma$, las cuales son equivalentes a $\vec{x}(\alpha_0, \beta_0, \gamma)$, y pasan por distintos puntos del espacio al variar los otros parámetros.
+    \item Donde $\vec{x}(\alpha_0, \beta_0, \gamma)$ es la curva rotulada por $\gamma$, con $\alpha_0$ y $\beta_0$ fijos y valores de referencia, y es la curva de referencia para el conjunto infinito de curvas rotuladas por $\gamma$. Desde esta curva se generan todas las demás curvas de la familia $\gamma$, las cuales son equivalentes a $\vec{x}(\alpha_0, \beta_0, \gamma)$, y pasan por distintos puntos del espacio al variar los otros parámetros. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig17}.
 \end{enumerate}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig17.png}
     \caption{Tres familias de curvas asociadas a un sistema coordenado.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig17}
 \end{figure}
 \newpage
-Consideremos un cuerpo que se mueve en el espacio, describiendo una trayectoria. Sea $P$ un punto sobre la trayectoria, con vector posición $\vec{x}(\alpha_1, \beta_1, \gamma_1)$. Geométricamente, \textbf{el punto $P$ es la intersección de tres curvas coordenadas}: $\vec{x}(\alpha, \beta_1, \gamma_1)$, $\vec{x}(\alpha_1, \beta, \gamma_1)$ y $\vec{x}(\alpha_1, \beta_1, \gamma)$.
-
-\begin{figure}[h]
+Consideremos un cuerpo que se mueve en el espacio, describiendo una trayectoria. Sea $P$ un punto sobre la trayectoria, con vector posición $\vec{x}(\alpha_1, \beta_1, \gamma_1)$. Geométricamente, \textbf{el punto $P$ es la intersección de tres curvas coordenadas}: $\vec{x}(\alpha, \beta_1, \gamma_1)$, $\vec{x}(\alpha_1, \beta, \gamma_1)$ y $\vec{x}(\alpha_1, \beta_1, \gamma)$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig18}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig18.png}
     \caption{Intersección de tres curvas coordenadas en un punto $P$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig18}
 \end{figure}
 
 Un ejemplo fundamental de sistema de coordenadas en el espacio son las \textbf{coordenadas cartesianas}, donde las curvas coordenadas corresponden a líneas rectas paralelas a cada uno de los ejes.
@@ -800,12 +806,14 @@ con $(x,y,z) \in \mathbb{R}^3$. En este tipo de coordenadas las curvas son rotul
     \begin{equation*}
         z= \hat{k} \cdot \vec{z} \,.
     \end{equation*}    
+    La representación geométrica de estas componentes se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig19}.
 \end{itemize}
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig19.png}
      \caption{Sistema de coordenadas cartesianas tridimensional.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig19}
 \end{figure}
 
 El vector posición depende de tres parámetros; $x$, $y$ y $z$, los que son independientes. La variación de los parámetros cubre todo el espacio $\mathbb{R}^3$:
@@ -825,9 +833,8 @@ El vector posición depende de tres parámetros; $x$, $y$ y $z$, los que son ind
         \vec{x}(x, y_0, z_0) = x\vec{e} + \vec{x}_0 \,,
     \end{equation*}
     
-    que es la ecuación de una recta paralela al eje $x$ y que pasa por el punto $\vec{x}_0$. 
-
-\begin{figure}[ht]
+    que es la ecuación de una recta paralela al eje $x$ y que pasa por el punto $\vec{x}_0$. La figura asociada a esta construcción se muestra en la Figura~\ref{3.7_ejex}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig20.png}
     \caption{Recta paralela al eje $x$ con $y = y_0$, $z = z_0$.}
@@ -852,12 +859,13 @@ El vector posición depende de tres parámetros; $x$, $y$ y $z$, los que son ind
     \end{equation*}
     que es la ecuación de una recta paralela al eje $y$ y que pasa por el punto $\vec{x}_0$.
 
-    La \textbf{curva de referencia} correspondiente al eje $y$ corresponde a la línea $\vec{x}(0, y, 0)$.
-
-\begin{figure}[ht]
+    La \textbf{curva de referencia} correspondiente al eje $y$ corresponde a la línea $\vec{x}(0, y, 0)$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig21}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig21.png}
      \caption{Recta paralela al eje $y$ con $x = x_0$, $z = z_0$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig21}
 \end{figure}
 
 \item[\textbf{c)}] Sea $z \in \mathbb{R}$, $x = x_0$ y $y = y_0$, entonces:
@@ -873,24 +881,26 @@ El vector posición depende de tres parámetros; $x$, $y$ y $z$, los que son ind
     \begin{equation*}
         \vec{x}(x_0, y_0, z) = z\vec{e} + \vec{x}_0 \,,
     \end{equation*}
-    que es la ecuación de una recta paralela al eje $z$ y que pasa por el punto $\vec{x}_0$.
-
-\begin{figure}[ht]
+    que es la ecuación de una recta paralela al eje $z$ y que pasa por el punto $\vec{x}_0$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig22}.
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig22.png}
     \caption{Recta paralela al eje $z$ con $x = x_0$, $y = y_0$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig22}
 \end{figure}
 
 La \textbf{curva de referencia} correspondiente al eje $z$ corresponde a la línea $\vec{x}(0, 0, z)$.
 
 \end{itemize}
 
-Por lo tanto, \textbf{por cada punto de $\mathbb{R}^3$ pasan tres líneas rectas, que se intersectan perpendiculares entre sí.}
-
+Por lo tanto, \textbf{por cada punto de $\mathbb{R}^3$ pasan tres líneas rectas, que se intersectan perpendiculares entre sí.} La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig23}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig23.png}
     \caption{Tres líneas rectas perpendiculares que se intersectan en un punto del espacio. Representan las direcciones coordenadas en $\mathbb{R}^3$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig23}
 \end{figure}
 
 Se puede concluir que el sistema coordenado permite describir direcciones rectas, es decir, $\mathbb{R}^3$ está compuesta por la \textbf{suma directa}\footnote{La \textit{suma directa} de subespacios vectoriales $V_1 \oplus V_2 \oplus V_3$ significa que cada vector del espacio total puede escribirse de forma única como suma de vectores en cada subespacio, y que la intersección entre ellos es trivial, es decir, $V_i \cap V_j = \{0\}$ para $i \ne j$.} de tres direcciones rectas:
@@ -919,13 +929,14 @@ donde $\cos\alpha$, $\cos\beta$ y $\cos\gamma$ son los \textbf{cosenos directore
 \begin{itemize}
     \item $\alpha$: ángulo que forma $\vec{A}$ con el eje $x$
     \item $\beta$: ángulo que forma $\vec{A}$ con el eje $y$
-    \item $\gamma$: ángulo que forma $\vec{A}$ con el eje $z$
+    \item $\gamma$: ángulo que forma $\vec{A}$ con el eje $z$ La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig24}.
 \end{itemize}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig24.png}
     \caption{Representación de un vector $\vec{A}$ en coordenadas cartesianas, mostrando sus componentes sobre los ejes $x$, $y$ y $z$, así como los ángulos que forma con cada eje.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig24}
 \end{figure}
 
 Por lo tanto, el vector $\vec{A}$ se puede escribir en términos de los cosenos directores:
@@ -969,13 +980,14 @@ donde:
 \begin{itemize}
     \item $r$ es la \textbf{coordenada radial} y entra linealmente en $\vec{x}(r, \phi, \theta)$.
     \item $\phi$ es la \textbf{coordenada azimutal} (o ángulo azimutal) y no entra linealmente en $\vec{x}(r, \phi, \theta)$.
-    \item $\theta$ es la \textbf{coordenada colatitud} (o ángulo colatitud) y no entra linealmente en $\vec{x}(r, \phi, \theta)$.
+    \item $\theta$ es la \textbf{coordenada colatitud} (o ángulo colatitud) y no entra linealmente en $\vec{x}(r, \phi, \theta)$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig25}.
 \end{itemize}
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig25.png}
     \caption{Coordenadas Esféricas.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig25}
 \end{figure}
 
 Es claro que $r$ es la magnitud de $\vec{x}(r, \phi, \theta)$. En efecto:
@@ -998,11 +1010,13 @@ tal que:
 \begin{equation*}
     \vec{x}(r, \phi, \theta) := r\, \hat{r}(\phi, \theta) \,.
 \end{equation*}
-
+La representación geométrica del punto en coordenadas esféricas se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig26}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig26.png}
         \caption{Representación del punto $P$ en coordenadas esféricas $(r, \phi, \theta)$, junto con los ángulos $\phi$ y $\theta$ sobre la esfera de radio $r$.}
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig26}
 \end{figure}
 
 Hay tres parámetros independientes $r$, $\phi$ y $\theta$, por lo tanto hay tres líneas coordenadas:
@@ -1015,11 +1029,12 @@ Hay tres parámetros independientes $r$, $\phi$ y $\theta$, por lo tanto hay tre
         \vec{x}(r, \phi_0, \theta_0) = r\, \hat{r}(\phi_0, \theta_0) \,.
     \end{equation*}
     
-    Son \textit{semirrectas} (rayos) que parten del origen en la dirección fija $\hat{r}(\phi_0,\theta_0)$.
+    Son \textit{semirrectas} (rayos) que parten del origen en la dirección fija $\hat{r}(\phi_0,\theta_0)$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig27}.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig27.png}
         \caption{Rectas radiales que pasan por el origen para $\vec{x}(r, \phi_0, \theta_0)$.}
+        \label{fig:02-sistema-de-coordenadas:sist-coor-fig27}
     \end{figure}
 
     \item \textbf{Líneas coordenadas $\phi$:} 
@@ -1038,11 +1053,12 @@ Hay tres parámetros independientes $r$, $\phi$ y $\theta$, por lo tanto hay tre
     \right.
     \end{equation*}
     
-    Son circunferencias concéntricas de radio $R=r_0 \sin \theta_0$, centradas en $\vec{x} = 0\hat{\imath}+0\hat{\jmath}+r_0 \cos \theta_0\, \hat{k}$ y contenidas en el plano $z = r_0 \cos \theta_0$.  
+    Son circunferencias concéntricas de radio $R=r_0 \sin \theta_0$, centradas en $\vec{x} = 0\hat{\imath}+0\hat{\jmath}+r_0 \cos \theta_0\, \hat{k}$ y contenidas en el plano $z = r_0 \cos \theta_0$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig28}.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig28.png}
         \caption{Circunferencias horizontales a altura fija $z = r_0 \cos \theta_0$.}
+        \label{fig:02-sistema-de-coordenadas:sist-coor-fig28}
     \end{figure}
 
     \item \textbf{Líneas coordenadas $\theta$:} 
@@ -1064,12 +1080,13 @@ Hay tres parámetros independientes $r$, $\phi$ y $\theta$, por lo tanto hay tre
     esto es, la intersección de la esfera de radio $r_0$ con el \textbf{plano meridiano} que contiene al eje $z$ y forma ángulo azimutal $\phi_0$ con el semieje $x$.
     La intersección es un \textbf{círculo máximo} (radio $r_0$) centrado en el origen dentro de ese plano.
     Como $\theta\in[0,\pi]$, la parametrización recorre solo una \textbf{semicircunferencia} (un meridiano); la mitad complementaria se obtiene con $\phi_0\mapsto \phi_0+\pi$.
-    En los extremos $\theta=0$ y $\theta=\pi$ la curva pasa por los polos $(0,0,\pm r_0)$.
-    
+    En los extremos $\theta=0$ y $\theta=\pi$ la curva pasa por los polos $(0,0,\pm r_0)$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig29}.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.3\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig29.png}
         \caption{Circunferencias verticales contenidas en planos $y = \tan \phi_0\, x$.}
+    
+        \label{fig:02-sistema-de-coordenadas:sist-coor-fig29}
     \end{figure}
 \end{itemize}
 
@@ -1080,14 +1097,15 @@ Hay tres parámetros independientes $r$, $\phi$ y $\theta$, por lo tanto hay tre
 \begin{enumerate}
     \item $\vec{x}(r, \phi_0, \theta_0)$: Semirrectas que parten del origen en la dirección fija $\hat{r}(\phi_0,\theta_0)$.
     \item $\vec{x}(r_0, \phi, \theta_0)$: Circunferencias de radio $r_0 \sin \theta_0$, contenidas en el plano $z = r_0 \cos \theta_0$ y \textbf{centradas en} $(0,0,r_0 \cos \theta_0)$.
-    \item $\vec{x}(r_0, \phi_0, \theta)$: Circunferencias de radio $r_0$ \textbf{centradas en el origen}, contenidas en el \textbf{plano} $\sin\phi_0\,x - \cos\phi_0\,y = 0$, que intersectan al eje $z$ en los puntos $\pm r_0 \,\hat{k}$.
+    \item $\vec{x}(r_0, \phi_0, \theta)$: Circunferencias de radio $r_0$ \textbf{centradas en el origen}, contenidas en el \textbf{plano} $\sin\phi_0\,x - \cos\phi_0\,y = 0$, que intersectan al eje $z$ en los puntos $\pm r_0 \,\hat{k}$. La figura asociada a esta construcción se muestra en la Figura~\ref{fig:02-sistema-de-coordenadas:sist-coor-fig30}.
 \end{enumerate}
-
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{figures/02_sistema_de_coordenadas/sist_coor_fig30.png}
     \caption{Resumen gráfico de las tres familias de líneas coordenadas en coordenadas esféricas: radiales, azimutales y colatitudinales.}
+
+
+    \label{fig:02-sistema-de-coordenadas:sist-coor-fig30}
 \end{figure}
 
 En particular, los ejes $x$, $y$ y $z$ corresponden a las líneas coordenadas:

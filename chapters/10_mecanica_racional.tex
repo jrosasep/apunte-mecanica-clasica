@@ -1,0 +1,507 @@
+% !TeX root = ../apunte_mecanica_clasica.tex
+\IfFileExists{../apunte_mecanica_clasica.tex}{%
+  \documentclass[../apunte_mecanica_clasica.tex]{subfiles}%
+}{%
+  \documentclass[apunte_mecanica_clasica.tex]{subfiles}%
+}
+\begin{document}
+
+\chapter{Mecánica racional}
+\label{ch:mecanica-racional}
+% Figuras extraídas desde Clase MC 3-1.pdf y organizadas en figures/10_mecanica_racional/.
+% La clase se titula Mecánica Racional; dentro de ella se desarrolla el formalismo lagrangiano.
+
+\section{Grados de libertad}
+\label{sec:mr-grados-libertad}
+
+Una partícula al moverse en el espacio describe una \textbf{trayectoria}, la que es una curva en un espacio tridimensional. Por lo tanto, necesitamos tres números para conocer su posición,
+\begin{equation}
+    (x,y,z).
+    \label{eq:mr-posicion-cartesiana}
+\end{equation}
+Si el sistema es más complejo que una partícula, como un sistema de partículas o un cuerpo rígido, necesitamos más que tres números para conocer el estado del sistema.
+
+\begin{quote}
+\textbf{Definición.} Se define los \textbf{grados de libertad} $f$ de un sistema a todos los posibles movimientos que puede realizar el sistema.
+\end{quote}
+
+\subsection{Ejemplos elementales}
+\label{subsec:mr-ejemplos-grados}
+
+\begin{itemize}
+    \item \textbf{Una partícula puntual} posee sólo tres posibles movimientos, traslación a lo largo del eje $x$, $y$ y $z$. Por lo tanto, una partícula puntual posee $f=3$ grados de libertad.
+    \item \textbf{Un sistema de $N$ partículas interactuantes}, por lo tanto, si cada partícula posee $f=3N$ grados de libertad, puesto que cada partícula posee tres grados de libertad.
+\end{itemize}
+
+Para la segunda ley de Newton se tienen que las ecuaciones de movimiento para cada partícula pueden escribirse en la forma
+\begin{equation}
+    m_a \ddot{\vec r}_a = \vec F_a + \sum_{b\neq a}\vec F_{ab},
+    \qquad a=1,\dots,N,
+    \label{eq:mr-newton-n-particulas}
+\end{equation}
+donde $\vec F_a$ es la acción externa sobre la partícula $a$ y $\vec F_{ab}$ es la acción de la partícula $b$ sobre la partícula $a$. Al sumar las ecuaciones, las interacciones internas se cancelan por la tercera ley de Newton, quedando la dinámica global determinada por las fuerzas externas.
+
+\section{Vínculos}
+\label{sec:mr-vinculos}
+
+En un sistema físico, una partícula vinculada es aquella cuyo movimiento se ve restringido por una \textbf{ligadura} o \textbf{vínculo}. De manera general, un vínculo puede pensarse como una condición que restringe el movimiento del sistema. Un ejemplo simple es una cuenta de un ábaco, que puede moverse a lo largo de una línea recta y no en cualquier dirección, como se ilustra en la Figura~\ref{fig:mr-abaco-vinculo}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/abaco_vinculo.png}{%
+        \includegraphics[width=0.42\linewidth]{figures/10_mecanica_racional/abaco_vinculo.png}%
+    }{%
+        \fbox{\parbox{0.42\linewidth}{\centering Figura pendiente: ábaco como ejemplo de vínculo.}}%
+    }
+    \caption{Ejemplo de vínculo: una cuenta de ábaco sólo puede moverse a lo largo de una guía.}
+    \label{fig:mr-abaco-vinculo}
+\end{figure}
+
+\begin{quote}
+\textbf{Definición.} Los \textbf{vínculos}, llamados también \textbf{ligaduras}, son modelos para describir cualquier objeto que restringe el movimiento de un sistema.
+\end{quote}
+
+\subsection{Péndulo simple}
+\label{subsec:mr-pendulo-simple}
+
+Una partícula de masa $m$ y una cuerda forman un péndulo, que es un sistema vinculado por la cuerda que restringe el movimiento de la partícula. La geometría de este vínculo se muestra en la Figura~\ref{fig:mr-pendulo-simple-geometria}. Si se adopta el origen en el punto de suspensión y la longitud de la cuerda es $l$, el vínculo puede escribirse como
+\begin{equation}
+    x^2+y^2+z^2=l^2.
+    \label{eq:mr-vinculo-pendulo-3d}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/pendulo_simple_geometria.png}{%
+        \includegraphics[width=0.45\linewidth]{figures/10_mecanica_racional/pendulo_simple_geometria.png}%
+    }{%
+        \fbox{\parbox{0.45\linewidth}{\centering Figura pendiente: geometría del péndulo simple.}}%
+    }
+    \caption{Péndulo simple: la cuerda impone una distancia fija entre la masa y el punto de suspensión.}
+    \label{fig:mr-pendulo-simple-geometria}
+\end{figure}
+
+\subsection{Partícula confinada y movimiento sobre una guía}
+\label{subsec:mr-particula-confinada}
+
+Una partícula que se desliza sobre una superficie o dentro de un recipiente está sometida a restricciones geométricas. Por ejemplo, si la partícula se encuentra dentro de una caja, sus coordenadas deben satisfacer
+\begin{equation}
+    x_i \leq x \leq x_f,
+    \qquad
+    y_i \leq y \leq y_f,
+    \qquad
+    z_i \leq z \leq z_f.
+    \label{eq:mr-particula-caja}
+\end{equation}
+Este tipo de restricción se representa en la Figura~\ref{fig:mr-particula-caja}. De manera análoga, una canica obligada a moverse sobre un alambre queda restringida a seguir una curva, como se muestra en la Figura~\ref{fig:mr-canica-alambre}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/particula_en_caja.png}{%
+        \includegraphics[width=0.52\linewidth]{figures/10_mecanica_racional/particula_en_caja.png}%
+    }{%
+        \fbox{\parbox{0.52\linewidth}{\centering Figura pendiente: partícula en una caja.}}%
+    }
+    \caption{Partícula confinada en una región acotada del espacio.}
+    \label{fig:mr-particula-caja}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/canica_sobre_alambre.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/10_mecanica_racional/canica_sobre_alambre.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: canica sobre un alambre.}}%
+    }
+    \caption{Canica obligada a moverse sobre una guía curva.}
+    \label{fig:mr-canica-alambre}
+\end{figure}
+
+\section{Clasificación de los vínculos}
+\label{sec:mr-clasificacion-vinculos}
+
+Los vínculos o ligaduras se modelan mediante ecuaciones que pueden relacionar coordenadas, velocidades y, eventualmente, el tiempo. En su forma más simple se escriben como
+\begin{equation}
+    f_\alpha(\vec r_1,\vec r_2,\dots,\vec r_N,t)=0,
+    \qquad \alpha=1,\dots,k.
+    \label{eq:mr-vinculos-generales}
+\end{equation}
+Si un sistema posee $k$ vínculos independientes, entonces el número de grados de libertad se reduce a
+\begin{equation}
+    f=3N-k.
+    \label{eq:mr-grados-libertad-vinculos}
+\end{equation}
+
+\subsection{Vínculos holonómicos}
+\label{subsec:mr-vinculos-holonomicos}
+
+\begin{itemize}
+    \item \textbf{Vínculos holonómicos.} Son condiciones de ligadura que pueden expresarse como ecuaciones que relacionan las coordenadas de las partículas y el tiempo.
+    \item \textbf{Vínculos esclerónomos.} Son vínculos que no dependen explícitamente del tiempo.
+    \item \textbf{Vínculos reónomos.} Son vínculos que dependen explícitamente del tiempo.
+\end{itemize}
+
+Un ejemplo de vínculo holonómico es el péndulo simple, cuya restricción geométrica está dada por \eqref{eq:mr-vinculo-pendulo-3d}. Otros ejemplos geométricos de vínculos se muestran en las Figuras~\ref{fig:mr-barra-inclinada-vinculo} y \ref{fig:mr-aro-plano-inclinado}, donde la posición de la partícula queda restringida por una geometría externa.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/barra_inclinada_vinculo.png}{%
+        \includegraphics[width=0.48\linewidth]{figures/10_mecanica_racional/barra_inclinada_vinculo.png}%
+    }{%
+        \fbox{\parbox{0.48\linewidth}{\centering Figura pendiente: barra inclinada y vínculo geométrico.}}%
+    }
+    \caption{Ejemplo geométrico de una ligadura asociada a una barra inclinada.}
+    \label{fig:mr-barra-inclinada-vinculo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/aro_o_plano_inclinado.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/10_mecanica_racional/aro_o_plano_inclinado.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: ejemplo de vínculo geométrico.}}%
+    }
+    \caption{Otro ejemplo de restricción geométrica que reduce los posibles movimientos del sistema.}
+    \label{fig:mr-aro-plano-inclinado}
+\end{figure}
+
+\subsection{Coordenadas generalizadas}
+\label{subsec:mr-coordenadas-generalizadas}
+
+En un sistema con $N$ partículas y $k$ vínculos holonómicos independientes, el número de grados de libertad es $f=3N-k$. Por lo tanto, el sistema puede describirse mediante $f$ \textbf{coordenadas generalizadas},
+\begin{equation}
+    q^1,q^2,\dots,q^f.
+    \label{eq:mr-coordenadas-generalizadas}
+\end{equation}
+La posición de cada partícula puede escribirse como
+\begin{equation}
+    \vec r_a=\vec r_a(q^1,q^2,\dots,q^f,t),
+    \qquad a=1,\dots,N.
+    \label{eq:mr-posicion-coordenadas-generalizadas}
+\end{equation}
+
+Para el péndulo simple, por ejemplo, basta una coordenada generalizada $q^1=\theta$. En este caso, la Figura~\ref{fig:mr-pendulo-coordenada-generalizada} representa la elección de $\theta$ como variable independiente del sistema.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/pendulo_coordenada_generalizada.png}{%
+        \includegraphics[width=0.45\linewidth]{figures/10_mecanica_racional/pendulo_coordenada_generalizada.png}%
+    }{%
+        \fbox{\parbox{0.45\linewidth}{\centering Figura pendiente: coordenada generalizada del péndulo.}}%
+    }
+    \caption{Elección de la coordenada generalizada $\theta$ para un péndulo simple.}
+    \label{fig:mr-pendulo-coordenada-generalizada}
+\end{figure}
+
+\subsection{Velocidades en coordenadas generalizadas}
+\label{subsec:mr-velocidades-generalizadas}
+
+Derivando \eqref{eq:mr-posicion-coordenadas-generalizadas} respecto del tiempo se obtiene
+\begin{equation}
+    \dot{\vec r}_a
+    = \sum_{j=1}^{f} \frac{\partial \vec r_a}{\partial q^j}\dot q^j
+    + \frac{\partial \vec r_a}{\partial t}.
+    \label{eq:mr-velocidad-coordenadas-generalizadas}
+\end{equation}
+Los vectores
+\begin{equation}
+    \frac{\partial \vec r_a}{\partial q^j}
+    \label{eq:mr-vectores-tangentes-coordenadas}
+\end{equation}
+son tangentes a las líneas coordenadas asociadas a las coordenadas generalizadas. En el caso del péndulo, estos vectores tangentes se visualizan de manera geométrica en la Figura~\ref{fig:mr-pendulo-vectores-base}.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/pendulo_vectores_base.png}{%
+        \includegraphics[width=0.48\linewidth]{figures/10_mecanica_racional/pendulo_vectores_base.png}%
+    }{%
+        \fbox{\parbox{0.48\linewidth}{\centering Figura pendiente: vectores base asociados al péndulo.}}%
+    }
+    \caption{Vectores tangentes asociados a la coordenada generalizada del péndulo.}
+    \label{fig:mr-pendulo-vectores-base}
+\end{figure}
+
+\subsection{Ejemplo sobre una esfera}
+\label{subsec:mr-ejemplo-esfera}
+
+Si una partícula se mueve sobre una superficie esférica de radio $R$, existe un vínculo dado por
+\begin{equation}
+    f(x,y,z)=x^2+y^2+z^2-R^2=0.
+    \label{eq:mr-vinculo-esfera}
+\end{equation}
+Por lo tanto, el número de grados de libertad es
+\begin{equation}
+    f=3-1=2.
+    \label{eq:mr-grados-esfera}
+\end{equation}
+La situación puede describirse mediante dos coordenadas generalizadas, como se muestra en la Figura~\ref{fig:mr-hormiga-esfera}. En coordenadas polares o esféricas, estas coordenadas pueden escogerse como ángulos.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/hormiga_sobre_esfera.png}{%
+        \includegraphics[width=0.55\linewidth]{figures/10_mecanica_racional/hormiga_sobre_esfera.png}%
+    }{%
+        \fbox{\parbox{0.55\linewidth}{\centering Figura pendiente: movimiento sobre una esfera.}}%
+    }
+    \caption{Movimiento restringido a una superficie esférica.}
+    \label{fig:mr-hormiga-esfera}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/coordenadas_polares_en_plano.png}{%
+        \includegraphics[width=0.45\linewidth]{figures/10_mecanica_racional/coordenadas_polares_en_plano.png}%
+    }{%
+        \fbox{\parbox{0.45\linewidth}{\centering Figura pendiente: coordenadas polares.}}%
+    }
+    \caption{Coordenadas angulares asociadas a un movimiento restringido.}
+    \label{fig:mr-coordenadas-polares}
+\end{figure}
+
+\section{Formalismo lagrangiano de la mecánica clásica}
+\label{sec:mr-formalismo-lagrangiano}
+
+El objetivo del formalismo lagrangiano es expresar la dinámica de un sistema mecánico en términos de coordenadas generalizadas. En lugar de escribir directamente las ecuaciones de Newton para cada coordenada cartesiana, se busca una formulación adaptada a los vínculos del sistema.
+
+\subsection{Desplazamientos virtuales}
+\label{subsec:mr-desplazamientos-virtuales}
+
+Un desplazamiento virtual compatible con los vínculos se escribe como
+\begin{equation}
+    \delta \vec r_a = \sum_{j=1}^{f}\frac{\partial \vec r_a}{\partial q^j}\delta q^j.
+    \label{eq:mr-desplazamiento-virtual}
+\end{equation}
+La ecuación \eqref{eq:mr-desplazamiento-virtual} expresa que las variaciones admisibles de la posición se producen a lo largo de las coordenadas generalizadas independientes.
+
+\subsection{Fuerzas generalizadas}
+\label{subsec:mr-fuerzas-generalizadas}
+
+\begin{quote}
+\textbf{Definición.} Se define la \textbf{fuerza generalizada} $Q_j$ como
+\begin{equation}
+    Q_j=\sum_{a=1}^{N}\vec F_a\cdot \frac{\partial \vec r_a}{\partial q^j}.
+    \label{eq:mr-fuerza-generalizada}
+\end{equation}
+\end{quote}
+
+La cantidad $Q_j$ corresponde a la componente efectiva de las fuerzas aplicadas en la dirección de la coordenada generalizada $q^j$.
+
+\subsection{Ecuaciones de Lagrange de segunda especie}
+\label{subsec:mr-lagrange-segunda-especie}
+
+La energía cinética total del sistema es
+\begin{equation}
+    T=\sum_{a=1}^{N}\frac{1}{2}m_a \dot{\vec r}_a\cdot \dot{\vec r}_a.
+    \label{eq:mr-energia-cinetica-total}
+\end{equation}
+A partir de la formulación dinámica en coordenadas generalizadas se obtiene
+\begin{equation}
+    \frac{d}{dt}\left(\frac{\partial T}{\partial \dot q^j}\right)
+    -\frac{\partial T}{\partial q^j}
+    = Q_j,
+    \qquad j=1,\dots,f.
+    \label{eq:mr-lagrange-segunda-especie-t}
+\end{equation}
+Estas son las \textbf{ecuaciones de Lagrange de segunda especie} escritas en términos de la energía cinética y las fuerzas generalizadas.
+
+Si las fuerzas generalizadas derivan de un potencial $V(q^1,\dots,q^f,t)$, entonces
+\begin{equation}
+    Q_j=-\frac{\partial V}{\partial q^j}.
+    \label{eq:mr-fuerza-generalizada-potencial}
+\end{equation}
+Definiendo la función lagrangiana como
+\begin{equation}
+    L=T-V,
+    \label{eq:mr-lagrangiano-definicion}
+\end{equation}
+la ecuación \eqref{eq:mr-lagrange-segunda-especie-t} se transforma en
+\begin{equation}
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^j}\right)
+    -\frac{\partial L}{\partial q^j}=0,
+    \qquad j=1,\dots,f.
+    \label{eq:mr-ecuaciones-lagrange}
+\end{equation}
+
+\subsection{Ejemplo: péndulo simple}
+\label{subsec:mr-ejemplo-pendulo-lagrange}
+
+Para el péndulo simple se escoge como coordenada generalizada $q^1=\theta$. Si el movimiento ocurre en un plano vertical, las coordenadas pueden escribirse como
+\begin{equation}
+    x=l\sin\theta,
+    \qquad
+    y=l\cos\theta.
+    \label{eq:mr-pendulo-coordenadas}
+\end{equation}
+La Figura~\ref{fig:mr-pendulo-lagrange} muestra la configuración geométrica utilizada para escribir el lagrangiano.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{figures/10_mecanica_racional/pendulo_lagrange.png}{%
+        \includegraphics[width=0.45\linewidth]{figures/10_mecanica_racional/pendulo_lagrange.png}%
+    }{%
+        \fbox{\parbox{0.45\linewidth}{\centering Figura pendiente: péndulo para formulación lagrangiana.}}%
+    }
+    \caption{Péndulo simple descrito mediante la coordenada generalizada $\theta$.}
+    \label{fig:mr-pendulo-lagrange}
+\end{figure}
+
+La energía cinética está dada por
+\begin{equation}
+    T=\frac{1}{2}m l^2\dot\theta^2,
+    \label{eq:mr-pendulo-energia-cinetica}
+\end{equation}
+y la energía potencial gravitatoria puede escribirse como
+\begin{equation}
+    V=-mgl\cos\theta.
+    \label{eq:mr-pendulo-potencial}
+\end{equation}
+Por lo tanto, el lagrangiano resulta
+\begin{equation}
+    L=\frac{1}{2}m l^2\dot\theta^2+mgl\cos\theta.
+    \label{eq:mr-pendulo-lagrangiano}
+\end{equation}
+Al sustituir \eqref{eq:mr-pendulo-lagrangiano} en \eqref{eq:mr-ecuaciones-lagrange}, se obtiene
+\begin{equation}
+    ml^2\ddot\theta + mgl\sin\theta=0,
+    \label{eq:mr-pendulo-ecuacion-movimiento}
+\end{equation}
+o, equivalentemente,
+\begin{equation}
+    \ddot\theta+\frac{g}{l}\sin\theta=0.
+    \label{eq:mr-pendulo-no-lineal}
+\end{equation}
+
+\section{Ecuación newtoniana}
+\label{sec:mr-ecuacion-newtoniana}
+
+Las ecuaciones de Lagrange también contienen como caso particular a la ecuación de Newton. Si se usan coordenadas cartesianas y se toma
+\begin{equation}
+    L=T-V,
+    \label{eq:mr-lagrangiano-cartesiano}
+\end{equation}
+con
+\begin{equation}
+    T=\frac{1}{2}m\dot x_i\dot x_i,
+    \label{eq:mr-cinetica-cartesiana}
+\end{equation}
+entonces \eqref{eq:mr-ecuaciones-lagrange} conduce a
+\begin{equation}
+    m\ddot x_i=-\frac{\partial V}{\partial x_i}=F_i.
+    \label{eq:mr-newton-desde-lagrange}
+\end{equation}
+Por lo tanto, la ecuación de Newton aparece como una forma particular de las ecuaciones de Lagrange cuando se usan coordenadas cartesianas.
+
+\subsection{Hessiano respecto de las velocidades}
+\label{subsec:mr-hessiano-velocidades}
+
+La matriz
+\begin{equation}
+    W_{ij}=\frac{\partial^2 L}{\partial \dot q^i\partial \dot q^j}
+    \label{eq:mr-hessiano-lagrangiano}
+\end{equation}
+permite estudiar la posibilidad de despejar las aceleraciones a partir de las ecuaciones de movimiento. Cuando esta matriz es invertible, las ecuaciones determinan de manera local las aceleraciones del sistema.
+
+\section{Unicidad de la función lagrangiana}
+\label{sec:mr-unicidad-lagrangiana}
+
+La función lagrangiana no es única. Si $L$ satisface las ecuaciones de Lagrange de primera especie, entonces también lo hace
+\begin{equation}
+    L'=L+\frac{dF}{dt},
+    \label{eq:mr-lagrangiano-mas-derivada-total}
+\end{equation}
+donde $F=F(q^1,\dots,q^f,t)$ es una función arbitraria de las coordenadas generalizadas y del tiempo. En efecto,
+\begin{equation}
+    \frac{dF}{dt}
+    =\sum_{j=1}^{f}\frac{\partial F}{\partial q^j}\dot q^j
+    +\frac{\partial F}{\partial t}.
+    \label{eq:mr-derivada-total-f}
+\end{equation}
+La adición de una derivada total no cambia las ecuaciones de movimiento.
+
+\section{Momentum canónico de una coordenada generalizada}
+\label{sec:mr-momentum-canonico}
+
+\begin{quote}
+\textbf{Definición.} Se define el \textbf{momentum canónico} asociado a la coordenada generalizada $q^j$ mediante
+\begin{equation}
+    p_j=\frac{\partial L}{\partial \dot q^j}.
+    \label{eq:mr-momentum-canonico}
+\end{equation}
+\end{quote}
+
+Las ecuaciones de Lagrange pueden escribirse como
+\begin{equation}
+    \dot p_j=\frac{\partial L}{\partial q^j}.
+    \label{eq:mr-ecuacion-momentum-canonico}
+\end{equation}
+Esta forma muestra directamente cómo cambia el momentum canónico asociado a una coordenada generalizada.
+
+\section{Coordenadas cíclicas o ignorables}
+\label{sec:mr-coordenadas-ciclicas}
+
+Sea un sistema de $f$ grados de libertad cuya configuración viene dada por
+\begin{equation}
+    q^1,q^2,\dots,q^f.
+    \label{eq:mr-configuracion-f-grados}
+\end{equation}
+
+\begin{quote}
+\textbf{Definición.} Si la coordenada $q^j$ aparece explícitamente en el lagrangiano, entonces $q^j$ es llamada \textbf{coordenada cíclica o ignorable} cuando
+\begin{equation}
+    \frac{\partial L}{\partial q^j}=0.
+    \label{eq:mr-coordenada-ciclica}
+\end{equation}
+\end{quote}
+
+Usando \eqref{eq:mr-ecuacion-momentum-canonico}, si $q^j$ es una coordenada cíclica, entonces
+\begin{equation}
+    \dot p_j=0,
+    \label{eq:mr-momentum-conservado-ciclica}
+\end{equation}
+y por lo tanto
+\begin{equation}
+    p_j=\text{constante}.
+    \label{eq:mr-p-conservado}
+\end{equation}
+
+\subsection{Ejemplo: problema de Kepler}
+\label{subsec:mr-ejemplo-kepler}
+
+En el problema de Kepler, la coordenada angular es ignorable para un potencial central. En consecuencia, el momentum conjugado asociado a dicha coordenada se conserva. Este resultado coincide con la conservación del momentum angular. En la notación usual,
+\begin{equation}
+    p_\varphi=\frac{\partial L}{\partial \dot\varphi}
+    \label{eq:mr-momentum-angular-kepler}
+\end{equation}
+es una constante del movimiento.
+
+\section{Potenciales generalizados}
+\label{sec:mr-potenciales-generalizados}
+
+Las ecuaciones de Lagrange también son válidas para sistemas conservativos y para ciertos sistemas en que las fuerzas generalizadas provienen de un \textbf{potencial generalizado}. Si existe una función $U(q,\dot q,t)$ tal que
+\begin{equation}
+    Q_j=-\frac{\partial U}{\partial q^j}
+    +\frac{d}{dt}\left(\frac{\partial U}{\partial \dot q^j}\right),
+    \label{eq:mr-potencial-generalizado}
+\end{equation}
+entonces la ecuación de movimiento puede escribirse a partir de un lagrangiano de la forma
+\begin{equation}
+    L=T-U.
+    \label{eq:mr-lagrangiano-potencial-generalizado}
+\end{equation}
+
+\subsection{Ejemplo: partícula cargada en un campo electromagnético}
+\label{subsec:mr-ejemplo-electromagnetico}
+
+De la ecuación
+\begin{equation}
+    \vec F=q\vec E+q\vec v\times \vec B,
+    \label{eq:mr-fuerza-lorentz}
+\end{equation}
+se obtiene que, en términos de los potenciales $\phi(\vec x,t)$ y $\vec A(\vec x,t)$, la función lagrangiana de Lorentz puede escribirse como
+\begin{equation}
+    L=\frac{1}{2}m v^2-q\phi+q\vec v\cdot\vec A.
+    \label{eq:mr-lagrangiano-lorentz}
+\end{equation}
+En este caso, $\phi$ corresponde al \textbf{potencial eléctrico} y $\vec A$ al \textbf{potencial vectorial magnético}.
+
+\end{document}
